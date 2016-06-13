@@ -492,6 +492,13 @@ $(document).ready(function(){
                 },
                 success: function(data) {
 
+                    if(data == 'configerror'){
+                        alert('Error: No drones found in database');
+                        $("#cleanButton").click();
+                        return 0;
+                    }
+
+
                     data = JSON.parse(decrypt(data, key));
                     mission = data[0];
                     data = data[1];
@@ -534,7 +541,7 @@ $(document).ready(function(){
 
         function checkWeather(e) {
 
-            if ($("#startbutton").is(':disabled')) {
+            if ($("#startbutton").is(':hidden')) {
                 return 0;
             }
             globalE = e;
@@ -630,6 +637,7 @@ $(document).ready(function(){
                     success: function(data) {
 
                         map.removeMarkers();
+
                         setGrid(globalE);
                         data = JSON.parse(decrypt(data, key));
                         console.log(missionId);
@@ -644,7 +652,6 @@ $(document).ready(function(){
                                 if (data[i][j][4] != null) {
 
                                     icon = "{% static 'img/physical_demo_signal.png' %}"
-
 
                                     if (isInArray((data[i][j][4]).toString(), selected)) {
                                         icon = "{% static 'img/beacon.png' %}"

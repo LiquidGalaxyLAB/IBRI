@@ -179,6 +179,11 @@ def createRoute(request):
         for userId in range(0, len(userPK)):
             m.inSearch.add(Clients.objects.get(pk=userPK[userId]))
 
+        try:
+            drones = Drone.objects.all()[0]
+        except:
+            print("\033[91m Oops!  No drones found un database")
+            return HttpResponse('configerror')
 
         # TODO quitar la variable drone_secuencial
         drone_secuencial = 0
@@ -186,7 +191,7 @@ def createRoute(request):
         for r in route:
 
             # TODO cambiar para que la elección del dron la haga el usuario y no sea secuencial
-            rm = Route(mission=m, drone=Drone.objects.all()[drone_secuencial], baseLat=base[0], baseLng=base[1])
+            rm = Route(mission=m, drone=drones[drone_secuencial], baseLat=base[0], baseLng=base[1])
             rm.save()
             tmpRoute = []
             tmpCounter = 0
