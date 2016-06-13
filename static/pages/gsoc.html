@@ -17,16 +17,41 @@
                 margin: auto;
                 margin-top: 2vh;
                 margin-bottom: 2vh;
-
-
-
             }
+            #settings{
+                min-height: 20vh;
+            }
+
             #map
             {
                 transition: height 1s;
                 height: 80%;
                 border: 1px solid #d5d5d5;
             }
+
+            @media (max-height: 800px) {
+                #settings{
+                    min-height: 40vh;
+                }
+
+                #map
+                {
+                    height: 60%;
+                }
+            }
+
+            @media (max-height: 500px) {
+                #settings{
+                    min-height: 60vh;
+                }
+
+                #map
+                {
+                    height: 40%;
+                }
+            }
+
+
 
             .chip:before{
                 box-shadow: none;
@@ -40,6 +65,10 @@
                 height: 50vh;
             }
 
+            body{
+                background-color: #ede7f6;
+            }
+
 
         </style>
 
@@ -48,7 +77,8 @@
     <body>
 
 
-    <div id="mainCard" class="card">
+    <div id="mainCard" class="card" style="overflow: hidden;">
+
         <div id="map"></div>
         <div style="position: absolute; right: 20px; margin-top: -25px;">
             <a id="startbutton" class="right btn-floating btn-large waves-effect waves-light green"><i class="material-icons">play_arrow</i></a>
@@ -77,7 +107,9 @@
                 </div>
 
 
+
             </div>
+
 
         </div>
 
@@ -130,6 +162,7 @@
 
         </div>
     </div>
+
 
 
 
@@ -506,15 +539,20 @@ $(document).ready(function(){
             }
             globalE = e;
 
-            weatherMapApi = '9e439c5eea0e0f086de6503b1295ca8e';
+            weatherMapApi = '{{ WEATHER_API|default:"INSERT_WEATHER_API_HERE" }}';
             url = 'http://api.openweathermap.org/data/2.5/weather?units=metric&lat=' + e.latLng.lat() + '&lon=' + e.latLng.lng() + '&appid=' + weatherMapApi;
-
+            console.log(url);
             $.ajax({
                 async: false,
                 type: "POST",
                 url: url,
                 dataType: "json",
                 success: function(response) {
+
+                    if(response.cod == '404'){
+                        alert(response.message);
+                        return 0;
+                    }
 
                     console.log(response);
                     console.log("Viento: " + response.wind.speed);
@@ -533,7 +571,7 @@ $(document).ready(function(){
 
                 },
                 error: function(response) {
-                    alert("Hubo un error al recuperar los datos de información meteorológica.");
+                    alert("Hubo un error al recuperar los datos de información meteorológica. ¿Se ha establecido WEATHER_API?");
                     return false;
                 }
 
@@ -747,6 +785,21 @@ map = new GMaps({
                 map.addControl({
                   position: 'top_right',
                   content: '<a class="btn-floating grey btn-flat activator"><i class="material-icons">account_circle</i></a>',
+                  style: {
+                    margin: '5px',
+                    shadow: 'none'
+                  },
+                  events: {
+                    click: function(){
+                      console.log(this);
+                       // $('#modal1').openModal();
+                    }
+                  }
+                });
+
+                map.addControl({
+                  position: 'top_left',
+                  content: '<img class="responsive-img hide-on-small-only" src="{% static 'img/IBRIlogo_mini.png' %}" />',
                   style: {
                     margin: '5px',
                     shadow: 'none'

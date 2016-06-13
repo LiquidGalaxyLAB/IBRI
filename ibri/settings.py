@@ -22,10 +22,12 @@ SECRET_KEY = 'qks)%)oulg&!j4v4%t0*)b()naevd+zp4dc^=5u@ti^!8a_=&s'
 ENCRYPTED_FIELDS_KEYDIR = 'fieldkeys'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
+
+APPEND_SLASH = True
 SECURE_BROWSER_XSS_FILTER = True
 
 # Application definition
@@ -39,7 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'search',
     'clients',
-    'drones'
+    'drones',
+    'config'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -70,14 +73,10 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'es-ES'
-
+LANGUAGE_CODE = 'en-EN'
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -105,3 +104,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static').replace('\\','/'),)
+
+try:
+    from local_settings import *
+except ImportError:
+    pass

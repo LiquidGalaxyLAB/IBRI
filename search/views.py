@@ -2,6 +2,7 @@
 import json
 from math import sqrt
 
+from config.models import Config
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http.response import Http404
@@ -18,8 +19,8 @@ from utils.tsp import *
 @login_required(login_url='/admin/login/')
 def searchMap(request):
     clients = Clients.objects.all()
-    #return render(request, 'search/map.html', {'client': clients})
-    return render(request, 'gsoc.html', {'client': clients})
+    weather_api = Config.objects.get(pk='WEATHER_API')
+    return render(request, 'gsoc.html', {'client': clients, 'WEATHER_API': weather_api.value })
 
 
 def getTracking(request):

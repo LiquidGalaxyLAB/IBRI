@@ -39,7 +39,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         drone_id = int(options['droneId'][0])
-        url_post = 'http://localhost:8000/search/setTracking/'
+        url_post = 'http://localhost:8000/setTracking/'
         shared_key = 'clave_drone' + str(drone_id)  # AES256 pre-shared key with the drone
         shared_key = shared_key.ljust(32)[:32]
         in_search = Mission.objects.last()
