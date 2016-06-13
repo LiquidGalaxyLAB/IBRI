@@ -64,15 +64,15 @@
             <div class="row">
 
                 <div class="range-field col s12 m4">
-                    <label>Number of Drones</label>
+                    <label>Number of Drones: <span id="nodrone_val">1</span></label>
                     <input type="range" id="nodrone" min="1" max="5" value="1" />
                 </div>
                 <div class="range-field col s12 m4">
-                    <label>Distance between points</label>
+                    <label>Distance between points: <span id="distance_val">50</span></label>
                     <input type="range" id="distance" min="50" max="200" value="50" />
                 </div>
                 <div class="range-field col s12 m4">
-                    <label>Grid Side Size</label>
+                    <label>Grid Side Size: <span id="gridsize_val">5</span></label>
                     <input type="range" id="gridSize" min="3" max="20" value="5" />
                 </div>
 
@@ -118,8 +118,7 @@
 
 
                         </div>
-                        <!--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-                        <!--<input type="checkbox" name="searching" value="{{ c.id }}" /> #{{ c.id }}</td>-->
+
                     </li>
 
                 {% endfor %}
@@ -131,31 +130,6 @@
 
         </div>
     </div>
-
-<!--
-<div class="card" style="margin-top:0px;">
-
-
-
-    <div class="card-image">
-		<div style="height: 350px; background-color: lightblue;">
-		</div>
-    </div>
-    	<div class="progress" style="margin:0px;">
-      <div class="indeterminate"></div>
-  </div>
-    <div class="card-content">
-
-
-      <span class="card-title">Card Title
-		<a style="" class="right btn-floating btn-large waves-effect waves-light green"><i class="material-icons">play_arrow</i></a>
-      </span>
-
-      <p><a href="#">This is a link</a></p>
-    </div>
-
-  </div>-->
-
 
 
 
@@ -187,6 +161,20 @@
 
          <script type="text/javascript">
 $(document).ready(function(){
+
+
+
+    $("#gridSize").change(function(){
+        $("#gridsize_val").html(this.value);
+    });
+
+    $("#nodrone").change(function(){
+        $("#nodrone_val").html(this.value);
+    });
+
+    $("#distance").change(function(){
+        $("#distance_val").html(this.value);
+    });
 
     var key = CryptoJS.enc.Utf8.parse('preshared_key012'); // 16 bits!
 
@@ -467,12 +455,7 @@ $(document).ready(function(){
                         base: JSON.stringify(baseCoords)
                     }), key)
 
-                    /*ndrones: $("#nodrone").val(),
-                    insearch: JSON.stringify(selected),
-                    nearPoint: JSON.stringify(nearToBase),
-                    distance: $("#distance").val(),
-                    wayPoints: JSON.stringify(posArrays),
-                    base: JSON.stringify(baseCoords)*/
+
                 },
                 success: function(data) {
 
