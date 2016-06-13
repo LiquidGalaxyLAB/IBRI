@@ -191,7 +191,7 @@ def createRoute(request):
         for r in route:
 
             # TODO cambiar para que la elección del dron la haga el usuario y no sea secuencial
-            rm = Route(mission=m, drone=drones[drone_secuencial], baseLat=base[0], baseLng=base[1])
+            rm = Route(mission=m, drone=Drone.objects.all()[drone_secuencial], baseLat=base[0], baseLng=base[1])
             rm.save()
             tmpRoute = []
             tmpCounter = 0
