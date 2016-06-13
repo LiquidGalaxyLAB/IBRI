@@ -15,8 +15,6 @@ Install python
 Getting Started
 -------------
 
-StackEdit stores your documents in your browser, which means all your documents are automatically saved locally and are accessible **offline!**
-
 > **Copy and paste in a console/terminal:**
 > git clone git@github.com:LiquidGalaxyLAB/IBRI.git
 > cd IBRI/
