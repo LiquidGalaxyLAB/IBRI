@@ -1,0 +1,9 @@
+<form action="" method="post">{% csrf_token %}
+        {% if form.errors %}
+        <p style="color: red;">
+            Por favor corrige lo siguiente:
+        </p>
+    {% endif %}
+{{ form.as_p }}
+ <input type="submit" value="Enviar" />
+    </form>
