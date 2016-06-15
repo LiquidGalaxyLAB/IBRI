@@ -1,5 +1,7 @@
+
 from clients.models import Clients
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -8,26 +10,70 @@ from django.shortcuts import render
 from django.views.generic import CreateView
 from django.views.generic.edit import UpdateView
 
+from django.forms import forms
+
 
 @staff_member_required
 def config_area(request):
     return HttpResponse('TODO')
 
-class CreateClient(CreateView):
+
+
+class CreateClient(SuccessMessageMixin, CreateView):
+
     model = Clients
-    fields = '__all__'
+    fields = [
+        'name',
+        'lastname',
+        'email',
+        'identifier',
+        'physicalCode',
+        'address',
+        'city',
+        'mobileNumber',
+        'birthDate',
+        'postalCode',
+        'alergies',
+        'diseases',
+        'contacts',
+        'bloodType'
+    ]
+
+    success_message = "%(name)s was created successfully"
     success_url = reverse_lazy('createclient')
 
-class EditClient(UpdateView):
+
+
+
+class EditClient(SuccessMessageMixin, UpdateView):
+
         model = Clients
-        fields = '__all__'
-        success_url = reverse_lazy('editclient')
+        fields = [
+            'name',
+            'lastname',
+            'email',
+            'identifier',
+            'physicalCode',
+            'address',
+            'city',
+            'mobileNumber',
+            'birthDate',
+            'postalCode',
+            'alergies',
+            'diseases',
+            'contacts',
+            'bloodType'
+        ]
 
-        #def create_client(request):
-#    form = ClientForm()
-#    return render(request, 'pages/form.html', {'form' : form})
+        success_message = "%(name)s was modified successfully"
 
+        def get_context_data(self, **kwargs):
+            context = super(EditClient, self).get_context_data(**kwargs)
+            context['client'] = self.object
+            return context
 
-#def edit_client(request):
-#    form = ClientForm(pk=1)
-#    return render(request, 'pages/form.html', {'form' : form})
+        def get_success_url(self):
+            return reverse('editclient', args=(self.object.pk,))
+
+        def form_valid(self, form):
+            print form

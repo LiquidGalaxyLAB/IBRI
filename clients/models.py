@@ -22,7 +22,7 @@ class Clients(models.Model):
     alergies = EncryptedCharField(max_length=500, verbose_name="Alergies", blank=True)
     diseases = EncryptedCharField(max_length=500, verbose_name="Diseases", blank=True)
     contacts = models.ManyToManyField("self", blank=True)
-    inseach = EncryptedBooleanField(verbose_name="In search", default=False)
+    insearch = EncryptedBooleanField(verbose_name="In search", default=False)
     bloodType = EncryptedCharField(max_length=3, blank=True, choices=(
         ('O-', 'O negative'),
         ('O+', 'O positive'),

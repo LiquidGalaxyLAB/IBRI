@@ -1,43 +1,103 @@
  <!DOCTYPE html>
   <html>
+{% load static %}
+
     <head>
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+        <link rel="stylesheet" href="http://materializecss.com/css/prism.css">
+        <link rel="stylesheet" href="http://materializecss.com/css/ghpages-materialize.css">
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+            .errorlist {
+                color: #e53935;
+            }
+
+        </style>
     </head>
 
     <body>
 
+<header>
 
-<!-- side-nav fixed -->
+    <nav class="top-nav pink darken-4">
+        <div class="container">
+          <div class="nav-wrapper"><a class="page-title">{% block title %}{% endblock %}</a></div>
+        </div>
+    </nav>
+    <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
 
-  <div class="navbar-fixed">
-    <nav>
-      <div class="side-nav fixed">
-        <a href="#!" class="brand-logo">Logo</a>
-<ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0%);">
-        <li class="logo">
-            <img src="../img/IBRIlogo_mini.png" />
-        </li>
+    <ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0px);">
+        <li class="logo"><a id="logo-container" class="brand-logo">
+            <img src="{% static 'img/IBRIlogo_mini.png' %}" alt="Interactive Beacon Rescue Interface"/></a></li>
 
         <li class="bold"><a href="about.html" class="waves-effect waves-teal">Sobre Materialize</a></li>
         <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Introducción</a></li>
+        <li class="no-padding">
+          <ul class="collapsible collapsible-accordion">
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">CSS</a>
+              <div class="collapsible-body" style="">
+                <ul>
+                  <li><a href="color.html">Color</a></li>
+                  <li><a href="grid.html">Grid</a></li>
+                  <li><a href="helpers.html">Helpers</a></li>
+                  <li><a href="media-css.html">Media</a></li>
+                  <li><a href="sass.html">Sass</a></li>
+                  <li><a href="shadow.html">Shadow</a></li>
+                  <li><a href="table.html">Table</a></li>
+                  <li><a href="typography.html">Typography</a></li>
+                </ul>
+              </div>
+            </li>
 
+          </ul>
+        </li>
+                <li class="no-padding">
+          <ul class="collapsible collapsible-accordion">
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">CSS</a>
+              <div class="collapsible-body" style="">
+                <ul>
+                  <li><a href="color.html">Color</a></li>
+                  <li><a href="grid.html">Grid</a></li>
+                  <li><a href="helpers.html">Helpers</a></li>
+                  <li><a href="media-css.html">Media</a></li>
+                  <li><a href="sass.html">Sass</a></li>
+                  <li><a href="shadow.html">Shadow</a></li>
+                  <li><a href="table.html">Table</a></li>
+                  <li><a href="typography.html">Typography</a></li>
+                </ul>
+              </div>
+            </li>
+
+          </ul>
+        </li>
         <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">Mobile</a></li>
-        <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Vitrina</a></li>
+
       </ul>
-      </div>
-    </nav>
-  </div>
+    </header>
 
 
 
+<main>
+          <div class="container">
+{% block maincontent %}{% endblock %}
+          </div>
+</main>
 
-       <footer class="page-footer">
+<footer class="page-footer pink darken-4">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -68,11 +128,17 @@
 
 
       <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="http://materializecss.com/js/prism.js"></script>
+        <script src="http://materializecss.com/bin/materialize.js"></script>
 
         <script>
-            $(".button-collapse").sideNav();
+            $(function() {
+                $(".button-collapse").sideNav();
+                    $('select').material_select();
+
+            });
+            //
         </script>
 
 
