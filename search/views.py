@@ -47,7 +47,7 @@ def getTracking(request):
 
                 if wp.signalFound in beacons:
                     u = missionId.inSearch.get(pk=wp.signalFound)
-                    print(u"[ Beacon found ] - {} {} - {} - {}".format( u.name, u.lastname, u.nif, u.physicalCode))
+                    print(u"[ Beacon found ] - {} {} - {} - {}".format( u.name, u.lastname, u.identifier, u.physicalCode))
                     print("[#{} - {}, {}]".format(wp.ref, wp.lat, wp.lng))
 
                 if wp.photo:

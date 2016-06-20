@@ -15,7 +15,7 @@ from django.forms import forms
 
 @staff_member_required
 def config_area(request):
-    return HttpResponse('TODO')
+    return render(request, 'pages/config/config.html')
 
 
 

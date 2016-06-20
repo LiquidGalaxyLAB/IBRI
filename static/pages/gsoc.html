@@ -113,7 +113,7 @@
 
         </div>
 
-        <div class="card-content" id="resultPanel">
+        <div class="card-content row" id="resultPanel">
 
             <div id="resultUserList" style="background-color:pink;" class=""></div>
 
@@ -138,7 +138,7 @@
                 {% for c in client %}
                     <li class="collection-item avatar">
                         <img src="{% static 'img/person.png' %}" alt="" class="circle">
-                        <span class="title">{{ c.name }} {{ c.lastname }}</span>
+                        <span class="title" id="userName_{{ c.id }}">{{ c.name }} {{ c.lastname }}</span>
                         <p>{{ c.nif }}<br /> {{ c.physicalCode }}</p>
                         <div class="right secondary-content">
 
@@ -327,8 +327,6 @@ $(document).ready(function(){
             addBase();
             $("#startbutton").prop("disabled", false);
 
-            //$("#resultPanel").fadeOut();
-            //$("#resultPanel").html();
             $("#userList").fadeIn();
 
             $("#map").css('height', '80%');
@@ -402,7 +400,13 @@ $(document).ready(function(){
 
             for (i = 0; i < selected.length; i++) {
                 $("#resultUserList").append('<div id="photo_' + selected[i] + '"></div>');
+
+
+
+                //$("#resultUserList").append(userElement);
+
             }
+
 
 
             distNear = [];
@@ -668,7 +672,18 @@ $(document).ready(function(){
                                 }
 
                                 if (data[i][j][5] != null) {
-                                    $("#photo_" + data[i][j][4]).html('<img src="data:image/png;base64,' + data[i][j][5] + '" />');
+                                    userName = $("#userName_"+data[i][j][4]).html();
+                                    userElement = '<div class="col s12 m3">' +
+                                    '<div class="card small">' +
+                                    '<div class="card-image"> ' +
+                                    '<img src="data:image/png;base64,' + data[i][j][5] + '" /><span class="card-title">' + userName + '</span> ' +
+                                    '</div> <div class="card-content"> ' +
+                                    '<p>nformation.I am convenient because I require little markup to use effectively.</p> ' +
+                                    '</div> </div></div>';
+
+                                    $("#photo_" + data[i][j][4]).html(userElement);
+
+                                    //$("#photo_" + data[i][j][4]).html('<img src="data:image/png;base64,' + data[i][j][5] + '" />');
                                 }
 
                                 map.removeMarker(tmpMarker[i]);
@@ -766,6 +781,18 @@ $(document).ready(function(){
 
         }
 
+
+        $("#gridSize").change(function(){
+            if(globalE != null){
+                setGrid(globalE);
+            }
+        });
+
+        $("#distance").change(function(){
+            if(globalE != null){
+                setGrid(globalE);
+            }
+        });
 
 map = new GMaps({
                   el: '#map',
