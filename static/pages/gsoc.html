@@ -98,7 +98,7 @@
                     <input type="range" id="nodrone" min="1" max="5" value="1" />
                 </div>
                 <div class="range-field col s12 m4">
-                    <label>Distance between points: <span id="distance_val">50</span></label>
+                    <label>Distance between points: <span id="distance_val">50</span>m</label>
                     <input type="range" id="distance" min="50" max="200" value="50" />
                 </div>
                 <div class="range-field col s12 m4">
@@ -316,39 +316,96 @@ $(document).ready(function(){
         });
 
 
+        function clearData(){
+            globalData = undefined;
+                markerArray = [];
+                tmpMarker = [];
+                posArrays = [];
+                clearInterval(response);
+                $("#startbutton").prop("disabled", false);
+                $("#userList").fadeIn();
+                $("#map").css('height', '80%');
+                $("#settings").slideToggle();
+                $("#resultPanel").slideToggle();
+                $('#cleanButton').toggle('slow', function(){
+                    $("#startbutton").toggle('slow');
+                    $(".progress").slideToggle('slow');
+                });
+                map.removePolylines();
+                map.removePolygons();
+        }
+
         $("#cleanButton").click(function(){
-            markerArray = [];
-            tmpMarker = [];
-            posArrays = [];
-            map.removeMarkers();
-            map.removePolylines();
-            map.removePolygons();
-            clearInterval(response);
-            addBase();
-            $("#startbutton").prop("disabled", false);
+            // TODO Fix this code
+            
+            if(globalData == undefined) {
+                /*globalData = undefined;
+                markerArray = [];
+                tmpMarker = [];
+                posArrays = [];
+                clearInterval(response);
+                $("#startbutton").prop("disabled", false);
+                $("#userList").fadeIn();
+                $("#map").css('height', '80%');
+                $("#settings").slideToggle();
+                $("#resultPanel").slideToggle();
+                $(this).toggle('slow', function(){
+                    $("#startbutton").toggle('slow');
+                    $(".progress").slideToggle('slow');
+                });
+                map.removePolylines();
+                map.removePolygons();*/
+                //clearData();
+                setGrid(globalE);
+                return 0;
+            }
 
-            $("#userList").fadeIn();
+            for(i = 0; i < (globalData.length || 0); i++){
 
-            $("#map").css('height', '80%');
-            $("#settings").slideToggle();
-            $("#resultPanel").slideToggle();
+                if(globalData[i].length > 0){
+                    if(!confirm("Abort mission? All data will dissapear")){
+                        return 0;
+                    }else{
+                        clearData();
+                        /*globalData = undefined; //
+                        markerArray = []; //
+                        tmpMarker = []; //
+                        posArrays = []; //
+                        clearInterval(response); //
+                        $("#startbutton").prop("disabled", false); //
+                        $("#userList").fadeIn(); //
+                        $("#map").css('height', '80%'); //
+                        $("#settings").slideToggle(); //
+                        $("#resultPanel").slideToggle(); //
+                        $(this).toggle('slow', function(){ //
+                            $("#startbutton").toggle('slow'); //
+                            $(".progress").slideToggle('slow'); //
+                        }); //
+                        map.removePolylines(); //
+                        map.removePolygons(); //
+                        */
+
+                        // +++++++++++++++++++++++++++++++++++++++
+                        //clearData();
+                        map.removeMarkers();
+                        addBase();
+                        return 0;
+
+                    }
+                }
+            }
+
+            //clearData();
 
 
-            //$(this).toggle('slow');
-            //$("#startbutton").toggle('slow');
-            //$(".progress").slideToggle('slow')
 
-            $(this).toggle('slow', function(){
-                $("#startbutton").toggle('slow');
-                $(".progress").slideToggle('slow');
-            });
 
         });
 
         //calculates distance between two points in km's
         function calcDistance(p1, p2) {
-            console.log(p1);
-            console.log(p2);
+            //console.log(p1);
+            //console.log(p2);
             return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
         }
 
@@ -358,22 +415,22 @@ $(document).ready(function(){
 
 
             if (parseInt($("#gridSize").val()) > 25) {
-                alert("El tiempo de cálculo para este tipo de tamaños puede ser muy grande.");
+                alert("The grid size can't be greater than 25");
                 return 0;
             }
 
             if (parseInt($("#nodrone").val()) <= 0) {
-                alert("Debe establecer al menos un dron");
+                alert("Number of drones should be at least one");
                 return 0;
             }
 
             if (markerArray.length == 0) {
-                alert("Seleccione un punto en el mapa para establecer una zona de búsqueda");
+                alert("Click on the map to set the searching area");
                 return false;
             }
 
             if ($("#nodrone").val() > markerArray.length) {
-                alert("De momento no es posible establecer más drones que el tamaño de lado del grid");
+                alert("The number of drones should be less or equal than grid size");
                 return false;
             }
 
@@ -383,7 +440,7 @@ $(document).ready(function(){
             }).get();
 
             if (selected.length <= 0) {
-                alert("Debe seleccionar a un usuario en búsqueda");
+                alert("No searching user(s) selected");
                 return false;
             }
 
@@ -542,6 +599,7 @@ $(document).ready(function(){
         });
 
         var globalE;
+        var globalData;
 
         function checkWeather(e) {
 
@@ -644,9 +702,12 @@ $(document).ready(function(){
 
                         setGrid(globalE);
                         data = JSON.parse(decrypt(data, key));
-                        console.log(missionId);
+                        globalData = data;
 
-                        console.log(data.length);
+                        console.log("Length: "+data.length);
+                        console.log("Mission ID: "+ missionId);
+                        console.log("Data");
+                        console.log("------------------------------------------------------");
                         console.log(data);
 
                         for (i = 0; i < data.length; i++) {
@@ -750,8 +811,6 @@ $(document).ready(function(){
 
             map.addMarkers(markerArray);
             markerArray = listToMatrix(markerArray, sideSize);
-
-            console.log(markerArray);
 
             halfSide = parseInt(Math.floor(sideSize/2));
 
