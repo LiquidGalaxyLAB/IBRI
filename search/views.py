@@ -207,7 +207,7 @@ def createRoute(request):
                 pnt.coords = [(wp[1], wp[0])]
 
                 if settings.KML_ICON != '':
-                    pnt.style.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png'
+                    pnt.style.iconstyle.icon.href = settings.KML_ICON
 
                 tmpRoute.append(WayPoint(route=rm, lat=wp[0], lng=wp[1], ref=tmpCounter))
                 tmpCounter += 1
