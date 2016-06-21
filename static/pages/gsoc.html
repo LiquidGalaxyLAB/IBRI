@@ -79,6 +79,14 @@
 
     <div id="mainCard" class="card" style="overflow: hidden;">
 
+        {% if KMLDir == '' %}
+                <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the KML_DIR in settings.py</div>
+        {% endif %}
+    
+        {% if WEATHER_API  == '' %}
+                <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the WEATHER_API in config panel</div>
+        {% endif %}
+
         <div id="map"></div>
         <div style="position: absolute; right: 20px; margin-top: -25px;">
             <a id="startbutton" class="right btn-floating btn-large waves-effect waves-light green"><i class="material-icons">play_arrow</i></a>
@@ -363,7 +371,7 @@ $(document).ready(function(){
             clearData();
             setGrid(globalE);
             return 0;
-            
+
         });
 
         //calculates distance between two points in km's

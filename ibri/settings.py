@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+from termcolor import colored
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -79,6 +82,9 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# KML Directory
+KML_DIR = ''
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -109,3 +115,8 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+if KML_DIR == '':
+    print colored('ERROR: KML_DIR is empty', 'red')
+else:
+    print colored('KML_DIR: '+KML_DIR, 'green')

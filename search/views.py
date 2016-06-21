@@ -20,7 +20,7 @@ from utils.tsp import *
 def searchMap(request):
     clients = Clients.objects.all()
     weather_api = Config.objects.get(pk='WEATHER_API')
-    return render(request, 'gsoc.html', {'client': clients, 'WEATHER_API': weather_api.value })
+    return render(request, 'gsoc.html', {'client': clients, 'WEATHER_API': weather_api.value, 'KMLDir': settings.KML_DIR})
 
 
 def getTracking(request):
