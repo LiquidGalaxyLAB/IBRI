@@ -203,16 +203,21 @@ def createRoute(request):
 
             for wp in r:
 
-                kml.newpoint(name="Point {}".format(tmpCounter), coords=[(wp[1], wp[0])])
+                pnt = kml.newpoint(name='Point {}'.format(tmpCounter))
+                pnt.coords = [(wp[1], wp[0])]
+
+                if settings.KML_ICON != '':
+                    pnt.style.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png'
+
                 tmpRoute.append(WayPoint(route=rm, lat=wp[0], lng=wp[1], ref=tmpCounter))
                 tmpCounter += 1
 
             tmpRoute.append(WayPoint(route=rm, lat=base[0], lng=base[1], ref=tmpCounter))
-            kml.newpoint(name="Vuelta a base", coords=[(base[1], base[0])])
+            kml.newpoint(name="Back to base", coords=[(base[1], base[0])])
 
             WayPoint.objects.bulk_create(tmpRoute)
 
-            place = STATICFILES_DIRS[0] + str('/kml/') + 'IBRI' + str(m.id)
+            place = settings.KML_DIR + '/IBRI' + str(m.id)
 
             try:
                 os.mkdir(place)
