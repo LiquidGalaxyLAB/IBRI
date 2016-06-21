@@ -44,47 +44,22 @@
         <li class="logo"><a id="logo-container" class="brand-logo">
             <img src="{% static 'img/IBRIlogo_mini.png' %}" alt="Interactive Beacon Rescue Interface"/></a></li>
 
-        <li class="bold"><a href="about.html" class="waves-effect waves-teal">Sobre Materialize</a></li>
-        <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Introducción</a></li>
+        <li class="bold"><a href="about.html" class="waves-effect waves-teal">Home</a></li>
+
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">CSS</a>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Clients</a>
               <div class="collapsible-body" style="">
                 <ul>
-                  <li><a href="color.html">Color</a></li>
-                  <li><a href="grid.html">Grid</a></li>
-                  <li><a href="helpers.html">Helpers</a></li>
-                  <li><a href="media-css.html">Media</a></li>
-                  <li><a href="sass.html">Sass</a></li>
-                  <li><a href="shadow.html">Shadow</a></li>
-                  <li><a href="table.html">Table</a></li>
-                  <li><a href="typography.html">Typography</a></li>
+                  <li><a href="{% url 'listclients' %}">List</a></li>
+                  <li><a href="{% url 'createclient' %}">Add new</a></li>
                 </ul>
               </div>
             </li>
 
           </ul>
         </li>
-                <li class="no-padding">
-          <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">CSS</a>
-              <div class="collapsible-body" style="">
-                <ul>
-                  <li><a href="color.html">Color</a></li>
-                  <li><a href="grid.html">Grid</a></li>
-                  <li><a href="helpers.html">Helpers</a></li>
-                  <li><a href="media-css.html">Media</a></li>
-                  <li><a href="sass.html">Sass</a></li>
-                  <li><a href="shadow.html">Shadow</a></li>
-                  <li><a href="table.html">Table</a></li>
-                  <li><a href="typography.html">Typography</a></li>
-                </ul>
-              </div>
-            </li>
 
-          </ul>
-        </li>
-        <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">Mobile</a></li>
 
       </ul>
     </header>

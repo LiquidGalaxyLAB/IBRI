@@ -8,9 +8,10 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic import CreateView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 
 from django.forms import forms
+from django.views.generic.list import ListView
 
 
 @staff_member_required
@@ -43,6 +44,21 @@ class CreateClient(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('createclient')
 
 
+class ListClient(ListView):
+
+    model = Clients
+
+    def get_context_data(self, **kwargs):
+        context = super(ListClient, self).get_context_data(**kwargs)
+        #context['now'] = timezone.now()
+        return context
+
+
+
+class ClientDelete(DeleteView):
+
+    model = Clients
+    success_url = reverse_lazy('listclients')
 
 
 class EditClient(SuccessMessageMixin, UpdateView):
@@ -62,7 +78,8 @@ class EditClient(SuccessMessageMixin, UpdateView):
             'alergies',
             'diseases',
             'contacts',
-            'bloodType'
+            'bloodType',
+            'insearch'
         ]
 
         success_message = "%(name)s was modified successfully"
@@ -75,5 +92,11 @@ class EditClient(SuccessMessageMixin, UpdateView):
         def get_success_url(self):
             return reverse('editclient', args=(self.object.pk,))
 
+        def clean(self):
+            print self
+            return self.cleaned_data
+
         def form_valid(self, form):
-            print form
+            #form.instance.insearch = form.cleaned_data['insearch']
+            print form.cleaned_data
+            return super(EditClient, self).form_valid(form)

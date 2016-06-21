@@ -1,0 +1,48 @@
+{% extends 'adminbase.html' %}
+
+{% block title %}
+    Client List
+{% endblock %}
+
+{% block maincontent %}
+
+
+    <table class="highlight responsive-table" >
+        <thead>
+          <tr>
+              <th data-field="id">ID</th>
+              <th data-field="name">Name</th>
+              <th data-field="email">Item Price</th>
+              <th data-field="identifier">Identifier</th>
+              <th data-field="physicalCode">Physical Code</th>
+              <th data-field="mobileNumber">Phone</th>
+              <th data-field="insearch">In Search</th>
+              <th data-field="insearch">Options</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            {% for client in object_list %}
+                <tr>
+                    <td>#{{ client.id }}</td>
+                    <td>{{ client.name }} {{ client.lastname }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.identifier }}</td>
+                    <td>{{ client.physicalCode }}</td>
+                    <td>{{ client.mobileNumber }}</td>
+                    <td>{{ client.insearch }}</td>
+                    <td>
+                        <a href="{% url 'editclient' pk=client.id %}"><i class="tiny material-icons">mode_edit</i></a>
+                        <a href="{% url 'deleteclient' pk=client.id %}"><i class="tiny material-icons">delete</i></a>
+
+                    </td>
+                </tr>
+            {% empty %}
+                <td>No clients yet.</td>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+
+{% endblock %}
