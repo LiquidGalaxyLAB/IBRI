@@ -1,8 +1,8 @@
-{% load static %}
-
 <!DOCTYPE html>
+{% load static %}
   <html>
     <head>
+        <title>IBRI</title>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -82,7 +82,7 @@
         <div id="map"></div>
         <div style="position: absolute; right: 20px; margin-top: -25px;">
             <a id="startbutton" class="right btn-floating btn-large waves-effect waves-light green"><i class="material-icons">play_arrow</i></a>
-            <a id="cleanButton" style="display: none;" class="right btn-floating btn-large waves-effect waves-light green"><i class="material-icons">stop</i></a>
+            <a id="cleanButton" style="display: none;" class="right btn-floating btn-large waves-effect waves-light red"><i class="material-icons">stop</i></a>
         </div>
         <div class="progress" style="margin:0px; display: none;">
             <div class="indeterminate"></div>
@@ -237,8 +237,6 @@ $(document).ready(function(){
         return decrypted.toString(CryptoJS.enc.Utf8);
     }
 
-    //console.log(encrypt('hola caracola', key));
-
         var map;
         var baseCoords = [28.4812865, -16.3205404];
         var markerArray = [];
@@ -318,75 +316,42 @@ $(document).ready(function(){
 
         function clearData(){
             globalData = undefined;
-                markerArray = [];
-                tmpMarker = [];
-                posArrays = [];
-                clearInterval(response);
-                $("#startbutton").prop("disabled", false);
-                $("#userList").fadeIn();
-                $("#map").css('height', '80%');
-                $("#settings").slideToggle();
-                $("#resultPanel").slideToggle();
-                $('#cleanButton').toggle('slow', function(){
-                    $("#startbutton").toggle('slow');
-                    $(".progress").slideToggle('slow');
-                });
-                map.removePolylines();
-                map.removePolygons();
+            markerArray = [];
+            tmpMarker = [];
+            posArrays = [];
+            clearInterval(response);
+            $("#startbutton").prop("disabled", false);
+            $("#userList").fadeIn();
+            $("#map").css('height', '80%');
+            $("#settings").slideToggle();
+            $("#resultPanel").slideToggle();
+            $('#cleanButton').toggle('fast', function(){
+                $("#startbutton").toggle('fast');
+                $(".progress").slideToggle('fast');
+            });
+            map.removePolylines();
+            map.removePolygons();
         }
 
         $("#cleanButton").click(function(){
-            // TODO Fix this code
-            
+
             if(globalData == undefined) {
-                /*globalData = undefined;
-                markerArray = [];
-                tmpMarker = [];
-                posArrays = [];
-                clearInterval(response);
-                $("#startbutton").prop("disabled", false);
-                $("#userList").fadeIn();
-                $("#map").css('height', '80%');
-                $("#settings").slideToggle();
-                $("#resultPanel").slideToggle();
-                $(this).toggle('slow', function(){
-                    $("#startbutton").toggle('slow');
-                    $(".progress").slideToggle('slow');
-                });
-                map.removePolylines();
-                map.removePolygons();*/
-                //clearData();
+                console.log("globalData is undefined");
+                clearData();
                 setGrid(globalE);
                 return 0;
             }
 
+
             for(i = 0; i < (globalData.length || 0); i++){
 
                 if(globalData[i].length > 0){
+
                     if(!confirm("Abort mission? All data will dissapear")){
                         return 0;
+
                     }else{
                         clearData();
-                        /*globalData = undefined; //
-                        markerArray = []; //
-                        tmpMarker = []; //
-                        posArrays = []; //
-                        clearInterval(response); //
-                        $("#startbutton").prop("disabled", false); //
-                        $("#userList").fadeIn(); //
-                        $("#map").css('height', '80%'); //
-                        $("#settings").slideToggle(); //
-                        $("#resultPanel").slideToggle(); //
-                        $(this).toggle('slow', function(){ //
-                            $("#startbutton").toggle('slow'); //
-                            $(".progress").slideToggle('slow'); //
-                        }); //
-                        map.removePolylines(); //
-                        map.removePolygons(); //
-                        */
-
-                        // +++++++++++++++++++++++++++++++++++++++
-                        //clearData();
                         map.removeMarkers();
                         addBase();
                         return 0;
@@ -395,17 +360,14 @@ $(document).ready(function(){
                 }
             }
 
-            //clearData();
-
-
-
-
+            clearData();
+            setGrid(globalE);
+            return 0;
+            
         });
 
         //calculates distance between two points in km's
         function calcDistance(p1, p2) {
-            //console.log(p1);
-            //console.log(p2);
             return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
         }
 
@@ -457,18 +419,11 @@ $(document).ready(function(){
 
             for (i = 0; i < selected.length; i++) {
                 $("#resultUserList").append('<div id="photo_' + selected[i] + '"></div>');
-
-
-
-                //$("#resultUserList").append(userElement);
-
             }
-
 
 
             distNear = [];
             nearToBase = [];
-
 
             nodesPerDrone = Math.floor((markerArray.length * markerArray.length) / $("#nodrone").val());
             dispersion = [];
@@ -489,8 +444,7 @@ $(document).ready(function(){
 
             console.log(dispersion);
 
-            //---------------------------------------------------------------------------------------------------------- //----------------------------------------------------------------------------------------------------------
-
+            //----------------------------------------------------------------------------------------------------------
 
             drone = 0;
             x = 0;
@@ -589,9 +543,9 @@ $(document).ready(function(){
                 }
             });
 
-            $(this).toggle('slow', function(){
-                $("#cleanButton").toggle('slow');
-                $(".progress").slideToggle('slow');
+            $(this).toggle('fast', function(){
+                $("#cleanButton").toggle('fast');
+                $(".progress").slideToggle('fast');
             });
 
 
@@ -744,7 +698,6 @@ $(document).ready(function(){
 
                                     $("#photo_" + data[i][j][4]).html(userElement);
 
-                                    //$("#photo_" + data[i][j][4]).html('<img src="data:image/png;base64,' + data[i][j][5] + '" />');
                                 }
 
                                 map.removeMarker(tmpMarker[i]);
@@ -853,7 +806,7 @@ $(document).ready(function(){
             }
         });
 
-map = new GMaps({
+        map = new GMaps({
                   el: '#map',
                   lat: 28.4812865,
                   lng: -16.3205404,
@@ -947,10 +900,10 @@ map = new GMaps({
       addBase();
 
 
-      $('#userList').DataTable({
+     /* $('#userList').DataTable({
 
       });
-
+*/
 
       // using jQuery
       function getCookie(name) {
