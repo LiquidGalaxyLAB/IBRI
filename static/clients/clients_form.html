@@ -1,0 +1,34 @@
+{% extends 'adminbase.html' %}
+
+{% block title %}
+    Add or Edit Client
+{% endblock %}
+
+
+{% block maincontent %}
+    <form action="" method="post">{% csrf_token %}
+
+        {% if messages %}
+            {% for m in messages %}
+                <div class="card-panel teal accent-3 valign-wrapper"><i class="small material-icons" style="margin-right: 10px;">thumb_up</i> {{ m }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.errors %}
+                <div class="card-panel red darken-4" style="color: white;">Please, correct the mistakes before send.</div>
+        {% endif %}
+        {{ form.as_p }}
+        <p>
+            <input type="checkbox" id="id_insearch" name="insearch" {% if client.insearch %}checked{% endif %} />
+            <label for="id_insearch">In Search</label>
+        </p>
+        <p>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </p>
+
+
+
+    </form>
+{% endblock %}

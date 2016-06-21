@@ -18,7 +18,7 @@ class ClientsAdmin(admin.ModelAdmin):
                        'mobileNumber',
                        'email',
                        'birthDate',
-		       'inseach'
+		       'insearch'
                        )
         }),
         ('Optional fields', {
