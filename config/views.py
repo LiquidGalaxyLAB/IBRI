@@ -92,9 +92,9 @@ class EditClient(SuccessMessageMixin, UpdateView):
         def get_success_url(self):
             return reverse('editclient', args=(self.object.pk,))
 
-        def clean(self):
-            print self
-            return self.cleaned_data
+        def post(self, request, *args, **kwargs):
+            print "--------------------------------" + str(request.POST['c_insearch'])
+
 
         def form_valid(self, form):
             #form.instance.insearch = form.cleaned_data['insearch']
