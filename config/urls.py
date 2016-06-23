@@ -1,4 +1,5 @@
-from config.views import CreateClient, EditClient, ListClient, config_area, ClientDelete
+
+from config.views import CreateClient, ListClient, config_area, ClientDelete, EditClient
 from django.conf.urls import url
 
 urlpatterns = [

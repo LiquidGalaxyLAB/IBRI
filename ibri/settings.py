@@ -45,7 +45,8 @@ INSTALLED_APPS = (
     'search',
     'clients',
     'drones',
-    'config'
+    'config',
+    'debug_toolbar'
 )
 
 MIDDLEWARE_CLASSES = (

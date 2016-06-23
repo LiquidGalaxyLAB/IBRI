@@ -85,40 +85,17 @@ class EditClient(SuccessMessageMixin, UpdateView):
 
         success_message = "%(name)s was modified successfully"
 
-        def get_context_data(self, **kwargs):
-            context = super(EditClient, self).get_context_data(**kwargs)
-            context['client'] = self.object
-            return context
-
         def get_success_url(self):
-            return reverse('editclient', args=(self.object.pk,))
+            return reverse('editclient', args=(self.kwargs['pk'],))
 
-        def post(self, request, *args, **kwargs):
-
-            form_class = self.get_form_class()
-            form = self.get_form(form_class)
-
-            __post = self.request.POST.copy()
+        def form_valid(self, form):
 
             try:
-                if __post['c_insearch'] == 'on':
-                    __post['insearch'] = True
+                if self.request.POST['c_insearch'] == 'on':
+                    self.object.insearch = True
+                    self.object.save()
             except:
-                __post['insearch'] = False
+                self.object.insearch = False
+                self.object.save()
 
-            if form.is_valid():
-                return self.form_valid(form, __post)
-
-        def form_valid(self, form, post):
-
-            import pprint
-
-            self.object = form
-            self.object.insearch = True
-
-            print(help(self.object.Meta.fields.__hash__))
-
-            #self.object.insearch = post['insearch']
-            #self.object.save()
-
-            #return super(EditClient, self).form_valid(form)
+            return super(EditClient, self).form_valid(form)
