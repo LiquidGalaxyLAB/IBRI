@@ -4,6 +4,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponse
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
@@ -93,10 +94,31 @@ class EditClient(SuccessMessageMixin, UpdateView):
             return reverse('editclient', args=(self.object.pk,))
 
         def post(self, request, *args, **kwargs):
-            print "--------------------------------" + str(request.POST['c_insearch'])
 
+            form_class = self.get_form_class()
+            form = self.get_form(form_class)
 
-        def form_valid(self, form):
-            #form.instance.insearch = form.cleaned_data['insearch']
-            print form.cleaned_data
-            return super(EditClient, self).form_valid(form)
+            __post = self.request.POST.copy()
+
+            try:
+                if __post['c_insearch'] == 'on':
+                    __post['insearch'] = True
+            except:
+                __post['insearch'] = False
+
+            if form.is_valid():
+                return self.form_valid(form, __post)
+
+        def form_valid(self, form, post):
+
+            import pprint
+
+            self.object = form
+            self.object.insearch = True
+
+            print(help(self.object.Meta.fields.__hash__))
+
+            #self.object.insearch = post['insearch']
+            #self.object.save()
+
+            #return super(EditClient, self).form_valid(form)

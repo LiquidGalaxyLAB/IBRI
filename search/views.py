@@ -186,6 +186,25 @@ def createRoute(request):
             print("\033[91m Oops!  No drones found un database")
             return HttpResponse('configerror')
 
+        colorArray =  [
+            'ff00008b', #darkred
+            'ff8b0000', #darkblue
+            'ff006400', #darkgreen
+            'ff008cff', #darkorange
+            'ff9314ff', #darkpink
+            'ffff0000', #blue
+            'ff2fffad', #greenyellow
+            'ff5c5ccd', #indianred
+            'ffcbc0ff', #pink
+            'ffe16941', #royalblue
+            'ff00ffff', #yellow
+        ];
+
+        #.style.linestyle.width = 5
+        #ls.style.linestyle.color = simplekml.Color.blue
+
+
+
         # TODO quitar la variable drone_secuencial
         drone_secuencial = 0
         from os import mkdir
@@ -219,6 +238,8 @@ def createRoute(request):
                 tmpCounter += 1
 
             pnt.coords = coords
+            pnt.style.linestyle.width = 6
+            pnt.style.linestyle.color = colorArray[drone_secuencial % len(colorArray)]
 
             tmpRoute.append(WayPoint(route=rm, lat=base[0], lng=base[1], ref=tmpCounter))
             kml.newpoint(name="Back to base", coords=[(base[1], base[0])])
