@@ -31,12 +31,11 @@ class ClientsAdmin(admin.ModelAdmin):
                        'alergies',
                        'diseases',
                        'bloodType',
-                       'contacts',
                        ),
         }),
     )
 
-    filter_horizontal = ('contacts',)
+    #filter_horizontal = ('contacts',)
     #search_fields = ['id']
 
 

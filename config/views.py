@@ -78,7 +78,6 @@ class EditClient(SuccessMessageMixin, UpdateView):
             'postalCode',
             'alergies',
             'diseases',
-            'contacts',
             'bloodType',
             'insearch'
         ]
