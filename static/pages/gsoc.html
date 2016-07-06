@@ -102,9 +102,24 @@
 
             <div class="row">
 
-                <div class="range-field col s12 m4">
-                    <label>Number of Drones: <span id="nodrone_val">1</span></label>
+                <div class="col s12 m4">
+
+
+                    <!--<label>Number of Drones: <span id="nodrone_val">1</span></label>
                     <input type="range" id="nodrone" min="1" max="5" value="1" />
+                    -->
+                        <label>Select the drones in mission</label>
+
+                    <select multiple>
+      <option value="" disabled selected>----------</option>
+      {% for drone in DRONES %}
+
+          <option value="{{ drone.id }}">{{ drone.droneRef }}</option>
+
+      {% endfor %}
+    </select>
+
+
                 </div>
                 <div class="range-field col s12 m4">
                     <label>Distance between points: <span id="distance_val">50</span>m</label>
@@ -929,6 +944,9 @@ $(document).ready(function(){
           }
           return cookieValue;
       }
+
+
+    $('select').material_select();
 
 
     });

@@ -87,6 +87,10 @@ USE_TZ = True
 KML_DIR = '' # No slash at the end
 KML_ICON = '' # URL - If empty, appears a yellow placemark
 
+# Google Shortener API
+# https://console.developers.google.com
+GAPI = ''
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 

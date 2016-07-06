@@ -21,7 +21,13 @@ from utils.tsp import *
 def searchMap(request):
     clients = Clients.objects.all()
     weather_api = Config.objects.get(pk='WEATHER_API')
-    return render(request, 'gsoc.html', {'client': clients, 'WEATHER_API': weather_api.value, 'KMLDir': settings.KML_DIR})
+    drones = Drone.objects.all()
+    return render(request, 'gsoc.html', {
+        'client': clients,
+        'WEATHER_API': weather_api.value,
+        'KMLDir': settings.KML_DIR,
+        'DRONES': drones
+    })
 
 
 def getTracking(request):
@@ -85,6 +91,41 @@ def setTracking(request):
 
     else:
         raise Http404("Error")
+
+@csrf_exempt
+def getDroneMissionData(request, mission, route):
+
+    if(request.method == 'POST'):
+
+        usersInSearch = Mission.objects.get(pk=mission)
+        routes = Route.objects.get(mission=mission)
+        wayPoints = WayPoint.objects.filter()
+
+    else:
+        raise Http404("Error")
+
+
+@csrf_exempt
+def setDroneTracking(request):
+
+    if (request.method == 'POST'):
+        droneKey = Drone.objects.get(pk=int(request.POST['droneId']))
+
+        d = json.loads(AESCipher(droneKey.preSharedKey.ljust(32)[:32]).decrypt(request.POST['info']))
+        wp = WayPoint.objects.get(pk=int(d['id']))
+
+        if d['scan'] != None:
+            wp.signalFound = int(d['scan'])
+            print("[ Beacon Found ] - Checking #" + str(d['scan']))
+
+        wp.visited = True
+        wp.photo = d['photo']
+        wp.save()
+        return HttpResponse("Visited "+str(wp))
+
+    else:
+        raise Http404("Error")
+
 
 
 
