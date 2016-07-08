@@ -5,6 +5,8 @@ from encrypted_fields import *
 # Create your models here.
 from django.contrib.auth.models import User
 
+import uuid
+
 class Clients(models.Model):
 
     name = EncryptedCharField(max_length=50, verbose_name="First Name", blank=False)

@@ -82,7 +82,6 @@ class EditClient(SuccessMessageMixin, UpdateView):
             'lastname',
             'email',
             'identifier',
-            #'physicalCode',
             'address',
             'city',
             'mobileNumber',
@@ -113,5 +112,8 @@ class EditClient(SuccessMessageMixin, UpdateView):
 
         @receiver(pre_save)
         def setPhysicalWeb(sender, instance, *args, **kwargs):
-            instance.physicalCode = 'HOLA CARACOLA'
-            #instance.slug = slugify(instance.title)
+            #TODO: Get FULL url to get the google shorted url
+            googleUrl = reverse('getclientdataweb', args=(instance.pk, ))
+            print "PHYSICAL URL: "+googleUrl
+
+            #instance.physicalCode = 'HOLA CARACOLA'
