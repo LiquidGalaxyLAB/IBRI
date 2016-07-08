@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Django settings for IBRI GSoC16 project.
 
@@ -9,6 +11,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import sys
+
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -121,7 +125,51 @@ try:
 except ImportError:
     pass
 
+ibriLogo = """
+                   ,:.     ::`
+                  : . '  ,.```;
+                 ;.. : ; ,;` '``
+                 ,;   ;;` .   `;
+                 ,;           `;
+                 '`:`;;;`;; .;.
+                  '  ;;;`;;  ,:
+                   `.... .. .
+                  .':;;'`;; ;;
+                 .`,:;;;`;; ; ;
+                 ;;  :;;`;;  : ,
+                 .;   ::` `   .;
+                 :'   :;` :  . :
+                 : ';;`. ;`';,:
+                  ::.;,   ',.'
+
+
+      '`  +++++++++++'   .:::::::::::.   +
+      @# +@@@@@@@@@@@@@  ';;;;;;;;;;;;;  @+
+      @# +@          .@              ;;  @+
+      @+ +@++++++++++@@   .::::::::::;;  @+
+      @+ +@@@@@@@@@@@@@  .;;;;;;;;;;;;`  @+
+      @+ +@          `@  ;;      :;;;    @+
+      @+ +@''''''''''@@  ;;        ,;;,  @+
+      @+ '@@@@@@@@@@@@'  ';          ;;  @'
+
+============================================================================
+============================================================================
+"""
+
+print ibriLogo
+
 if KML_DIR == '':
     print colored('ERROR: KML_DIR is empty', 'red')
+    print "Please, set KML_DIR constant in ibri/settings.py or local_settings.py. The constant should have a fullpath" \
+          " that includes a writable directory to save the KML files inside it"
+    sys.exit()
 else:
-    print colored('KML_DIR: '+KML_DIR, 'green')
+    print colored('✔ KML_DIR: '+KML_DIR, 'green')
+
+if GAPI == '':
+    print colored('ERROR: GAPI (Google Api) is empty', 'red')
+    print "Please, set GAPI constant in ibri/settings.py or local_settings.py. The constant should contain a Google " \
+          "API to use with Google URL Shortener. More info at https://console.developers.google.com"
+    sys.exit()
+else:
+    print colored('✔ GAPI (Google Api): '+GAPI, 'green')

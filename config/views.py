@@ -3,6 +3,8 @@ from clients.models import Clients
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.db.models.signals import pre_save, post_save
+from django.dispatch import receiver
 from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
@@ -29,7 +31,6 @@ class CreateClient(SuccessMessageMixin, CreateView):
         'lastname',
         'email',
         'identifier',
-        'physicalCode',
         'address',
         'city',
         'mobileNumber',
@@ -37,12 +38,24 @@ class CreateClient(SuccessMessageMixin, CreateView):
         'postalCode',
         'alergies',
         'diseases',
-        'contacts',
-        'bloodType'
+        'bloodType',
+        'insearch'
     ]
 
     success_message = "%(name)s was created successfully"
     success_url = reverse_lazy('createclient')
+
+    def post(self, request, **kwargs):
+
+        request.POST = request.POST.copy()
+        try:
+            if request.POST['c_insearch'] == 'on':
+                request.POST['insearch'] = True
+        except:
+            request.POST['insearch'] = False
+
+
+        return super(CreateClient, self).post(request, **kwargs)
 
 
 class ListClient(ListView):
@@ -51,7 +64,6 @@ class ListClient(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ListClient, self).get_context_data(**kwargs)
-        #context['now'] = timezone.now()
         return context
 
 
@@ -70,7 +82,7 @@ class EditClient(SuccessMessageMixin, UpdateView):
             'lastname',
             'email',
             'identifier',
-            'physicalCode',
+            #'physicalCode',
             'address',
             'city',
             'mobileNumber',
@@ -98,3 +110,8 @@ class EditClient(SuccessMessageMixin, UpdateView):
                 self.object.save()
 
             return super(EditClient, self).form_valid(form)
+
+        @receiver(pre_save)
+        def setPhysicalWeb(sender, instance, *args, **kwargs):
+            instance.physicalCode = 'HOLA CARACOLA'
+            #instance.slug = slugify(instance.title)
