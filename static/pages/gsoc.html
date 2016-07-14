@@ -105,9 +105,9 @@
                 <div class="col s12 m4">
 
 
-                    <!--<label>Number of Drones: <span id="nodrone_val">1</span></label>
+                    <label>Number of Drones: <span id="nodrone_val">1</span></label>
                     <input type="range" id="nodrone" min="1" max="5" value="1" />
-                    -->
+                    <!--
                         <label>Select the drones in mission</label>
 
                     <select multiple>
@@ -117,7 +117,7 @@
           <option value="{{ drone.id }}">{{ drone.droneRef }}</option>
 
       {% endfor %}
-    </select>
+    </select>-->
 
 
                 </div>
@@ -450,6 +450,10 @@ $(document).ready(function(){
 
             nodesPerDrone = Math.floor((markerArray.length * markerArray.length) / $("#nodrone").val());
             dispersion = [];
+
+
+            console.log("--------------> "+$("#nodrone").val());
+
             for (i = 0; i < $("#nodrone").val(); i++) {
                 distNear.push(9999);
                 nearToBase.push(0);
@@ -473,6 +477,8 @@ $(document).ready(function(){
             x = 0;
             c = 0;
             n = 0;
+
+            console.log(markerArray);
 
             for (var mX = 0; mX < markerArray.length; mX++) {
                 for (var mY = 0; mY < markerArray[mX].length; mY++) {

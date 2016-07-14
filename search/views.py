@@ -12,19 +12,19 @@ from django.views.decorators.csrf import csrf_exempt
 from simplekml import Kml
 
 from search.models import *
-from ibri.settings import STATICFILES_DIRS
-from utils.aes import AESCipher
+from ibri.settings import *
+from utils.aes import AESCipher, JavaAESCipher
 from utils.tsp import *
 
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='admin/login/')
 def searchMap(request):
     clients = Clients.objects.all()
-    weather_api = Config.objects.get(pk='WEATHER_API')
+
     drones = Drone.objects.all()
     return render(request, 'gsoc.html', {
         'client': clients,
-        'WEATHER_API': weather_api.value,
+        'WEATHER_API': settings.WMAPAPI,
         'KMLDir': settings.KML_DIR,
         'DRONES': drones
     })
@@ -93,13 +93,32 @@ def setTracking(request):
         raise Http404("Error")
 
 @csrf_exempt
-def getDroneMissionData(request, mission, route):
+def getDroneMissionData(request, droneId):
 
-    if(request.method == 'POST'):
+    if(request.method == 'GET'):
 
-        usersInSearch = Mission.objects.get(pk=mission)
-        routes = Route.objects.get(mission=mission)
-        wayPoints = WayPoint.objects.filter()
+        droneId = int(droneId)
+
+        M = Mission.objects.last()
+        routes = Route.objects.filter(mission=M)
+        wp = WayPoint.objects.filter(route=routes[droneId-1])
+
+        insearch = []
+        positions = []
+
+        M = M.inSearch.all()
+
+        for p in M:
+            insearch.append(p.physicalCode)
+
+        for p in wp:
+            positions.append([p.lat, p.lng])
+
+
+        return HttpResponse(JavaAESCipher("this is my key").encrypt(json.dumps({'insearch': insearch, 'positions': positions})))
+
+        #return HttpResponse(AESCipher("QHahUjmgS7KWh3").encrypt(json.dumps([insearch, positions])))
+
 
     else:
         raise Http404("Error")
@@ -108,10 +127,28 @@ def getDroneMissionData(request, mission, route):
 @csrf_exempt
 def setDroneTracking(request):
 
+    if(request.method == 'POST'):
+
+        d = json.loads(JavaAESCipher("QHahUjmgS7KWh3").decrypt(request.POST['info']))
+        print colored('+ Received From Drone: '+str(d), 'blue')
+
+        #if d['scan'] != None:
+
+
+
+        return HttpResponse(d)
+
+
+
+
+
+    """
     if (request.method == 'POST'):
         droneKey = Drone.objects.get(pk=int(request.POST['droneId']))
 
-        d = json.loads(AESCipher(droneKey.preSharedKey.ljust(32)[:32]).decrypt(request.POST['info']))
+        d = json.loads(JavaAESCipher("QHahUjmgS7KWh3").decrypt(request.POST['info']))
+
+
         wp = WayPoint.objects.get(pk=int(d['id']))
 
         if d['scan'] != None:
@@ -123,10 +160,11 @@ def setDroneTracking(request):
         wp.save()
         return HttpResponse("Visited "+str(wp))
 
+
     else:
         raise Http404("Error")
 
-
+    """
 
 
 

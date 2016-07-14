@@ -95,6 +95,9 @@ KML_ICON = '' # URL - If empty, appears a yellow placemark
 # https://console.developers.google.com
 GAPI = ''
 
+# Weather Map API
+WMAPAPI = ''
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
@@ -173,3 +176,11 @@ if GAPI == '':
     sys.exit()
 else:
     print colored('✔ GAPI (Google Api): '+GAPI, 'green')
+
+if WMAPAPI == '':
+    print colored('ERROR: WMAPAPI is empty', 'red')
+    print "Please, set WMAPAPI constant in ibri/settings.py or local_settings.py. The constant should contain a OpenWeatherMap " \
+          "API. More info at http://openweathermap.org/api"
+    sys.exit()
+else:
+    print colored('✔ WMapAPI: '+WMAPAPI, 'green')

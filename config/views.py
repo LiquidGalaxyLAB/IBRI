@@ -113,7 +113,7 @@ class EditClient(SuccessMessageMixin, UpdateView):
         @receiver(pre_save)
         def setPhysicalWeb(sender, instance, *args, **kwargs):
             #TODO: Get FULL url to get the google shorted url
-            googleUrl = reverse('getclientdataweb', args=(instance.pk, ))
-            print "PHYSICAL URL: "+googleUrl
-
+            #googleUrl = reverse('getclientdataweb', args=(instance.pk, ))
+            #print "PHYSICAL URL: "+googleUrl
+            pass
             #instance.physicalCode = 'HOLA CARACOLA'
