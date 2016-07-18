@@ -112,10 +112,10 @@ def getDroneMissionData(request, droneId):
             insearch.append(p.physicalCode)
 
         for p in wp:
-            positions.append([p.lat, p.lng])
+            positions.append(json.dumps({'lat': p.lat, 'lng': p.lng}))
 
 
-        return HttpResponse(JavaAESCipher("this is my key").encrypt(json.dumps({'insearch': insearch, 'positions': positions})))
+        return HttpResponse(JavaAESCipher("QHahUjmgS7KWh3").encrypt(json.dumps({'insearch': insearch, 'positions': positions})))
 
         #return HttpResponse(AESCipher("QHahUjmgS7KWh3").encrypt(json.dumps([insearch, positions])))
 
