@@ -98,6 +98,9 @@ GAPI = ''
 # Weather Map API
 WMAPAPI = ''
 
+# Secret Preshared Key
+SKEY = '' # Example: LHnhUqmgS1KWh4
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
@@ -184,3 +187,10 @@ if WMAPAPI == '':
     sys.exit()
 else:
     print colored('✔ WMapAPI: '+WMAPAPI, 'green')
+
+if SKEY == '':
+    print colored('ERROR: SKEY (Secret Preshared Key) is empty', 'red')
+    print "Please, set SKEY constant in ibri/settings.py or local_settings.py (14 chars length)"
+    sys.exit()
+else:
+    print colored('✔ SKEY: '+(len(SKEY) * "*"), 'green')
