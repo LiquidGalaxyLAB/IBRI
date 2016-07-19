@@ -102,6 +102,7 @@ def getDroneMissionData(request, droneId):
         M = Mission.objects.last()
         routes = Route.objects.filter(mission=M)
         wp = WayPoint.objects.filter(route=routes[droneId-1])
+        missionId = M.pk
 
         insearch = []
         positions = []
@@ -109,12 +110,12 @@ def getDroneMissionData(request, droneId):
         M = M.inSearch.all()
 
         for p in M:
-            insearch.append(p.physicalCode)
+            insearch.append(json.dumps({'physicalCode': p.physicalCode}))
 
         for p in wp:
             positions.append(json.dumps({'lat': p.lat, 'lng': p.lng}))
 
-        return HttpResponse(JavaAESCipher(settings.SKEY).encrypt(json.dumps({'insearch': insearch, 'positions': positions})))
+        return HttpResponse(JavaAESCipher(settings.SKEY).encrypt(json.dumps({'mid': missionId, 'insearch': insearch, 'positions': positions})))
 
 
     else:
@@ -129,7 +130,26 @@ def setDroneTracking(request):
         d = json.loads(JavaAESCipher(settings.SKEY).decrypt(request.POST['info']))
         print colored('+ Received From Drone: '+str(d), 'blue')
 
-        return HttpResponse(d)
+
+        # TODO Get visited or calculate..
+
+
+        """
+        wp = WayPoint.objects.get(pk=int(d['droneId']))
+
+        if d['scan'] != None:
+            wp.signalFound = int(d['scan'])
+            print("[ Beacon Found ] - Checking #" + str(d['scan']))
+
+        wp.visited = True
+        wp.photo = d['photo']
+        wp.save()
+        return HttpResponse("Visited " + str(wp))
+        """
+
+
+
+
 
 
 
