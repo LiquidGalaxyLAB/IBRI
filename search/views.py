@@ -126,7 +126,7 @@ def setDroneTracking(request):
 
     if(request.method == 'POST'):
 
-        d = json.loads(JavaAESCipher("QHahUjmgS7KWh3").decrypt(request.POST['info']))
+        d = json.loads(JavaAESCipher(settings.SKEY).decrypt(request.POST['info']))
         print colored('+ Received From Drone: '+str(d), 'blue')
 
         #if d['scan'] != None:
