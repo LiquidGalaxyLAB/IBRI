@@ -129,39 +129,8 @@ def setDroneTracking(request):
         d = json.loads(JavaAESCipher(settings.SKEY).decrypt(request.POST['info']))
         print colored('+ Received From Drone: '+str(d), 'blue')
 
-        #if d['scan'] != None:
-
-
-
         return HttpResponse(d)
 
-
-
-
-
-    """
-    if (request.method == 'POST'):
-        droneKey = Drone.objects.get(pk=int(request.POST['droneId']))
-
-        d = json.loads(JavaAESCipher("QHahUjmgS7KWh3").decrypt(request.POST['info']))
-
-
-        wp = WayPoint.objects.get(pk=int(d['id']))
-
-        if d['scan'] != None:
-            wp.signalFound = int(d['scan'])
-            print("[ Beacon Found ] - Checking #" + str(d['scan']))
-
-        wp.visited = True
-        wp.photo = d['photo']
-        wp.save()
-        return HttpResponse("Visited "+str(wp))
-
-
-    else:
-        raise Http404("Error")
-
-    """
 
 
 
