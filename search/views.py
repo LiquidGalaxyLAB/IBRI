@@ -130,27 +130,33 @@ def setDroneTracking(request):
         d = json.loads(JavaAESCipher(settings.SKEY).decrypt(request.POST['info']))
         print colored('+ Received From Drone: '+str(d), 'blue')
 
+        m = Mission.objects.get(pk=d['missionId'])
+        r = Route.objects.filter(mission=m)
+        w = WayPoint.objects.filter(route=r)
 
-        # TODO Get visited or calculate..
+        if d['nearpoint'] >= 0:
+            w = w.filter(ref=d['nearpoint'])
+            w.update(visited=True)
 
+            if d['photo'] != "":
+                w.update(photo=d['photo'])
 
-        """
-        wp = WayPoint.objects.get(pk=int(d['droneId']))
-
-        if d['scan'] != None:
-            wp.signalFound = int(d['scan'])
-            print("[ Beacon Found ] - Checking #" + str(d['scan']))
-
-        wp.visited = True
-        wp.photo = d['photo']
-        wp.save()
-        return HttpResponse("Visited " + str(wp))
-        """
+            if d['beacon'] != "":
+                w.update(signalFound=d['beacon'])
 
 
+        else:
+            if d['photo'] != "" or d['beacon'] != '':
+                wp = WayPoint(route=w.route,
+                              ref=(w.last().ref+1),
+                              lat=d['latitude'],
+                              lng=d['longitude'],
+                              visited=True,
+                              signalFound=d['beacon'],
+                              photo=d['photo'])
+                wp.save()
 
-
-
+        return HttpResponse("OK")
 
 
 

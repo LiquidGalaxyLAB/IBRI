@@ -22,11 +22,11 @@ class Route(models.Model):
 
 class WayPoint(models.Model):
     route = models.ForeignKey(Route)
-    ref = EncryptedIntegerField(verbose_name="Ref.Point")
+    ref = models.IntegerField(verbose_name="Ref.Point")
     lat = EncryptedCharField(verbose_name="Latitude", max_length=30)
     lng = EncryptedCharField(verbose_name="Longitude", max_length=30)
     visited = EncryptedBooleanField(verbose_name="Visited", default=False)
-    signalFound = EncryptedIntegerField(verbose_name="Beacon signal detected", null=True)
+    signalFound = EncryptedCharField(verbose_name="Beacon signal detected", null=True, max_length=50)
     photo = EncryptedTextField(verbose_name="Base64 Photo", null=True)
 
     def __unicode__(self):
