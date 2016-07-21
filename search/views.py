@@ -2,8 +2,6 @@
 import json
 from math import sqrt
 
-import simplekml
-from config.models import Config
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http.response import Http404
@@ -28,7 +26,6 @@ def searchMap(request):
         'KMLDir': settings.KML_DIR,
         'DRONES': drones
     })
-
 
 def getTracking(request):
 
@@ -62,7 +59,7 @@ def getTracking(request):
                 else:
                     droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound])
 
-            print(droneTracking)
+            #print(droneTracking)
             i += 1
 
         preshared = b'preshared_key012'
@@ -121,7 +118,6 @@ def getDroneMissionData(request, droneId):
     else:
         raise Http404("Error")
 
-
 @csrf_exempt
 def setDroneTracking(request):
 
@@ -142,24 +138,25 @@ def setDroneTracking(request):
                 w.update(photo=d['photo'])
 
             if d['beacon'] != "":
-                w.update(signalFound=d['beacon'])
-
+                c = Clients.objects.get(physicalCode=d['beacon'])
+                w.update(signalFound=c.pk)
 
         else:
             if d['photo'] != "" or d['beacon'] != '':
-                wp = WayPoint(route=w.route,
+
+                c = Clients.objects.get(physicalCode=d['beacon'])
+
+                wp = WayPoint(route=w[0].route,
                               ref=(w.last().ref+1),
                               lat=d['latitude'],
                               lng=d['longitude'],
                               visited=True,
-                              signalFound=d['beacon'],
+                              signalFound=c.pk,
                               photo=d['photo'])
                 wp.save()
 
+
         return HttpResponse("OK")
-
-
-
 
 def createRoute(request):
 

@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Log In | IBRI{% endblock %}
+{% load static %}
+
+{% block branding %}
+<h1 id="site-name">
+
+    <img src="{% static 'img/ibri_logo_white.png' %}" style="width: 32px;" />
+
+    <a href="{% url 'admin:index' %}">{{ "IBRI" }}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

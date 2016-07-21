@@ -26,7 +26,7 @@ class WayPoint(models.Model):
     lat = EncryptedCharField(verbose_name="Latitude", max_length=30)
     lng = EncryptedCharField(verbose_name="Longitude", max_length=30)
     visited = EncryptedBooleanField(verbose_name="Visited", default=False)
-    signalFound = EncryptedCharField(verbose_name="Beacon signal detected", null=True, max_length=50)
+    signalFound = EncryptedIntegerField(verbose_name="Beacon signal detected", null=True)
     photo = EncryptedTextField(verbose_name="Base64 Photo", null=True)
 
     def __unicode__(self):
