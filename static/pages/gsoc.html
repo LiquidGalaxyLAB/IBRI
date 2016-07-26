@@ -598,7 +598,7 @@ $(document).ready(function(){
                     console.log("Viento: " + response.wind.speed);
                     console.log("LAT: " + e.latLng.lat() + ', ' + 'LNG: ' + e.latLng.lng());
                     if (response.wind.speed >= 10) {
-                        alert("Las condiciones climatologicas no permiten el vuelo de drones en esta zona.");
+                        alert("The climatology in that area is not favorable to flight");
                         $("#climatologyContainer").removeClass('blue');
                         $("#climatologyContainer").addClass('red');
                         return false;
