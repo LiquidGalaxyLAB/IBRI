@@ -2,7 +2,6 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 
-#import search.urls
 import config.urls
 from search.views import searchMap, createRoute, getTracking, setTracking, setDroneTracking, getDroneMissionData
 import clients.urls

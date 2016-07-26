@@ -105,20 +105,8 @@
                 <div class="col s12 m4">
 
 
-                    <label>Number of Drones: <span id="nodrone_val">1</span></label>
-                    <input type="range" id="nodrone" min="1" max="5" value="1" />
-                    <!--
-                        <label>Select the drones in mission</label>
-
-                    <select multiple>
-      <option value="" disabled selected>----------</option>
-      {% for drone in DRONES %}
-
-          <option value="{{ drone.id }}">{{ drone.droneRef }}</option>
-
-      {% endfor %}
-    </select>-->
-
+                    <label>Number of Drones: <span id="nodrone_val">{% if nodrones > 0 %}1{% else %}0{% endif %}</span></label>
+                    <input type="range" id="nodrone" min="{% if nodrones > 0 %}1{% else %}0{% endif %}" max="{% if nodrones > 0 %}{{ nodrones }}{% else %}0{% endif %}" value="{% if nodrones > 0 %}1{% else %}0{% endif %}" />
 
                 </div>
                 <div class="range-field col s12 m4">

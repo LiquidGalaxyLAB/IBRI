@@ -17,14 +17,15 @@ from utils.tsp import *
 
 @login_required(login_url='login/')
 def searchMap(request):
-    clients = Clients.objects.filter(inSearch=True)
+    clients = Clients.objects.filter(insearch=True)
 
     drones = Drone.objects.all()
     return render(request, 'gsoc.html', {
         'client': clients,
         'WEATHER_API': settings.WMAPAPI,
         'KMLDir': settings.KML_DIR,
-        'DRONES': drones
+        'DRONES': drones,
+        'nodrones': len(drones)
     })
 
 def getTracking(request):
