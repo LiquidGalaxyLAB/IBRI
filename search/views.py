@@ -17,7 +17,7 @@ from utils.tsp import *
 
 @login_required(login_url='login/')
 def searchMap(request):
-    clients = Clients.objects.all()
+    clients = Clients.objects.filter(inSearch=True)
 
     drones = Drone.objects.all()
     return render(request, 'gsoc.html', {
