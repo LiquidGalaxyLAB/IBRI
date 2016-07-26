@@ -50,7 +50,7 @@ INSTALLED_APPS = (
     'clients',
     'drones',
     'config',
-    'debug_toolbar'
+    #'debug_toolbar'
 )
 
 MIDDLEWARE_CLASSES = (

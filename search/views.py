@@ -15,7 +15,7 @@ from utils.aes import AESCipher, JavaAESCipher
 from utils.tsp import *
 
 
-@login_required(login_url='admin/login/')
+@login_required(login_url='login/')
 def searchMap(request):
     clients = Clients.objects.all()
 

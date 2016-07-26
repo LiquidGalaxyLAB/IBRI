@@ -6,10 +6,13 @@ from django.contrib import admin
 import config.urls
 from search.views import searchMap, createRoute, getTracking, setTracking, setDroneTracking, getDroneMissionData
 import clients.urls
+from clients.views import ulogin
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^xadmin/', include(config.urls)),
+	url(r'login/', ulogin, name="login"),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
+    url(r'^u/', include(admin.site.urls)),
+    url(r'^admin/', include(config.urls)),
     url(r'^p/', include(clients.urls)),
     url(r'^createRoute/$', createRoute, name='createRoute'),
     url(r'^getTracking/$', getTracking, name='getTracking'),

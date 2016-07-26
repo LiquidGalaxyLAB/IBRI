@@ -1,8 +1,33 @@
-from django.shortcuts import render, get_object_or_404
-
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
+def ulogin(request):
+
+    #logout(request)
+    username = password = ''
+    if request.POST:
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                if request.POST['next']:
+                    return HttpResponseRedirect(request.POST['next'])
+            else:
+                return HttpResponse("Error: User not active")
+
+    return render(request, 'pages/login.html')
+
+def ulogout(request):
+    if request.user.is_authenticated():
+        logout()
+        return redirect()
 
 def showUserData(request, uid):
 
