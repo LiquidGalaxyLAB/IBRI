@@ -126,6 +126,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static').replace('\\','/'),)
 
+IBRI_URL = ''
+
 try:
     from local_settings import *
 except ImportError:
@@ -194,3 +196,10 @@ if SKEY == '':
     sys.exit()
 else:
     print colored('✔ SKEY: '+(len(SKEY) * "*"), 'green')
+
+if IBRI_URL == '':
+    print colored('ERROR: IBRI_URL is empty', 'red')
+    print "Please, set IBRI_URL constant in ibri/settings.py or local_settings.py to the URL where is placed the web service (without the slash at the end)"
+    sys.exit()
+else:
+    print colored('✔ IBRI_URL: '+IBRI_URL, 'green')

@@ -16,6 +16,8 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.forms import forms
 from django.views.generic.list import ListView
 
+from ibri.settings import IBRI_URL
+from utils.google import short_url
 
 @staff_member_required
 def config_area(request):
@@ -103,15 +105,25 @@ class EditClient(SuccessMessageMixin, UpdateView):
             try:
                 if self.request.POST['c_insearch'] == 'on':
                     self.object.insearch = True
-                    self.object.save()
+                    #self.object.save()
             except:
                 self.object.insearch = False
-                self.object.save()
+            
+            self.object.save()
 
             return super(EditClient, self).form_valid(form)
 
         @receiver(pre_save)
         def setPhysicalWeb(sender, instance, *args, **kwargs):
+
+            if Clients.objects.get(pk=instance.pk).physicalCode == "":
+                googleUrl = IBRI_URL+reverse('getclientdataweb', args=(instance.pk, ))
+                gurl = short_url(googleUrl)
+                instance.physicalCode = gurl
+                
+
+            #print args['email']
+
             #TODO: Get FULL url to get the google shorted url
             #googleUrl = reverse('getclientdataweb', args=(instance.pk, ))
             #print "PHYSICAL URL: "+googleUrl
