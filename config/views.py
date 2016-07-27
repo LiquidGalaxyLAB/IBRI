@@ -26,6 +26,9 @@ def config_area(request):
     return render(request, 'pages/config/config.html')
 
 
+def missionList(request):
+    return render(request, 'missions/mission_list.html')
+
 
 class CreateClient(SuccessMessageMixin, CreateView):
 
