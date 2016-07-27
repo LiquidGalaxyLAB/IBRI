@@ -1,4 +1,4 @@
-from views import showUserData
+from .views import showUserData
 from django.conf.urls import url
 
 urlpatterns = [

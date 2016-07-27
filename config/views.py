@@ -115,7 +115,7 @@ class EditClient(SuccessMessageMixin, UpdateView):
 
             return super(EditClient, self).form_valid(form)
 
-        @receiver(pre_save)
+        @receiver(pre_save, sender=Clients)
         def setPhysicalWeb(sender, instance, *args, **kwargs):
 
             if Clients.objects.get(pk=instance.pk).physicalCode == "":
