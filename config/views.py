@@ -19,6 +19,8 @@ from django.views.generic.list import ListView
 from ibri.settings import IBRI_URL
 from utils.google import short_url
 
+import os
+
 @staff_member_required
 def config_area(request):
     return render(request, 'pages/config/config.html')
