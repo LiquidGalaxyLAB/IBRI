@@ -17,6 +17,7 @@ from django.forms import forms
 from django.views.generic.list import ListView
 
 from ibri.settings import IBRI_URL
+from search.models import Mission
 from utils.google import short_url
 
 import os
@@ -27,7 +28,9 @@ def config_area(request):
 
 
 def missionList(request):
-    return render(request, 'missions/mission_list.html')
+    return render(request, 'missions/mission_list.html', {
+        'missionlist': Mission.objects.all()
+    })
 
 
 class CreateClient(SuccessMessageMixin, CreateView):
