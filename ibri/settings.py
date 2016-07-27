@@ -107,7 +107,11 @@ SKEY = '' # Example: LHnhUqmgS1KWh4
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['static/', 'static/dist/', 'static/pages/'],
+        'DIRS': ['static/', 'static/dist/', 'static/pages/',
+        os.path.join(BASE_DIR, 'static/'),
+        os.path.join(BASE_DIR, 'static/dist/'),
+        os.path.join(BASE_DIR, 'static/pages/'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'debug': DEBUG,
@@ -134,32 +138,31 @@ except ImportError:
     pass
 
 ibriLogo = """
-                   ,:.     ::`
-                  : . '  ,.```;
-                 ;.. : ; ,;` '``
-                 ,;   ;;` .   `;
-                 ,;           `;
-                 '`:`;;;`;; .;.
-                  '  ;;;`;;  ,:
-                   `.... .. .
-                  .':;;'`;; ;;
-                 .`,:;;;`;; ; ;
-                 ;;  :;;`;;  : ,
-                 .;   ::` `   .;
-                 :'   :;` :  . :
-                 : ';;`. ;`';,:
-                  ::.;,   ',.'
+       @8CoocoCO@              8CoocooO8        
+    @C::oO@@@@Ooc:o8        O::cO8@@@8Cc:c8     
+   C:o8@8oc::ccO@@C:o     O:c8@8oc:::cC@@C:c@   
+  o:O@O:cO@   8o:C@8cc@  C:C@O:cO@   8o:o@@c:8  
+ O:o@C:C        8cc@O:C 8:o O:o        @cc@8:o  
+ C:O@cc@         o:8@:o O:O o:8         C:O@cc@ 
+ O:C@o:O                                o:88cc  
+ @cc8@o:C     @:::::::o 8:::::::O     8c:8@o:O  
+   o:O@8o::co @:::::::o 8c::::::O Occ:cO@8c:O   
+    Oc:o8     @:::::::o 8:::::::O     @Oc:o     
+       Occ::c @:::c::cC 8c:c::c:O O:::cC8       
+                                                
+      8o:::co @:::::::C 8:::::::C Occ::cC@      
+    C:cO@@@8@ @c::::::o 8:::::::C @8@@@@o:c8    
+  8cc8@Oc:coC @:::::::o 8:::::::C 8oo::o@@o:C   
+ @cc@@cc8     @cccccccC @cccccccO     @o:O@C:C  
+ O:C@oc8                                o:8@cc@ 
+ C:O@cc@         oc8@:o 8:O o:8         C:O@cc@ 
+ 8:o@O:o        O:o@O:C @cc 8:c@       8:o@O:o  
+  C:o@8c:o8@@8C::C@O:o   O:o@@o:oO@@@O:cC@8cc   
+   8c:O@@OoccoO@@8c:C     8c:C@@8CocoC@@8c:C    
+     8c:coCOOOCc:cO         8o::oCOOOCc:cC@     
+         8OCCO8@                8OCCC8@         
 
-
-      '`  +++++++++++'   .:::::::::::.   +
-      @# +@@@@@@@@@@@@@  ';;;;;;;;;;;;;  @+
-      @# +@          .@              ;;  @+
-      @+ +@++++++++++@@   .::::::::::;;  @+
-      @+ +@@@@@@@@@@@@@  .;;;;;;;;;;;;`  @+
-      @+ +@          `@  ;;      :;;;    @+
-      @+ +@''''''''''@@  ;;        ,;;,  @+
-      @+ '@@@@@@@@@@@@'  ';          ;;  @'
-
+   IBRI :: INTERACTION BEACON RESCUE INTERFACE
 ============================================================================
 ============================================================================
 """
