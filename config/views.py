@@ -60,6 +60,8 @@ class CreateClient(SuccessMessageMixin, CreateView):
         return super(CreateClient, self).post(request, **kwargs)
 
 
+
+
 class ListClient(ListView):
 
     model = Clients
@@ -108,7 +110,7 @@ class EditClient(SuccessMessageMixin, UpdateView):
                     #self.object.save()
             except:
                 self.object.insearch = False
-            
+
             self.object.save()
 
             return super(EditClient, self).form_valid(form)
@@ -120,12 +122,5 @@ class EditClient(SuccessMessageMixin, UpdateView):
                 googleUrl = IBRI_URL+reverse('getclientdataweb', args=(instance.pk, ))
                 gurl = short_url(googleUrl)
                 instance.physicalCode = gurl
-                
 
-            #print args['email']
-
-            #TODO: Get FULL url to get the google shorted url
-            #googleUrl = reverse('getclientdataweb', args=(instance.pk, ))
-            #print "PHYSICAL URL: "+googleUrl
             pass
-            #instance.physicalCode = 'HOLA CARACOLA'
