@@ -60,6 +60,16 @@ class CreateClient(SuccessMessageMixin, CreateView):
         return super(CreateClient, self).post(request, **kwargs)
 
 
+    @receiver(post_save, sender=Clients)
+    def assignGoogleUrl(sender, instance, created, **kwargs):
+        if created:
+            print "User added "+str(instance.pk)
+            googleUrl = IBRI_URL+reverse('getclientdataweb', args=(instance.pk, ))
+            gurl = short_url(googleUrl)
+            instance.physicalCode = gurl
+            instance.save()
+
+
 
 
 class ListClient(ListView):
@@ -111,16 +121,11 @@ class EditClient(SuccessMessageMixin, UpdateView):
             except:
                 self.object.insearch = False
 
+            if self.object.physicalCode == "":
+                googleUrl = IBRI_URL+reverse('getclientdataweb', args=(self.kwargs['pk'], ))
+                gurl = short_url(googleUrl)
+                self.object.physicalCode = gurl
+            
             self.object.save()
 
             return super(EditClient, self).form_valid(form)
-
-        @receiver(pre_save, sender=Clients)
-        def setPhysicalWeb(sender, instance, *args, **kwargs):
-
-            if Clients.objects.get(pk=instance.pk).physicalCode == "":
-                googleUrl = IBRI_URL+reverse('getclientdataweb', args=(instance.pk, ))
-                gurl = short_url(googleUrl)
-                instance.physicalCode = gurl
-
-            pass

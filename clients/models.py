@@ -14,7 +14,7 @@ class Clients(models.Model):
     lastname = EncryptedCharField(max_length=50, verbose_name="Last Name", blank=False)
     email = EncryptedEmailField(max_length=100, verbose_name="Email address")
     identifier = EncryptedCharField(max_length=9, verbose_name="Identifier", unique=True, blank=False)
-    physicalCode = models.CharField(max_length=32, blank=False, verbose_name="Physical Code", unique=True)
+    physicalCode = models.CharField(max_length=32, blank=False, verbose_name="Physical Code", unique=False)
     address = EncryptedCharField(max_length=100, blank=True)
     city = EncryptedCharField(max_length=100, blank=True)
     phoneValidator = RegexValidator(regex=r'^\+?\d{9,12}?$', message="Phone number must be entered in the format: '+34612345678' or '612345678'.")

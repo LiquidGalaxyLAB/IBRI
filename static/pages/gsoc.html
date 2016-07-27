@@ -102,7 +102,7 @@
 
             <div class="row">
 
-                <div class="col s12 m4">
+                <div class="range-field col s12 m4">
 
                     <label>Number of Drones: <span id="nodrone_val">{% if nodrones > 0 %}1{% else %}0{% endif %}</span></label>
                     <input type="range" id="nodrone" min="{% if nodrones > 0 %}1{% else %}0{% endif %}" max="{% if nodrones > 0 %}{{ nodrones }}{% else %}0{% endif %}" value="{% if nodrones > 0 %}1{% else %}0{% endif %}" />
@@ -133,7 +133,7 @@
 
 
         <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">
+      <span class="card-title grey-text text-darken-4" style="cursor: default !important;">
 
          <div class="input-field col s12 m12" style="width: 90vw; min-height: 60px;">
           <!--<i class="material-icons prefix">search</i>
@@ -141,7 +141,7 @@
           <label for="icon_prefix">Filter</label>-->
         </div>
 
-          <i class="material-icons right" style="position: absolute; top: 32px; right: 32px;">close</i></span>
+          <i class="material-icons right" style="cursor: default; position: absolute; top: 32px; right: 32px;">close</i></span>
 
 
             <ul class="collection">
@@ -835,6 +835,14 @@ $(document).ready(function(){
                   click: function(e) {
                       checkWeather(e);
                       //setGrid(e);
+                  },
+                  dblclick: function(e){
+                      map.removeMarkers();
+                      markerArray = [];
+                      baseCoords[0] = e.latLng.lat();
+                      baseCoords[1] = e.latLng.lng();
+                      addBase();
+                      map.zoomOut();
                   },
                   disableDefaultUI: true,
                   disableDefaultStyles: false,
