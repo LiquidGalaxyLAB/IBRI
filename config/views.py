@@ -56,7 +56,6 @@ class CreateClient(SuccessMessageMixin, CreateView):
         except:
             request.POST['insearch'] = False
 
-
         return super(CreateClient, self).post(request, **kwargs)
 
 
@@ -64,7 +63,7 @@ class CreateClient(SuccessMessageMixin, CreateView):
     def assignGoogleUrl(sender, instance, created, **kwargs):
         if created:
             print "User added "+str(instance.pk)
-            googleUrl = IBRI_URL+reverse('getclientdataweb', args=(instance.pk, ))
+            googleUrl = os.path.dirname(IBRI_URL)+reverse('getclientdataweb', args=(instance.pk, ))
             gurl = short_url(googleUrl)
             instance.physicalCode = gurl
             instance.save()
@@ -117,12 +116,11 @@ class EditClient(SuccessMessageMixin, UpdateView):
             try:
                 if self.request.POST['c_insearch'] == 'on':
                     self.object.insearch = True
-                    #self.object.save()
             except:
                 self.object.insearch = False
 
             if self.object.physicalCode == "":
-                googleUrl = IBRI_URL+reverse('getclientdataweb', args=(self.kwargs['pk'], ))
+                googleUrl = os.path.dirname(IBRI_URL)+reverse('getclientdataweb', args=(self.kwargs['pk'], ))
                 gurl = short_url(googleUrl)
                 self.object.physicalCode = gurl
             
