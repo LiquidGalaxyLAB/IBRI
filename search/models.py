@@ -16,6 +16,8 @@ class Route(models.Model):
     baseLat = EncryptedCharField(verbose_name="Base Latitude", max_length=30)
     baseLng = EncryptedCharField(verbose_name="Base Longitude", max_length=30)
     drone = models.ForeignKey(Drone)
+    tmpLat = EncryptedCharField(verbose_name="Tmp Latitude", max_length=30)
+    tmpLng = EncryptedCharField(verbose_name="Tmp Longitude", max_length=30)
 
     def __unicode__(self):
         return "Route #{} (Mission #{})".format(self.pk, self.mission.pk)

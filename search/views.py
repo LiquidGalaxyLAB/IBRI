@@ -7,7 +7,7 @@ from math import sqrt
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http.response import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from simplekml import Kml
 
@@ -33,6 +33,20 @@ def searchMap(request):
         'DRONES': drones,
         'nodrones': len(drones)
     })
+
+
+def resumeMission(request, pk):
+
+    mission = get_object_or_404(Mission, pk=pk)
+    j = []
+    for m in mission.inSearch.all():
+        j.append(str(m.id))
+
+    return render(request, 'pages/resume.html', {
+        'mission': mission,
+        'insearch': mission.inSearch.all(),
+        'selected': ','.join(j)
+    } )
 
 def getTracking(request):
 
@@ -62,11 +76,10 @@ def getTracking(request):
                     print(u"[#{} - {}, {}]".format(wp.ref, wp.lat, wp.lng))
 
                 if wp.photo:
-                    droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound, wp.photo])
+                    droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound, wp.photo, rid.tmpLat, rid.tmpLng])
                 else:
-                    droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound])
+                    droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound, "", rid.tmpLat, rid.tmpLng])
 
-            #print(droneTracking)
             i += 1
 
         preshared = b'preshared_key012'
@@ -161,6 +174,13 @@ def setDroneTracking(request):
                               signalFound=c.pk,
                               photo=d['photo'])
                 wp.save()
+
+            else:
+                rid = Route.objects.get(pk=r)
+                rid.tmpLat = d['latitude']
+                rid.tmpLng = d['longitude']
+                rid.save()
+
 
 
         return HttpResponse("OK")
@@ -275,17 +295,11 @@ def createRoute(request):
             'ff00ffff', #yellow
         ];
 
-        #.style.linestyle.width = 5
-        #ls.style.linestyle.color = simplekml.Color.blue
 
-
-
-        # TODO quitar la variable drone_secuencial
         drone_secuencial = 0
         from os import mkdir
         for r in route:
 
-            # TODO cambiar para que la elección del dron la haga el usuario y no sea secuencial
             rm = Route(mission=m, drone=Drone.objects.all()[drone_secuencial], baseLat=base[0], baseLng=base[1])
             rm.save()
             tmpRoute = []

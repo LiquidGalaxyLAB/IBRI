@@ -14,60 +14,44 @@
             #mainCard
             {
                 height: 95vh;
-                width: 98vw;
+                width: 25%;
                 margin: auto;
                 margin-top: 2vh;
                 margin-bottom: 2vh;
             }
+
             #settings{
-                min-height: 20vh;
+                min-height: 10vh;
             }
 
             #map
             {
                 transition: height 1s;
-                height: 80%;
+                height: 90%;
                 border: 1px solid #d5d5d5;
             }
 
-            @media (max-height: 800px) {
-                #settings{
-                    min-height: 40vh;
-                }
-
-                #map
-                {
-                    height: 60%;
-                }
-            }
-
-            @media (max-height: 500px) {
-                #settings{
-                    min-height: 60vh;
-                }
-
-                #map
-                {
-                    height: 40%;
-                }
-            }
-
-
-
-            .chip:before{
-                box-shadow: none;
-            }
-
-            .chip:hover {
-                box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
-            }
-
-            .modal {
-                height: 50vh;
-            }
 
             body{
+                margin: auto !important;
                 background-color: #ede7f6;
+            }
+
+            #missionResults {
+                height: 95vh;
+                width: 70%;
+                margin: auto;
+                margin-top: 2vh;
+                margin-bottom: 2vh;
+            }
+
+
+
+            #container{
+
+                width: 100vw;
+                display: inline-flex;
+
             }
 
 
@@ -77,101 +61,93 @@
 
     <body>
 
+    <div id="container">
 
-    <div id="mainCard" class="card" style="overflow: hidden;">
-
-        {% if KMLDir == '' %}
-                <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the KML_DIR in settings.py</div>
-        {% endif %}
-
-        {% if WEATHER_API  == '' %}
-                <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the WEATHER_API in config panel</div>
-        {% endif %}
-
-        <div id="map"></div>
-        <div style="position: absolute; right: 20px; margin-top: -25px;">
-            <a id="startbutton" class="right btn-floating btn-large waves-effect waves-light green"><i class="material-icons">play_arrow</i></a>
-            <a id="cleanButton" style="display: none;" class="right btn-floating btn-large waves-effect waves-light red"><i class="material-icons">stop</i></a>
-        </div>
-        <div class="progress" style="margin:0px; display: none;">
-            <div class="indeterminate"></div>
+        <div style="display: none";>
+            {% for user in insearch %}
+                <div id="userName_{{ user.id }}">{{ user.name }} {{ user.lastname }}</div>
+            {% endfor %}
         </div>
 
+        <div id="missionResults">
 
-        <div class="card-content" id="settings">
+            <div class="card">
 
-            <div class="row">
+            <div class="card-content row" id="resultPanel">
 
-                <div class="range-field col s12 m4">
+                <div id="resultUserList" style="background-color:deepskyblue;" class="">
 
-                    <label>Number of Drones: <span id="nodrone_val">{% if nodrones > 0 %}1{% else %}0{% endif %}</span></label>
-                    <input type="range" id="nodrone" min="{% if nodrones > 0 %}1{% else %}0{% endif %}" max="{% if nodrones > 0 %}{{ nodrones }}{% else %}0{% endif %}" value="{% if nodrones > 0 %}1{% else %}0{% endif %}" />
+                    {% for person in insearch %}
+                        <div id="photo_{{ person.id }}"></div>
+                    {% endfor %}
 
                 </div>
-                <div class="range-field col s12 m4">
-                    <label>Distance between points: <span id="distance_val">50</span>m</label>
-                    <input type="range" id="distance" min="50" max="200" value="50" />
-                </div>
-                <div class="range-field col s12 m4">
-                    <label>Grid Side Size: <span id="gridsize_val">5</span></label>
-                    <input type="range" id="gridSize" min="3" max="20" value="5" />
-                </div>
 
-
+            </div>
 
             </div>
 
 
         </div>
 
-        <div class="card-content row" id="resultPanel">
+        <div id="mainCard" class="card" style="overflow: hidden;">
 
-            <div id="resultUserList" style="background-color:pink;" class=""></div>
+
+            <div id="map"></div>
+            <div style="position: absolute; right: 20px; margin-top: -25px;">
+                <a class="right btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">loop</i></a>
+            </div>
+            <div class="progress" style="margin:0px; display: none;">
+                <div class="indeterminate"></div>
+            </div>
+
+
+            <div class="card-content" id="settings">
+
+            </div>
+
+
+
+
+
+            <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4" style="cursor: default !important;">
+
+             <div class="input-field col s12 m12" style="width: 90vw; min-height: 60px;">
+            </div>
+
+              <i class="material-icons right" style="cursor: default; position: absolute; top: 32px; right: 32px;">close</i></span>
+
+
+                <ul class="collection">
+
+                    {% for c in client %}
+                        <li class="collection-item avatar">
+                            <img src="{% static 'img/person.png' %}" alt="" class="circle">
+                            <span class="title" id="userName_{{ c.id }}">{{ c.name }} {{ c.lastname }}</span>
+                            <p>{{ c.nif }}<br /> {{ c.physicalCode }}</p>
+                            <div class="right secondary-content">
+
+                                <p>
+          <input type="checkbox" name="searching" id="cb_{{ c.id }}" value="{{ c.id }}" />
+                                    <label for="cb_{{ c.id }}">#{{ c.id }}</label>
+
+        </p>
+
+
+                            </div>
+
+                        </li>
+
+                    {% endfor %}
+                </ul>
 
         </div>
 
 
 
-        <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4" style="cursor: default !important;">
+            </div>
 
-         <div class="input-field col s12 m12" style="width: 90vw; min-height: 60px;">
-          <!--<i class="material-icons prefix">search</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Filter</label>-->
-        </div>
-
-          <i class="material-icons right" style="cursor: default; position: absolute; top: 32px; right: 32px;">close</i></span>
-
-
-            <ul class="collection">
-
-                {% for c in client %}
-                    <li class="collection-item avatar">
-                        <img src="{% static 'img/person.png' %}" alt="" class="circle">
-                        <span class="title" id="userName_{{ c.id }}">{{ c.name }} {{ c.lastname }}</span>
-                        <p>{{ c.nif }}<br /> {{ c.physicalCode }}</p>
-                        <div class="right secondary-content">
-
-                            <p>
-      <input type="checkbox" name="searching" id="cb_{{ c.id }}" value="{{ c.id }}" />
-                                <label for="cb_{{ c.id }}">#{{ c.id }}</label>
-
-    </p>
-
-
-                        </div>
-
-                    </li>
-
-                {% endfor %}
-            </ul>
-
-    </div>
-
-
-
-        </div>
     </div>
 
 
@@ -251,7 +227,7 @@ $(document).ready(function(){
         var map;
         var baseCoords = [28.4812865, -16.3205404];
         var markerArray = [];
-        var selected = null;
+        var selected = [{{ selected }}];
         var zone = 0;
         var colorList = [
             '#D32F2F',
@@ -266,48 +242,12 @@ $(document).ready(function(){
             '#0097A7',
             '#FBC02D'
         ];
-        var demos = [ // base, center_area, area_size, noDrones, find
-            [28.519179, -16.296779, 28.522681, -16.302325, 7, 1],
-            [28.456487, -16.388333, 28.457496, -16.387464, 5, 1],
-            [28.297621, -16.567193, 28.296875, -16.574094, 5, 2],
-            [28.482389, -16.322115, 28.483314, -16.322426, 8, 3],
-            [28.061228, -16.729034, 28.059474, -16.726670, 7, 5],
-        ];
+
         var c = null;
         var posArrays = [];
-        //var drone = -1;
         var response = null;
         var tmpMarker = [];
 
-        $(".demobutton").click(function() {
-
-            $("#cleanButton").click();
-
-            demoNum = parseInt($(this).attr('demo')) - 1;
-
-            baseCoords[0] = demos[demoNum][0];
-            baseCoords[1] = demos[demoNum][1];
-
-            addBase();
-
-            $("#gridSize").val(demos[demoNum][4]);
-            $("#nodrone").val(demos[demoNum][5]);
-
-            var d = {
-                latLng: {
-                    lat() {
-                        return demos[demoNum][2];
-                    },
-                    lng() {
-                        return demos[demoNum][3];
-                    }
-                }
-            };
-
-            map.setCenter(baseCoords[0], baseCoords[1]);
-            checkWeather(d);
-
-        });
 
 
         function csrfSafeMethod(method) {
@@ -383,195 +323,11 @@ $(document).ready(function(){
 
 
 
-        $("#startbutton").click(function() {
-
-
-            if (parseInt($("#gridSize").val()) > 25) {
-                alert("The grid size can't be greater than 25");
-                return 0;
-            }
-
-            if (parseInt($("#nodrone").val()) <= 0) {
-                alert("Number of drones should be at least one");
-                return 0;
-            }
-
-            if (markerArray.length == 0) {
-                alert("Click on the map to set the searching area");
-                return false;
-            }
-
-            if ($("#nodrone").val() > markerArray.length) {
-                alert("The number of drones should be less or equal than grid size");
-                return false;
-            }
-
-
-            selected = $("input[type='checkbox'][name='searching']:checked").map(function() {
-                return this.value;
-            }).get();
-
-            if (selected.length <= 0) {
-                alert("No searching user(s) selected");
-                return false;
-            }
-
-            $("#map").css('height', '30%');
-            $("#settings").slideToggle();
-            $("#resultPanel").slideToggle();
-
-
-
-            $(this).attr('disabled', 'true');
-
-            $("#userList").fadeOut();
-            $("#resultPanel").fadeIn();
-
-            for (i = 0; i < selected.length; i++) {
-                $("#resultUserList").append('<div id="photo_' + selected[i] + '"></div>');
-            }
-
-
-            distNear = [];
-            nearToBase = [];
-
-            nodesPerDrone = Math.floor((markerArray.length * markerArray.length) / $("#nodrone").val());
-            dispersion = [];
-
-
-            console.log("--------------> "+$("#nodrone").val());
-
-            for (i = 0; i < $("#nodrone").val(); i++) {
-                distNear.push(9999);
-                nearToBase.push(0);
-                posArrays.push([]);
-                dispersion.push(nodesPerDrone);
-            }
-
-            map.removePolylines();
-
-            resto = (markerArray.length * markerArray.length) - (nodesPerDrone *  $("#nodrone").val());
-            console.log(resto);
-            for(i = 0; i < resto; i++){
-                dispersion[i]++;
-            }
-
-            console.log(dispersion);
-
-            //----------------------------------------------------------------------------------------------------------
-
-            drone = 0;
-            x = 0;
-            c = 0;
-            n = 0;
-
-            console.log(markerArray);
-
-            for (var mX = 0; mX < markerArray.length; mX++) {
-                for (var mY = 0; mY < markerArray[mX].length; mY++) {
-
-                    if(drone < c){
-                        n = x-1;
-                    }else if(drone == c){
-                        if(c == 0)
-                            c = c + dispersion[x]-1
-                        else
-                            c = c + dispersion[x]
-                        x++
-                    }
-
-                    if (zone == 1 || zone == 2) {
-                        lat = markerArray[mY][mX].internalPosition.lat();
-                        lng = markerArray[mY][mX].internalPosition.lng();
-                    } else {
-                        lat = markerArray[mX][mY].internalPosition.lat();
-                        lng = markerArray[mX][mY].internalPosition.lng();
-                    }
-
-                    posArrays[n].push([lat, lng]);
-                    drone++;
-
-                    p1 = new google.maps.LatLng(lat, lng);
-                    p2 = new google.maps.LatLng(baseCoords[0], baseCoords[1]);
-
-                    distancePoint = calcDistance(p1, p2) * 1000;
-                    if (distancePoint < distNear[n]) {
-                        distNear[n] = distancePoint;
-                        nearToBase[n] = [mX, mY];
-                    }
-
-                }
-            }
-
-            console.log();
-
-            $.ajax({
-                type: "POST",
-                url: "{% url 'createRoute' %}",
-                data: {
-
-                    msg: encrypt(JSON.stringify({
-                        ndrones: $("#nodrone").val(),
-                        insearch: JSON.stringify(selected),
-                        nearPoint: JSON.stringify(nearToBase),
-                        distance: $("#distance").val(),
-                        wayPoints: JSON.stringify(posArrays),
-                        base: JSON.stringify(baseCoords)
-                    }), key)
-
-
-                },
-                success: function(data) {
-
-                    if(data == 'configerror'){
-                        alert('Error: No drones found in database');
-                        $("#cleanButton").click();
-                        return 0;
-                    }
-
-
-                    data = JSON.parse(decrypt(data, key));
-                    mission = data[0];
-                    data = data[1];
-                    datal = data.length;
-
-                    for (i = 0; i < datal; i++) {
-                        map.drawPolyline({
-                            path: data[i],
-                            strokeColor: colorList[i % colorList.length],
-                            strokeOpacity: 0.6,
-                            strokeWeight: 4
-                        });
-
-                        map.drawPolyline({
-                            path: [
-                                [baseCoords[0], baseCoords[1]], data[i][0]
-                            ],
-                            strokeColor: colorList[i % colorList.length],
-                            strokeOpacity: 0.4,
-                            strokeWeight: 4
-                        });
-
-                    }
-
-                    waitForResponse(mission);
-
-                }
-            });
-
-            $(this).toggle('fast', function(){
-                $("#cleanButton").toggle('fast');
-                $(".progress").slideToggle('fast');
-            });
-
-
-
-        });
 
         var globalE;
         var globalData;
 
-        function checkWeather(e) {
+        /*function checkWeather(e) {
 
             if ($("#startbutton").is(':hidden')) {
                 return 0;
@@ -610,13 +366,13 @@ $(document).ready(function(){
 
                 },
                 error: function(response) {
-                    alert("Error on getting weather");
+                    alert("Hubo un error al recuperar los datos de información meteorológica. ¿Se ha establecido WEATHER_API?");
                     return false;
                 }
 
             });
 
-        }
+        }*/
 
         function listToMatrix(list, elementsPerSubArray) {
             // http://stackoverflow.com/questions/4492385/
@@ -670,7 +426,7 @@ $(document).ready(function(){
 
                         map.removeMarkers();
 
-                        setGrid(globalE);
+                        //setGrid(globalE);
                         data = JSON.parse(decrypt(data, key));
                         globalData = data;
 
@@ -702,27 +458,38 @@ $(document).ready(function(){
                                     });
                                 }
 
-                                if (data[i][j][5] != null) {
+                                //console.log("Received from drone: "+data[i][j]);
+                                if (data[i][j][5] != "") {
+
+                                    console.log("Entry");
                                     userName = $("#userName_"+data[i][j][4]).html();
                                     userElement = '<div class="col s12 m3">' +
                                     '<div class="card small">' +
                                     '<div class="card-image"> ' +
                                     '<img src="data:image/png;base64,' + data[i][j][5] + '" /><span class="card-title">' + userName + '</span> ' +
                                     '</div> <div class="card-content"> ' +
-                                    '<p>Latitude: '+data[i][j][1]+'</p> ' +
-                                    '<p>Longitude: '+data[i][j][2]+'</p> ' +
+                                    '<p>P.Latitude: '+data[i][j][1]+'</p> ' +
+                                    '<p>D.Latitude: '+data[i][j][6]+'</p> ' +
+                                    '<p>P.Longitude: '+data[i][j][2]+'</p> ' +
+                                    '<p>D.Longitude: '+data[i][j][7]+'</p> ' +
                                     '</div> </div></div>';
 
-                                    $("#photo_" + data[i][j][4]).append(userElement);
+                                    $("#photo_" + data[i][j][4]).html(userElement);
 
                                 }
 
+                                // 6 lat 7 lng
+
+
+
                                 map.removeMarker(tmpMarker[i]);
-                                console.log("DATA: " + data[i][data[i].length - 1]);
-                                console.log(data[i]);
+                                //console.log("DATA: " + data[i][data[i].length - 1]);
+                                //console.log(data[i]);
                                 tmpMarker[i] = map.addMarker({
-                                    lat: data[i][data[i].length - 1][1],
-                                    lng: data[i][data[i].length - 1][2],
+                                    //lat: data[i][data[i].length - 1][1],
+                                    lat: data[i][data[i].length - 1][6],
+                                    //lng: data[i][data[i].length - 1][2],
+                                    lng: data[i][data[i].length - 1][7],
                                     icon: "{% static 'img/drone32x32.png' %}"
                                 });
                                 map.zoomIn(1);
@@ -738,10 +505,13 @@ $(document).ready(function(){
 
         }
 
+
+        waitForResponse({{ mission.id }});
+
         function setGrid(e){
 
             if(parseInt($("#gridSize").val()) > 25){
-                alert("Grid size can not be more than 25");
+                alert("El grid debe tener como tamaño máximo un valor de 25");
                 return 0;
             }
 
@@ -832,103 +602,18 @@ $(document).ready(function(){
                       style: 'SMALL',
                       position: 'TOP_LEFT'
                   },
-                  click: function(e) {
-                      checkWeather(e);
-                      //setGrid(e);
-                  },
-                  dblclick: function(e){
-                      map.removeMarkers();
-                      markerArray = [];
-                      baseCoords[0] = e.latLng.lat();
-                      baseCoords[1] = e.latLng.lng();
-                      addBase();
-                      map.zoomOut();
-                  },
                   disableDefaultUI: true,
                   disableDefaultStyles: false,
                   panControl: false,
                   streetViewControl: false,
                   mapTypeControl: false,
-                    zoomControl: false,
+                  zoomControl: false,
                   overviewMapControl: false
               });
 
-                map.addControl({
-                  position: 'top_right',
-                  content: '<a class="btn-floating grey btn-flat activator"><i class="material-icons">account_circle</i></a>',
-                  style: {
-                    margin: '5px',
-                    shadow: 'none'
-                  },
-                  events: {
-                    click: function(){
-                      console.log(this);
-                       // $('#modal1').openModal();
-                    }
-                  }
-                });
 
-                map.addControl({
-                  position: 'top_left',
-                  content: '<img class="responsive-img hide-on-small-only" src="{% static 'img/IBRIlogo_mini.png' %}" />',
-                  style: {
-                    margin: '5px',
-                    shadow: 'none'
-                  },
-                  events: {
-                    click: function(){
-                      console.log(this);
-                       // $('#modal1').openModal();
-                    }
-                  }
-                });
+      //addBase();
 
-                 map.addControl({
-                  position: 'top_right',
-                  content: '<div class="chip blue" style="text-align: center; color: white;"><i class="material-icons">cloud</i> <span id="climatologyWind">Weather</span> <span id="climatologyDesc"></span></div>',
-                  style: {
-                    margin: '5px',
-                      padding: '0px',
-                    shadow: 'none'
-                  },
-                  events: {
-                    click: function(){
-                      console.log(this);
-                    }
-                  }
-                });
-
-
-
-      map.setContextMenu({
-          control: 'map',
-          options: [{
-              title: 'Set drone base position',
-              name: 'add_marker',
-              action: function(e) {
-                  map.removeMarkers();
-                  markerArray = [];
-                  baseCoords[0] = e.latLng.lat();
-                  baseCoords[1] = e.latLng.lng();
-                  addBase();
-              }
-          }, {
-              title: 'Center here',
-              name: 'center_here',
-              action: function(e) {
-                  this.setCenter(e.latLng.lat(), e.latLng.lng());
-              }
-          }]
-      });
-
-
-      addBase();
-
-
-     /* $('#userList').DataTable({
-
-      });
-*/
 
       // using jQuery
       function getCookie(name) {
