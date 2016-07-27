@@ -1,4 +1,6 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import json
 from math import sqrt
 
@@ -14,6 +16,10 @@ from ibri.settings import *
 from utils.aes import AESCipher, JavaAESCipher
 from utils.tsp import *
 
+import codecs
+import sys
+UTF8Writer = codecs.getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
 
 @login_required(login_url='login/')
 def searchMap(request):
@@ -53,7 +59,7 @@ def getTracking(request):
                 if wp.signalFound in beacons:
                     u = missionId.inSearch.get(pk=wp.signalFound)
                     print(u"[ Beacon found ] - {} {} - {} - {}".format( u.name, u.lastname, u.identifier, u.physicalCode))
-                    print("[#{} - {}, {}]".format(wp.ref, wp.lat, wp.lng))
+                    print(u"[#{} - {}, {}]".format(wp.ref, wp.lat, wp.lng))
 
                 if wp.photo:
                     droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound, wp.photo])
