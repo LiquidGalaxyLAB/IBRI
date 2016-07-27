@@ -29,7 +29,8 @@ Getting Started
 - echo 'DEBUG=True' >> local_settings.py; # For testing purpose
 - echo 'WMAPAPI="**insert open weather map api here**"' >> local_settings.py;
 - echo 'GAPI="**insert google api here**"' >> local_settings.py;
-- echo 'SKEY="**insert secret preshared key here (LHnhUqmgS1KWh4 por example)**" >> local_settings.py'
+- echo 'SKEY="**insert secret preshared key here (LHnhUqmgS1KWh4 for example)**" >> local_settings.py'
+- echo 'IBRI_URL="http://your.ibri.url/" >> local_settings.py
 - mkdir fieldkeys
 - keyczart create --location=fieldkeys/ --purpose=crypt
 - keyczart addkey --location=fieldkeys/ --status=primary
