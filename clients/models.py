@@ -20,7 +20,7 @@ class Clients(models.Model):
     phoneValidator = RegexValidator(regex=r'^\+?\d{9,12}?$', message="Phone number must be entered in the format: '+34612345678' or '612345678'.")
     mobileNumber = EncryptedCharField(validators=[phoneValidator], max_length=20, verbose_name="Mobile Phone Number", blank=False)
     phoneNumber = EncryptedCharField(validators=[phoneValidator], max_length=20, verbose_name="Contact Phone Number", blank=True)
-    birthDate = EncryptedDateField(verbose_name="Birth Date (mm/dd/yyyy)", blank=True, Null=True)
+    birthDate = EncryptedDateField(verbose_name="Birth Date (mm/dd/yyyy)", blank=True, null=True)
     postalCode = EncryptedCharField(max_length=10, verbose_name="Postal Code", blank=True)
     alergies = EncryptedCharField(max_length=500, verbose_name="Alergies", blank=True)
     diseases = EncryptedCharField(max_length=500, verbose_name="Diseases", blank=True)
