@@ -103,6 +103,7 @@ class EditClient(SuccessMessageMixin, UpdateView):
             'lastname',
             'email',
             'identifier',
+            'physicalCode',
             'address',
             'city',
             'mobileNumber',
