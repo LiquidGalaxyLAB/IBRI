@@ -677,7 +677,7 @@ $(document).ready(function(){
                         console.log("Length: "+data.length);
                         console.log("Mission ID: "+ missionId);
                         console.log("Data");
-                        console.log("------------------------------------------------------");
+                        console.log("--------------------------------------------------");
                         console.log(data);
 
                         for (i = 0; i < data.length; i++) {
@@ -702,15 +702,17 @@ $(document).ready(function(){
                                     });
                                 }
 
-                                if (data[i][j][5] != null) {
+                                if (data[i][j][5] != "") {
                                     userName = $("#userName_"+data[i][j][4]).html();
                                     userElement = '<div class="col s12 m3">' +
                                     '<div class="card small">' +
                                     '<div class="card-image"> ' +
                                     '<img src="data:image/png;base64,' + data[i][j][5] + '" /><span class="card-title">' + userName + '</span> ' +
                                     '</div> <div class="card-content"> ' +
-                                    '<p>Latitude: '+data[i][j][1]+'</p> ' +
-                                    '<p>Longitude: '+data[i][j][2]+'</p> ' +
+                                    '<p>P.Latitude: '+data[i][j][1]+'</p> ' +
+                                    '<p>D.Latitude: '+data[i][j][6]+'</p> ' +
+                                    '<p>P.Longitude: '+data[i][j][2]+'</p> ' +
+                                    '<p>D.Longitude: '+data[i][j][7]+'</p> ' +
                                     '</div> </div></div>';
 
                                     $("#photo_" + data[i][j][4]).append(userElement);
@@ -721,8 +723,10 @@ $(document).ready(function(){
                                 console.log("DATA: " + data[i][data[i].length - 1]);
                                 console.log(data[i]);
                                 tmpMarker[i] = map.addMarker({
-                                    lat: data[i][data[i].length - 1][1],
-                                    lng: data[i][data[i].length - 1][2],
+                                    //lat: data[i][data[i].length - 1][1],
+                                    lat: data[i][data[i].length - 1][6],
+                                    //lng: data[i][data[i].length - 1][2],
+                                    lng: data[i][data[i].length - 1][7],
                                     icon: "{% static 'img/drone32x32.png' %}"
                                 });
                                 map.zoomIn(1);
