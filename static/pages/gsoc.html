@@ -102,19 +102,23 @@
 
             <div class="row">
 
-                <div class="range-field col s12 m4">
+                <div class="range-field col s12 m3">
 
                     <label>Number of Drones: <span id="nodrone_val">{% if nodrones > 0 %}1{% else %}0{% endif %}</span></label>
                     <input type="range" id="nodrone" min="{% if nodrones > 0 %}1{% else %}0{% endif %}" max="{% if nodrones > 0 %}{{ nodrones }}{% else %}0{% endif %}" value="{% if nodrones > 0 %}1{% else %}0{% endif %}" />
 
                 </div>
-                <div class="range-field col s12 m4">
+                <div class="range-field col s12 m3">
                     <label>Distance between points: <span id="distance_val">50</span>m</label>
                     <input type="range" id="distance" min="50" max="200" value="50" />
                 </div>
-                <div class="range-field col s12 m4">
+                <div class="range-field col s12 m3">
                     <label>Grid Side Size: <span id="gridsize_val">5</span></label>
                     <input type="range" id="gridSize" min="3" max="20" value="5" />
+                </div>
+                <div class="col s12 m3">
+                    <input type="checkbox" class="filled-in" id="checkweatherbox" checked="checked" />
+                    <label for="checkweatherbox">Enable Weather Check</label>
                 </div>
 
 
@@ -124,7 +128,7 @@
 
         </div>
 
-        <div class="card-content row" id="resultPanel">
+        <div class="card-content row" id="resultPanel" style="overflow: auto;">
 
             <div id="resultUserList" style="background-color:pink;" class=""></div>
 
@@ -596,7 +600,7 @@ $(document).ready(function(){
                     console.log(response);
                     console.log("Viento: " + response.wind.speed);
                     console.log("LAT: " + e.latLng.lat() + ', ' + 'LNG: ' + e.latLng.lng());
-                    if (response.wind.speed >= 10) {
+                    if (response.wind.speed >= 10 && $("#checkweatherbox").is(":checked") ){
                         alert("The climatology in that area is not favorable to flight");
                         $("#climatologyContainer").removeClass('blue');
                         $("#climatologyContainer").addClass('red');
@@ -715,7 +719,7 @@ $(document).ready(function(){
                                     '<p>D.Longitude: '+data[i][j][7]+'</p> ' +
                                     '</div> </div></div>';
 
-                                    $("#photo_" + data[i][j][4]).append(userElement);
+                                    $("#photo_" + data[i][j][4]).html(userElement);
 
                                 }
 
