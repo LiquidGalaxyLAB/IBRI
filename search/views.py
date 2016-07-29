@@ -68,11 +68,14 @@ def getTracking(request):
             waypoints = WayPoint.objects.filter(route=rid)
             waypoints = filter(lambda w: w.visited is True, waypoints)
 
+            if waypoints == []:
+                droneTracking[i].append(["", rid.tmpLat, rid.tmpLng, None, None, None, rid.tmpLat, rid.tmpLng])
+
             for wp in waypoints:
 
                 if wp.signalFound in beacons:
                     u = missionId.inSearch.get(pk=wp.signalFound)
-                    print(u"[ Beacon found ] - {} {} - {} - {}".format( u.name, u.lastname, u.identifier, u.physicalCode))
+                    print(u"[ Beacon found ] - {} {} - {} - {}".format(u.name, u.lastname, u.identifier, u.physicalCode))
                     print(u"[#{} - {}, {}]".format(wp.ref, wp.lat, wp.lng))
 
                 if wp.photo:
