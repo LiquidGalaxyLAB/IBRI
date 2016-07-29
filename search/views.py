@@ -149,6 +149,10 @@ def setDroneTracking(request):
         d = json.loads(JavaAESCipher(settings.SKEY).decrypt(request.POST['info']))
         print colored('+ Received From Drone: '+str(d), 'blue')
 
+        if d['missionId'] <= 0:
+            print colored('+ Error receiving drone information', 'red')
+            return HttpResponse("SystemFail")
+
         m = Mission.objects.get(pk=d['missionId'])
         r = Route.objects.filter(mission=m)
         w = WayPoint.objects.filter(route=r)
