@@ -77,11 +77,7 @@
 
     <body>
 
-        <div class="card-panel teal">
-            <span class="white-text">
-                Demo information: MissonId: <span id="demo_mid">Unestablished</span>
-            </span>
-        </div>
+
     <div id="mainCard" class="card" style="overflow: hidden;">
 
         {% if KMLDir == '' %}
@@ -546,8 +542,6 @@ $(document).ready(function(){
                     mission = data[0];
                     data = data[1];
                     datal = data.length;
-
-                    $("#demo_mid").html(mission);
 
                     for (i = 0; i < datal; i++) {
                         map.drawPolyline({
