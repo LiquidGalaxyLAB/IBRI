@@ -12,10 +12,10 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic import CreateView
 from django.views.generic.edit import UpdateView, DeleteView
-
+from django.shortcuts import render, get_object_or_404
 from django.forms import forms
 from django.views.generic.list import ListView
-
+from ibri.settings import GAPI
 from ibri.settings import IBRI_URL
 from search.models import Mission
 from utils.google import short_url
@@ -24,7 +24,19 @@ import os
 
 @staff_member_required
 def viewMission(request, pk):
-    return render(request, 'pages/config/viewmission.html')
+    mission = get_object_or_404(Mission, pk=pk)
+    j = []
+    for m in mission.inSearch.all():
+        j.append(str(m.id))
+
+    return render(request, 'pages/resume.html', {
+        'mission': mission,
+        'insearch': mission.inSearch.all(),
+        'selected': ','.join(j),
+        'section': 'View Mission Results',
+        'GAPI': GAPI,
+        'norepeat': True
+    })
 
 @staff_member_required
 def config_area(request):

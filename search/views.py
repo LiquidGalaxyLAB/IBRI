@@ -43,6 +43,7 @@ def resumeMission(request, pk):
 
     return render(request, 'pages/resume.html', {
         'mission': mission,
+        'section': 'Resume Mission',
         'insearch': mission.inSearch.all(),
         'selected': ','.join(j),
         'GAPI': settings.GAPI

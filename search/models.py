@@ -33,7 +33,10 @@ class WayPoint(models.Model):
     photo = EncryptedTextField(verbose_name="Base64 Photo", null=True)
 
     def __unicode__(self):
-        return 'M{}D{}R{} - P#{} - {}, {} '.format(self.route.mission.pk, self.route.drone.pk, self.route.pk, self.ref, self.lat, self.lng)
+        hasPhoto = False
+        if self.photo != None:
+            hasPhoto = True
+        return 'M{}D{}R{} - P#{} - {}, {} [{}] '.format(self.route.mission.pk, self.route.drone.pk, self.route.pk, self.ref, self.lat, self.lng, hasPhoto)
 
 class Mission(models.Model):
     inSearch = models.ManyToManyField(Clients, verbose_name='In Search')

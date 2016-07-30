@@ -73,9 +73,25 @@
 
         <div id="missionResults">
 
+        <h2>{{ section }}</h2>
+
             <div class="card">
 
+
+
             <div class="card-content row" id="resultPanel">
+
+  <div id="circleloader" class="preloader-wrapper medium active">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
 
                 <div id="resultUserList" style="background-color:deepskyblue;" class="">
 
@@ -96,9 +112,13 @@
 
 
             <div id="map"></div>
+            
+            {% if not norepeat %}
             <div style="position: absolute; right: 20px; margin-top: -25px;">
                 <a class="right btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">loop</i></a>
             </div>
+            {% endif %}
+
             <div class="progress" style="margin:0px; display: none;">
                 <div class="indeterminate"></div>
             </div>
@@ -425,7 +445,11 @@
                                     '<p>D.Longitude: '+data[i][j][7]+'</p> ' +
                                     '</div> </div></div>';
 
-                                    $("#photo_" + data[i][j][4]).html(userElement);
+                                    {% if norepeat %}
+                                        $("#photo_" + data[i][j][4]).append(userElement);
+                                    {% else %}
+                                        $("#photo_" + data[i][j][4]).html(userElement);
+                                    {% endif %}
 
                                 }
 
@@ -450,15 +474,31 @@
 
                         }
 
+                        {% if norepeat %}
+                            clearInterval(response);
+                            $("#circleloader").hide();
+                        {% endif %}
+
                     }
                 });
-            }, 6000);
+
+            }, 
+
+            {% if norepeat %}
+            500
+            {% else %}
+            4000
+            {% endif %}
+
+            );
+
+            
 
         }
 
 
         waitForResponse({{ mission.id }});
-
+        
         function setGrid(e){
 
             if(parseInt($("#gridSize").val()) > 25){
