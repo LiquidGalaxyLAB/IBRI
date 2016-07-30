@@ -77,10 +77,14 @@
 
     <body>
 
-        <div class="card-panel teal">
+        <div class="card-panel teal" style="width: 100%; display: inline-flex; justify-content: space-between;">
             <span class="white-text">
                 Demo information: MissonId: <span id="demo_mid">Unestablished</span>
             </span>
+
+            <div class="circle" id="detectionCircle" style="background-color: red; width: 30px; height: 30px;"></div>
+
+
         </div>
     <div id="mainCard" class="card" style="overflow: hidden;">
 
@@ -670,6 +674,10 @@ $(document).ready(function(){
         }
 
 
+        var lastDetection = 0;
+        var lastLength = 0;
+        var tmpDetection = 0;
+
         function waitForResponse(missionId) {
 
             response = setInterval(function() {
@@ -681,6 +689,7 @@ $(document).ready(function(){
                         mId: missionId
                     },
                     success: function(data) {
+
 
                         // TODO aqui
                         //map.removeMarkers();
@@ -722,6 +731,7 @@ $(document).ready(function(){
                                 }
 
                                 if (data[i][j][5] != "") {
+                                    
                                     userName = $("#userName_"+data[i][j][4]).html();
                                     userElement = '<div class="col s12 m3">' +
                                     '<div class="card small">' +
@@ -752,6 +762,27 @@ $(document).ready(function(){
                                 map.zoomOut(1);
 
                             }
+
+                            // For demo purpose
+                            if(data[i][data[i].length-1][4] != null && data[i].length > lastLength){
+                                lastLength = data[i].length;
+                                tmpDetection = 1;
+                                $("#detectionCircle").css('background-color', 'lightgreen');
+                            }else{
+                                if(tmpDetection == 0)
+                                    $("#detectionCircle").css('background-color', 'red');
+                                else
+                                    tmpDetection--;
+                            }
+
+
+                            /*if(data[i][data[i].length - 1][4] != null && lastDetection != data[i][data[i].length-1][0]){
+                                lastDetection = data[i][data[i].length-1][0];
+                                $("#detectionCircle").css('background-color', 'lightgreen');
+                            }else{
+                                $("#detectionCircle").css('background-color', 'red');
+                                lastDetection = 0;
+                            }*/
 
                         }
 
