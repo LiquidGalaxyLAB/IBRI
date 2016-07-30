@@ -78,7 +78,8 @@ def getTracking(request):
                     print(u"[#{} - {}, {}]".format(wp.ref, wp.lat, wp.lng))
 
                 if wp.photo:
-                    droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound, wp.photo, rid.tmpLat, rid.tmpLng])
+                    #droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound, wp.photo, rid.tmpLat, rid.tmpLng])
+                    droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound, "demo", rid.tmpLat, rid.tmpLng])
                 else:
                     droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound, "", rid.tmpLat, rid.tmpLng])
 
