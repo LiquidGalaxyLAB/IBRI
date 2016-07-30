@@ -18,7 +18,8 @@ class Route(models.Model):
     drone = models.ForeignKey(Drone)
     tmpLat = EncryptedCharField(verbose_name="Tmp Latitude", max_length=30)
     tmpLng = EncryptedCharField(verbose_name="Tmp Longitude", max_length=30)
-
+    initialWp = EncryptedIntegerField(verbose_name="Initial Waypoints in Route")
+    
     def __unicode__(self):
         return "Route #{} (Mission #{})".format(self.pk, self.mission.pk)
 

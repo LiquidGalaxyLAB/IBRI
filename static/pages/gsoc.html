@@ -77,7 +77,11 @@
 
     <body>
 
-
+        <div class="card-panel teal">
+            <span class="white-text">
+                Demo information: MissonId: <span id="demo_mid">Unestablished</span>
+            </span>
+        </div>
     <div id="mainCard" class="card" style="overflow: hidden;">
 
         {% if KMLDir == '' %}
@@ -87,6 +91,9 @@
         {% if WEATHER_API  == '' %}
                 <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the WEATHER_API in config panel</div>
         {% endif %}
+
+
+
 
         <div id="map"></div>
         <div style="position: absolute; right: 20px; margin-top: -25px;">
@@ -119,6 +126,7 @@
                 <div class="col s12 m3">
                     <input type="checkbox" class="filled-in" id="checkweatherbox" checked="checked" />
                     <label for="checkweatherbox">Enable Weather Check</label>
+
                 </div>
 
 
@@ -193,8 +201,8 @@
 
 
     <!-- DataTables -->
-    <script src="{% static 'dist/lib/js/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'dist/lib/js/dataTables.bootstrap.min.js' %}"></script>
+    <!--<script src="{% static 'dist/lib/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'dist/lib/js/dataTables.bootstrap.min.js' %}"></script>-->
 
 
   <script type="text/javascript" src="{% static 'js/distances.js' %}"></script>
@@ -539,6 +547,8 @@ $(document).ready(function(){
                     data = data[1];
                     datal = data.length;
 
+                    $("#demo_mid").html(mission);
+
                     for (i = 0; i < datal; i++) {
                         map.drawPolyline({
                             path: data[i],
@@ -672,9 +682,10 @@ $(document).ready(function(){
                     },
                     success: function(data) {
 
-                        map.removeMarkers();
+                        // TODO aqui
+                        //map.removeMarkers();
 
-                        setGrid(globalE);
+                        //setGrid(globalE);
                         data = JSON.parse(decrypt(data, key));
                         globalData = data;
 
@@ -682,13 +693,15 @@ $(document).ready(function(){
                         console.log("Mission ID: "+ missionId);
                         console.log("Data");
                         console.log("--------------------------------------------------");
-                        console.log(data);
+                        //console.log(data);
 
                         for (i = 0; i < data.length; i++) {
 
                             for (j = 0; j < data[i].length; j++) {
 
-                                if (data[i][j][4] != null) {
+                                if (data[i][j][4] != null) { //signalFound
+
+                                    console.log("XXXXXXXXXX ", i+","+j+" ----- "+data[i][j][0])
 
                                     icon = "{% static 'img/physical_demo_signal.png' %}"
 
@@ -697,10 +710,10 @@ $(document).ready(function(){
                                     }
 
                                     map.addMarker({
-                                        //lat: data[i][j][1],
-                                        lat: data[i][j][6],
-                                        //lng: data[i][j][2],
-                                        lng: data[i][j][7],
+                                        lat: data[i][j][1],
+                                        //lat: data[i][j][6],
+                                        lng: data[i][j][2],
+                                        //lng: data[i][j][7],
                                         icon: icon,
                                         infoWindow: {
                                             content: '<p>BEACON: ' + data[i][j][4] + '</p>'
@@ -726,8 +739,8 @@ $(document).ready(function(){
                                 }
 
                                 map.removeMarker(tmpMarker[i]);
-                                console.log("DATA: " + data[i][data[i].length - 1]);
-                                console.log(data[i]);
+                                //console.log("DATA: " + data[i][data[i].length - 1]);
+                                //console.log(data[i]);
                                 tmpMarker[i] = map.addMarker({
                                     //lat: data[i][data[i].length - 1][1],
                                     lat: data[i][data[i].length - 1][6],
@@ -744,7 +757,7 @@ $(document).ready(function(){
 
                     }
                 });
-            }, 6000);
+            }, 4000);
 
         }
 
