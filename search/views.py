@@ -44,7 +44,8 @@ def resumeMission(request, pk):
     return render(request, 'pages/resume.html', {
         'mission': mission,
         'insearch': mission.inSearch.all(),
-        'selected': ','.join(j)
+        'selected': ','.join(j),
+        'GAPI': settings.GAPI
     } )
 
 def getTracking(request):

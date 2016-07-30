@@ -4,10 +4,12 @@
     <head>
         <title>IBRI</title>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+        <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
         <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+
+
 
         <style type="text/css">
 
@@ -155,7 +157,8 @@
 
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key={{ GAPI }}"></script>
+
     <script type="text/javascript" src="{% static 'js/gmaps.js' %}"></script>
 
 
@@ -327,52 +330,6 @@ $(document).ready(function(){
         var globalE;
         var globalData;
 
-        /*function checkWeather(e) {
-
-            if ($("#startbutton").is(':hidden')) {
-                return 0;
-            }
-            globalE = e;
-
-            weatherMapApi = '{{ WEATHER_API|default:"INSERT_WEATHER_API_HERE" }}';
-            url = 'http://api.openweathermap.org/data/2.5/weather?units=metric&lat=' + e.latLng.lat() + '&lon=' + e.latLng.lng() + '&appid=' + weatherMapApi;
-            console.log(url);
-            $.ajax({
-                async: false,
-                type: "POST",
-                url: url,
-                dataType: "json",
-                success: function(response) {
-
-                    if(response.cod == '404'){
-                        alert(response.message);
-                        return 0;
-                    }
-
-                    console.log(response);
-                    console.log("Viento: " + response.wind.speed);
-                    console.log("LAT: " + e.latLng.lat() + ', ' + 'LNG: ' + e.latLng.lng());
-                    if (response.wind.speed >= 10) {
-                        alert("The climatology in that area is not favorable to flight");
-                        $("#climatologyContainer").removeClass('blue');
-                        $("#climatologyContainer").addClass('red');
-                        return false;
-                    }
-
-                    setGrid(e);
-
-                    $("#climatologyWind").html(response.wind.speed+" km/h");
-                    $("#climatologyDesc").html(response.weather[0].description);
-
-                },
-                error: function(response) {
-                    alert("Hubo un error al recuperar los datos de información meteorológica. ¿Se ha establecido WEATHER_API?");
-                    return false;
-                }
-
-            });
-
-        }*/
 
         function listToMatrix(list, elementsPerSubArray) {
             // http://stackoverflow.com/questions/4492385/
@@ -639,6 +596,6 @@ $(document).ready(function(){
     });
 
   </script>
-
+  
     </body>
   </html>

@@ -23,6 +23,10 @@ from utils.google import short_url
 import os
 
 @staff_member_required
+def viewMission(request, pk):
+    return render(request, 'pages/config/viewmission.html')
+
+@staff_member_required
 def config_area(request):
     return render(request, 'pages/config/config.html')
 
@@ -75,8 +79,6 @@ class CreateClient(SuccessMessageMixin, CreateView):
             gurl = short_url(googleUrl)
             instance.physicalCode = gurl
             instance.save()
-
-
 
 
 class ListClient(ListView):
@@ -132,7 +134,6 @@ class EditClient(SuccessMessageMixin, UpdateView):
                 googleUrl = os.path.dirname(IBRI_URL)+reverse('getclientdataweb', args=(self.kwargs['pk'], ))
                 gurl = short_url(googleUrl)
                 self.object.physicalCode = gurl
-            
-            self.object.save()
 
+            self.object.save()
             return super(EditClient, self).form_valid(form)

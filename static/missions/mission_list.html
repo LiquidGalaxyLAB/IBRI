@@ -26,8 +26,8 @@
                             {{ c.name }} {{ c.lastname }}<br />
                         {% endfor %}
                     </td>
-                    <td><i class="small material-icons">visibility</i></td>
-                    <td><i class="small material-icons">replay</i></td>
+                    <td><a href="{% url 'viewmission' m.id %}"><i class="small material-icons">visibility</i></a></td>
+                    <td><a href="{% url 'resumemission' m.id %}"><i class="small material-icons">replay</i></a></td>
                 </tr>
             {% empty %}
                 <td>No missions yet.</td>
