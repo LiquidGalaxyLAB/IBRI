@@ -73,6 +73,7 @@
 
         <div id="missionResults">
 
+        <img src="{% static 'img/IBRIlogo_mini.png' %}" />
         <h2>{{ section }}</h2>
 
             <div class="card">
@@ -429,7 +430,6 @@
                                     });
                                 }
 
-                                //console.log("Received from drone: "+data[i][j]);
                                 if (data[i][j][5] != "") {
 
                                     console.log("Entry");
@@ -437,12 +437,11 @@
                                     userElement = '<div class="col s12 m3">' +
                                     '<div class="card small">' +
                                     '<div class="card-image"> ' +
-                                    '<img src="data:image/png;base64,' + data[i][j][5] + '" /><span class="card-title">' + userName + '</span> ' +
+                                    '<img src="data:image/png;base64,' + data[i][j][5] + '" /><span class="card-title"></span> ' +
                                     '</div> <div class="card-content"> ' +
-                                    '<p>P.Latitude: '+data[i][j][1]+'</p> ' +
-                                    '<p>D.Latitude: '+data[i][j][6]+'</p> ' +
-                                    '<p>P.Longitude: '+data[i][j][2]+'</p> ' +
-                                    '<p>D.Longitude: '+data[i][j][7]+'</p> ' +
+                                    '<p>' + userName + '</p>' +
+                                    '<p>Latitude: '+data[i][j][6]+'</p> ' +
+                                    '<p>Longitude: '+data[i][j][7]+'</p> ' +
                                     '</div> </div></div>';
 
                                     {% if norepeat %}
@@ -453,17 +452,9 @@
 
                                 }
 
-                                // 6 lat 7 lng
-
-
-
                                 map.removeMarker(tmpMarker[i]);
-                                //console.log("DATA: " + data[i][data[i].length - 1]);
-                                //console.log(data[i]);
                                 tmpMarker[i] = map.addMarker({
-                                    //lat: data[i][data[i].length - 1][1],
                                     lat: data[i][data[i].length - 1][6],
-                                    //lng: data[i][data[i].length - 1][2],
                                     lng: data[i][data[i].length - 1][7],
                                     icon: "{% static 'img/drone32x32.png' %}"
                                 });
