@@ -34,7 +34,6 @@ def searchMap(request):
         'nodrones': len(drones)
     })
 
-
 def resumeMission(request, pk):
 
     mission = get_object_or_404(Mission, pk=pk)
@@ -149,11 +148,15 @@ def setDroneTracking(request):
         d = json.loads(JavaAESCipher(settings.SKEY).decrypt(request.POST['info']))
         print colored('+ Received From Drone: '+str(d), 'blue')
 
+        if d['missionId'] <= 0:
+            print colored('+ Error receiving drone information', 'red')
+            return HttpResponse("SystemFail")
+
         m = Mission.objects.get(pk=d['missionId'])
         r = Route.objects.filter(mission=m)
-        w = WayPoint.objects.filter(route=r)
+        w = WayPoint.objects.filter(route=r[d['droneId']-1])
 
-        if d['nearpoint'] >= 0:
+        if d['nearpoint'] >= 0 and d['nearpoint'] < r[d['droneId']-1].initialWp:
             w = w.filter(ref=d['nearpoint'])
             w.update(visited=True)
 
@@ -165,11 +168,12 @@ def setDroneTracking(request):
                 w.update(signalFound=c.pk)
 
         else:
-            if d['photo'] != "" or d['beacon'] != '':
+
+            if d['photo'] != '' or d['beacon'] != '':
 
                 c = Clients.objects.get(physicalCode=d['beacon'])
 
-                wp = WayPoint(route=w[0].route,
+                wp = WayPoint(route=Route.objects.get(pk=r[d['droneId']-1].id),
                               ref=(w.last().ref+1),
                               lat=d['latitude'],
                               lng=d['longitude'],
@@ -179,7 +183,7 @@ def setDroneTracking(request):
                 wp.save()
 
             else:
-                rid = Route.objects.get(pk=r)
+                rid = Route.objects.get(pk=r[d['droneId']-1].id)
                 rid.tmpLat = d['latitude']
                 rid.tmpLng = d['longitude']
                 rid.save()
@@ -303,7 +307,7 @@ def createRoute(request):
         from os import mkdir
         for r in route:
 
-            rm = Route(mission=m, drone=Drone.objects.all()[drone_secuencial], baseLat=base[0], baseLng=base[1])
+            rm = Route(mission=m, drone=Drone.objects.all()[drone_secuencial], baseLat=base[0], baseLng=base[1], initialWp=0)
             rm.save()
             tmpRoute = []
             tmpCounter = 0
@@ -328,6 +332,9 @@ def createRoute(request):
 
             tmpRoute.append(WayPoint(route=rm, lat=base[0], lng=base[1], ref=tmpCounter))
             kml.newpoint(name="Back to base", coords=[(base[1], base[0])])
+
+            rm.initialWp = len(tmpRoute)-2 # -2 for the last tmp counter and array 0 position
+            rm.save()
 
             WayPoint.objects.bulk_create(tmpRoute)
 

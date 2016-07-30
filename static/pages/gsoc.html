@@ -77,7 +77,11 @@
 
     <body>
 
-
+        <div class="card-panel teal">
+            <span class="white-text">
+                Demo information: MissonId: <span id="demo_mid">Unestablished</span>
+            </span>
+        </div>
     <div id="mainCard" class="card" style="overflow: hidden;">
 
         {% if KMLDir == '' %}
@@ -87,6 +91,9 @@
         {% if WEATHER_API  == '' %}
                 <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the WEATHER_API in config panel</div>
         {% endif %}
+
+
+
 
         <div id="map"></div>
         <div style="position: absolute; right: 20px; margin-top: -25px;">
@@ -102,19 +109,24 @@
 
             <div class="row">
 
-                <div class="range-field col s12 m4">
+                <div class="range-field col s12 m3">
 
                     <label>Number of Drones: <span id="nodrone_val">{% if nodrones > 0 %}1{% else %}0{% endif %}</span></label>
                     <input type="range" id="nodrone" min="{% if nodrones > 0 %}1{% else %}0{% endif %}" max="{% if nodrones > 0 %}{{ nodrones }}{% else %}0{% endif %}" value="{% if nodrones > 0 %}1{% else %}0{% endif %}" />
 
                 </div>
-                <div class="range-field col s12 m4">
+                <div class="range-field col s12 m3">
                     <label>Distance between points: <span id="distance_val">50</span>m</label>
                     <input type="range" id="distance" min="50" max="200" value="50" />
                 </div>
-                <div class="range-field col s12 m4">
+                <div class="range-field col s12 m3">
                     <label>Grid Side Size: <span id="gridsize_val">5</span></label>
                     <input type="range" id="gridSize" min="3" max="20" value="5" />
+                </div>
+                <div class="col s12 m3">
+                    <input type="checkbox" class="filled-in" id="checkweatherbox" checked="checked" />
+                    <label for="checkweatherbox">Enable Weather Check</label>
+
                 </div>
 
 
@@ -124,7 +136,7 @@
 
         </div>
 
-        <div class="card-content row" id="resultPanel">
+        <div class="card-content row" id="resultPanel" style="overflow: auto;">
 
             <div id="resultUserList" style="background-color:pink;" class=""></div>
 
@@ -189,8 +201,8 @@
 
 
     <!-- DataTables -->
-    <script src="{% static 'dist/lib/js/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'dist/lib/js/dataTables.bootstrap.min.js' %}"></script>
+    <!--<script src="{% static 'dist/lib/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'dist/lib/js/dataTables.bootstrap.min.js' %}"></script>-->
 
 
   <script type="text/javascript" src="{% static 'js/distances.js' %}"></script>
@@ -535,6 +547,8 @@ $(document).ready(function(){
                     data = data[1];
                     datal = data.length;
 
+                    $("#demo_mid").html(mission);
+
                     for (i = 0; i < datal; i++) {
                         map.drawPolyline({
                             path: data[i],
@@ -596,7 +610,7 @@ $(document).ready(function(){
                     console.log(response);
                     console.log("Viento: " + response.wind.speed);
                     console.log("LAT: " + e.latLng.lat() + ', ' + 'LNG: ' + e.latLng.lng());
-                    if (response.wind.speed >= 10) {
+                    if (response.wind.speed >= 10 && $("#checkweatherbox").is(":checked") ){
                         alert("The climatology in that area is not favorable to flight");
                         $("#climatologyContainer").removeClass('blue');
                         $("#climatologyContainer").addClass('red');
@@ -668,9 +682,10 @@ $(document).ready(function(){
                     },
                     success: function(data) {
 
-                        map.removeMarkers();
+                        // TODO aqui
+                        //map.removeMarkers();
 
-                        setGrid(globalE);
+                        //setGrid(globalE);
                         data = JSON.parse(decrypt(data, key));
                         globalData = data;
 
@@ -678,13 +693,15 @@ $(document).ready(function(){
                         console.log("Mission ID: "+ missionId);
                         console.log("Data");
                         console.log("--------------------------------------------------");
-                        console.log(data);
+                        //console.log(data);
 
                         for (i = 0; i < data.length; i++) {
 
                             for (j = 0; j < data[i].length; j++) {
 
-                                if (data[i][j][4] != null) {
+                                if (data[i][j][4] != null) { //signalFound
+
+                                    console.log("XXXXXXXXXX ", i+","+j+" ----- "+data[i][j][0])
 
                                     icon = "{% static 'img/physical_demo_signal.png' %}"
 
@@ -694,7 +711,9 @@ $(document).ready(function(){
 
                                     map.addMarker({
                                         lat: data[i][j][1],
+                                        //lat: data[i][j][6],
                                         lng: data[i][j][2],
+                                        //lng: data[i][j][7],
                                         icon: icon,
                                         infoWindow: {
                                             content: '<p>BEACON: ' + data[i][j][4] + '</p>'
@@ -715,13 +734,13 @@ $(document).ready(function(){
                                     '<p>D.Longitude: '+data[i][j][7]+'</p> ' +
                                     '</div> </div></div>';
 
-                                    $("#photo_" + data[i][j][4]).append(userElement);
+                                    $("#photo_" + data[i][j][4]).html(userElement);
 
                                 }
 
                                 map.removeMarker(tmpMarker[i]);
-                                console.log("DATA: " + data[i][data[i].length - 1]);
-                                console.log(data[i]);
+                                //console.log("DATA: " + data[i][data[i].length - 1]);
+                                //console.log(data[i]);
                                 tmpMarker[i] = map.addMarker({
                                     //lat: data[i][data[i].length - 1][1],
                                     lat: data[i][data[i].length - 1][6],
@@ -738,7 +757,7 @@ $(document).ready(function(){
 
                     }
                 });
-            }, 6000);
+            }, 4000);
 
         }
 
