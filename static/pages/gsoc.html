@@ -575,7 +575,7 @@
             globalE = e;
 
             weatherMapApi = '{{ WEATHER_API|default:"INSERT_WEATHER_API_HERE" }}';
-            url = '//api.openweathermap.org/data/2.5/weather?units=metric&lat=' + e.latLng.lat() + '&lon=' + e.latLng.lng() + '&appid=' + weatherMapApi;
+            url = 'http://api.openweathermap.org/data/2.5/weather?units=metric&lat=' + e.latLng.lat() + '&lon=' + e.latLng.lng() + '&appid=' + weatherMapApi;
             console.log(url);
             $.ajax({
                 async: false,
