@@ -17,7 +17,7 @@
 
             #mainCard
             {
-                height: 95vh;
+                height: 82vh;
                 width: 98vw;
                 margin: auto;
                 margin-top: 2vh;
@@ -83,7 +83,7 @@
 
         <div class="card-panel teal" style="width: 100%; display: inline-flex; justify-content: space-between;">
             <span class="white-text">
-                Demo information: MissonId: <span id="demo_mid">Unestablished</span>
+                Information: MissonId: <span id="demo_mid">Unestablished</span>
             </span>
 
             <div class="circle" id="detectionCircle" style="background-color: red; width: 30px; height: 30px;"></div>
@@ -212,9 +212,6 @@
 
     $(document).ready(function(){
 
-        var lastDetection = 0;
-        var lastLength = 0;
-        var tmpDetection = 0;
 
 
 
@@ -340,9 +337,9 @@
             tmpMarker = [];
             posArrays = [];
             clearInterval(response);
-            $("#startbutton").prop("disabled", false);
+            //$("#startbutton").prop("disabled", false);
             $("#userList").fadeIn();
-            $("#map").css('height', '80%');
+            $("#map").css('height', '60%');
             $("#settings").slideToggle();
             $("#resultPanel").slideToggle();
             $('#cleanButton').toggle('fast', function(){
@@ -432,7 +429,7 @@
 
 
 
-            $(this).attr('disabled', 'true');
+            //$(this).attr('disabled', 'true');
 
             $("#userList").fadeOut();
             $("#resultPanel").fadeIn();
@@ -687,6 +684,10 @@
             return array.indexOf(value) > -1;
         }
 
+
+        //var lastDetection = 0;
+        var lastLength = 0;
+        var tmpDetection = 0;
 
         function waitForResponse(missionId) {
 
