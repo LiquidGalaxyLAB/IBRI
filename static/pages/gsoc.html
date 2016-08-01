@@ -608,9 +608,12 @@
                     console.log("Wind: " + response.wind.speed);
                     console.log("LAT: " + e.latLng.lat() + ', ' + 'LNG: ' + e.latLng.lng());
                     if (response.wind.speed >= 10 && $("#checkweatherbox").is(":checked") ){
-                        alert("The climatology in that area is not favorable to flight");
-                        $("#climatologyContainer").removeClass('blue');
-                        $("#climatologyContainer").addClass('red');
+                        alert("The climatology in that area is not favorable to flight (Wind over 10kmph)");
+                        return false;
+                    }
+
+                    if (response.main.humidity >= 95 && $("#checkweatherbox").is(":checked") ){
+                        alert("The climatology in that area is not favorable to flight (Humidity over 95%)");
                         return false;
                     }
 

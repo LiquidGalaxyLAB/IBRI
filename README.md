@@ -27,7 +27,7 @@ Getting Started
 - pip install -r requirements.txt
 - echo 'KML_DIR="**directory where kml files will be saved**"' > local_settings.py;
 - echo 'DEBUG=True' >> local_settings.py; # For testing purpose
-- echo 'WMAPAPI="**insert open weather map api here**"' >> local_settings.py;
+- echo 'WMAPAPI="**insert open weather map api here**"' >> local_settings.py; #http://openweathermap.org/appid#get
 - echo 'GAPI="**insert google api here**"' >> local_settings.py;
 - echo 'SKEY="**insert secret preshared key here (LHnhUqmgS1KWh4 for example)**" >> local_settings.py'
 - echo 'IBRI_URL="https://your.ibri.url/" >> local_settings.py # must include HTTPS protocol
@@ -41,7 +41,10 @@ Now the next step is create a super user using:
 
 - ./manage.py createsuperuser # and follow the prompt instructions (your password should be strong)
 
-After creating the administrator account you can open the administration panel (usually located on http://localhost:8000/admin/ ) and login in the system using the superuser account. Then, create some clients and drones. As preshared_key in drones insert ``clave_droneX'' where X is the drone id in the same order as creating (1, 2, 3..). Also, before open the client panel (http://localhost:8000/) you have to insert the **WEATHER_API** in config model (how to obtain weather api http://openweathermap.org/appid#get). 
+After creating the administrator account you can open the administration panel (usually located on http://localhost:8000/admin/ ) and login in the system
+using the superuser account. Then, create some clients and drones (at least one). 
+
+When a user is registered a shortened URL is assigned to the user profile. This is the URL that you've to set into the physical web beacon.
 
 Linked Project:
 https://github.com/moiseslodeiro/IBRI_DRONE/tree/master
