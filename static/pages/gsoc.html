@@ -81,6 +81,16 @@
 
     <body>
 
+        <div class="card-panel teal" style="width: 100%; display: inline-flex; justify-content: space-between;">
+            <span class="white-text">
+                Demo information: MissonId: <span id="demo_mid">Unestablished</span>
+            </span>
+
+            <div class="circle" id="detectionCircle" style="background-color: red; width: 30px; height: 30px;"></div>
+
+
+        </div>
+
 
     <div id="mainCard" class="card" style="overflow: hidden;">
 
@@ -201,6 +211,10 @@
     <script type="text/javascript">
 
     $(document).ready(function(){
+
+        var lastDetection = 0;
+        var lastLength = 0;
+        var tmpDetection = 0;
 
 
 
@@ -531,6 +545,9 @@
                     data = data[1];
                     datal = data.length;
 
+                    $("#demo_mid").html(mission);
+
+
                     for (i = 0; i < datal; i++) {
                         map.drawPolyline({
                             path: data[i],
@@ -738,6 +755,18 @@
                                     $("#photo_" + data[i][j][4]).html(userElement);
 
                                 }
+
+                             // For demo purpose
+                            if(data[i][data[i].length-1][4] != null && data[i].length > lastLength){
+                                lastLength = data[i].length;
+                                tmpDetection = 6;
+                                $("#detectionCircle").css('background-color', 'lightgreen');
+                            }else{
+                                if(tmpDetection == 0)
+                                    $("#detectionCircle").css('background-color', 'red');
+                                else
+                                    tmpDetection--;
+                            }
 
                                 map.removeMarker(tmpMarker[i]);
                                 //console.log("DATA: " + data[i][data[i].length - 1]);
