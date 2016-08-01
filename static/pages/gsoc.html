@@ -567,6 +567,10 @@
         var globalE;
         var globalData;
 
+        function generete_weatherUrl(lat, lng){
+            return "{% url 'getWeather' lat=1.1 lng=2.2  %}".replace("1.1", lat).replace("2.2", lng);
+        }
+
         function checkWeather(e) {
 
             if ($("#startbutton").is(':hidden')) {
@@ -575,22 +579,33 @@
             globalE = e;
 
             weatherMapApi = '{{ WEATHER_API|default:"INSERT_WEATHER_API_HERE" }}';
-            url = 'http://api.openweathermap.org/data/2.5/weather?units=metric&lat=' + e.latLng.lat() + '&lon=' + e.latLng.lng() + '&appid=' + weatherMapApi;
-            console.log(url);
+            //url = 'http://api.openweathermap.org/data/2.5/weather?units=metric&lat=' + e.latLng.lat() + '&lon=' + e.latLng.lng() + '&appid=' + weatherMapApi;
+            //console.log(url);
+            url = generete_weatherUrl(e.latLng.lat(), e.latLng.lng());
             $.ajax({
                 async: false,
                 type: "POST",
                 url: url,
-                dataType: "json",
                 success: function(response) {
 
+                    response = JSON.parse(response);
+
                     if(response.cod == '404'){
-                        alert(response.message);
+                        alert("Cannot connect to the openweather map api");
+                        console.log(response.message);
                         return 0;
                     }
 
-                    console.log(response);
-                    console.log("Viento: " + response.wind.speed);
+                    if(response.cod == '401'){
+                        alert("API Key error");
+                        console.log(response.message);
+                        return 0;
+                    }
+
+
+
+                    console.log("Raw Response: "+JSON.stringify(response));
+                    console.log("Wind: " + response.wind.speed);
                     console.log("LAT: " + e.latLng.lat() + ', ' + 'LNG: ' + e.latLng.lng());
                     if (response.wind.speed >= 10 && $("#checkweatherbox").is(":checked") ){
                         alert("The climatology in that area is not favorable to flight");
@@ -606,6 +621,7 @@
 
                 },
                 error: function(response) {
+                    console.log("Weather Error: "+response);
                     alert("Error on getting weather");
                     return false;
                 }
