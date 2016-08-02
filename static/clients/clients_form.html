@@ -6,12 +6,15 @@
 
 
 {% block maincontent %}
+
     <form action="" method="post">{% csrf_token %}
 
         {% if messages %}
             {% for m in messages %}
                 <div class="card-panel teal accent-3 valign-wrapper"><i class="small material-icons" style="margin-right: 10px;">thumb_up</i> {{ m }}</div>
             {% endfor %}
+        {% else %}
+            <div class="card-panel blue accent-3 valign-wrapper" style="color: white; margin-bottom: 15px;"><i class="small material-icons" style="margin-right: 10px; color: white;">info</i> Fill the data and press submit button to create or edit a client</div>
         {% endif %}
 
         {% if form.errors %}
@@ -19,8 +22,8 @@
         {% endif %}
         {{ form.as_p }}
         <p>
-            <input type="checkbox" id="id_insearch" name="insearch" {% if client.insearch %}checked{% endif %} />
-            <label for="id_insearch">In Search</label>
+            <input type="checkbox" id="cid_insearch" name="c_insearch" {% if clients.insearch %}checked{% endif %} />
+            <label for="cid_insearch">In Search</label>
         </p>
         <p>
             <button class="btn waves-effect waves-light" type="submit" name="action">Submit
@@ -31,4 +34,5 @@
 
 
     </form>
+
 {% endblock %}

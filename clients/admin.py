@@ -14,7 +14,7 @@ class ClientsAdmin(admin.ModelAdmin):
             'fields': ('name',
                        'lastname',
                        'identifier',
-                       'physicalCode',
+                       'physicalCode', # now the physical code is saved in URL mode using the id
                        'mobileNumber',
                        'email',
                        'birthDate',
@@ -31,12 +31,11 @@ class ClientsAdmin(admin.ModelAdmin):
                        'alergies',
                        'diseases',
                        'bloodType',
-                       'contacts',
                        ),
         }),
     )
 
-    filter_horizontal = ('contacts',)
+    #filter_horizontal = ('contacts',)
     #search_fields = ['id']
 
 

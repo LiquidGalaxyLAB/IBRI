@@ -1,27 +1,53 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import json
 from math import sqrt
 
-from config.models import Config
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.http.response import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from simplekml import Kml
 
 from search.models import *
-from ibri.settings import STATICFILES_DIRS
-from utils.aes import AESCipher
+from ibri.settings import *
+from utils.aes import AESCipher, JavaAESCipher
 from utils.tsp import *
 
+import codecs
+import sys
+UTF8Writer = codecs.getwriter('utf8')
+sys.stdout = UTF8Writer(sys.stdout)
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='login/')
 def searchMap(request):
-    clients = Clients.objects.all()
-    weather_api = Config.objects.get(pk='WEATHER_API')
-    return render(request, 'gsoc.html', {'client': clients, 'WEATHER_API': weather_api.value, 'KMLDir': settings.KML_DIR})
+    clients = Clients.objects.filter(insearch=True)
 
+    drones = Drone.objects.all()
+    return render(request, 'gsoc.html', {
+        'client': clients,
+        'WEATHER_API': settings.WMAPAPI,
+        'KMLDir': settings.KML_DIR,
+        'DRONES': drones,
+        'nodrones': len(drones)
+    })
+
+def resumeMission(request, pk):
+
+    mission = get_object_or_404(Mission, pk=pk)
+    j = []
+    for m in mission.inSearch.all():
+        j.append(str(m.id))
+
+    return render(request, 'pages/resume.html', {
+        'mission': mission,
+        'section': 'Resume Mission',
+        'insearch': mission.inSearch.all(),
+        'selected': ','.join(j),
+        'GAPI': settings.GAPI
+    } )
 
 def getTracking(request):
 
@@ -43,19 +69,21 @@ def getTracking(request):
             waypoints = WayPoint.objects.filter(route=rid)
             waypoints = filter(lambda w: w.visited is True, waypoints)
 
+            if waypoints == []:
+                droneTracking[i].append(["", rid.tmpLat, rid.tmpLng, None, None, None, rid.tmpLat, rid.tmpLng])
+
             for wp in waypoints:
 
                 if wp.signalFound in beacons:
                     u = missionId.inSearch.get(pk=wp.signalFound)
-                    print(u"[ Beacon found ] - {} {} - {} - {}".format( u.name, u.lastname, u.identifier, u.physicalCode))
-                    print("[#{} - {}, {}]".format(wp.ref, wp.lat, wp.lng))
+                    print(u"[ Beacon found ] - {} {} - {} - {}".format(u.name, u.lastname, u.identifier, u.physicalCode))
+                    print(u"[#{} - {}, {}]".format(wp.ref, wp.lat, wp.lng))
 
                 if wp.photo:
-                    droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound, wp.photo])
+                    droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound, wp.photo, rid.tmpLat, rid.tmpLng])
                 else:
-                    droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound])
+                    droneTracking[i].append([wp.ref, wp.lat, wp.lng, wp.visited, wp.signalFound, "", rid.tmpLat, rid.tmpLng])
 
-            print(droneTracking)
             i += 1
 
         preshared = b'preshared_key012'
@@ -76,8 +104,6 @@ def setTracking(request):
         if d['scan'] != None:
             wp.signalFound = int(d['scan'])
             print("[ Beacon Found ] - Checking #" + str(d['scan']))
-        #else:
-        #    print "----" + str(d['scan'])
 
         wp.visited = True
         wp.photo = d['photo']
@@ -87,7 +113,86 @@ def setTracking(request):
     else:
         raise Http404("Error")
 
+@csrf_exempt
+def getDroneMissionData(request, droneId):
 
+    if(request.method == 'GET'):
+
+        droneId = int(droneId)
+
+        M = Mission.objects.last()
+        routes = Route.objects.filter(mission=M)
+        wp = WayPoint.objects.filter(route=routes[droneId-1])
+        missionId = M.pk
+
+        insearch = []
+        positions = []
+
+        M = M.inSearch.all()
+
+        for p in M:
+            insearch.append(json.dumps({'physicalCode': p.physicalCode}))
+
+        for p in wp:
+            positions.append(json.dumps({'lat': p.lat, 'lng': p.lng}))
+
+        return HttpResponse(JavaAESCipher(settings.SKEY).encrypt(json.dumps({'mid': missionId, 'insearch': insearch, 'positions': positions})))
+
+
+    else:
+        raise Http404("Error")
+
+@csrf_exempt
+def setDroneTracking(request):
+
+    if(request.method == 'POST'):
+
+        d = json.loads(JavaAESCipher(settings.SKEY).decrypt(request.POST['info']))
+        print colored('+ Received From Drone: '+str(d), 'blue')
+
+        if d['missionId'] <= 0:
+            print colored('+ Error receiving drone information', 'red')
+            return HttpResponse("SystemFail")
+
+        m = Mission.objects.get(pk=d['missionId'])
+        r = Route.objects.filter(mission=m)
+        w = WayPoint.objects.filter(route=r[d['droneId']-1])
+
+        if d['nearpoint'] >= 0 and d['nearpoint'] < r[d['droneId']-1].initialWp:
+            w = w.filter(ref=d['nearpoint'])
+            w.update(visited=True)
+
+            if d['photo'] != "":
+                w.update(photo=d['photo'])
+
+            if d['beacon'] != "":
+                c = Clients.objects.get(physicalCode=d['beacon'])
+                w.update(signalFound=c.pk)
+
+        else:
+
+            if d['photo'] != '' or d['beacon'] != '':
+
+                c = Clients.objects.get(physicalCode=d['beacon'])
+
+                wp = WayPoint(route=Route.objects.get(pk=r[d['droneId']-1].id),
+                              ref=(w.last().ref+1),
+                              lat=d['latitude'],
+                              lng=d['longitude'],
+                              visited=True,
+                              signalFound=c.pk,
+                              photo=d['photo'])
+                wp.save()
+
+            else:
+                rid = Route.objects.get(pk=r[d['droneId']-1].id)
+                rid.tmpLat = d['latitude']
+                rid.tmpLng = d['longitude']
+                rid.save()
+
+
+
+        return HttpResponse("OK")
 
 def createRoute(request):
 
@@ -185,13 +290,26 @@ def createRoute(request):
             print("\033[91m Oops!  No drones found un database")
             return HttpResponse('configerror')
 
-        # TODO quitar la variable drone_secuencial
+        colorArray =  [
+            'ff00008b', #darkred
+            'ff8b0000', #darkblue
+            'ff006400', #darkgreen
+            'ff008cff', #darkorange
+            'ff9314ff', #darkpink
+            'ffff0000', #blue
+            'ff2fffad', #greenyellow
+            'ff5c5ccd', #indianred
+            'ffcbc0ff', #pink
+            'ffe16941', #royalblue
+            'ff00ffff', #yellow
+        ];
+
+
         drone_secuencial = 0
         from os import mkdir
         for r in route:
 
-            # TODO cambiar para que la elección del dron la haga el usuario y no sea secuencial
-            rm = Route(mission=m, drone=Drone.objects.all()[drone_secuencial], baseLat=base[0], baseLng=base[1])
+            rm = Route(mission=m, drone=Drone.objects.all()[drone_secuencial], baseLat=base[0], baseLng=base[1], initialWp=0)
             rm.save()
             tmpRoute = []
             tmpCounter = 0
@@ -201,19 +319,24 @@ def createRoute(request):
 
             kml.newpoint(name="Base", coords=[(base[1], base[0])])
 
+            pnt = kml.newlinestring(name='Route {}'.format(tmpCounter))
+            coords = []
+
             for wp in r:
 
-                pnt = kml.newpoint(name='Point {}'.format(tmpCounter))
-                pnt.coords = [(wp[1], wp[0])]
-
-                if settings.KML_ICON != '':
-                    pnt.style.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png'
-
+                coords.append((wp[1], wp[0]))
                 tmpRoute.append(WayPoint(route=rm, lat=wp[0], lng=wp[1], ref=tmpCounter))
                 tmpCounter += 1
 
+            pnt.coords = coords
+            pnt.style.linestyle.width = 6
+            pnt.style.linestyle.color = colorArray[drone_secuencial % len(colorArray)]
+
             tmpRoute.append(WayPoint(route=rm, lat=base[0], lng=base[1], ref=tmpCounter))
             kml.newpoint(name="Back to base", coords=[(base[1], base[0])])
+
+            rm.initialWp = len(tmpRoute)-2 # -2 for the last tmp counter and array 0 position
+            rm.save()
 
             WayPoint.objects.bulk_create(tmpRoute)
 
@@ -230,3 +353,4 @@ def createRoute(request):
 
         preshared = b'preshared_key012'
         return HttpResponse(AESCipher(preshared).encrypt(json.dumps([m.pk, route])))
+
