@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 
 template = """#IBRI Local Config
 STATIC_ROOT = '{}'
