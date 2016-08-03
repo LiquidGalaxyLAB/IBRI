@@ -13,14 +13,14 @@ Login as root in a terminal and execute this:
 - apt-get install git -y
 - apt-get install python-dev gcc -y
 
-Getting Started (Auto install)
+Getting Started (Auto install) (no root)
 - Go to where you want to install the IBRI application
 - virtualenv ENV
 - source ENV/bin/activate
 - pip install -U pip
 - python installer.py and follow the prompt
 
-Getting Started (Manually installing)
+Getting Started (Manually installing) (no root)
 -------------
 
 **Copy and paste in a console/terminal (no root):**
