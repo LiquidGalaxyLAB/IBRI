@@ -119,15 +119,22 @@
 
             <div class="row">
 
+
                 <div class="range-field col s12 m3">
 
                     <label>Number of Drones: <span id="nodrone_val">{% if nodrones > 0 %}1{% else %}0{% endif %}</span></label>
                     <input type="range" id="nodrone" min="{% if nodrones > 0 %}1{% else %}0{% endif %}" max="{% if nodrones > 0 %}{{ nodrones }}{% else %}0{% endif %}" value="{% if nodrones > 0 %}1{% else %}0{% endif %}" />
 
                 </div>
+                
+                <div class="range-field col s12 m3">
+                    <label>Flight altitude: <span id="altitude_val">20</span></label>
+                    <input type="range" id="altitude" min="20" max="100" value="20" />
+                </div>
+
                 <div class="range-field col s12 m3">
                     <label>Distance between points: <span id="distance_val">50</span>m</label>
-                    <input type="range" id="distance" min="50" max="200" value="50" />
+                    <input type="range" id="distance" min="20" max="200" value="50" />
                 </div>
                 <div class="range-field col s12 m3">
                     <label>Grid Side Size: <span id="gridsize_val">5</span></label>
@@ -217,6 +224,10 @@
 
     $("#gridSize").change(function(){
         $("#gridsize_val").html(this.value);
+    });
+
+    $("#altitude").change(function(){
+        $("#altitude_val").html(this.value);
     });
 
     $("#nodrone").change(function(){
