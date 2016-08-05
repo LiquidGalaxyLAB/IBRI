@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from django.http.response import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-from simplekml import Kml
+from simplekml import Kml, AltitudeMode, GxAltitudeMode
 
 from search.models import *
 from ibri.settings import *
@@ -326,13 +326,22 @@ def createRoute(request):
 
             for wp in r:
 
-                coords.append((wp[1], wp[0]))
+                coords.append((wp[1], wp[0], altitude))
                 tmpRoute.append(WayPoint(route=rm, lat=wp[0], lng=wp[1], ref=tmpCounter))
                 tmpCounter += 1
 
             pnt.coords = coords
             pnt.style.linestyle.width = 6
             pnt.style.linestyle.color = colorArray[drone_secuencial % len(colorArray)]
+
+            pnt.altitudemode = AltitudeMode.relativetoground
+            pnt.lookat.gxaltitudemode = GxAltitudeMode.relativetoseafloor
+            pnt.lookat.latitude = coords[0][0]
+            pnt.lookat.longitude = coords[0][1]
+            pnt.lookat.range = 122
+            pnt.lookat.heading = 0.063
+            pnt.lookat.tilt = 0
+
 
             tmpRoute.append(WayPoint(route=rm, lat=base[0], lng=base[1], ref=tmpCounter))
             kml.newpoint(name="Back to base", coords=[(base[1], base[0])])
