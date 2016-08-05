@@ -3,6 +3,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.decorators.csrf import csrf_exempt
 
+
 import config.urls
 from search.views import searchMap, createRoute, getTracking, setTracking, setDroneTracking, getDroneMissionData
 import clients.urls
@@ -13,7 +14,7 @@ from utils.weatherApi import getWeather
 
 urlpatterns = [
 	url(r'login/', ulogin, name="login"),
-    url(r'^logout/', logout, {'next_page': '/'}, name='ulogout'),
+    url(r'^ulogout/', logout, {'next_page': '/'}, name='ulogout'),
     url(r'^u/', include(admin.site.urls)),
     url(r'^admin/', include(config.urls)),
     url(r'^p/', include(clients.urls)),
