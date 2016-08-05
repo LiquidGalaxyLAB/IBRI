@@ -204,6 +204,8 @@ def createRoute(request):
         coords = json.loads(dec['wayPoints'])
         nearPoint = json.loads(dec['nearPoint'])
         userPK = json.loads(dec['insearch'])
+        altitude = json.loads(dec['altitude'])
+
 
         nAreas = len(coords)
         totalElements = 0

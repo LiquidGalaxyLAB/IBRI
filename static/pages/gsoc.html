@@ -476,7 +476,7 @@
 
             console.log(dispersion);
 
-            //----------------------------------------------------------------------------------------------------------
+            //----------------------------------------------------------------------------
 
             drone = 0;
             x = 0;
@@ -534,7 +534,8 @@
                         nearPoint: JSON.stringify(nearToBase),
                         distance: $("#distance").val(),
                         wayPoints: JSON.stringify(posArrays),
-                        base: JSON.stringify(baseCoords)
+                        base: JSON.stringify(baseCoords),
+                        altitude: $("#altitude").val(),
                     }), key)
 
 
