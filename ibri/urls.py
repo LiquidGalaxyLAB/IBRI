@@ -13,7 +13,7 @@ from utils.weatherApi import getWeather
 
 urlpatterns = [
 	url(r'login/', ulogin, name="login"),
-    url(r'^logout/$', logout, {'next_page': '/'}),
+    url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),
     url(r'^u/', include(admin.site.urls)),
     url(r'^admin/', include(config.urls)),
     url(r'^p/', include(clients.urls)),

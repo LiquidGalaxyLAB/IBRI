@@ -81,13 +81,12 @@
 
     <body>
 
-        <div class="card-panel teal" style="width: 100%; display: inline-flex; justify-content: space-between;">
+        <div class="card-panel teal" style="margin-top: 0px; width: 100%; display: inline-flex; justify-content: space-between;">
             <span class="white-text">
                 Information: MissonId: <span id="demo_mid">Unestablished</span>
             </span>
 
             <div class="circle" id="detectionCircle" style="background-color: red; width: 30px; height: 30px;"></div>
-
 
         </div>
 
@@ -129,12 +128,12 @@
                 
                 <div class="range-field col s12 m3">
                     <label>Flight altitude: <span id="altitude_val">20</span></label>
-                    <input type="range" id="altitude" min="20" max="100" value="20" />
+                    <input type="range"  id="altitude" step="10" min="20" max="70" value="20" />
                 </div>
 
                 <div class="range-field col s12 m3">
                     <label>Distance between points: <span id="distance_val">50</span>m</label>
-                    <input type="range" id="distance" min="20" max="200" value="50" />
+                    <input type="range" step="10" id="distance" min="20" max="200" value="50" />
                 </div>
                 <div class="range-field col s12 m3">
                     <label>Grid Side Size: <span id="gridsize_val">5</span></label>
@@ -645,8 +644,11 @@
 
                     setGrid(e);
 
-                    $("#climatologyWind").html(response.wind.speed+" km/h");
-                    $("#climatologyDesc").html(response.weather[0].description);
+                    $("#climatologyWind").html("Wind: "+response.wind.speed+" km/h");
+                    $("#climatologyDesc").html(" - "+response.weather[0].main+" - "+response.main.humidity+"% humidity");
+
+
+
 
                 },
                 error: function(response) {
