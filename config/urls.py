@@ -9,6 +9,7 @@ urlpatterns = [
    url(r'resume/(?P<pk>\d+)/$', staff_member_required(resumeMission), name='resumemission'),
    url(r'view/(?P<pk>\d+)/$', staff_member_required(viewMission), name='viewmission'),
    url(r'mission/list/', staff_member_required(missionList), name='missionlist'),
+   url(r'mission/delete/(?P<pk>\d+)/$', staff_member_required(MissionDelete.as_view()), name='deletemission'),
    url(r'client/add/$', staff_member_required(CreateClient.as_view()), name='createclient'),
    url(r'client/list/$', staff_member_required(ListClient.as_view()), name='listclients'),
    url(r'client/delete/(?P<pk>\d+)/$', staff_member_required(ClientDelete.as_view()), name='deleteclient'),

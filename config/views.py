@@ -48,6 +48,12 @@ def missionList(request):
         'missionlist': Mission.objects.all()
     })
 
+class MissionDelete(DeleteView):
+    template_name = 'missions/delete.html'
+    model = Mission
+    success_url = reverse_lazy('missionlist')
+
+
 
 class CreateClient(SuccessMessageMixin, CreateView):
 
