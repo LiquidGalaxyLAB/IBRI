@@ -1,0 +1,19 @@
+{% extends 'adminbase.html' %}
+
+{% block title %}
+    Delete Mission
+{% endblock %}
+
+{% block maincontent %}
+
+<form method="post" class="right-align">{% csrf_token %}
+
+    <div class="card-panel red accent-3 valign-wrapper" style="color: white; margin-bottom: 15px;"><i class="small material-icons" style="margin-right: 10px; color: white;">warning</i> Mission with id #{{ object.id }} will be DELETED. To confirm press the submit button.</div>
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">delete</i>
+    </button>
+
+</form>
+
+{% endblock %}
