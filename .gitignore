@@ -5,7 +5,8 @@ static/kml/*
 .idea/
 
 # AES256 Keys
-fieldkeys/*
+fieldkeys/1
+fieldkeys/meta
 
 # Database
 db.sqlite3
