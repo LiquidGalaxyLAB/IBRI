@@ -10,7 +10,7 @@ def short_url(url):
     params = json.dumps({'longUrl': url})
     
     try:
-    	response = requests.post(post_url,params,headers={'Content-Type': 'application/json'})
+    	response = requests.post(post_url, params, headers={'Content-Type': 'application/json'})
     except ConnectionError as e:
     	print 'Request Error: '+str(e)
     	raise

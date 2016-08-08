@@ -68,22 +68,6 @@
             <a class="page-title">{% block title %}{% endblock %}</a>
           </div>
 
-          <div style="display: inline-flex; align-items: center;">
-                {% if request.is_secure %}
-                    <span style="display: inline-flex; align-self: center; justify-content: center; padding-top: 3px;">
-                        <i class="material-icons" style="color: green;">lock_outline</i>
-                    </span>
-                    <span style="margin-left: 10px; color: white;">HTTPS</span>
-                {% else %}
-                    <span style="display: inline-flex; align-self: center; justify-content: center; padding-top: 3px;">
-                        <i class="material-icons" style="color: white;">lock_open</i>
-                    </span>
-                    <span style="margin-left: 10px; color: white;">HTTP</span>
-                {% endif %}
-            </div>
-
-
-
         </div>
 
 
@@ -135,8 +119,8 @@
           </div>
 </main>
 
-<footer class="page-footer pink darken-4">
-<div class="page-footer pink darken-4">
+<footer class="page-footer pink darken-4" >
+<div class="page-footer pink darken-4" >
 
           <div class="container">
             <div class="row">
@@ -150,6 +134,21 @@
                   <li><a class="grey-text text-lighten-3" href="https://summerofcode.withgoogle.com/dashboard/project/6670293313519616/overview/">Project overview</a></li>
                 </ul>
               </div>
+
+              <div class="col l4 s12">
+                {% if request.is_secure %}
+
+                    <a class="waves-effect waves-light btn-large tooltip " data-position="top" data-tooltip="You are using a secure connection"><i class="material-icons left" style="line-height: inherit">lock_outline</i> HTTPS</a>
+
+                    <!--<span style="display: inline-flex; align-self: center; justify-content: center; padding-top: 3px;">
+                        <i class="material-icons" style="color: green;">lock_outline</i>
+                    </span>
+                    <span style="margin-left: 10px; color: white;">HTTPS</span>-->
+                {% else %}
+                    <a class="waves-effect waves-light btn-large tooltip red" data-position="top" data-tooltip="You are using a INSECURE connection"><i class="material-icons left" style="line-height: inherit">lock_open</i> HTTP</a>
+                {% endif %}
+              </div>
+
             </div>
           </div>
 
@@ -168,6 +167,7 @@
             $(document).ready(function() {
                 $(".button-collapse").sideNav();
                 $('select').material_select();
+                $('.tooltip').tooltip({delay: 50});
             });
         </script>
 
