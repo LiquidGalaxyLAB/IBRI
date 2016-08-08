@@ -5,6 +5,7 @@ from search.models import Mission
 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
@@ -67,6 +68,12 @@ class DroneDelete(DeleteView):
     template_name = 'drones/delete.html'
     model = Drone
     success_url = reverse_lazy('dronelist')
+
+class DroneCreate(CreateView):
+    model = Drone
+    fields = '__all__'
+    success_message = "%(droneRef)s was created successfully"
+    success_url = reverse_lazy('createdrone')
 
 class CreateClient(SuccessMessageMixin, CreateView):
 
@@ -173,6 +180,7 @@ class EditClient(SuccessMessageMixin, UpdateView):
                     gurl = short_url(googleUrl)
                     self.object.physicalCode = gurl
                 except ConnectionError as e:
+                    messages
                     self.object.physicalCode = 'Google shortener connection error'
                 except KeyError as k:
                     self.object.physicalCode = 'Google shortener key id error'

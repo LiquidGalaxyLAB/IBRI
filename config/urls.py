@@ -19,7 +19,7 @@ urlpatterns = [
    url(r'client/delete/(?P<pk>\d+)/$', staff_member_required(ClientDelete.as_view()), name='deleteclient'),
    url(r'client/edit/(?P<pk>[0-9]+)/$', staff_member_required(EditClient.as_view()), name='editclient'),
    
-   url(r'drone/add/', staff_member_required(CreateClient.as_view()), name='createdrone'),
+   url(r'drone/add/', staff_member_required(DroneCreate.as_view()), name='createdrone'),
    url(r'drone/list/', staff_member_required(DroneList), name='dronelist'),
    url(r'drone/delete/(?P<pk>\d+)/', staff_member_required(DroneDelete.as_view()), name='deletedrone'),
    url(r'drone/edit/(?P<pk>[0-9]+)/', staff_member_required(EditClient.as_view()), name='editdrone'),

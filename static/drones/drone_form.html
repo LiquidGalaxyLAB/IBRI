@@ -1,0 +1,17 @@
+{% extends 'adminbase.html' %}
+
+{% block title %}
+    Add or Edit Drone
+{% endblock %}
+
+
+{% block maincontent %}
+
+    <form action="" method="post">{% csrf_token %}
+		{{ form.as_p }}
+		<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+	    	<i class="material-icons right">send</i>
+	    </button>
+    </form>
+
+{% endblock %}
