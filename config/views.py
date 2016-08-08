@@ -20,6 +20,8 @@ from ibri.settings import IBRI_URL
 from search.models import Mission
 from utils.google import short_url
 
+from requests import ConnectionError
+
 import os
 
 @staff_member_required
@@ -94,8 +96,13 @@ class CreateClient(SuccessMessageMixin, CreateView):
         if created:
             print "User added "+str(instance.pk)
             googleUrl = os.path.dirname(IBRI_URL)+reverse('getclientdataweb', args=(instance.pk, ))
-            gurl = short_url(googleUrl)
-            instance.physicalCode = gurl
+            
+            try:
+                gurl = short_url(googleUrl)
+                instance.physicalCode = gurl
+            except ConnectionError as e:
+                instance.physicalCode = 'Google shortener connection error'
+
             instance.save()
 
 
@@ -150,8 +157,13 @@ class EditClient(SuccessMessageMixin, UpdateView):
 
             if self.object.physicalCode == "":
                 googleUrl = os.path.dirname(IBRI_URL)+reverse('getclientdataweb', args=(self.kwargs['pk'], ))
-                gurl = short_url(googleUrl)
-                self.object.physicalCode = gurl
+                
+                try:
+                    gurl = short_url(googleUrl)
+                    self.object.physicalCode = gurl
+                except ConnectionError as e:
+                    self.object.physicalCode = 'Google shortener connection error'
+
 
             self.object.save()
             return super(EditClient, self).form_valid(form)
