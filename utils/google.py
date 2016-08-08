@@ -15,5 +15,10 @@ def short_url(url):
     	print 'Request Error: '+str(e)
     	raise
 
-
-    return response.json()['id']
+    responseId = ''
+    try:
+    	print response.json()
+    	responseId = response.json()['id']
+    	return responseId
+    except KeyError:
+    	raise

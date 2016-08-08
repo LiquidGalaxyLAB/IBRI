@@ -72,7 +72,7 @@
         <li class="logo"><a id="logo-container" class="brand-logo">
             <img src="{% static 'img/IBRIlogo_mini.png' %}" alt="Interactive Beacon Rescue Interface"/></a></li>
 
-        <li class="bold"><a href="about.html" class="waves-effect waves-teal">Home</a></li>
+        <li class="bold"><a href="{% url 'searchMap' %}" class="waves-effect waves-teal">Create Mission</a></li>
 
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
@@ -84,17 +84,11 @@
                 </ul>
               </div>
             </li>
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Missions</a>
-              <div class="collapsible-body" style="">
-                <ul>
-                  <li><a href="{% url 'missionlist' %}">List</a></li>
-                </ul>
-              </div>
-            </li>
+            <li class="bold"><a href="{% url 'missionlist' %}" class="waves-effect waves-teal">Missions</a></li>
             <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Drones</a>
               <div class="collapsible-body" style="">
                 <ul>
-                  <li><a href="{% url 'listclients' %}">List Drones</a></li>
+                  <li><a href="{% url 'dronelist' %}">List Drones</a></li>
                   <li><a href="{% url 'createclient' %}">Add new drone</a></li>
                 </ul>
               </div>

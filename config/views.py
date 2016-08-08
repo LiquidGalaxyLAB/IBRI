@@ -1,5 +1,8 @@
 
 from clients.models import Clients
+from drones.models import Drone
+from search.models import Mission
+
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse, reverse_lazy
@@ -17,7 +20,7 @@ from django.forms import forms
 from django.views.generic.list import ListView
 from ibri.settings import GAPI
 from ibri.settings import IBRI_URL
-from search.models import Mission
+
 from utils.google import short_url
 
 from requests import ConnectionError
@@ -55,7 +58,15 @@ class MissionDelete(DeleteView):
     model = Mission
     success_url = reverse_lazy('missionlist')
 
+def DroneList(request):
+    return render(request, 'drones/drone_list.html', {
+        'dronelist': Drone.objects.all()
+    })
 
+class DroneDelete(DeleteView):
+    template_name = 'drones/delete.html'
+    model = Drone
+    success_url = reverse_lazy('dronelist')
 
 class CreateClient(SuccessMessageMixin, CreateView):
 
@@ -163,6 +174,8 @@ class EditClient(SuccessMessageMixin, UpdateView):
                     self.object.physicalCode = gurl
                 except ConnectionError as e:
                     self.object.physicalCode = 'Google shortener connection error'
+                except KeyError as k:
+                    self.object.physicalCode = 'Google shortener key id error'
 
 
             self.object.save()

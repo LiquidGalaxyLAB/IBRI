@@ -1,0 +1,37 @@
+{% extends 'adminbase.html' %}
+
+{% block title %}
+    Drone List
+{% endblock %}
+
+
+{% block maincontent %}
+
+    <table class="highlight responsive-table" >
+        <thead>
+          <tr>
+              <th data-field="id">ID</th>
+              <th data-field="name">Drone Ref</th>
+              <th data-field="name">Edit Drone</th>
+              <th data-field="name">Remove Drone</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for d in dronelist %}
+
+                <tr>
+                    <td>#{{ d.id }}</td>
+                    <td>
+                        {{ d.droneRef }}
+                    </td>
+                    <td><a href=""><i class="small material-icons">visibility</i></a></td>
+                    <td><a href="{% url 'deletedrone' d.id %}"><i class="small material-icons">delete</i></a></td>
+                </tr>
+            {% empty %}
+                <td>No drones yet.</td>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+{% endblock %}
