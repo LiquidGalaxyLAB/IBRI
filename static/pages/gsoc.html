@@ -22,6 +22,10 @@
               src: local('Material Icons'), local('MaterialIcons-Regular'), url({% static '2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2' %}) format('woff2');
             }
 
+            body {
+                height: 100vh;
+            }
+
             .material-icons {
               font-family: 'Material Icons';
               font-weight: normal;
@@ -38,10 +42,13 @@
               -webkit-font-smoothing: antialiased;
             }
 
+            #topPanel {
+                height: 65px;
+            }
 
             #mainCard
             {
-                height: 82vh;
+                height: 82%;
                 width: 98vw;
                 margin: auto;
                 margin-top: 2vh;
@@ -105,10 +112,29 @@
 
     <body>
 
-        <div class="card-panel teal" style="margin-top: 0px; width: 100%; display: inline-flex; justify-content: space-between;">
-            <span class="white-text">
-                Information: MissonId: <span id="demo_mid">Unestablished</span>
-            </span>
+        <div id="topPanel" class="card-panel {% if request.is_secure %}teal{% else %}red lighten-1{% endif %}" style="margin-top: 0px; width: 100%; display: inline-flex; justify-content: space-between; align-items: center;">
+
+            <div style="display: inline-flex; align-items: center;">
+                <img src="{% static 'img/IBRIlogo_mini_icon.png' %}" style="height: 40px;" />
+                <span class="white-text" style="margin-left: 10px;">
+                    Information: MissonId: <span id="demo_mid">Unestablished</span>
+                </span>
+            </div>
+
+                
+            <div style="display: inline-flex; align-items: center;">
+                {% if request.is_secure %}
+                    <span style="background-color: #ccff90; border-radius: 15%; width: 32px; height: 32px; display: inline-flex; align-self: center; justify-content: center; padding-top: 3px;">
+                        <i class="material-icons" style="color: green;">lock_outline</i>
+                    </span>
+                    <span style="margin-left: 10px; color: white;">HTTPS</span>
+                {% else %}
+                    <span style="background-color: #dd2c00; border-radius: 15%; width: 32px; height: 32px; display: inline-flex; align-self: center; justify-content: center; padding-top: 3px;">
+                        <i class="material-icons" style="color: white;">lock_outline</i>
+                    </span>
+                    <span style="margin-left: 10px; color: white;">HTTP</span>
+                {% endif %}
+            </div>
 
             <div style="display: inline-flex; align-items: center;">
                 <div class="circle" id="detectionCircle" style="background-color: red; width: 30px; height: 30px;"></div>
@@ -117,6 +143,7 @@
 
         </div>
 
+                
 
     <div id="mainCard" class="card" style="overflow: hidden;">
 
