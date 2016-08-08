@@ -7,6 +7,14 @@
 
 {% block maincontent %}
 
+	{% if messages %}
+	
+            {% for m in messages %}
+                <div class="card-panel teal accent-3 valign-wrapper"><i class="small material-icons" style="margin-right: 10px;">thumb_up</i> {{ m }}</div>
+            {% endfor %}
+
+    {% endif %}
+
     <form action="" method="post">{% csrf_token %}
 		{{ form.as_p }}
 		<button class="btn waves-effect waves-light" type="submit" name="action">Submit

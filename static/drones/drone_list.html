@@ -24,7 +24,7 @@
                     <td>
                         {{ d.droneRef }}
                     </td>
-                    <td><a href=""><i class="small material-icons">visibility</i></a></td>
+                    <td><a href="{% url 'editdrone' d.id %}"><i class="small material-icons">edit</i></a></td>
                     <td><a href="{% url 'deletedrone' d.id %}"><i class="small material-icons">delete</i></a></td>
                 </tr>
             {% empty %}

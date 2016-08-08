@@ -75,6 +75,14 @@ class DroneCreate(CreateView):
     success_message = "%(droneRef)s was created successfully"
     success_url = reverse_lazy('createdrone')
 
+class EditDrone(UpdateView):
+    model = Drone
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse('dronelist')
+
+
 class CreateClient(SuccessMessageMixin, CreateView):
 
     model = Clients
@@ -135,9 +143,9 @@ class ListClient(ListView):
 
 
 class ClientDelete(DeleteView):
-
     model = Clients
     success_url = reverse_lazy('listclients')
+
 
 
 class EditClient(SuccessMessageMixin, UpdateView):
