@@ -420,9 +420,13 @@
                     },
                     success: function(data) {
 
-                        if(!map.removeMarkers()){
+                        try {
+                            map.removeMarkers();
+                        } catch(err) {
                             alert("Error loading map markers");
                             clearInterval(response);
+                            console.log(err);
+                            $("#circleloader").hide();
                         }
 
                         //setGrid(globalE);
@@ -511,7 +515,6 @@
             {% endif %}
 
             );
-
             
 
         }
