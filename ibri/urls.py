@@ -16,7 +16,7 @@ urlpatterns = [
 	url(r'login/', ulogin, name="login"),
     url(r'^ulogout/', logout, {'next_page': '/'}, name='ulogout'),
     url(r'^u/', include(admin.site.urls)),
-    url(r'^admin/', include(config.urls)),
+    url(r'^admin/', include(config.urls), name='adminurl'),
     url(r'^p/', include(clients.urls)),
     url(r'^createRoute/$', createRoute, name='createRoute'),
     url(r'^getTracking/$', getTracking, name='getTracking'),

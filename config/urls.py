@@ -2,10 +2,12 @@
 from .views import * #CreateClient, ListClient, config_area, ClientDelete, EditClient, missionList
 from django.conf.urls import url
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.views import logout
 
 from search.views import resumeMission
 
 urlpatterns = [
+   url(r'logout/', logout, {'next_page': '/'}, name='logout'),
    url(r'resume/(?P<pk>\d+)/$', staff_member_required(resumeMission), name='resumemission'),
    url(r'view/(?P<pk>\d+)/$', staff_member_required(viewMission), name='viewmission'),
    url(r'mission/list/', staff_member_required(missionList), name='missionlist'),
