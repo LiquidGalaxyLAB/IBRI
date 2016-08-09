@@ -2,15 +2,12 @@
 import os
 
 template = """#IBRI Local Config
-STATIC_ROOT = '{}'
-STATIC_URL = '{}'
 LANGUAGE_CODE = '{}'
 DEBUG = {}
 KML_DIR = '{}'
-KML_ICON = 'https://i.imgsafe.org/9216fc4611.png'
 GAPI = '{}'
 WMAPAPI = '{}'
-SKEY = '{}'
+{}
 IBRI_URL = '{}'
 """
 
@@ -20,40 +17,41 @@ while confirm == False:
 
 	print 'IBRI Installer'
 	print '--------------\n'
-	static_root = raw_input('Enter the full path of the IBRI directory: ')
-	
-	if not static_root.endswith('/'):
-		static_root += '/'
 
-	static_url = raw_input('Where will be the static folder inside the project?: ')
-	if not static_url.endswith('/'):
-		static_url += '/'
+	if raw_input('> Change default en-EN langauge? (y/n): ') in 'y':
+		language_code = raw_input('Language? Default: en-EN: ')
+	else:
+		language_code = 'en-EN'
 
-	language_code = raw_input('Language? Default: en-EN: ')
-
-	debugi = ''
-	while debugi not in {'True', 'False'}:
-		debugi = raw_input('Debug? (True or False): ')
+	if raw_input('> Enable debug mode? (y/n): ') in 'y':
+		debugi = 'True'
+	else:
+		debugi = 'False'
 	
-	
-	kml = raw_input('Where will be saved the kml files? directory must have write permissions: ')
+	kml = raw_input('> Where will be saved the kml files? directory must have write permissions: ')
 	if not kml.endswith('/'):
 		kml += '/'
 
-	gapi = raw_input('Insert your Google API to use the Google Services (like google maps): ')
+	gapi = raw_input('> Insert your Google API to use the Google Services (like google maps): ')
 	
-
-	wmap = raw_input('Insert your OpenWeatherMap Api Key: ')
+	wmap = raw_input('> Insert your OpenWeatherMap Api Key: ')
 	
 	skey = ''
-	while len(skey) != 14:
-		skey = raw_input('Insert your secret key used in communications (14 chars length). Example LHnhUqmgS1KWh4: ')
+	if raw_input('> Change default secret key? (y/n): ') in 'y':
+		while len(skey) != 14:
+			skey = raw_input('> Insert your secret key used in communications (14 chars length). Example LHnhUqmgS1KWh4: ')
+		skey = 'SKEY = "'+skey+'"'
+	else:
+		skey = 'SKEY = "QHahUjmgS7KWh3"'
 
 	url = ''
-	while not url.startswith('https'):
-		url = raw_input('What is the ibri url? (https): ')
+	print '> What is the IBRI url? (https and ends with slash) \n'
+	print 'Example: https://www.your.url./ibri/'
+	while not url.startswith('https') or not url.endswith('/'):
+		url = raw_input('> Url: ')
 	
-	temp = template.format(static_root, static_url, language_code, debugi, kml, gapi, wmap, skey, url)
+	temp = template.format(language_code, debugi, kml, gapi, wmap, skey, url)
+	print "\n"*3
 	print temp
 
 	confirm = raw_input('Save the configuration file in local_settings.py? [y/n]: ')
