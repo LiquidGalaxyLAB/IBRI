@@ -57,3 +57,6 @@ source env/bin/activate # if not activated
 python manage.py migrate # optional
 python manage.py runserver <ibri_ip> <ibri_port> # optional arguments
 ```
+
+###6. Linked projects
+- [IBRI Drone](https://github.com/LiquidGalaxyLAB/IBRI_Drone/)
