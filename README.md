@@ -47,7 +47,6 @@ echo 'KML_DIR = "/path/to/save/kml/files/"' >> local_settings.py
 
 ###5. Run server
 ```
-
 ibri-start <ip> <port>
 ```
 
@@ -55,5 +54,6 @@ Or
 
 ```
 source env/bin/activate # if not activated
+python manage.py migrate # optional
 python manage.py runserver <ibri_ip> <ibri_port> # optional arguments
 ```
