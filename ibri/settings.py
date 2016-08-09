@@ -88,7 +88,7 @@ GAPI = ''
 WMAPAPI = ''
 
 # Secret Preshared Key
-SKEY = 'LHnhUqmgS1KWh4' # Example: LHnhUqmgS1KWh4
+SKEY = 'QHahUjmgS7KWh3' # Example: LHnhUqmgS1KWh4
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
