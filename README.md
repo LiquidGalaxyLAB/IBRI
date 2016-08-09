@@ -1,57 +1,59 @@
-Welcome to IBRI!
-===================
+Welcome to IBRI Project
+=======================
 
 This project is proposing of a civil security solution using physical web as main technology and drones (UAV) to find missing people. The way to find them is by using multiple unattended aerial vehicles (as known as drone). The main idea from this project is to find a missing person scanning an area with one or more drones who will be receiving the physical web beacon Bluetooth signal to determinate the gps position from it in case of emergency.
 
-----------
 
 Prerequisites
-----------
-Login as root in a terminal and execute this:
-
-- apt-get install python-virtualenv -y
-- apt-get install git -y
-- apt-get install python-dev gcc -y
-
-Getting Started (Auto install) (no root)
-- Go to where you want to install the IBRI application
-- virtualenv ENV
-- source ENV/bin/activate
-- pip install -U pip
-- python installer.py and follow the prompt
-
-Getting Started (Manually installing) (no root)
 -------------
 
-**Copy and paste in a console/terminal (no root):**
+- [DJango](https://www.djangoproject.com)
 
-- cd $HOME # or your workspace
-- virtualenv ENV
-- source ENV/bin/activate
-- pip install -U pip
-- git clone https://github.com/LiquidGalaxyLAB/IBRI.git
-- cd IBRI
-- pip install -r requirements.txt
-- echo 'KML_DIR="**directory where kml files will be saved**"' > local_settings.py;
-- echo 'DEBUG=True' >> local_settings.py; # For testing purpose
-- echo 'WMAPAPI="**insert open weather map api here**"' >> local_settings.py; #http://openweathermap.org/appid#get
-- echo 'GAPI="**insert google api here**"' >> local_settings.py;
-- echo 'SKEY="**insert secret preshared key here (LHnhUqmgS1KWh4 for example)**" >> local_settings.py'
-- echo 'IBRI_URL="https://your.ibri.url/" >> local_settings.py # must include HTTPS protocol
-- mkdir fieldkeys
-- keyczart create --location=fieldkeys/ --purpose=crypt
-- keyczart addkey --location=fieldkeys/ --status=primary
-- ./manage.py makemigrations;
-- ./manage.py migrate;
 
-Now the next step is create a super user using:
+###1. Install packages:
+```
+apt-get install git python-pip ssh sshpass
+pip install virtualenvwrapper
 
-- ./manage.py createsuperuser # and follow the prompt instructions (your password should be strong)
+apt-get install git
+apt-get install python-virtualenv
+apt-get install python-dev gcc
+```
 
-After creating the administrator account you can open the administration panel (usually located on http://localhost:8000/admin/ ) and login in the system
-using the superuser account. Then, create some clients and drones (at least one). 
+###2. Get the latest git version and go inside:
+```
+git clone https://github.com/LiquidGalaxyLAB/IBRI.git
+```
 
-When a user is registered a shortened URL is assigned to the user profile. This is the URL that you've to set into the physical web beacon.
+###3. Create environment and install dependencies:
+```
+cd IBRI
+virtualenv env
+source env/bin/activate
+pip install -r requeriments.txt
+```
 
-Linked Project:
-https://github.com/moiseslodeiro/IBRI_DRONE/tree/master
+###4. Export environment variables
+
+Get maps api key from [Google developers](https://developers.google.com/)
+Get weather api key from [Openweathermap](http://openweathermap.org/)
+
+```
+echo 'WMAPAPI = "<API_KEY>"' >> local_settings.py
+echo 'GAPI = "<API_KEY>"' >> local_settings.py
+echo 'IBRI_URL = "https://www.your.url/ibri_path/"' >> local_settings.py
+echo 'KML_DIR = "/path/to/save/kml/files/"' >> local_settings.py
+```
+
+###5. Run server
+```
+
+ibri-start <ip> <port>
+```
+
+Or
+
+```
+source env/bin/activate # if not activated
+python manage.py runserver <ibri_ip> <ibri_port> # optional arguments
+```
