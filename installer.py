@@ -36,7 +36,7 @@ while confirm == False:
 		kml += '/'
 
 	if not os.path.exists(kml):
-    	os.makedirs(kml)
+		os.makedirs(kml)
 
 	gapi = raw_input('> Insert your Google API to use the Google Services (like google maps): ')
 	
