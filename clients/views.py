@@ -2,10 +2,15 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import redirect
+
 
 # Create your views here.
 
 def ulogin(request):
+
+    if request.user.is_authenticated:
+        return redirect('configarea')
 
     username = password = ''
     if request.POST:
