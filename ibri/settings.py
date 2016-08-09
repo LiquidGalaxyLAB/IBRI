@@ -67,24 +67,6 @@ ROOT_URLCONF = 'ibri.urls'
 WSGI_APPLICATION = 'ibri.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'local.sqlite3'),
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -139,10 +121,25 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static').replace('\\','/'),)
 
 IBRI_URL = ''
 
+DATABASE_NAME = 'db.sqlite3'
+
+
 try:
     from local_settings import *
 except ImportError:
     pass
+
+
+# Database
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, DATABASE_NAME),
+    }
+}
+
 
 ibriLogo = """
        @8CoocoCO@              8CoocooO8        
