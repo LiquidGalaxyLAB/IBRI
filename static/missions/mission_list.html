@@ -13,8 +13,9 @@
               <th data-field="id">ID</th>
               <th data-field="name">In Search</th>
               <th data-field="results">See results</th>
-              <th data-field="results">Resume Mission</th>
-              <th data-field="results">Delete Mission</th>
+              <th data-field="resume">Resume Mission</th>
+              <th data-field="kml">KML File/s</th>
+              <th data-field="delete">Delete Mission</th>
           </tr>
         </thead>
         <tbody>
@@ -29,6 +30,9 @@
                     </td>
                     <td><a href="{% url 'viewmission' m.id %}"><i class="small material-icons">visibility</i></a></td>
                     <td><a href="{% url 'resumemission' m.id %}"><i class="small material-icons">replay</i></a></td>
+                    <td>
+                      
+                    </td>
                     <td><a href="{% url 'deletemission' m.id %}"><i class="small material-icons">delete</i></a></td>
                 </tr>
             {% empty %}

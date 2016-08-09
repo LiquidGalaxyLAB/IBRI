@@ -138,7 +138,11 @@
 
             <div style="display: inline-flex; align-items: center;">
                 <div class="circle" id="detectionCircle" style="background-color: red; width: 30px; height: 30px;"></div>
-                <div style="border-left: 1px solid white; margin-left: 10px; padding-left: 10px;"><a style="color: white;" href="{% url 'configarea' %}">Admin Area</a></div>
+                <div style="border-left: 1px solid white; margin-left: 10px; padding-left: 10px;">
+
+                <a href="{% url 'configarea' %}" class="waves-effect waves-light blue btn"><i class="material-icons left" style="line-height: inherit">perm_identity</i> Admin Area</a>
+
+                </div>
             </div>
 
         </div>
@@ -658,8 +662,8 @@
             globalE = e;
 
             weatherMapApi = '{{ WEATHER_API|default:"INSERT_WEATHER_API_HERE" }}';
-            //url = 'http://api.openweathermap.org/data/2.5/weather?units=metric&lat=' + e.latLng.lat() + '&lon=' + e.latLng.lng() + '&appid=' + weatherMapApi;
-            //console.log(url);
+
+
             url = generete_weatherUrl(e.latLng.lat(), e.latLng.lng());
             $.ajax({
                 async: false,
@@ -769,10 +773,6 @@
                     },
                     success: function(data) {
 
-                        // TODO aqui
-                        //map.removeMarkers();
-
-                        //setGrid(globalE);
                         data = JSON.parse(decrypt(data, key));
                         globalData = data;
 
@@ -780,15 +780,12 @@
                         console.log("Mission ID: "+ missionId);
                         console.log("Data");
                         console.log("--------------------------------------------------");
-                        //console.log(data);
 
                         for (i = 0; i < data.length; i++) {
 
                             for (j = 0; j < data[i].length; j++) {
 
                                 if (data[i][j][4] != null) { //signalFound
-
-                                    console.log("XXXXXXXXXX ", i+","+j+" ----- "+data[i][j][0])
 
                                     icon = "{% static 'img/physical_demo_signal.png' %}"
 
@@ -825,7 +822,6 @@
 
                                 }
 
-                             // For demo purpose
                             if(data[i][data[i].length-1][4] != null && data[i].length > lastLength){
                                 lastLength = data[i].length;
                                 tmpDetection = 6;
@@ -838,12 +834,8 @@
                             }
 
                                 map.removeMarker(tmpMarker[i]);
-                                //console.log("DATA: " + data[i][data[i].length - 1]);
-                                //console.log(data[i]);
                                 tmpMarker[i] = map.addMarker({
-                                    //lat: data[i][data[i].length - 1][1],
                                     lat: data[i][data[i].length - 1][6],
-                                    //lng: data[i][data[i].length - 1][2],
                                     lng: data[i][data[i].length - 1][7],
                                     icon: "{% static 'img/drone32x32.png' %}"
                                 });
