@@ -1,5 +1,5 @@
 
-from .views import * #CreateClient, ListClient, config_area, ClientDelete, EditClient, missionList
+from .views import *
 from django.conf.urls import url
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.views import logout
@@ -23,7 +23,6 @@ urlpatterns = [
    url(r'drone/list/', staff_member_required(DroneList), name='dronelist'),
    url(r'drone/delete/(?P<pk>\d+)/', staff_member_required(DroneDelete.as_view()), name='deletedrone'),
    url(r'drone/edit/(?P<pk>[0-9]+)/', staff_member_required(EditDrone.as_view()), name='editdrone'),
-   
 
    url(r'$', config_area, name='configarea')
 ]

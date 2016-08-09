@@ -28,6 +28,7 @@ from requests import ConnectionError
 
 import os
 
+
 @staff_member_required
 def viewMission(request, pk):
     mission = get_object_or_404(Mission, pk=pk)
