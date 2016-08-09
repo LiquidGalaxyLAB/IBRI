@@ -66,7 +66,7 @@ def getTracking(request):
         i = 0
         for rid in routes:
 
-            waypoints = WayPoint.objects.filter(route=rid)
+            waypoints = WayPoint.objects.filter(route=rid).order_by('updated')
             waypoints = filter(lambda w: w.visited is True, waypoints)
 
             if waypoints == []:
