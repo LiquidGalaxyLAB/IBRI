@@ -31,9 +31,14 @@ while confirm == False:
 	else:
 		debugi = 'False'
 	
-	kml = raw_input('> Where will be saved the kml files? directory must have write permissions: ')
+	kml = raw_input('> Where will be saved the kml files?: ')
 	if not kml.endswith('/'):
 		kml += '/'
+
+	try:
+		os.chmod(kml, 0o777)
+	except:
+		print 'Cannot change permissions to 777 to '+kml
 
 	if not os.path.exists(kml):
 		os.makedirs(kml)
@@ -65,3 +70,8 @@ while confirm == False:
 		f = open('local_settings.py', 'w+')
 		f.write(temp)
 		f.close()
+
+	try:
+		os.chmod('db.sqlite3', 0o777)
+	except:
+		print 'Cannot change chmod 777 to db.sqlite3'

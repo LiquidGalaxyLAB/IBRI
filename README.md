@@ -44,6 +44,7 @@ echo 'WMAPAPI = "<API_KEY>"' >> local_settings.py
 echo 'GAPI = "<API_KEY>"' >> local_settings.py
 echo 'IBRI_URL = "https://www.your.url/ibri_path/"' >> local_settings.py
 echo 'KML_DIR = "/path/to/save/kml/files/"' >> local_settings.py
+chmod 777 db.sqlite3
 ```
 
 By default the project contains a pair of keys to sign inside fieldkeys dir. If you want to create your own pair run this (warning, if you change the keys the default db.sqlite3 won't work):
