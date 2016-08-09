@@ -33,7 +33,7 @@ source env/bin/activate
 pip install -r requeriments.txt
 ```
 
-###4. Export environment variables
+###4. Export local settings variables
 
 Get maps api key from [Google developers](https://developers.google.com/)
 Get weather api key from [Openweathermap](http://openweathermap.org/)
@@ -58,5 +58,5 @@ python manage.py migrate # optional
 python manage.py runserver <ibri_ip> <ibri_port> # optional arguments
 ```
 
-###6. Linked projects
+###+ Linked projects
 - [IBRI Drone](https://github.com/LiquidGalaxyLAB/IBRI_Drone/)
