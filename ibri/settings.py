@@ -197,8 +197,8 @@ if WMAPAPI == '':
 else:
     print colored('✔ WMapAPI: '+WMAPAPI, 'green')
 
-if SKEY == '':
-    print colored('ERROR: SKEY (Secret Preshared Key) is empty', 'red')
+if SKEY == '' or len(SKEY) != 14:
+    print colored('ERROR: SKEY (Secret Preshared Key) is empty or length is not 14 chars', 'red')
     print "Please, set SKEY constant in ibri/settings.py or local_settings.py (14 chars length)"
     sys.exit()
 else:
