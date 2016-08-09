@@ -4,10 +4,6 @@ static/kml/*
 #Intelij
 .idea/
 
-# AES256 Keys
-fieldkeys/1
-fieldkeys/meta
-
 # Database
 local.sqlite3
 
