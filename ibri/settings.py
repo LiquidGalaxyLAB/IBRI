@@ -78,7 +78,7 @@ USE_TZ = True
 
 # KML Directory
 KML_DIR = '' # No slash at the end
-KML_ICON = '' # URL - If empty, appears a yellow placemark
+KML_ICON = 'https://i.imgsafe.org/9216fc4611.png' # URL - If empty, appears a yellow placemark
 
 # Google Shortener API
 # https://console.developers.google.com
@@ -88,7 +88,7 @@ GAPI = ''
 WMAPAPI = ''
 
 # Secret Preshared Key
-SKEY = '' # Example: LHnhUqmgS1KWh4
+SKEY = 'LHnhUqmgS1KWh4' # Example: LHnhUqmgS1KWh4
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
