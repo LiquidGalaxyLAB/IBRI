@@ -26,7 +26,7 @@ from termcolor import colored
 SECRET_KEY = 'qks)%)oulg&!j4v4%t0*)b()naevd+zp4dc^=5u@ti^!8a_=&s'
 
 # SECURITY WARNING: keep the secret keys under control
-ENCRYPTED_FIELDS_KEYDIR = 'fieldkeys'
+ENCRYPTED_FIELDS_KEYDIR = os.path.join(BASE_DIR, 'fieldkeys')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False

@@ -35,6 +35,9 @@ while confirm == False:
 	if not kml.endswith('/'):
 		kml += '/'
 
+	if not os.path.exists(kml):
+    	os.makedirs(kml)
+
 	gapi = raw_input('> Insert your Google API to use the Google Services (like google maps): ')
 	
 	wmap = raw_input('> Insert your OpenWeatherMap Api Key: ')
