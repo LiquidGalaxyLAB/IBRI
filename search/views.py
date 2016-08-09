@@ -163,7 +163,19 @@ def setDroneTracking(request):
             w.update(visited=True)
 
             if d['photo'] != "":
-                w.update(photo=d['photo'])
+
+                if w.photo != "":
+                    w.update(photo=d['photo'])
+                else:
+                    c = Clients.objects.get(physicalCode=d['beacon'])
+                    wp = WayPoint(route=Route.objects.get(pk=r[d['droneId']-1].id),
+                              ref=(w.last().ref+1),
+                              lat=d['latitude'],
+                              lng=d['longitude'],
+                              visited=True,
+                              signalFound=c.pk,
+                              photo=d['photo'])
+                    wp.save()
 
             if d['beacon'] != "":
                 c = Clients.objects.get(physicalCode=d['beacon'])
