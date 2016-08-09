@@ -13,6 +13,9 @@ IBRI_URL = '{}'
 
 confirm = False
 
+if not os.path.exists('fieldkeys'):
+    os.makedirs('fieldkeys')
+
 while confirm == False:
 
 	print 'IBRI Installer'

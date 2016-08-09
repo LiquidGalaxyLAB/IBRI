@@ -34,6 +34,12 @@ Get maps api key from [Google developers](https://developers.google.com/)
 Get weather api key from [Openweathermap](http://openweathermap.org/)
 
 ```
+python installer.py # and follow the instructions
+```
+
+or
+
+```
 mkdir fieldkeys
 keyczart create --location=fieldkeys/ --purpose=crypt
 keyczart addkey --location=fieldkeys/ --status=primary
