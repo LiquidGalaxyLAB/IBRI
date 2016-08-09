@@ -9,7 +9,7 @@ fieldkeys/1
 fieldkeys/meta
 
 # Database
-db.sqlite3
+local.sqlite3
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

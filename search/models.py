@@ -32,6 +32,7 @@ class WayPoint(models.Model):
     signalFound = EncryptedIntegerField(verbose_name="Beacon signal detected", null=True)
     photo = EncryptedTextField(verbose_name="Base64 Photo", null=True)
     updated = models.DateTimeField(auto_now=True)
+    
     def __unicode__(self):
         hasPhoto = False
         if self.photo != None:
