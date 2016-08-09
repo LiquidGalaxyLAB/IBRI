@@ -12,12 +12,7 @@ Prerequisites
 
 ###1. Install packages:
 ```
-apt-get install git python-pip ssh sshpass
-pip install virtualenvwrapper
-
-apt-get install git
-apt-get install python-virtualenv
-apt-get install python-dev gcc
+apt-get install git virtualenvwrapper python-virtualenv python-dev gcc -y
 ```
 
 ###2. Get the latest git version and go inside:
@@ -39,6 +34,9 @@ Get maps api key from [Google developers](https://developers.google.com/)
 Get weather api key from [Openweathermap](http://openweathermap.org/)
 
 ```
+mkdir fieldkeys
+keyczart create --location=fieldkeys/ --purpose=crypt
+keyczart addkey --location=fieldkeys/ --status=primary
 echo 'WMAPAPI = "<API_KEY>"' >> local_settings.py
 echo 'GAPI = "<API_KEY>"' >> local_settings.py
 echo 'IBRI_URL = "https://www.your.url/ibri_path/"' >> local_settings.py
