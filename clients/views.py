@@ -9,9 +9,6 @@ from django.shortcuts import redirect
 
 def ulogin(request):
 
-    if request.user.is_authenticated:
-        return redirect('configarea')
-
     username = password = ''
     if request.POST:
         username = request.POST['username']

@@ -22,6 +22,7 @@ git clone https://github.com/LiquidGalaxyLAB/IBRI.git
 
 ###3. Create environment and install dependencies:
 ```
+chmod 777 IBRI # only if you have database writting problems
 cd IBRI
 virtualenv env
 source env/bin/activate

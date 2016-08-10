@@ -37,8 +37,8 @@ while confirm == False:
 
 	try:
 		os.chmod(kml, 0o777)
-	except:
-		print 'Cannot change permissions to 777 to '+kml
+	finally:
+		pass
 
 	if not os.path.exists(kml):
 		os.makedirs(kml)
