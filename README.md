@@ -1,7 +1,11 @@
 Google Summer of Code 2016
+
 Project IBRI
+
 Project IBRI Drone
+
 Student Moisés Lodeiro Santiago
+
 Developed under GSoC 2016 project Physical Web Project
 
 Welcome to IBRI Project
