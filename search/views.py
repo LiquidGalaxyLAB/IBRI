@@ -364,6 +364,8 @@ def createRoute(request):
             WayPoint.objects.bulk_create(tmpRoute)
 
             place = settings.KML_DIR + '/IBRI' + str(m.id)
+            place.replace('//', '/')
+
 
             try:
                 os.mkdir(place)

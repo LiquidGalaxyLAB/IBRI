@@ -1,7 +1,7 @@
 
 from clients.models import Clients
 from drones.models import Drone
-from search.models import Mission
+from search.models import Mission, Route, WayPoint
 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.messages.views import SuccessMessageMixin
@@ -36,8 +36,11 @@ def viewMission(request, pk):
     for m in mission.inSearch.all():
         j.append(str(m.id))
 
+    routes = Route.objects.filter(mission=mission)
+
     return render(request, 'pages/resume.html', {
         'mission': mission,
+        'based': routes[0],
         'insearch': mission.inSearch.all(),
         'selected': ','.join(j),
         'section': 'View Mission Results',

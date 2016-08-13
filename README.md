@@ -78,8 +78,5 @@ python manage.py migrate # optional
 python manage.py runserver <ibri_ip> <ibri_port> # optional arguments
 ```
 
-###6. Check the url
-Now it is time to open your favourite web browser and open the IBRI url. If you followed the install steps you will se a login form. The username and password is ibriadmin for both inputs.
-
 ###+ Linked projects
 - [IBRI Drone](https://github.com/LiquidGalaxyLAB/IBRI_Drone/)
