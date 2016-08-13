@@ -72,7 +72,7 @@ def missionList(request):
         m[i.mission.id-1].route.append(i.id)
 
     return render(request, 'missions/mission_list.html', {
-        'missionlist': m
+        'missionlist': m[::-1]
     })
 
 class MissionDelete(DeleteView):
