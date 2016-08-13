@@ -41,8 +41,11 @@ def resumeMission(request, pk):
     for m in mission.inSearch.all():
         j.append(str(m.id))
 
+    routes = Route.objects.filter(mission=mission)
+
     return render(request, 'pages/resume.html', {
         'mission': mission,
+        'based': routes[0],
         'section': 'Resume Mission',
         'insearch': mission.inSearch.all(),
         'selected': ','.join(j),
