@@ -429,14 +429,13 @@
                             $("#circleloader").hide();
                         }
 
-                        //setGrid(globalE);
                         data = JSON.parse(decrypt(data, key));
                         globalData = data;
 
                         console.log("Length: "+data.length);
                         console.log("Mission ID: "+ missionId);
                         console.log("Data");
-                        console.log("--------------------------------------------------");
+                        console.log("-----------------------------------");
                         console.log(data);
 
                         for (i = 0; i < data.length; i++) {
@@ -500,7 +499,7 @@
                             clearInterval(response);
                             $("#circleloader").hide();
                         {% else %}
-                            console.log("{{ norepeat }}");
+                            console.log("No repeat is false: {{ norepeat }}");
                         {% endif %}
 
                     }
