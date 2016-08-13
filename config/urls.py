@@ -24,5 +24,7 @@ urlpatterns = [
    url(r'drone/delete/(?P<pk>\d+)/', staff_member_required(DroneDelete.as_view()), name='deletedrone'),
    url(r'drone/edit/(?P<pk>[0-9]+)/', staff_member_required(EditDrone.as_view()), name='editdrone'),
 
+   url(r'download/(?P<m>[0-9]+)/(?P<r>[0-9]+)/', staff_member_required(downloadfile), name='download'),
+
    url(r'$', config_area, name='configarea')
 ]

@@ -31,7 +31,10 @@
                     <td><a href="{% url 'viewmission' m.id %}"><i class="small material-icons">visibility</i></a></td>
                     <td><a href="{% url 'resumemission' m.id %}"><i class="small material-icons">replay</i></a></td>
                     <td>
-                      
+                      {% for r in m.route %}
+                              <i class="material-icons tiny">open_in_new</i>
+<a target="_blank" href="{% url 'download' m.id r %}">IBRI{{m.id}}R{{r}}</a><br />
+                      {% endfor %}
                     </td>
                     <td><a href="{% url 'deletemission' m.id %}"><i class="small material-icons">delete</i></a></td>
                 </tr>

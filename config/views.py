@@ -19,15 +19,24 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404
 from django.forms import forms
 from django.views.generic.list import ListView
-from ibri.settings import GAPI
-from ibri.settings import IBRI_URL
+from ibri.settings import GAPI, IBRI_URL, KML_DIR
 
 from utils.google import short_url
 
 from requests import ConnectionError
 
+from wsgiref.util import FileWrapper
+
 import os
 
+
+def downloadfile(request, m, r):
+    filename = os.path.join(KML_DIR, 'IBRI'+m, 'IBRI'+m+'R'+r+'.kml')
+    wrapper = FileWrapper(file(filename))
+    response = HttpResponse(wrapper, content_type='application/vnd.google-earth.kml+xml')
+    response['Content-Disposition'] = 'attachment; filename=%s' % os.path.basename(filename)
+    response['Content-Length'] = os.path.getsize(filename)
+    return response
 
 @staff_member_required
 def viewMission(request, pk):
@@ -54,8 +63,16 @@ def config_area(request):
 
 
 def missionList(request):
+
+    m = list(Mission.objects.all())
+    for i in range(0, len(m)):
+        m[i].route = []
+
+    for i in Route.objects.all():
+        m[i.mission.id-1].route.append(i.id)
+
     return render(request, 'missions/mission_list.html', {
-        'missionlist': Mission.objects.all()
+        'missionlist': m
     })
 
 class MissionDelete(DeleteView):
