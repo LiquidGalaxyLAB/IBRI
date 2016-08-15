@@ -43,6 +43,8 @@ def resumeMission(request, pk):
 
     routes = Route.objects.filter(mission=mission)
 
+    print routes[0]
+
     return render(request, 'pages/resume.html', {
         'mission': mission,
         'based': routes[0],
@@ -151,7 +153,7 @@ def setDroneTracking(request):
     if(request.method == 'POST'):
 
         d = json.loads(JavaAESCipher(settings.SKEY).decrypt(request.POST['info']))
-        print colored('+ Received From Drone: '+str(d), 'blue')
+        print colored('+ Received From Drone: '+str(d)[0:100], 'blue')
 
         if d['missionId'] <= 0:
             print colored('+ Error receiving drone information', 'red')
@@ -162,13 +164,18 @@ def setDroneTracking(request):
         w = WayPoint.objects.filter(route=r[d['droneId']-1])
 
         if d['nearpoint'] >= 0 and d['nearpoint'] < r[d['droneId']-1].initialWp:
-            w = w.filter(ref=d['nearpoint'])
-            w.update(visited=True)
+
+            w = w.get(ref=d['nearpoint'])
+            w.visited = True
+
+            print colored(str(w), 'red')
 
             if d['photo'] != "":
 
                 if w.photo != "":
-                    w.update(photo=d['photo'])
+                    w.photo = d['photo']
+                    w.save()
+                    print colored('WayPoint object has been updated', 'green')
                 else:
                     c = Clients.objects.get(physicalCode=d['beacon'])
                     wp = WayPoint(route=Route.objects.get(pk=r[d['droneId']-1].id),
@@ -182,7 +189,8 @@ def setDroneTracking(request):
 
             if d['beacon'] != "":
                 c = Clients.objects.get(physicalCode=d['beacon'])
-                w.update(signalFound=c.pk)
+                w.signalFound = c.pk
+                w.save()
 
         else:
 

@@ -69,7 +69,8 @@ def missionList(request):
         m[i].route = []
 
     for i in Route.objects.all():
-        m[i.mission.id-1].route.append(i.id)
+        element = [e for e in m if e.id == i.mission.id]
+        element[0].route.append(i.id)
 
     return render(request, 'missions/mission_list.html', {
         'missionlist': m[::-1]
