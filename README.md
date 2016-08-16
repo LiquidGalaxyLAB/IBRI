@@ -78,5 +78,9 @@ python manage.py migrate # optional
 python manage.py runserver <ibri_ip> <ibri_port> # optional arguments
 ```
 
+###+ Documentation
+- [Business case and Study](https://github.com/LiquidGalaxyLAB/IBRI/wiki/IBRI-Business-Case-and-study)
+- [GSOC16 IBRI Projects](https://github.com/LiquidGalaxyLAB/IBRI/blob/master/GSOC16.md)
+
 ###+ Linked projects
 - [IBRI Drone](https://github.com/LiquidGalaxyLAB/IBRI_Drone/)
