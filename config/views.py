@@ -59,6 +59,19 @@ def viewMission(request, pk):
 
 @staff_member_required
 def config_area(request):
+    """Insert a function and its arguments in process pool.
+      
+        Input is inserted in queues using a round-robin fashion. Every job is
+        identified by and index that is returned by function. Not all parameters
+        of original multiprocessing.Pool.apply_aync are implemented so far.
+      
+        :param func: Function to process.
+        :type func: Callable.
+        :param args: Arguments for the function to process.
+        :type args: Tuple.
+        :returns: Assigned job id.
+        :rtype: Int.
+    """
     return render(request, 'pages/config/config.html')
 
 

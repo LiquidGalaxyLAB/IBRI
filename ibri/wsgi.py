@@ -1,5 +1,5 @@
 """
-WSGI config for tfm project.
+WSGI config for IBRI project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
