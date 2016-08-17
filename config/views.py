@@ -37,11 +37,10 @@ from requests import ConnectionError
 from wsgiref.util import FileWrapper
 
 # Own imports
-from ibri.settings import *
 from clients.models import Clients
 from drones.models import Drone
 from search.models import Mission, Route, WayPoint
-from ibri.settings import GAPI, IBRI_URL, KML_DIR
+from ibri.settings import GAPI, IBRI_URL, KML_DIR, DEBUG
 from utils.google import short_url
 
 
@@ -281,7 +280,7 @@ class CreateClient(SuccessMessageMixin, CreateView):
 
         if created:
 
-            if settings.DEBUG:
+            if DEBUG:
                 print "User added " + str(instance.pk)
 
             rev = reverse('getclientdataweb', args=(instance.pk, ))

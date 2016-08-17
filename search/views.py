@@ -124,23 +124,24 @@ def getTracking(request):
         for user in missionId.inSearch.all():
             beacons.append(user.id)
 
-        if settings.DEBUG:
-            print("[i] Beacons in search "+str(beacons))
+        if DEBUG:
+            print("[i] Beacons in search " + str(beacons))
 
-        # Create a empty list. Each position correspond to each route 
+        # Create a empty list. Each position correspond to each route
         # id.
         droneTracking = [[] for _ in range(len(routes))]
 
         """
         In this 'for' we take the waypoints that contains the route 'rid'
         and filtered by the waypoint.visited. Then, if theres no waypoints
-        that are visited we include in the droneTracking list an empty reference
-        the temp latitude and longitude and no photo.
-        If wp contains any data we check if any waypoint has a physical web beacon
-        signal we include that signal in the droneTracking list. If the drone send
-        any photo we also include it in the request.
-
+        that are visited we include in the droneTracking list an empty
+        reference the temp latitude and longitude and no photo.
+        If wp contains any data we check if any waypoint has a physical
+        web beacon signal we include that signal in the droneTracking
+        list. If the drone send any photo we also include it in the
+        request.
         """
+
         i = 0
         for rid in routes:
 
@@ -265,7 +266,7 @@ def setDroneTracking(request):
         # string loaded in POST['info'].
         d = json.loads(JavaAESCipher(settings.SKEY).decrypt(request.POST['info']))
 
-        if settings.DEBUG:
+        if DEBUG:
             print colored('+ Received From Drone: '+str(d)[0:100], 'blue')
 
         if d['missionId'] <= 0:
@@ -369,15 +370,15 @@ def createRoute(request):
     if(request.method == 'POST'):
 
         # Get the preshared key and decrypt the post message.
-        preshared = u''+settings.PRESHAREDKEY
+        preshared = u'' + PRESHAREDKEY
         dec = json.loads(AESCipher(preshared).decrypt(request.POST['msg']))
 
         # Loads the json and stores the values in each variable
-        base = json.loads(dec['base']) # Base point
-        coords = json.loads(dec['wayPoints']) # Waypoints (lat, lng)
-        nearPoint = json.loads(dec['nearPoint']) # NearPoint
-        userPK = json.loads(dec['insearch']) # Users in search
-        altitude = json.loads(dec['altitude']) # Altitude
+        base = json.loads(dec['base'])  # Base point
+        coords = json.loads(dec['wayPoints'])  # Waypoints (lat, lng)
+        nearPoint = json.loads(dec['nearPoint'])  # NearPoint
+        userPK = json.loads(dec['insearch'])  # Users in search
+        altitude = json.loads(dec['altitude'])  # Altitude
 
         # Number of areas
         nAreas = len(coords)
@@ -400,7 +401,7 @@ def createRoute(request):
                 col = j * size
 
                 if(ov1 == 0):
-                    searchArea[i][j] = coords[i][(col-ov2):(col-ov2)+size]
+                    searchArea[i][j] = coords[i][(col-ov2):(col-ov2) + size]
                 else:
                     searchArea[i][j] = coords[i][0:ov1]
                     ov2 = size - ov1
@@ -444,11 +445,11 @@ def createRoute(request):
 
                 if col == 0 and i > 0:
                     row = (tmpValue % size) - (size - len(searchArea[i][0]))
-                    if settings.DEBUG:
+                    if DEBUG:
                         print(str(tour[j]) + " = " + str(col) + "," + str((tmpValue % size) - (size - len(searchArea[i][0]))))
                 else:
                     row = tmpValue % size
-                    if settings.DEBUG:
+                    if DEBUG:
                         print(str(tour[j])+" = "+str(col)+","+str(tmpValue % size))
 
                 tour[j] = searchArea[i][col][row]
@@ -469,20 +470,19 @@ def createRoute(request):
             print colored("Oops! No drones found un database", 'red')
             return HttpResponse('configerror')
 
-        colorArray =  [
-            'ff00008b', #darkred
-            'ff8b0000', #darkblue
-            'ff006400', #darkgreen
-            'ff008cff', #darkorange
-            'ff9314ff', #darkpink
-            'ffff0000', #blue
-            'ff2fffad', #greenyellow
-            'ff5c5ccd', #indianred
-            'ffcbc0ff', #pink
-            'ffe16941', #royalblue
-            'ff00ffff', #yellow
-        ];
-
+        colorArray = [
+            'ff00008b',  # darkred
+            'ff8b0000',  # darkblue
+            'ff006400',  # darkgreen
+            'ff008cff',  # darkorange
+            'ff9314ff',  # darkpink
+            'ffff0000',  # blue
+            'ff2fffad',  # greenyellow
+            'ff5c5ccd',  # indianred
+            'ffcbc0ff',  # pink
+            'ffe16941',  # royalblue
+            'ff00ffff',  # yellow
+        ]
 
         drone_secuencial = 0
 
@@ -495,7 +495,7 @@ def createRoute(request):
             tmpRoute = []
             tmpCounter = 0
 
-            kmlName = 'IBRI'+str(m.id)+'R'+str(rm.id)
+            kmlName = 'IBRI' + str(m.id) + 'R' + str(rm.id)
             kml = Kml(name=kmlName)
 
             kml.newpoint(name="Base", coords=[(base[1], base[0])])
@@ -504,7 +504,6 @@ def createRoute(request):
             coords = []
 
             for wp in r:
-
                 coords.append((wp[1], wp[0], altitude))
                 tmpRoute.append(WayPoint(route=rm, lat=wp[0], lng=wp[1], ref=tmpCounter))
                 tmpCounter += 1
@@ -529,14 +528,16 @@ def createRoute(request):
 
             WayPoint.objects.bulk_create(tmpRoute)
 
-            place = settings.KML_DIR + '/IBRI' + str(m.id)
-            place = place + '/' + kmlName + '.kml'
-            place.replace('//', '/')
+            place = KML_DIR + '/IBRI' + str(m.id)
 
             try:
-                os.mkdir(place)
-            except:
+                mkdir(place)
+            except Exception as e:
+                print colored(e, 'red')
                 pass
+
+            place = place + '/' + kmlName + '.kml'
+            place.replace('//', '/')
 
             try:
                 kml.save(place)  # Saving
@@ -546,5 +547,5 @@ def createRoute(request):
 
             drone_secuencial += 1
 
-        preshared = u''+settings.PRESHAREDKEY
+        preshared = u'' + PRESHAREDKEY
         return HttpResponse(AESCipher(preshared).encrypt(json.dumps([m.pk, route])))

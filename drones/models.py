@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+# Python imports
+from __future__ import unicode_literals
+
 """
 This file contains the Drone model that is used to registered the
 drones data.
@@ -13,9 +17,6 @@ __version__ = "1.0"
 __maintainer__ = 'Moises Lodeiro-Santiago'
 __email__ = "moises.lodeiro[at]gmail.com"
 __status__ = "Production"
-
-# Python imports
-from __future__ import unicode_literals
 
 # Django imports
 from django.db import models
