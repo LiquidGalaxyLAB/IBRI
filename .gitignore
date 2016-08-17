@@ -12,6 +12,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Epydoc configuration file
+epydoc.conf
+
 # Local SSL Certificates
 stunnel/
 runserver.sh
