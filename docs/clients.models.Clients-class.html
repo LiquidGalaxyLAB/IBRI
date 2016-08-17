@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>clients.models.Clients</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="clients-module.html">Package&nbsp;clients</a> ::
+        <a href="clients.models-module.html">Module&nbsp;models</a> ::
+        Class&nbsp;Clients
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Clients</h1><p class="nomargin-top"><span class="codelink"><a href="clients.models-pysrc.html#Clients">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_clients__2" name="uml_class_diagram_for_clients__2">
+<area shape="rect" id="node1_15" href="clients.models.Clients-class.html#name" title="First name of the client" alt="" coords="18,109,182,137"/>
+<area shape="rect" id="node1_16" href="clients.models.Clients-class.html#lastname" title="Last name of the client" alt="" coords="18,137,182,165"/>
+<area shape="rect" id="node1_17" href="clients.models.Clients-class.html#email" title="An email address" alt="" coords="18,165,182,193"/>
+<area shape="rect" id="node1_18" href="clients.models.Clients-class.html#identifier" title="An user identifier." alt="" coords="18,193,182,221"/>
+<area shape="rect" id="node1_19" href="clients.models.Clients-class.html#physicalCode" title="The physical web code (url) is automatically set when user is registered" alt="" coords="18,221,182,249"/>
+<area shape="rect" id="node1_20" href="clients.models.Clients-class.html#address" title="Home address" alt="" coords="18,249,182,277"/>
+<area shape="rect" id="node1_21" href="clients.models.Clients-class.html#city" title="City" alt="" coords="18,277,182,305"/>
+<area shape="rect" id="node1_22" href="clients.models.Clients-class.html#phoneValidator" title="clients.models.Clients.phoneValidator" alt="" coords="18,305,182,333"/>
+<area shape="rect" id="node1_23" href="clients.models.Clients-class.html#mobileNumber" title="Mobile (cell) phone number" alt="" coords="18,333,182,361"/>
+<area shape="rect" id="node1_24" href="clients.models.Clients-class.html#phoneNumber" title="Home number" alt="" coords="18,361,182,389"/>
+<area shape="rect" id="node1_25" href="clients.models.Clients-class.html#birthDate" title="Birth date (yyyy/mm/dd format)" alt="" coords="18,389,182,417"/>
+<area shape="rect" id="node1_26" href="clients.models.Clients-class.html#postalCode" title="Postal code" alt="" coords="18,417,182,445"/>
+<area shape="rect" id="node1_27" href="clients.models.Clients-class.html#alergies" title="Alergies that an user can have" alt="" coords="18,445,182,473"/>
+<area shape="rect" id="node1_28" href="clients.models.Clients.Meta-class.html" title="Class Meta represents how the data will be displayed in the django admin &#160;zone." alt="" coords="18,501,182,529"/>
+<area shape="rect" id="node1_29" href="clients.models.Clients-class.html#__unicode__" title="__unicode__ represents the way that the object string is showed" alt="" coords="18,531,182,559"/>
+<area shape="rect" id="node1" href="clients.models.Clients-class.html" title="The Clients models represents a user instance." alt="" coords="5,76,193,565"/>
+<area shape="rect" id="node2" href="javascript:void(0);" title="??&#45;9" alt="" coords="67,5,132,57"/>
+</map>
+  <img src="uml_class_diagram_for_clients__2.gif" alt='' usemap="#uml_class_diagram_for_clients__2" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>The Clients models represents a user instance. This data could be 
+  useful for the emergency squad to know the user important data as for 
+  example the phone number, diseases, etc. The most of the data is 
+  encrypted in the database using AES256 CBC algorithm. The key to crypt or
+  decrypt the data is stored in the settings SKEY variable.</p>
+
+<hr />
+<div class="fields">      <p><strong>Requires:</strong>
+        Has a SKEY stablished in the database
+      </p>
+</div><!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients.Meta-class.html" class="summary-name">Meta</a><br />
+      Class Meta represents how the data will be displayed in the django 
+        admin zone.
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__unicode__"></a><span class="summary-sig-name">__unicode__</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      __unicode__ represents the way that the object string is showed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="clients.models-pysrc.html#Clients.__unicode__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#phoneValidator" class="summary-name">phoneValidator</a> = <code title="RegexValidator(regex= r'^\+?\d{9,12}?$', message= &quot;Phone number must b\
+e entered in the format: '+34612345678' or '612345678'.&quot;)">RegexValidator(regex= r'^\+?\d{9,12}?$', mess<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#name" class="summary-name">name</a> = <code title="EncryptedCharField(max_length= 50, verbose_name= &quot;First Name&quot;, blank= \
+False)">EncryptedCharField(max_length= 50, verbose_name= &quot;First<code class="variable-ellipsis">...</code></code><br />
+      First name of the client
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#lastname" class="summary-name">lastname</a> = <code title="EncryptedCharField(max_length= 50, verbose_name= &quot;Last Name&quot;, blank= F\
+alse)">EncryptedCharField(max_length= 50, verbose_name= &quot;L<code class="variable-ellipsis">...</code></code><br />
+      Last name of the client
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#email" class="summary-name">email</a> = <code title="EncryptedEmailField(max_length= 100, verbose_name= &quot;Email address&quot;)">EncryptedEmailField(max_length= 100, verbose_name= &quot;Em<code class="variable-ellipsis">...</code></code><br />
+      An email address
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#identifier" class="summary-name">identifier</a> = <code title="EncryptedCharField(max_length= 9, verbose_name= &quot;Identifier (for examp\
+le, the passport id)&quot;, unique= True, blank= False)">EncryptedCharField(max_length= 9, verbose_name= &quot;<code class="variable-ellipsis">...</code></code><br />
+      An user identifier.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#physicalCode" class="summary-name">physicalCode</a> = <code title="models.CharField(max_length= 32, blank= False, verbose_name= &quot;Physical\
+ Code&quot;, unique= False)">models.CharField(max_length= 32, blank= False, <code class="variable-ellipsis">...</code></code><br />
+      The physical web code (url) is automatically set when user is 
+      registered
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="address"></a><span class="summary-name">address</span> = <code title="EncryptedCharField(max_length= 100, blank= True)">EncryptedCharField(max_length= 100, blank= True)</code><br />
+      Home address
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="city"></a><span class="summary-name">city</span> = <code title="EncryptedCharField(max_length= 100, blank= True)">EncryptedCharField(max_length= 100, blank= True)</code><br />
+      City
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#mobileNumber" class="summary-name">mobileNumber</a> = <code title="EncryptedCharField(validators= [phoneValidator], max_length= 20, verbo\
+se_name= &quot;Mobile Phone Number&quot;, blank= False)">EncryptedCharField(validators= [phoneValidator]<code class="variable-ellipsis">...</code></code><br />
+      Mobile (cell) phone number
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#phoneNumber" class="summary-name">phoneNumber</a> = <code title="EncryptedCharField(validators= [phoneValidator], max_length= 20, verbo\
+se_name= &quot;Contact Phone Number&quot;, blank= True)">EncryptedCharField(validators= [phoneValidator],<code class="variable-ellipsis">...</code></code><br />
+      Home number
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#birthDate" class="summary-name">birthDate</a> = <code title="EncryptedDateField(verbose_name= &quot;Birth Date (mm/dd/yyyy)&quot;, blank= Tru\
+e, null= True)">EncryptedDateField(verbose_name= &quot;Birth Date (mm/d<code class="variable-ellipsis">...</code></code><br />
+      Birth date (yyyy/mm/dd format)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#postalCode" class="summary-name">postalCode</a> = <code title="EncryptedCharField(max_length= 10, verbose_name= &quot;Postal Code&quot;, blank=\
+ True)">EncryptedCharField(max_length= 10, verbose_name= <code class="variable-ellipsis">...</code></code><br />
+      Postal code
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#alergies" class="summary-name">alergies</a> = <code title="EncryptedCharField(max_length= 500, verbose_name= &quot;Alergies&quot;, blank= T\
+rue)">EncryptedCharField(max_length= 500, verbose_name= &quot;<code class="variable-ellipsis">...</code></code><br />
+      Alergies that an user can have
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#diseases" class="summary-name">diseases</a> = <code title="EncryptedCharField(max_length= 500, verbose_name= &quot;Diseases&quot;, blank= T\
+rue)">EncryptedCharField(max_length= 500, verbose_name= &quot;<code class="variable-ellipsis">...</code></code><br />
+      Diseases that an user can have
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#insearch" class="summary-name">insearch</a> = <code title="models.BooleanField(verbose_name= &quot;In search&quot;, default= False)">models.BooleanField(verbose_name= &quot;In search&quot;, defa<code class="variable-ellipsis">...</code></code><br />
+      Boolean field that responds to the if an user is in search or not
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="clients.models.Clients-class.html#bloodType" class="summary-name">bloodType</a> = <code title="EncryptedCharField(max_length= 3, blank= True, choices= (('O-', 'O neg\
+ative'), ('O+', 'O positive'), ('B-', 'B negative'), ('B+', 'B positiv\
+e'), ('A-', 'A negative'), ('A+', 'A positive'), ('AB-', 'AB negative'\
+), ('AB+', 'AB positive'),))">EncryptedCharField(max_length= 3, blank= True, cho<code class="variable-ellipsis">...</code></code><br />
+      Blood type @see Encrypted Fields (encrypted_fields)
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="phoneValidator"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">phoneValidator</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+RegexValidator(regex= r'^\+?\d{9,12}?$', message= &quot;Phone number must b<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+e entered in the format: '+34612345678' or '612345678'.&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== INSTANCE VARIABLE DETAILS ==================== -->
+<a name="section-InstanceVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="name"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">name</h3>
+  First name of the client
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+EncryptedCharField(max_length= 50, verbose_name= &quot;First Name&quot;, blank= <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+False)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="lastname"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">lastname</h3>
+  Last name of the client
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+EncryptedCharField(max_length= 50, verbose_name= &quot;Last Name&quot;, blank= F<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+alse)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="email"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">email</h3>
+  An email address
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+EncryptedEmailField(max_length= 100, verbose_name= &quot;Email address&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="identifier"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">identifier</h3>
+  An user identifier. For example a passport id
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+EncryptedCharField(max_length= 9, verbose_name= &quot;Identifier (for examp<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+le, the passport id)&quot;, unique= True, blank= False)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="physicalCode"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">physicalCode</h3>
+  The physical web code (url) is automatically set when user is registered
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+models.CharField(max_length= 32, blank= False, verbose_name= &quot;Physical<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ Code&quot;, unique= False)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="mobileNumber"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">mobileNumber</h3>
+  Mobile (cell) phone number
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+EncryptedCharField(validators= [phoneValidator], max_length= 20, verbo<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+se_name= &quot;Mobile Phone Number&quot;, blank= False)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="phoneNumber"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">phoneNumber</h3>
+  Home number
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+EncryptedCharField(validators= [phoneValidator], max_length= 20, verbo<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+se_name= &quot;Contact Phone Number&quot;, blank= True)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="birthDate"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">birthDate</h3>
+  Birth date (yyyy/mm/dd format)
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+EncryptedDateField(verbose_name= &quot;Birth Date (mm/dd/yyyy)&quot;, blank= Tru<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+e, null= True)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="postalCode"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">postalCode</h3>
+  Postal code
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+EncryptedCharField(max_length= 10, verbose_name= &quot;Postal Code&quot;, blank=<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ True)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="alergies"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">alergies</h3>
+  Alergies that an user can have
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+EncryptedCharField(max_length= 500, verbose_name= &quot;Alergies&quot;, blank= T<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+rue)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="diseases"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">diseases</h3>
+  Diseases that an user can have
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+EncryptedCharField(max_length= 500, verbose_name= &quot;Diseases&quot;, blank= T<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+rue)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="insearch"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">insearch</h3>
+  Boolean field that responds to the if an user is in search or not
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+models.BooleanField(verbose_name= &quot;In search&quot;, default= False)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="bloodType"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">bloodType</h3>
+  Blood type @see Encrypted Fields (encrypted_fields)
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+EncryptedCharField(max_length= 3, blank= True, choices= (('O-', 'O neg<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ative'), ('O+', 'O positive'), ('B-', 'B negative'), ('B+', 'B positiv<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+e'), ('A-', 'A negative'), ('A+', 'A positive'), ('AB-', 'AB negative'<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+), ('AB+', 'AB positive'),))
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Wed Aug 17 17:01:27 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

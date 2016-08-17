@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="search-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -70,7 +67,8 @@
 <a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------------------------</tt> </tt>
 <a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment"># Django</tt> </tt>
 <a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">core</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Package search.management=search.management-module.html"><a title="search.management" class="py-name" href="#" onclick="return doclink('link-0', 'management', 'link-0');">management</a></tt><tt class="py-op">.</tt><tt class="py-name">base</tt> <tt class="py-keyword">import</tt> <tt class="py-name">BaseCommand</tt> </tt>
-<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Package search=search-module.html"><a title="search" class="py-name" href="#" onclick="return doclink('link-1', 'search', 'link-1');">search</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module search.models=search.models-module.html"><a title="search.models" class="py-name" href="#" onclick="return doclink('link-2', 'models', 'link-2');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class search.models.Route=search.models.Route-class.html"><a title="search.models.Route" class="py-name" href="#" onclick="return doclink('link-3', 'Route', 'link-3');">Route</a></tt><tt class="py-op">,</tt> <tt id="link-4" class="py-name" targets="Class search.models.WayPoint=search.models.WayPoint-class.html"><a title="search.models.WayPoint" class="py-name" href="#" onclick="return doclink('link-4', 'WayPoint', 'link-4');">WayPoint</a></tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name" targets="Class search.models.Mission=search.models.Mission-class.html"><a title="search.models.Mission" class="py-name" href="#" onclick="return doclink('link-5', 'Mission', 'link-5');">Mission</a></tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Package search=search-module.html"><a title="search" class="py-name" href="#" onclick="return doclink('link-1', 'search', 'link-1');">search</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module clients.models=clients.models-module.html,Module search.models=search.models-module.html"><a title="clients.models
+search.models" class="py-name" href="#" onclick="return doclink('link-2', 'models', 'link-2');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class search.models.Route=search.models.Route-class.html"><a title="search.models.Route" class="py-name" href="#" onclick="return doclink('link-3', 'Route', 'link-3');">Route</a></tt><tt class="py-op">,</tt> <tt id="link-4" class="py-name" targets="Class search.models.WayPoint=search.models.WayPoint-class.html"><a title="search.models.WayPoint" class="py-name" href="#" onclick="return doclink('link-4', 'WayPoint', 'link-4');">WayPoint</a></tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name" targets="Class search.models.Mission=search.models.Mission-class.html"><a title="search.models.Mission" class="py-name" href="#" onclick="return doclink('link-5', 'Mission', 'link-5');">Mission</a></tt> </tt>
 <a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">utils</tt><tt class="py-op">.</tt><tt class="py-name">aes</tt> <tt class="py-keyword">import</tt> <tt class="py-name">AESCipher</tt> </tt>
 <a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------------------------</tt> </tt>
 <a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-comment"># Third party</tt> </tt>
@@ -125,7 +123,7 @@
 <a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">                <tt class="py-name">p</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Static Method search.management.commands.launch.Command.take_photo()=search.management.commands.launch.Command-class.html#take_photo"><a title="search.management.commands.launch.Command.take_photo" class="py-name" href="#" onclick="return doclink('link-13', 'take_photo', 'link-13');">take_photo</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
 <a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"> </tt>
 <a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">            <tt class="py-name">d</tt> <tt class="py-op">=</tt> <tt class="py-name">c</tt><tt class="py-op">.</tt><tt class="py-name">encrypt</tt><tt class="py-op">(</tt><tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">dumps</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-op">{</tt><tt class="py-string">'id'</tt><tt class="py-op">:</tt> <tt class="py-name">wp</tt><tt class="py-op">.</tt><tt class="py-name">id</tt><tt class="py-op">,</tt> <tt class="py-string">'scan'</tt><tt class="py-op">:</tt> <tt class="py-name">s</tt><tt class="py-op">,</tt> <tt class="py-string">'photo'</tt><tt class="py-op">:</tt> <tt class="py-name">p</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
-<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">            <tt class="py-name">requests</tt><tt class="py-op">.</tt><tt class="py-name">post</tt><tt class="py-op">(</tt><tt class="py-name">url_post</tt><tt class="py-op">,</tt> <tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'droneId'</tt><tt class="py-op">:</tt> <tt class="py-name">drone_id</tt><tt class="py-op">,</tt> <tt class="py-string">'info'</tt><tt class="py-op">:</tt> <tt class="py-name">d</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">            <tt class="py-name">requests</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method config.views.CreateClient.post()=config.views.CreateClient-class.html#post"><a title="config.views.CreateClient.post" class="py-name" href="#" onclick="return doclink('link-14', 'post', 'link-14');">post</a></tt><tt class="py-op">(</tt><tt class="py-name">url_post</tt><tt class="py-op">,</tt> <tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'droneId'</tt><tt class="py-op">:</tt> <tt class="py-name">drone_id</tt><tt class="py-op">,</tt> <tt class="py-string">'info'</tt><tt class="py-op">:</tt> <tt class="py-name">d</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
 <a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">            <tt class="py-name">sleep</tt><tt class="py-op">(</tt><tt class="py-number">5</tt><tt class="py-op">)</tt> </tt>
 </div></div><a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
@@ -138,9 +136,6 @@ expandto(location.href);
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="search-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -166,7 +161,7 @@ expandto(location.href);
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Aug 17 12:36:28 2016
+    on Wed Aug 17 17:01:27 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

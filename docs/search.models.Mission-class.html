@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="search-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -60,14 +57,17 @@
 <h1 class="epydoc">Class Mission</h1><p class="nomargin-top"><span class="codelink"><a href="search.models-pysrc.html#Mission">source&nbsp;code</a></span></p>
 <center>
 <center>  <map id="uml_class_diagram_for_search_m_2" name="uml_class_diagram_for_search_m_2">
-<area shape="rect" id="node1_2" href="search.models.Mission-class.html#inSearch" title="search.models.Mission.inSearch" alt="" coords="18,38,182,66"/>
-<area shape="rect" id="node1_3" href="search.models.Mission-class.html#__unicode__" title="search.models.Mission.__unicode__" alt="" coords="18,69,182,97"/>
-<area shape="rect" id="node1" href="search.models.Mission-class.html" title="search.models.Mission" alt="" coords="5,5,193,103"/>
+<area shape="rect" id="node1_2" href="search.models.Mission-class.html#inSearch" title="ManyToManyFields reference to Clients model @see Encrypted Fields &#160;(encrypted_fields) @see Mission @see Route @see Drone @See Clients model" alt="" coords="18,38,182,66"/>
+<area shape="rect" id="node1_3" href="search.models.Mission-class.html#__unicode__" title="__unicode__ represents the way that the object string is showed" alt="" coords="18,69,182,97"/>
+<area shape="rect" id="node1" href="search.models.Mission-class.html" title="A Mission contains the users insearch and is linked to Route model as foreign key." alt="" coords="5,5,193,103"/>
 </map>
   <img src="uml_class_diagram_for_search_m_2.gif" alt='' usemap="#uml_class_diagram_for_search_m_2" ismap="ismap" class="graph-without-title" />
 </center>
 </center>
 <hr />
+<p>A Mission contains the users insearch and is linked to Route model as 
+  foreign key.</p>
+
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -91,7 +91,8 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="__unicode__"></a><span class="summary-sig-name">__unicode__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a name="__unicode__"></a><span class="summary-sig-name">__unicode__</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      __unicode__ represents the way that the object string is showed</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="search.models-pysrc.html#Mission.__unicode__">source&nbsp;code</a></span>
             
@@ -102,17 +103,17 @@
     </td>
   </tr>
 </table>
-<!-- ==================== CLASS VARIABLES ==================== -->
-<a name="section-ClassVariables"></a>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="left"><span class="table-header">Instance Variables</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-ClassVariables"
+         ><span class="options">[<a href="#section-InstanceVariables"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
@@ -123,21 +124,24 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="search.models.Mission-class.html#inSearch" class="summary-name">inSearch</a> = <code title="models.ManyToManyField(Clients, verbose_name= 'In Search')">models.ManyToManyField(Clients, verbose_name= 'In S<code class="variable-ellipsis">...</code></code>
+        <a href="search.models.Mission-class.html#inSearch" class="summary-name">inSearch</a> = <code title="models.ManyToManyField(Clients, verbose_name= 'In Search')">models.ManyToManyField(Clients, verbose_name= 'In S<code class="variable-ellipsis">...</code></code><br />
+      ManyToManyFields reference to Clients model @see Encrypted Fields 
+      (encrypted_fields) @see Mission @see Route @see Drone @See Clients 
+      model
     </td>
   </tr>
 </table>
-<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
-<a name="section-ClassVariableDetails"></a>
+<!-- ==================== INSTANCE VARIABLE DETAILS ==================== -->
+<a name="section-InstanceVariableDetails"></a>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="left"><span class="table-header">Instance Variable Details</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-ClassVariableDetails"
+         ><span class="options">[<a href="#section-InstanceVariableDetails"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
@@ -151,7 +155,8 @@
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">inSearch</h3>
-  
+  ManyToManyFields reference to Clients model @see Encrypted Fields 
+  (encrypted_fields) @see Mission @see Route @see Drone @See Clients model
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -168,9 +173,6 @@ models.ManyToManyField(Clients, verbose_name= 'In Search')
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="search-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -196,7 +198,7 @@ models.ManyToManyField(Clients, verbose_name= 'In Search')
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Aug 17 12:36:28 2016
+    on Wed Aug 17 17:01:27 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

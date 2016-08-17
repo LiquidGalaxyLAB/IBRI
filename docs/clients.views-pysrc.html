@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>clients.views</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="clients-module.html">Package&nbsp;clients</a> ::
+        Module&nbsp;views
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="clients.views-module.html">Module clients.views</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">  This file contains the functions that to manage the clients data</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">  as login or show user data.</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment"># Metadata</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'Moises Lodeiro Santiago'</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable clients.admin.__credits__=clients.admin-module.html#__credits__,Variable clients.models.__credits__=clients.models-module.html#__credits__,Variable clients.urls.__credits__=clients.urls-module.html#__credits__,Variable clients.views.__credits__=clients.views-module.html#__credits__,Variable config.urls.__credits__=config.urls-module.html#__credits__,Variable config.views.__credits__=config.views-module.html#__credits__"><a title="clients.admin.__credits__
+clients.models.__credits__
+clients.urls.__credits__
+clients.views.__credits__
+config.urls.__credits__
+config.views.__credits__" class="py-name" href="#" onclick="return doclink('link-0', '__credits__', 'link-0');">__credits__</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'Moises Lodeiro-Santiago'</tt><tt class="py-op">]</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> <tt class="py-string">"GPL"</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-name">__version__</tt> <tt class="py-op">=</tt> <tt class="py-string">"1.0"</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable clients.admin.__maintainer__=clients.admin-module.html#__maintainer__,Variable clients.models.__maintainer__=clients.models-module.html#__maintainer__,Variable clients.urls.__maintainer__=clients.urls-module.html#__maintainer__,Variable clients.views.__maintainer__=clients.views-module.html#__maintainer__,Variable config.urls.__maintainer__=config.urls-module.html#__maintainer__,Variable config.views.__maintainer__=config.views-module.html#__maintainer__"><a title="clients.admin.__maintainer__
+clients.models.__maintainer__
+clients.urls.__maintainer__
+clients.views.__maintainer__
+config.urls.__maintainer__
+config.views.__maintainer__" class="py-name" href="#" onclick="return doclink('link-1', '__maintainer__', 'link-1');">__maintainer__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'Moises Lodeiro-Santiago'</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable clients.admin.__email__=clients.admin-module.html#__email__,Variable clients.models.__email__=clients.models-module.html#__email__,Variable clients.urls.__email__=clients.urls-module.html#__email__,Variable clients.views.__email__=clients.views-module.html#__email__,Variable config.urls.__email__=config.urls-module.html#__email__,Variable config.views.__email__=config.views-module.html#__email__"><a title="clients.admin.__email__
+clients.models.__email__
+clients.urls.__email__
+clients.views.__email__
+config.urls.__email__
+config.views.__email__" class="py-name" href="#" onclick="return doclink('link-2', '__email__', 'link-2');">__email__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"moises.lodeiro[at]gmail.com"</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable clients.admin.__status__=clients.admin-module.html#__status__,Variable clients.models.__status__=clients.models-module.html#__status__,Variable clients.urls.__status__=clients.urls-module.html#__status__,Variable clients.views.__status__=clients.views-module.html#__status__,Variable config.urls.__status__=config.urls-module.html#__status__,Variable config.views.__status__=config.views-module.html#__status__"><a title="clients.admin.__status__
+clients.models.__status__
+clients.urls.__status__
+clients.views.__status__
+config.urls.__status__
+config.views.__status__" class="py-name" href="#" onclick="return doclink('link-3', '__status__', 'link-3');">__status__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Production"</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-comment"># Django Imports</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">shortcuts</tt> <tt class="py-keyword">import</tt> <tt class="py-name">render</tt><tt class="py-op">,</tt> <tt class="py-name">get_object_or_404</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">http</tt> <tt class="py-keyword">import</tt> <tt class="py-name">HttpResponse</tt><tt class="py-op">,</tt> <tt class="py-name">HttpResponseRedirect</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">contrib</tt><tt class="py-op">.</tt><tt class="py-name">auth</tt><tt class="py-op">.</tt><tt class="py-name">decorators</tt> <tt class="py-keyword">import</tt> <tt class="py-name">login_required</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">contrib</tt><tt class="py-op">.</tt><tt class="py-name">auth</tt> <tt class="py-keyword">import</tt> <tt class="py-name">authenticate</tt><tt class="py-op">,</tt> <tt class="py-name">login</tt><tt class="py-op">,</tt> <tt class="py-name">logout</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">shortcuts</tt> <tt class="py-keyword">import</tt> <tt class="py-name">redirect</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
+<a name="ulogin"></a><div id="ulogin-def"><a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="ulogin-toggle" onclick="return toggle('ulogin');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="clients.views-module.html#ulogin">ulogin</a><tt class="py-op">(</tt><tt class="py-param">request</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ulogin-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="ulogin-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring">    The ulogin function overide the login native function to get</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-docstring">    loged in the system.</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring">    @param request: Request petition that is handled by Django</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring">    @return: Render html page/login.html</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">    @return: HttpResponseRedirect user and password are correct</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">    @return: HttpResponse if not active</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">    @ivar username: Username (initialized in blank)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring">    @ivar password: Password (initialized in blank)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt class="py-name">username</tt> <tt class="py-op">=</tt> <tt class="py-name">password</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">request</tt><tt class="py-op">.</tt><tt class="py-name">POST</tt><tt class="py-op">:</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-name">username</tt> <tt class="py-op">=</tt> <tt class="py-name">request</tt><tt class="py-op">.</tt><tt class="py-name">POST</tt><tt class="py-op">[</tt><tt class="py-string">'username'</tt><tt class="py-op">]</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-name">password</tt> <tt class="py-op">=</tt> <tt class="py-name">request</tt><tt class="py-op">.</tt><tt class="py-name">POST</tt><tt class="py-op">[</tt><tt class="py-string">'password'</tt><tt class="py-op">]</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt class="py-name">user</tt> <tt class="py-op">=</tt> <tt class="py-name">authenticate</tt><tt class="py-op">(</tt><tt class="py-name">username</tt><tt class="py-op">=</tt><tt class="py-name">username</tt><tt class="py-op">,</tt> <tt class="py-name">password</tt><tt class="py-op">=</tt><tt class="py-name">password</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">user</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">user</tt><tt class="py-op">.</tt><tt class="py-name">is_active</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">                <tt class="py-name">login</tt><tt class="py-op">(</tt><tt class="py-name">request</tt><tt class="py-op">,</tt> <tt class="py-name">user</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">request</tt><tt class="py-op">.</tt><tt class="py-name">POST</tt><tt class="py-op">[</tt><tt class="py-string">'next'</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                    <tt class="py-keyword">return</tt> <tt class="py-name">HttpResponseRedirect</tt><tt class="py-op">(</tt><tt class="py-name">request</tt><tt class="py-op">.</tt><tt class="py-name">POST</tt><tt class="py-op">[</tt><tt class="py-string">'next'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">HttpResponse</tt><tt class="py-op">(</tt><tt class="py-string">"Error: User not active"</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">request</tt><tt class="py-op">,</tt> <tt class="py-string">'pages/login.html'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line"> </tt>
+<a name="showUserData"></a><div id="showUserData-def"><a name="L55"></a><tt class="py-lineno">55</tt> <a class="py-toggle" href="#" id="showUserData-toggle" onclick="return toggle('showUserData');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="clients.views-module.html#showUserData">showUserData</a><tt class="py-op">(</tt><tt class="py-param">request</tt><tt class="py-op">,</tt> <tt class="py-param">uid</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="showUserData-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="showUserData-expanded"><a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt class="py-docstring">    Show User Data is the function that renders the public user URL.</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-docstring">    This could be an empty webpage or an alert page that informs that an</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"><tt class="py-docstring">    user us un missing state. If anyone has installed the physica web beacon</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-docstring">    official application will be notified if detects the beacon. </tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"><tt class="py-docstring">    @param request: Request petition that is handled by Django</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt class="py-docstring">    @param uid: The uid is the url identifier that represents the user</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"><tt class="py-docstring">    id.</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line"><tt class="py-docstring">    Example:</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line"><tt class="py-docstring">        - url: /p/5/ to get the information about user number 5.</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line"> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt id="link-4" class="py-name" targets="Package clients=clients-module.html"><a title="clients" class="py-name" href="#" onclick="return doclink('link-4', 'clients', 'link-4');">clients</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Module clients.models=clients.models-module.html,Module search.models=search.models-module.html"><a title="clients.models
+search.models" class="py-name" href="#" onclick="return doclink('link-5', 'models', 'link-5');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name" targets="Class clients.models.Clients=clients.models.Clients-class.html"><a title="clients.models.Clients" class="py-name" href="#" onclick="return doclink('link-6', 'Clients', 'link-6');">Clients</a></tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">    <tt class="py-name">udata</tt> <tt class="py-op">=</tt> <tt class="py-name">get_object_or_404</tt><tt class="py-op">(</tt><tt id="link-7" class="py-name"><a title="clients.models.Clients" class="py-name" href="#" onclick="return doclink('link-7', 'Clients', 'link-6');">Clients</a></tt><tt class="py-op">,</tt> <tt class="py-name">pk</tt><tt class="py-op">=</tt><tt class="py-name">uid</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">udata</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Variable clients.models.Clients.insearch=clients.models.Clients-class.html#insearch"><a title="clients.models.Clients.insearch" class="py-name" href="#" onclick="return doclink('link-8', 'insearch', 'link-8');">insearch</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">request</tt><tt class="py-op">,</tt> <tt class="py-string">'clients/clients_missing.html'</tt><tt class="py-op">,</tt> <tt class="py-name">context</tt><tt class="py-op">=</tt><tt class="py-op">{</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">            <tt class="py-string">'user'</tt><tt class="py-op">:</tt> <tt class="py-name">udata</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">        <tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">request</tt><tt class="py-op">,</tt> <tt class="py-string">'clients/clients_show.html'</tt><tt class="py-op">,</tt> <tt class="py-name">context</tt><tt class="py-op">=</tt><tt class="py-op">{</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line">            <tt class="py-string">'user'</tt><tt class="py-op">:</tt> <tt class="py-name">udata</tt> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">        <tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Wed Aug 17 17:01:27 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

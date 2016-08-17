@@ -1,14 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-  clients/admin.py
-  :author Moises Lodeiro Santiago
-  :organization IBRI
-  :license GPL
-
   This file contains a class definition to add the Clients model
   into the django administration.
 """
+
+# Metadata
+__author__ = 'Moises Lodeiro Santiago'
+__credits__ = ['Moises Lodeiro-Santiago']
+__license__ = "GPL"
+__version__ = "1.0"
+__maintainer__ = 'Moises Lodeiro-Santiago'
+__email__ = "moises.lodeiro[at]gmail.com"
+__status__ = "Production"
 
 # Imports
 from django.contrib import admin

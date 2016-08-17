@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="search-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -57,22 +54,51 @@
 </table>
 <h1 class="epydoc">Source Code for <a href="search.admin-module.html">Module search.admin</a></h1>
 <pre class="py-src">
-<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">contrib</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module search.admin=search.admin-module.html"><a title="search.admin" class="py-name" href="#" onclick="return doclink('link-0', 'admin', 'link-0');">admin</a></tt> </tt>
-<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
-<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># Register your models here.</tt> </tt>
-<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Package search=search-module.html"><a title="search" class="py-name" href="#" onclick="return doclink('link-1', 'search', 'link-1');">search</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module search.models=search.models-module.html"><a title="search.models" class="py-name" href="#" onclick="return doclink('link-2', 'models', 'link-2');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class search.models.Route=search.models.Route-class.html"><a title="search.models.Route" class="py-name" href="#" onclick="return doclink('link-3', 'Route', 'link-3');">Route</a></tt><tt class="py-op">,</tt> <tt id="link-4" class="py-name" targets="Class search.models.WayPoint=search.models.WayPoint-class.html"><a title="search.models.WayPoint" class="py-name" href="#" onclick="return doclink('link-4', 'WayPoint', 'link-4');">WayPoint</a></tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name" targets="Class search.models.Mission=search.models.Mission-class.html"><a title="search.models.Mission" class="py-name" href="#" onclick="return doclink('link-5', 'Mission', 'link-5');">Mission</a></tt> </tt>
-<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
-<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt id="link-6" class="py-name"><a title="search.admin" class="py-name" href="#" onclick="return doclink('link-6', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-7" class="py-name"><a title="search.models.WayPoint" class="py-name" href="#" onclick="return doclink('link-7', 'WayPoint', 'link-4');">WayPoint</a></tt><tt class="py-op">)</tt> </tt>
-<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt id="link-8" class="py-name"><a title="search.admin" class="py-name" href="#" onclick="return doclink('link-8', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="search.models.Route" class="py-name" href="#" onclick="return doclink('link-9', 'Route', 'link-3');">Route</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">This file contains the definition of search models to admin </tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">implenetation in the administration panel.</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">@author: Moises Lodeiro-Santiago</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
 <a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
-<a name="WayPointAdmin"></a><div id="WayPointAdmin-def"><a name="L9"></a><tt class="py-lineno"> 9</tt> <a class="py-toggle" href="#" id="WayPointAdmin-toggle" onclick="return toggle('WayPointAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="search.admin.WayPointAdmin-class.html">WayPointAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="WayPointAdmin-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="WayPointAdmin-expanded"><a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">    <tt id="link-10" class="py-name" targets="Variable search.admin.WayPointAdmin.ordering=search.admin.WayPointAdmin-class.html#ordering"><a title="search.admin.WayPointAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-10', 'ordering', 'link-10');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'pk'</tt><tt class="py-op">]</tt> </tt>
-</div><a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
-<a name="MissionAdmin"></a><div id="MissionAdmin-def"><a name="L12"></a><tt class="py-lineno">12</tt> <a class="py-toggle" href="#" id="MissionAdmin-toggle" onclick="return toggle('MissionAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="search.admin.MissionAdmin-class.html">MissionAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="MissionAdmin-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="MissionAdmin-expanded"><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">    <tt id="link-11" class="py-name" targets="Variable search.admin.MissionAdmin.filter_horizontal=search.admin.MissionAdmin-class.html#filter_horizontal"><a title="search.admin.MissionAdmin.filter_horizontal" class="py-name" href="#" onclick="return doclink('link-11', 'filter_horizontal', 'link-11');">filter_horizontal</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'inSearch'</tt><tt class="py-op">]</tt> </tt>
-</div><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
-<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt id="link-12" class="py-name"><a title="search.admin" class="py-name" href="#" onclick="return doclink('link-12', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-13" class="py-name"><a title="search.models.Mission" class="py-name" href="#" onclick="return doclink('link-13', 'Mission', 'link-5');">Mission</a></tt><tt class="py-op">,</tt> <tt id="link-14" class="py-name" targets="Class search.admin.MissionAdmin=search.admin.MissionAdmin-class.html"><a title="search.admin.MissionAdmin" class="py-name" href="#" onclick="return doclink('link-14', 'MissionAdmin', 'link-14');">MissionAdmin</a></tt><tt class="py-op">)</tt> </tt>
-<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment"># Django imports</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">contrib</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module clients.admin=clients.admin-module.html,Module search.admin=search.admin-module.html"><a title="clients.admin
+search.admin" class="py-name" href="#" onclick="return doclink('link-0', 'admin', 'link-0');">admin</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment"># Own model imports</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Package search=search-module.html"><a title="search" class="py-name" href="#" onclick="return doclink('link-1', 'search', 'link-1');">search</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module clients.models=clients.models-module.html,Module search.models=search.models-module.html"><a title="clients.models
+search.models" class="py-name" href="#" onclick="return doclink('link-2', 'models', 'link-2');">models</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class search.models.Route=search.models.Route-class.html"><a title="search.models.Route" class="py-name" href="#" onclick="return doclink('link-3', 'Route', 'link-3');">Route</a></tt><tt class="py-op">,</tt> <tt id="link-4" class="py-name" targets="Class search.models.WayPoint=search.models.WayPoint-class.html"><a title="search.models.WayPoint" class="py-name" href="#" onclick="return doclink('link-4', 'WayPoint', 'link-4');">WayPoint</a></tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name" targets="Class search.models.Mission=search.models.Mission-class.html"><a title="search.models.Mission" class="py-name" href="#" onclick="return doclink('link-5', 'Mission', 'link-5');">Mission</a></tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
+<a name="WayPointAdmin"></a><div id="WayPointAdmin-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="WayPointAdmin-toggle" onclick="return toggle('WayPointAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="search.admin.WayPointAdmin-class.html">WayPointAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="WayPointAdmin-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="WayPointAdmin-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-docstring">    WayPointAdmin extends admin.ModelAdmin to use the WayPoint model</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-docstring">    into the django admin panel.</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">    @var ordering: Filter order by public key (id)</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">    @see: admin.ModelAdmin</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt id="link-6" class="py-name" targets="Variable search.admin.WayPointAdmin.ordering=search.admin.WayPointAdmin-class.html#ordering"><a title="search.admin.WayPointAdmin.ordering" class="py-name" href="#" onclick="return doclink('link-6', 'ordering', 'link-6');">ordering</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt>
+<a name="MissionAdmin"></a><div id="MissionAdmin-def"><a name="L26"></a><tt class="py-lineno">26</tt> <a class="py-toggle" href="#" id="MissionAdmin-toggle" onclick="return toggle('MissionAdmin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="search.admin.MissionAdmin-class.html">MissionAdmin</a><tt class="py-op">(</tt><tt class="py-base-class">admin</tt><tt class="py-op">.</tt><tt class="py-base-class">ModelAdmin</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MissionAdmin-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="MissionAdmin-expanded"><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-docstring">    MissionAdmin extends admin.ModelAdmin to use the Mission model</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">    into the django admin panel.</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring">    @var filter_horizontal: List inSearch as horizontal form</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">    @see: admin.ModelAdmin</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt id="link-7" class="py-name" targets="Variable search.admin.MissionAdmin.filter_horizontal=search.admin.MissionAdmin-class.html#filter_horizontal"><a title="search.admin.MissionAdmin.filter_horizontal" class="py-name" href="#" onclick="return doclink('link-7', 'filter_horizontal', 'link-7');">filter_horizontal</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'inSearch'</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-comment"># Register the admins</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt id="link-8" class="py-name"><a title="clients.admin
+search.admin" class="py-name" href="#" onclick="return doclink('link-8', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="search.models.Mission" class="py-name" href="#" onclick="return doclink('link-9', 'Mission', 'link-5');">Mission</a></tt><tt class="py-op">,</tt> <tt id="link-10" class="py-name" targets="Class search.admin.MissionAdmin=search.admin.MissionAdmin-class.html"><a title="search.admin.MissionAdmin" class="py-name" href="#" onclick="return doclink('link-10', 'MissionAdmin', 'link-10');">MissionAdmin</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt id="link-11" class="py-name"><a title="clients.admin
+search.admin" class="py-name" href="#" onclick="return doclink('link-11', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-12" class="py-name"><a title="search.models.WayPoint" class="py-name" href="#" onclick="return doclink('link-12', 'WayPoint', 'link-4');">WayPoint</a></tt><tt class="py-op">,</tt> <tt id="link-13" class="py-name" targets="Class search.admin.WayPointAdmin=search.admin.WayPointAdmin-class.html"><a title="search.admin.WayPointAdmin" class="py-name" href="#" onclick="return doclink('link-13', 'WayPointAdmin', 'link-13');">WayPointAdmin</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt id="link-14" class="py-name"><a title="clients.admin
+search.admin" class="py-name" href="#" onclick="return doclink('link-14', 'admin', 'link-0');">admin</a></tt><tt class="py-op">.</tt><tt class="py-name">site</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt id="link-15" class="py-name"><a title="search.models.Route" class="py-name" href="#" onclick="return doclink('link-15', 'Route', 'link-3');">Route</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -83,9 +109,6 @@ expandto(location.href);
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="search-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -111,7 +134,7 @@ expandto(location.href);
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Aug 17 12:36:28 2016
+    on Wed Aug 17 17:01:27 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

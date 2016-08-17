@@ -1,3 +1,20 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+  This file contains the functions that to manage the clients data
+  as login or show user data.
+"""
+
+# Metadata
+__author__ = 'Moises Lodeiro Santiago'
+__credits__ = ['Moises Lodeiro-Santiago']
+__license__ = "GPL"
+__version__ = "1.0"
+__maintainer__ = 'Moises Lodeiro-Santiago'
+__email__ = "moises.lodeiro[at]gmail.com"
+__status__ = "Production"
+
+# Django Imports
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -5,17 +22,18 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 
 
-# Create your views here.
-
 def ulogin(request):
-    '''
-    Function: ulogin
-    Summary: InsertHere
-    Examples: InsertHere
-    Attributes: 
-        @param (request):InsertHere
-    Returns: InsertHere
-    '''
+    """
+    The ulogin function overide the login native function to get
+    loged in the system.
+
+    @param request: Request petition that is handled by Django
+    @return: Render html page/login.html
+    @return: HttpResponseRedirect user and password are correct
+    @return: HttpResponse if not active
+    @ivar username: Username (initialized in blank)
+    @ivar password: Password (initialized in blank)
+    """
 
     username = password = ''
     if request.POST:
@@ -35,6 +53,20 @@ def ulogin(request):
 
 
 def showUserData(request, uid):
+    """
+    Show User Data is the function that renders the public user URL.
+
+    This could be an empty webpage or an alert page that informs that an
+    user us un missing state. If anyone has installed the physica web beacon
+    official application will be notified if detects the beacon. 
+
+    @param request: Request petition that is handled by Django
+    @param uid: The uid is the url identifier that represents the user
+    id.
+
+    Example:
+        - url: /p/5/ to get the information about user number 5.
+    """
 
     from clients.models import Clients
     udata = get_object_or_404(Clients, pk=uid)

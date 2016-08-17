@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="search-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -60,20 +57,24 @@
 <h1 class="epydoc">Class Route</h1><p class="nomargin-top"><span class="codelink"><a href="search.models-pysrc.html#Route">source&nbsp;code</a></span></p>
 <center>
 <center>  <map id="uml_class_diagram_for_search_m_3" name="uml_class_diagram_for_search_m_3">
-<area shape="rect" id="node1_8" href="search.models.Route-class.html#mission" title="search.models.Route.mission" alt="" coords="18,38,182,66"/>
-<area shape="rect" id="node1_9" href="search.models.Route-class.html#baseLat" title="search.models.Route.baseLat" alt="" coords="18,66,182,94"/>
-<area shape="rect" id="node1_10" href="search.models.Route-class.html#baseLng" title="search.models.Route.baseLng" alt="" coords="18,94,182,122"/>
-<area shape="rect" id="node1_11" href="search.models.Route-class.html#drone" title="search.models.Route.drone" alt="" coords="18,122,182,150"/>
-<area shape="rect" id="node1_12" href="search.models.Route-class.html#tmpLat" title="search.models.Route.tmpLat" alt="" coords="18,150,182,178"/>
-<area shape="rect" id="node1_13" href="search.models.Route-class.html#tmpLng" title="search.models.Route.tmpLng" alt="" coords="18,178,182,206"/>
-<area shape="rect" id="node1_14" href="search.models.Route-class.html#initialWp" title="search.models.Route.initialWp" alt="" coords="18,206,182,234"/>
-<area shape="rect" id="node1_15" href="search.models.Route-class.html#__unicode__" title="search.models.Route.__unicode__" alt="" coords="18,237,182,265"/>
-<area shape="rect" id="node1" href="search.models.Route-class.html" title="search.models.Route" alt="" coords="5,5,193,271"/>
+<area shape="rect" id="node1_8" href="search.models.Route-class.html#mission" title="Foreign key from the Mission model" alt="" coords="18,38,182,66"/>
+<area shape="rect" id="node1_9" href="search.models.Route-class.html#baseLat" title="Base latitude." alt="" coords="18,66,182,94"/>
+<area shape="rect" id="node1_10" href="search.models.Route-class.html#baseLng" title="Base longitude." alt="" coords="18,94,182,122"/>
+<area shape="rect" id="node1_11" href="search.models.Route-class.html#drone" title="Foreign key from the Drone model" alt="" coords="18,122,182,150"/>
+<area shape="rect" id="node1_12" href="search.models.Route-class.html#tmpLat" title="A temporary latitude." alt="" coords="18,150,182,178"/>
+<area shape="rect" id="node1_13" href="search.models.Route-class.html#tmpLng" title="A temporary longitude." alt="" coords="18,178,182,206"/>
+<area shape="rect" id="node1_14" href="search.models.Route-class.html#initialWp" title="How much initial waypoints has on mission start @see Encrypted Fields &#160;(encrypted_fields) @see Mission @see Drone" alt="" coords="18,206,182,234"/>
+<area shape="rect" id="node1_15" href="search.models.Route-class.html#__unicode__" title="__unicode__ represents the way that the object string is showed" alt="" coords="18,237,182,265"/>
+<area shape="rect" id="node1" href="search.models.Route-class.html" title="Route model class represents the connection between the Mission model and the WayPoint." alt="" coords="5,5,193,271"/>
 </map>
   <img src="uml_class_diagram_for_search_m_3.gif" alt='' usemap="#uml_class_diagram_for_search_m_3" ismap="ismap" class="graph-without-title" />
 </center>
 </center>
 <hr />
+<p>Route model class represents the connection between the Mission model 
+  and the WayPoint. A route is a container that contains the waypoints. A 
+  mission could have various routes. Mission 1:n Routes 1:n Waypoints</p>
+
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -97,7 +98,8 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="__unicode__"></a><span class="summary-sig-name">__unicode__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a name="__unicode__"></a><span class="summary-sig-name">__unicode__</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      __unicode__ represents the way that the object string is showed</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="search.models-pysrc.html#Route.__unicode__">source&nbsp;code</a></span>
             
@@ -108,17 +110,17 @@
     </td>
   </tr>
 </table>
-<!-- ==================== CLASS VARIABLES ==================== -->
-<a name="section-ClassVariables"></a>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="left"><span class="table-header">Instance Variables</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-ClassVariables"
+         ><span class="options">[<a href="#section-InstanceVariables"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
@@ -129,63 +131,71 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="mission"></a><span class="summary-name">mission</span> = <code title="models.ForeignKey('Mission')">models.ForeignKey('Mission')</code>
+        <a name="mission"></a><span class="summary-name">mission</span> = <code title="models.ForeignKey('Mission')">models.ForeignKey('Mission')</code><br />
+      Foreign key from the Mission model
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="search.models.Route-class.html#baseLat" class="summary-name">baseLat</a> = <code title="EncryptedCharField(verbose_name= &quot;Base Latitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Base Latitude&quot;, ma<code class="variable-ellipsis">...</code></code>
+        <a href="search.models.Route-class.html#baseLat" class="summary-name">baseLat</a> = <code title="EncryptedCharField(verbose_name= &quot;Base Latitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Base Latitude&quot;, ma<code class="variable-ellipsis">...</code></code><br />
+      Base latitude.
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="search.models.Route-class.html#baseLng" class="summary-name">baseLng</a> = <code title="EncryptedCharField(verbose_name= &quot;Base Longitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Base Longitude&quot;, m<code class="variable-ellipsis">...</code></code>
+        <a href="search.models.Route-class.html#baseLng" class="summary-name">baseLng</a> = <code title="EncryptedCharField(verbose_name= &quot;Base Longitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Base Longitude&quot;, m<code class="variable-ellipsis">...</code></code><br />
+      Base longitude.
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="drone"></a><span class="summary-name">drone</span> = <code title="models.ForeignKey(Drone)">models.ForeignKey(Drone)</code>
+        <a name="drone"></a><span class="summary-name">drone</span> = <code title="models.ForeignKey(Drone)">models.ForeignKey(Drone)</code><br />
+      Foreign key from the Drone model
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="search.models.Route-class.html#tmpLat" class="summary-name">tmpLat</a> = <code title="EncryptedCharField(verbose_name= &quot;Tmp Latitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Tmp Latitude&quot;, max_<code class="variable-ellipsis">...</code></code>
+        <a href="search.models.Route-class.html#tmpLat" class="summary-name">tmpLat</a> = <code title="EncryptedCharField(verbose_name= &quot;Tmp Latitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Tmp Latitude&quot;, max_<code class="variable-ellipsis">...</code></code><br />
+      A temporary latitude.
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="search.models.Route-class.html#tmpLng" class="summary-name">tmpLng</a> = <code title="EncryptedCharField(verbose_name= &quot;Tmp Longitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Tmp Longitude&quot;, max<code class="variable-ellipsis">...</code></code>
+        <a href="search.models.Route-class.html#tmpLng" class="summary-name">tmpLng</a> = <code title="EncryptedCharField(verbose_name= &quot;Tmp Longitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Tmp Longitude&quot;, max<code class="variable-ellipsis">...</code></code><br />
+      A temporary longitude.
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="search.models.Route-class.html#initialWp" class="summary-name">initialWp</a> = <code title="EncryptedIntegerField(verbose_name= &quot;Initial Waypoints in Route&quot;)">EncryptedIntegerField(verbose_name= &quot;Initial Waypo<code class="variable-ellipsis">...</code></code>
+        <a href="search.models.Route-class.html#initialWp" class="summary-name">initialWp</a> = <code title="EncryptedIntegerField(verbose_name= &quot;Initial Waypoints in Route&quot;)">EncryptedIntegerField(verbose_name= &quot;Initial Waypo<code class="variable-ellipsis">...</code></code><br />
+      How much initial waypoints has on mission start @see Encrypted Fields
+      (encrypted_fields) @see Mission @see Drone
     </td>
   </tr>
 </table>
-<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
-<a name="section-ClassVariableDetails"></a>
+<!-- ==================== INSTANCE VARIABLE DETAILS ==================== -->
+<a name="section-InstanceVariableDetails"></a>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="left"><span class="table-header">Instance Variable Details</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-ClassVariableDetails"
+         ><span class="options">[<a href="#section-InstanceVariableDetails"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
@@ -199,7 +209,7 @@
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">baseLat</h3>
-  
+  Base latitude. Is the latitude where the base is placed
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -217,7 +227,7 @@ EncryptedCharField(verbose_name= &quot;Base Latitude&quot;, max_length= 30)
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">baseLng</h3>
-  
+  Base longitude. Is the longitude where the base is placed
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -235,7 +245,7 @@ EncryptedCharField(verbose_name= &quot;Base Longitude&quot;, max_length= 30)
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">tmpLat</h3>
-  
+  A temporary latitude. Represents the temporary latitude of the drone
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -253,7 +263,7 @@ EncryptedCharField(verbose_name= &quot;Tmp Latitude&quot;, max_length= 30)
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">tmpLng</h3>
-  
+  A temporary longitude. Represents the temporary longitude of the drone
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -271,7 +281,8 @@ EncryptedCharField(verbose_name= &quot;Tmp Longitude&quot;, max_length= 30)
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">initialWp</h3>
-  
+  How much initial waypoints has on mission start @see Encrypted Fields 
+  (encrypted_fields) @see Mission @see Drone
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -288,9 +299,6 @@ EncryptedIntegerField(verbose_name= &quot;Initial Waypoints in Route&quot;)
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="search-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -316,7 +324,7 @@ EncryptedIntegerField(verbose_name= &quot;Initial Waypoints in Route&quot;)
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Aug 17 12:36:28 2016
+    on Wed Aug 17 17:01:27 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

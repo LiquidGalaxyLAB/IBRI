@@ -3,7 +3,7 @@
           "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>search</title>
+  <title>Module Hierarchy</title>
   <link rel="stylesheet" href="epydoc.css" type="text/css" />
   <script type="text/javascript" src="epydoc.js"></script>
 </head>
@@ -14,13 +14,10 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th bgcolor="#70b0f0" class="navbar-select"
-          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Trees&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Index link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -40,11 +37,7 @@
 </table>
 <table width="100%" cellpadding="0" cellspacing="0">
   <tr valign="top">
-    <td width="100%">
-      <span class="breadcrumbs">
-        Package&nbsp;search
-      </span>
-    </td>
+    <td width="100%">&nbsp;</td>
     <td>
       <table cellpadding="0" cellspacing="0">
         <!-- hide/show private -->
@@ -54,29 +47,33 @@
     </td>
   </tr>
 </table>
-<!-- ==================== PACKAGE DESCRIPTION ==================== -->
-<h1 class="epydoc">Package search</h1><p class="nomargin-top"><span class="codelink"><a href="search-pysrc.html">source&nbsp;code</a></span></p>
-<!-- ==================== SUBMODULES ==================== -->
-<a name="section-Submodules"></a>
-<table class="summary" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr bgcolor="#70b0f0" class="table-header">
-  <td colspan="2" class="table-header">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr valign="top">
-        <td align="left"><span class="table-header">Submodules</span></td>
-        <td align="right" valign="top"
-         ><span class="options">[<a href="#section-Submodules"
-         class="privatelink" onclick="toggle_private();"
-         >hide private</a>]</span></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-  <tr><td class="summary">
-  <ul class="nomargin">
-    <li> <strong class="uidlink"><a href="search.admin-module.html">search.admin</a></strong>    </li>
-    <li> <strong class="uidlink"><a href="search.apps-module.html">search.apps</a></strong>    </li>
+<center><b>
+ [ <a href="module-tree.html">Module Hierarchy</a>
+ | <a href="class-tree.html">Class Hierarchy</a> ]
+</b></center><br />
+<h1 class="epydoc">Module Hierarchy</h1>
+<ul class="nomargin-top">
+    <li> <strong class="uidlink"><a href="clients-module.html">clients</a></strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="clients.admin-module.html">clients.admin</a></strong>: <em class="summary">This file contains a class definition to add the Clients model into
+        the django administration.</em>    </li>
+    <li> <strong class="uidlink"><a href="clients.models-module.html">clients.models</a></strong>: <em class="summary">This file contains the Client model that is used to registered the 
+        clients user data.</em>    </li>
+    <li> <strong class="uidlink"><a href="clients.urls-module.html">clients.urls</a></strong>: <em class="summary">This file contains the routing to server to the client the HTML</em>    </li>
+    <li> <strong class="uidlink"><a href="clients.views-module.html">clients.views</a></strong>: <em class="summary">This file contains the functions that to manage the clients data as
+        login or show user data.</em>    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="config-module.html">config</a></strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="config.urls-module.html">config.urls</a></strong>: <em class="summary">This file contains the routing from config package</em>    </li>
+    <li> <strong class="uidlink"><a href="config.views-module.html">config.views</a></strong>: <em class="summary">This file contains the views corresponding to the admin area.</em>    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="search-module.html">search</a></strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="search.admin-module.html">search.admin</a></strong>: <em class="summary">This file contains the definition of search models to admin 
+        implenetation in the administration panel.</em>    </li>
     <li> <strong class="uidlink"><a href="search.management-module.html">search.management</a></strong>
     <ul>
     <li> <strong class="uidlink"><a href="search.management.commands-module.html">search.management.commands</a></strong>
@@ -86,25 +83,21 @@
     </li>
     </ul>
     </li>
-    <li> <strong class="uidlink"><a href="search.models-module.html">search.models</a></strong>    </li>
-    <li> <strong class="uidlink"><a href="search.tests-module.html">search.tests</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="search.models-module.html">search.models</a></strong>: <em class="summary">This file contains the model to Search package including the Route,
+        WayPoint and Mission model.</em>    </li>
     <li> <strong class="uidlink"><a href="search.views-module.html">search.views</a></strong>: <em class="summary">Search views contains all the functions that are necesary to use in
         the search application.</em>    </li>
-  </ul></td></tr>
-</table>
-
-<br />
+    </ul>
+    </li>
+</ul>
 <!-- ==================== NAVIGATION BAR ==================== -->
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th bgcolor="#70b0f0" class="navbar-select"
-          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Trees&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Index link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -126,7 +119,7 @@
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Aug 17 12:36:28 2016
+    on Wed Aug 17 17:01:27 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"

@@ -14,9 +14,6 @@
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="search-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -60,21 +57,25 @@
 <h1 class="epydoc">Class WayPoint</h1><p class="nomargin-top"><span class="codelink"><a href="search.models-pysrc.html#WayPoint">source&nbsp;code</a></span></p>
 <center>
 <center>  <map id="uml_class_diagram_for_search_m_4" name="uml_class_diagram_for_search_m_4">
-<area shape="rect" id="node1_9" href="search.models.WayPoint-class.html#route" title="search.models.WayPoint.route" alt="" coords="18,37,182,65"/>
-<area shape="rect" id="node1_10" href="search.models.WayPoint-class.html#ref" title="search.models.WayPoint.ref" alt="" coords="18,65,182,93"/>
-<area shape="rect" id="node1_11" href="search.models.WayPoint-class.html#lat" title="search.models.WayPoint.lat" alt="" coords="18,93,182,121"/>
-<area shape="rect" id="node1_12" href="search.models.WayPoint-class.html#lng" title="search.models.WayPoint.lng" alt="" coords="18,121,182,149"/>
-<area shape="rect" id="node1_13" href="search.models.WayPoint-class.html#visited" title="search.models.WayPoint.visited" alt="" coords="18,149,182,177"/>
-<area shape="rect" id="node1_14" href="search.models.WayPoint-class.html#signalFound" title="search.models.WayPoint.signalFound" alt="" coords="18,177,182,205"/>
-<area shape="rect" id="node1_15" href="search.models.WayPoint-class.html#photo" title="search.models.WayPoint.photo" alt="" coords="18,205,182,233"/>
-<area shape="rect" id="node1_16" href="search.models.WayPoint-class.html#updated" title="search.models.WayPoint.updated" alt="" coords="18,233,182,261"/>
-<area shape="rect" id="node1_17" href="search.models.WayPoint-class.html#__unicode__" title="search.models.WayPoint.__unicode__" alt="" coords="18,264,182,292"/>
-<area shape="rect" id="node1" href="search.models.WayPoint-class.html" title="search.models.WayPoint" alt="" coords="5,5,193,299"/>
+<area shape="rect" id="node1_9" href="search.models.WayPoint-class.html#route" title="A route is a foreign key that let us to know the route where is placed this waypoint" alt="" coords="18,37,182,65"/>
+<area shape="rect" id="node1_10" href="search.models.WayPoint-class.html#ref" title="A reference integer to identify the waypoint in the route" alt="" coords="18,65,182,93"/>
+<area shape="rect" id="node1_11" href="search.models.WayPoint-class.html#lat" title="GPS Latitude" alt="" coords="18,93,182,121"/>
+<area shape="rect" id="node1_12" href="search.models.WayPoint-class.html#lng" title="GPS Longitude" alt="" coords="18,121,182,149"/>
+<area shape="rect" id="node1_13" href="search.models.WayPoint-class.html#visited" title="Boolean field to check if that waypoint has been visited" alt="" coords="18,149,182,177"/>
+<area shape="rect" id="node1_14" href="search.models.WayPoint-class.html#signalFound" title="The user ID if the drone locates the beacon signal" alt="" coords="18,177,182,205"/>
+<area shape="rect" id="node1_15" href="search.models.WayPoint-class.html#photo" title="Base64 encoded photo that the drone takes" alt="" coords="18,205,182,233"/>
+<area shape="rect" id="node1_16" href="search.models.WayPoint-class.html#updated" title="Timestamp that indicates to us when the waypoint has been visited @see &#160;Encrypted Fields (encrypted_fields) @see Mission @see Route @see Drone" alt="" coords="18,233,182,261"/>
+<area shape="rect" id="node1_17" href="search.models.WayPoint-class.html#__unicode__" title="__unicode__ represents the way that the object string is showed" alt="" coords="18,264,182,292"/>
+<area shape="rect" id="node1" href="search.models.WayPoint-class.html" title="A WayPoint is a GPS position that the drone should visit in order to complete the mission." alt="" coords="5,5,193,299"/>
 </map>
   <img src="uml_class_diagram_for_search_m_4.gif" alt='' usemap="#uml_class_diagram_for_search_m_4" ismap="ismap" class="graph-without-title" />
 </center>
 </center>
 <hr />
+<p>A WayPoint is a GPS position that the drone should visit in order to 
+  complete the mission. A waypoints is connected to a Route in this way 
+  Route 1:n Waypoint.</p>
+
 <!-- ==================== INSTANCE METHODS ==================== -->
 <a name="section-InstanceMethods"></a>
 <table class="summary" border="1" cellpadding="3"
@@ -98,7 +99,8 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a name="__unicode__"></a><span class="summary-sig-name">__unicode__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td><span class="summary-sig"><a name="__unicode__"></a><span class="summary-sig-name">__unicode__</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      __unicode__ represents the way that the object string is showed</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="search.models-pysrc.html#WayPoint.__unicode__">source&nbsp;code</a></span>
             
@@ -109,17 +111,17 @@
     </td>
   </tr>
 </table>
-<!-- ==================== CLASS VARIABLES ==================== -->
-<a name="section-ClassVariables"></a>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
 <table class="summary" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="left"><span class="table-header">Instance Variables</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-ClassVariables"
+         ><span class="options">[<a href="#section-InstanceVariables"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
@@ -130,35 +132,41 @@
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="route"></a><span class="summary-name">route</span> = <code title="models.ForeignKey(Route)">models.ForeignKey(Route)</code>
+        <a name="route"></a><span class="summary-name">route</span> = <code title="models.ForeignKey(Route)">models.ForeignKey(Route)</code><br />
+      A route is a foreign key that let us to know the route where is 
+      placed this waypoint
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="ref"></a><span class="summary-name">ref</span> = <code title="models.IntegerField(verbose_name= &quot;Ref.Point&quot;)">models.IntegerField(verbose_name= &quot;Ref.Point&quot;)</code>
+        <a name="ref"></a><span class="summary-name">ref</span> = <code title="models.IntegerField(verbose_name= &quot;Ref.Point&quot;)">models.IntegerField(verbose_name= &quot;Ref.Point&quot;)</code><br />
+      A reference integer to identify the waypoint in the route
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="search.models.WayPoint-class.html#lat" class="summary-name">lat</a> = <code title="EncryptedCharField(verbose_name= &quot;Latitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Latitude&quot;, max_length=<code class="variable-ellipsis">...</code></code>
+        <a href="search.models.WayPoint-class.html#lat" class="summary-name">lat</a> = <code title="EncryptedCharField(verbose_name= &quot;Latitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Latitude&quot;, max_length=<code class="variable-ellipsis">...</code></code><br />
+      GPS Latitude
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="search.models.WayPoint-class.html#lng" class="summary-name">lng</a> = <code title="EncryptedCharField(verbose_name= &quot;Longitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Longitude&quot;, max_length<code class="variable-ellipsis">...</code></code>
+        <a href="search.models.WayPoint-class.html#lng" class="summary-name">lng</a> = <code title="EncryptedCharField(verbose_name= &quot;Longitude&quot;, max_length= 30)">EncryptedCharField(verbose_name= &quot;Longitude&quot;, max_length<code class="variable-ellipsis">...</code></code><br />
+      GPS Longitude
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="search.models.WayPoint-class.html#visited" class="summary-name">visited</a> = <code title="EncryptedBooleanField(verbose_name= &quot;Visited&quot;, default= False)">EncryptedBooleanField(verbose_name= &quot;Visited&quot;, defau<code class="variable-ellipsis">...</code></code>
+        <a href="search.models.WayPoint-class.html#visited" class="summary-name">visited</a> = <code title="EncryptedBooleanField(verbose_name= &quot;Visited&quot;, default= False)">EncryptedBooleanField(verbose_name= &quot;Visited&quot;, defau<code class="variable-ellipsis">...</code></code><br />
+      Boolean field to check if that waypoint has been visited
     </td>
   </tr>
 <tr>
@@ -166,35 +174,40 @@
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
         <a href="search.models.WayPoint-class.html#signalFound" class="summary-name">signalFound</a> = <code title="EncryptedIntegerField(verbose_name= &quot;Beacon signal detected&quot;, null= Tr\
-ue)">EncryptedIntegerField(verbose_name= &quot;Beacon sign<code class="variable-ellipsis">...</code></code>
+ue)">EncryptedIntegerField(verbose_name= &quot;Beacon sign<code class="variable-ellipsis">...</code></code><br />
+      The user ID if the drone locates the beacon signal
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a href="search.models.WayPoint-class.html#photo" class="summary-name">photo</a> = <code title="EncryptedTextField(verbose_name= &quot;Base64 Photo&quot;, null= True)">EncryptedTextField(verbose_name= &quot;Base64 Photo&quot;, null=<code class="variable-ellipsis">...</code></code>
+        <a href="search.models.WayPoint-class.html#photo" class="summary-name">photo</a> = <code title="EncryptedTextField(verbose_name= &quot;Base64 Photo&quot;, null= True)">EncryptedTextField(verbose_name= &quot;Base64 Photo&quot;, null=<code class="variable-ellipsis">...</code></code><br />
+      Base64 encoded photo that the drone takes
     </td>
   </tr>
 <tr>
     <td width="15%" align="right" valign="top" class="summary">
       <span class="summary-type">&nbsp;</span>
     </td><td class="summary">
-        <a name="updated"></a><span class="summary-name">updated</span> = <code title="models.DateTimeField(auto_now= True)">models.DateTimeField(auto_now= True)</code>
+        <a name="updated"></a><span class="summary-name">updated</span> = <code title="models.DateTimeField(auto_now= True)">models.DateTimeField(auto_now= True)</code><br />
+      Timestamp that indicates to us when the waypoint has been visited 
+      @see Encrypted Fields (encrypted_fields) @see Mission @see Route @see
+      Drone
     </td>
   </tr>
 </table>
-<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
-<a name="section-ClassVariableDetails"></a>
+<!-- ==================== INSTANCE VARIABLE DETAILS ==================== -->
+<a name="section-InstanceVariableDetails"></a>
 <table class="details" border="1" cellpadding="3"
        cellspacing="0" width="100%" bgcolor="white">
 <tr bgcolor="#70b0f0" class="table-header">
   <td colspan="2" class="table-header">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr valign="top">
-        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="left"><span class="table-header">Instance Variable Details</span></td>
         <td align="right" valign="top"
-         ><span class="options">[<a href="#section-ClassVariableDetails"
+         ><span class="options">[<a href="#section-InstanceVariableDetails"
          class="privatelink" onclick="toggle_private();"
          >hide private</a>]</span></td>
       </tr>
@@ -208,7 +221,7 @@ ue)">EncryptedIntegerField(verbose_name= &quot;Beacon sign<code class="variable-
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">lat</h3>
-  
+  GPS Latitude
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -226,7 +239,7 @@ EncryptedCharField(verbose_name= &quot;Latitude&quot;, max_length= 30)
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">lng</h3>
-  
+  GPS Longitude
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -244,7 +257,7 @@ EncryptedCharField(verbose_name= &quot;Longitude&quot;, max_length= 30)
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">visited</h3>
-  
+  Boolean field to check if that waypoint has been visited
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -262,7 +275,7 @@ EncryptedBooleanField(verbose_name= &quot;Visited&quot;, default= False)
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">signalFound</h3>
-  
+  The user ID if the drone locates the beacon signal
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -281,7 +294,7 @@ ue)
        cellspacing="0" width="100%" bgcolor="white">
 <tr><td>
   <h3 class="epydoc">photo</h3>
-  
+  Base64 encoded photo that the drone takes
   <dl class="fields">
   </dl>
   <dl class="fields">
@@ -298,9 +311,6 @@ EncryptedTextField(verbose_name= &quot;Base64 Photo&quot;, null= True)
 <table class="navbar" border="0" width="100%" cellpadding="0"
        bgcolor="#a0c0ff" cellspacing="0">
   <tr valign="middle">
-  <!-- Home link -->
-      <th>&nbsp;&nbsp;&nbsp;<a
-        href="search-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
 
   <!-- Tree link -->
       <th>&nbsp;&nbsp;&nbsp;<a
@@ -326,7 +336,7 @@ EncryptedTextField(verbose_name= &quot;Base64 Photo&quot;, null= True)
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Aug 17 12:36:28 2016
+    on Wed Aug 17 17:01:27 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
