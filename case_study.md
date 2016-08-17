@@ -15,7 +15,7 @@
 ## 1. INTRODUCTION
 Nowadays, people are getting more interested in outdoors activities, and sometimes, these activities can involve dangerous landscapes or they can lead to unsafe situations.
 Mountains are, by far, the place chosen for the majority of people, and for this reason a big part of the rescues that are done are carried out there.
-These situations may occur by bad weather conditions, by ignorance of the land or by lapse of concentration. When someone gets lost, a big emergency display is sent to the area where the person is thought to be. Since then, the rescue teams would begin a search that nobody knows how much time will take, coordinating the policemen, the firefighters, the medical services...
+These situations may occur by bad weather conditions, by ignorance of the land or by lapse of concentration. When someone gets lost, a big emergency display is sent to the area where the person is thought to be. Since then, the rescue teams would begin a search that nobody knows how much time will take, coordinating the policemen, the firefighters, the medical services…
 Time is the main problem in this kind of situations, because for somebody that is lost in the middle of a mountain an hour more or an hour less can determinate his health condition, because the missing person may have a shortage of food and water or a lack of warm clothes. That means, that is vital to find that person as fast as possible, so lots of presences are deployed in order to come across with him/her.
 Sometimes, helicopters are needed because they ease the localization work, but rarely more than one is deployed, due to the high costs.
 IBRI is a project dedicated to offer a solution to all the difficulties that a rescue could involve, from the easiest cases to the most dangerous ones. It consists in a platform that would use drones to do the helicopter work and part of the human work, without the costs that they entail, by localizing the missing people by detecting the BLE radio signals that a Beacon using Google’s Physical Web protocol sends out, a gadget carried by the missing people.
@@ -31,10 +31,14 @@ That is to say, deploying a drone would generate less dangerous situations, as w
 Another aspect that has a vital importance is effectiveness. Imagine a situation where the area that is thought that the missing people are is very big. Helicopters are the best option, because they can travel long distances in a short period of time, but they have a big problem, the costs that they imply. The fuel of a helicopter is so expensive that deploy more than one is not easy. However, drones do not have that kind of limitations, because the cost of the electricity needed to charge their batteries is nothing compared to the money that fuel cost.
 
 Then, we could imagine a situation where both methods were working at the same time, so the rescue staff in the field could be unnecessary until the missing people are localized.
-In summary, this platform would ease rescue tasks as we have seen, facilitating the localization part of the whole mission and reducing risks, as well as costs. 
+In summary, this platform would ease rescue tasks as we have seen, facilitating the localization part of the whole mission and reducing risks, as well as costs.
 
 ## 3. IBRI PLATFORM
+
 IBRI is a service focused on Search and Rescue (SAR) tasks, and its aim is to speed up those operations. To do that, there is a web platform where the operator can control the whole mission. The web has this look: 
+
+![](http://i.imgsafe.org/4c98fd81fe.png)
+
 First of all, the ones who want the service have to register themselves in the web platform. The information asked to a new client is that information that could help both parts in case of emergency, for example: the complete name, the address, the blood type, ...
 From this platform, an operator can activate the missing status of any client. When a client gets lost, the SAR tasks would begin. The operator would send the appropriate number of drones to the area where the missing person is supposed to be. The size of the area where the drone will look for the lost client is also determined by the operator. When the route is already done, it is broadcasted to the smartphone carried by the drone. 
 This smartphone has an application that detects BLE radio signals, which are sent out by a gadget called Physical Web that the missing person is carrying. 
@@ -46,9 +50,11 @@ Once the drone has finished the flight, the operator would analyse all the infor
 As drones are relatively new, legislation in this field is a bit ambiguous, because only a few situations have been regulated. In our case, for emergency situations the drone law allows the trial and deployment of services.
 Current law does not permit the use of drones without pilot control, but in our case, as we are dealing with emergency situations, law takes into account field tests with them, provided that these tests had been agreed with the corresponding authorities.
 
+
 2. Economic factors
 During the last years, a big economic crisis has hit the European economy. This economic instability has had a “good” impact on society, in terms of health, because they have got interested in outdoors activities, such as running, trekking, cycling…
 Mountain is the perfect landscape to enjoy nature, and that is the reason why lots of people chose it for going on excursions. As people interest is increasing, the possibilities of having an accident are growing too, because some of them do not have the knowledge that is required. This is reflected in the following graphic, which shows the evolution of the number of rescues in Catalonia from 2010 to 2015.
+
 
 ![](http://i.imgsafe.org/39da2a28d8.png)
 
@@ -57,7 +63,8 @@ So, the number of rescues is proportional to the amount of people. Here is where
 Imagine how much money is set aside for this kind of situations. The most expensive service is the helicopter, which costs approximately 4000€/hour and a rescue tend to last 3 hours. Obviously, deploying more than one helicopter would be unthinkable unless in a special case. Compare this sum of money to the insignificant cost that the electricity needed to charge drone batteries.
 As a rescue can cost so much, the government makes those people who got lost because of their carelessness pay for the rescue services.
 Now, imagine the next situation: a hiker has gone with the obligatory equipment and he falls down a cliff by accident. He/she has a broken leg and his/her mobile phone has broken in the fall. After several hours disappeared his/her family calls the authorities and they begin to establish a rescue plan. They have three options:
-  1. Send all the usual services, including one helicopter, to the area where the person is thought to be.
+
+  1.  Send all the usual services, including one helicopter, to the area where the person is thought to be.
   2. Use IBRI in order to find the missing person quickly with the deployment of the minimum emergency services and the deployment of drones.
   3. Use both of them combined to make the rescue as easy as possible.
 For the government, the first option entail the most expensive rescue, and the most dangerous one as there are more people in the field. The second one could be the best option, not only because the money saving but the promptness of the job.
@@ -69,11 +76,14 @@ To sum up, IBRI offers an alternative method to the current rescues without the 
 The fundamental element of the project is technology. In general terms, it consists in a smartphone that can detect a wireless signal sent out by a beacon called Physical Web.
 First of all, we should mention that this project is thought for those situations where it is impossible for the missing people to communicate to someone. In this case, their relatives or friends would be the ones who would notify the disappearance of them.
 The missing people are supposed to carry a personal Physical Web, a device that uses a new Bluetooth Low Energy (BLE) system that is continuously sending s wireless signal that contains information that eases the SAR tasks. This information can be divided in three parameters:
+
   * UUID: A Universal Unique IDentificator, to recognise the missing person with the beacon.
   * URL: It contains the user personal information.
   * Transmission Power: Used to determine the distance between the smartphone and the beacon.
+
 This signal is detected with a smartphone, the one who sends the information received from the beacon to the operators. This smartphone is in a drone, and the drone is the one who goes over the mountain, following the route that the operator has previously broadcast to it.
 The drone used in SAR tasks must be autonomous, that means that no pilot is required. 
+
  
 ## 5. ANALYSIS OF THE COMPETITION
 The use of unmanned aerial systems for civilian SAR operations or disaster management is not new. Projects similar to IBRI have been done before, but there are no news about any of them to have come out.
@@ -84,7 +94,6 @@ A compulsory condition of the drones is that they have to allow for first person
 As it is said before, there are many projects similar to IBRI, but there is one in particular that it more or less the same. I am talking about “PRO SEARCH UAV”. This project could look for people who get lost with a system alike to the one used in IBRI, but with GPS signals and a localizer. PRO SEARCH UAV was very interesting because they were investigating the way of supplying water and food to the missing people as well as a first aid kid. This project started receiving funding, but unfortunately there are no news of it nowadays.
 IBRI is an initiative that is being developed in Spain, and there is a precedent of 2015 there that was very near to see the light. The main business involved was “Zerintia”, a company that would bet on the project without getting benefits. They were working on a drone that could be able to record what it would see, and also a method to determinate the exact geographical coordinates of the missing people with laser technology. This project seemed that would continue its development because “Cruz Roja” was involved because it was an opportunity to ease SAR operations. As the majority of the projects, no further investigations has been done or published, so it might be stopped right now.
 The competition in this area is serious, because there are lots of similar projects, but we do not have to forget about the drone companies that lend or sell their drones to this kind of initiative, because they are also the potential competition, as they take part in many projects. Business that do this are, for example, “AERIALTRONICS” or “Microdrones”.
-
 
 
 ## 6. SWOT ANALYSIS
@@ -108,7 +117,17 @@ The competition in this area is serious, because there are lots of similar proje
   * Law difficulties
   * People’s attitude towards respecting the drone’s job
 
+## 7. TEST ANALYSIS
+The beacon that the missing person is supposed to carry must be detectable from a large distance, because the drone can be flying at a high altitude for any reasons, as for example, that the missing person is in a forest. A basic test has been done in order to ensure that the beacon would be useful in any situation, and what the test determined was that the beacon is detectable at least at 250 meters in horizontal, and without vegetation between the beacon and the smartphone. then, as in many cases there would be something between both gadgets, the test was made with lots of plants between them, and the result was that at least the smartphone could localize the beacon at 80 meters. 
+It has to be said that those distances can be larger and the beacon is supposed to be detectable at 400 meters, but with all the trees that a forest have this distance might be reduced.
+Is pending a realistic test with a drone flying through a determined area where a beacon would be hided, to know with more accuracy the maximum altitude that it can fly at and the distance at which would detect the BLE signals emitted.
+
+
 ## 8. CONTINGENCY PLAN
 When working with drones we cannot ensure that the drone will return to the base, so for these cases an emergency plan has to be done. The reasons why these might happen are very different: weather conditions, human’s action, failure system...
 In all the cases, the rescue drone would not come back, so we would have two “things” to look for, the missing people and the drone. Missing people would be easier to find because of the physical web, but what about the drone? It would be like looking for a needle in a haystack. For this reason, rescue drones would have a physical web integrated. By this way, if ever a drone gets lost, the app could declare it missing and another drone would look for the missing people and the drone.
 To speed up SAR tasks, more than one drone would be deployed, in order to make up the lost time.
+
+## 9. SUMMARY AND CONCLUSIONS
+Even though this platform is still in process of building, it has a great future forecast, as it is an innovating project. The advantages of its application have already been commented: it would ease SAR tasks at the same time that is speeding up these operations and saves money.
+This project is an important advance in terms of security, as people can go on excursions with the certainty that if something bad occurs to them, they will be rescued in a short period of time. 
