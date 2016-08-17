@@ -56,14 +56,18 @@
 <pre class="py-src">
 <a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
 <a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
-<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">This file contains the Drone model that is used to registered the</tt> </tt>
-<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">drones data.</tt> </tt>
-<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
-<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
-<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment"># Metadata</tt> </tt>
-<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'Moises Lodeiro Santiago'</tt> </tt>
-<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable clients.admin.__credits__=clients.admin-module.html#__credits__,Variable clients.models.__credits__=clients.models-module.html#__credits__,Variable clients.urls.__credits__=clients.urls-module.html#__credits__,Variable clients.views.__credits__=clients.views-module.html#__credits__,Variable config.urls.__credits__=config.urls-module.html#__credits__,Variable config.views.__credits__=config.views-module.html#__credits__,Variable drones.admin.__credits__=drones.admin-module.html#__credits__,Variable drones.models.__credits__=drones.models-module.html#__credits__,Variable utils.aes.__credits__=utils.aes-module.html#__credits__,Variable utils.google.__credits__=utils.google-module.html#__credits__,Variable utils.weatherApi.__credits__=utils.weatherApi-module.html#__credits__"><a title="clients.admin.__credits__
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># Python imports</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">__future__</tt> <tt class="py-keyword">import</tt> <tt class="py-name">unicode_literals</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-string">This file contains the Drone model that is used to registered the</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-string">drones data.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment"># Metadata</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'Moises Lodeiro Santiago'</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable clients.admin.__credits__=clients.admin-module.html#__credits__,Variable clients.models.__credits__=clients.models-module.html#__credits__,Variable clients.urls.__credits__=clients.urls-module.html#__credits__,Variable clients.views.__credits__=clients.views-module.html#__credits__,Variable config.urls.__credits__=config.urls-module.html#__credits__,Variable config.views.__credits__=config.views-module.html#__credits__,Variable drones.admin.__credits__=drones.admin-module.html#__credits__,Variable drones.models.__credits__=drones.models-module.html#__credits__,Variable utils.aes.__credits__=utils.aes-module.html#__credits__,Variable utils.google.__credits__=utils.google-module.html#__credits__,Variable utils.weatherApi.__credits__=utils.weatherApi-module.html#__credits__"><a title="clients.admin.__credits__
 clients.models.__credits__
 clients.urls.__credits__
 clients.views.__credits__
@@ -74,9 +78,9 @@ drones.models.__credits__
 utils.aes.__credits__
 utils.google.__credits__
 utils.weatherApi.__credits__" class="py-name" href="#" onclick="return doclink('link-0', '__credits__', 'link-0');">__credits__</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'Moises Lodeiro-Santiago'</tt><tt class="py-op">]</tt> </tt>
-<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> <tt class="py-string">"GPL"</tt> </tt>
-<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-name">__version__</tt> <tt class="py-op">=</tt> <tt class="py-string">"1.0"</tt> </tt>
-<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable clients.admin.__maintainer__=clients.admin-module.html#__maintainer__,Variable clients.models.__maintainer__=clients.models-module.html#__maintainer__,Variable clients.urls.__maintainer__=clients.urls-module.html#__maintainer__,Variable clients.views.__maintainer__=clients.views-module.html#__maintainer__,Variable config.urls.__maintainer__=config.urls-module.html#__maintainer__,Variable config.views.__maintainer__=config.views-module.html#__maintainer__,Variable drones.admin.__maintainer__=drones.admin-module.html#__maintainer__,Variable drones.models.__maintainer__=drones.models-module.html#__maintainer__,Variable utils.aes.__maintainer__=utils.aes-module.html#__maintainer__,Variable utils.google.__maintainer__=utils.google-module.html#__maintainer__,Variable utils.weatherApi.__maintainer__=utils.weatherApi-module.html#__maintainer__"><a title="clients.admin.__maintainer__
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> <tt class="py-string">"GPL"</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-name">__version__</tt> <tt class="py-op">=</tt> <tt class="py-string">"1.0"</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable clients.admin.__maintainer__=clients.admin-module.html#__maintainer__,Variable clients.models.__maintainer__=clients.models-module.html#__maintainer__,Variable clients.urls.__maintainer__=clients.urls-module.html#__maintainer__,Variable clients.views.__maintainer__=clients.views-module.html#__maintainer__,Variable config.urls.__maintainer__=config.urls-module.html#__maintainer__,Variable config.views.__maintainer__=config.views-module.html#__maintainer__,Variable drones.admin.__maintainer__=drones.admin-module.html#__maintainer__,Variable drones.models.__maintainer__=drones.models-module.html#__maintainer__,Variable utils.aes.__maintainer__=utils.aes-module.html#__maintainer__,Variable utils.google.__maintainer__=utils.google-module.html#__maintainer__,Variable utils.weatherApi.__maintainer__=utils.weatherApi-module.html#__maintainer__"><a title="clients.admin.__maintainer__
 clients.models.__maintainer__
 clients.urls.__maintainer__
 clients.views.__maintainer__
@@ -87,7 +91,7 @@ drones.models.__maintainer__
 utils.aes.__maintainer__
 utils.google.__maintainer__
 utils.weatherApi.__maintainer__" class="py-name" href="#" onclick="return doclink('link-1', '__maintainer__', 'link-1');">__maintainer__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'Moises Lodeiro-Santiago'</tt> </tt>
-<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable clients.admin.__email__=clients.admin-module.html#__email__,Variable clients.models.__email__=clients.models-module.html#__email__,Variable clients.urls.__email__=clients.urls-module.html#__email__,Variable clients.views.__email__=clients.views-module.html#__email__,Variable config.urls.__email__=config.urls-module.html#__email__,Variable config.views.__email__=config.views-module.html#__email__,Variable drones.admin.__email__=drones.admin-module.html#__email__,Variable drones.models.__email__=drones.models-module.html#__email__,Variable utils.aes.__email__=utils.aes-module.html#__email__,Variable utils.google.__email__=utils.google-module.html#__email__,Variable utils.weatherApi.__email__=utils.weatherApi-module.html#__email__"><a title="clients.admin.__email__
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable clients.admin.__email__=clients.admin-module.html#__email__,Variable clients.models.__email__=clients.models-module.html#__email__,Variable clients.urls.__email__=clients.urls-module.html#__email__,Variable clients.views.__email__=clients.views-module.html#__email__,Variable config.urls.__email__=config.urls-module.html#__email__,Variable config.views.__email__=config.views-module.html#__email__,Variable drones.admin.__email__=drones.admin-module.html#__email__,Variable drones.models.__email__=drones.models-module.html#__email__,Variable utils.aes.__email__=utils.aes-module.html#__email__,Variable utils.google.__email__=utils.google-module.html#__email__,Variable utils.weatherApi.__email__=utils.weatherApi-module.html#__email__"><a title="clients.admin.__email__
 clients.models.__email__
 clients.urls.__email__
 clients.views.__email__
@@ -98,7 +102,7 @@ drones.models.__email__
 utils.aes.__email__
 utils.google.__email__
 utils.weatherApi.__email__" class="py-name" href="#" onclick="return doclink('link-2', '__email__', 'link-2');">__email__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"moises.lodeiro[at]gmail.com"</tt> </tt>
-<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable clients.admin.__status__=clients.admin-module.html#__status__,Variable clients.models.__status__=clients.models-module.html#__status__,Variable clients.urls.__status__=clients.urls-module.html#__status__,Variable clients.views.__status__=clients.views-module.html#__status__,Variable config.urls.__status__=config.urls-module.html#__status__,Variable config.views.__status__=config.views-module.html#__status__,Variable drones.admin.__status__=drones.admin-module.html#__status__,Variable drones.models.__status__=drones.models-module.html#__status__,Variable utils.aes.__status__=utils.aes-module.html#__status__,Variable utils.google.__status__=utils.google-module.html#__status__,Variable utils.weatherApi.__status__=utils.weatherApi-module.html#__status__"><a title="clients.admin.__status__
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable clients.admin.__status__=clients.admin-module.html#__status__,Variable clients.models.__status__=clients.models-module.html#__status__,Variable clients.urls.__status__=clients.urls-module.html#__status__,Variable clients.views.__status__=clients.views-module.html#__status__,Variable config.urls.__status__=config.urls-module.html#__status__,Variable config.views.__status__=config.views-module.html#__status__,Variable drones.admin.__status__=drones.admin-module.html#__status__,Variable drones.models.__status__=drones.models-module.html#__status__,Variable utils.aes.__status__=utils.aes-module.html#__status__,Variable utils.google.__status__=utils.google-module.html#__status__,Variable utils.weatherApi.__status__=utils.weatherApi-module.html#__status__"><a title="clients.admin.__status__
 clients.models.__status__
 clients.urls.__status__
 clients.views.__status__
@@ -109,38 +113,35 @@ drones.models.__status__
 utils.aes.__status__
 utils.google.__status__
 utils.weatherApi.__status__" class="py-name" href="#" onclick="return doclink('link-3', '__status__', 'link-3');">__status__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Production"</tt> </tt>
-<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt>
-<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-comment"># Python imports</tt> </tt>
-<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">__future__</tt> <tt class="py-keyword">import</tt> <tt class="py-name">unicode_literals</tt> </tt>
-<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
-<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-comment"># Django imports</tt> </tt>
-<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">db</tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Module clients.models=clients.models-module.html,Module drones.models=drones.models-module.html,Module search.models=search.models-module.html"><a title="clients.models
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-comment"># Django imports</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">django</tt><tt class="py-op">.</tt><tt class="py-name">db</tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Module clients.models=clients.models-module.html,Module drones.models=drones.models-module.html,Module search.models=search.models-module.html"><a title="clients.models
 drones.models
 search.models" class="py-name" href="#" onclick="return doclink('link-4', 'models', 'link-4');">models</a></tt> </tt>
-<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
-<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-comment"># Third party imports</tt> </tt>
-<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">encrypted_fields</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
-<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-comment"># Third party imports</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">encrypted_fields</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
 <a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
-<a name="Drone"></a><div id="Drone-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="Drone-toggle" onclick="return toggle('Drone');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="drones.models.Drone-class.html">Drone</a><tt class="py-op">(</tt><tt class="py-base-class">models</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="Drone-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Drone-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
-<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">    Class drone represents the connection between a real instance of a drone</tt> </tt>
-<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring">    and the representation in the database.</tt> </tt>
-<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
-<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">    @ivar droneRef: String that represents the drone</tt> </tt>
-<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">    Example:</tt> </tt>
-<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">        - DRONE_ID</tt> </tt>
-<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring">        - DRONE QUADCOPTER</tt> </tt>
-<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
-<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
-<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable drones.models.Drone.droneRef=drones.models.Drone-class.html#droneRef"><a title="drones.models.Drone.droneRef" class="py-name" href="#" onclick="return doclink('link-5', 'droneRef', 'link-5');">droneRef</a></tt> <tt class="py-op">=</tt> <tt class="py-name">EncryptedCharField</tt><tt class="py-op">(</tt><tt id="link-6" class="py-name" targets="Variable clients.models.Clients.Meta.verbose_name=clients.models.Clients.Meta-class.html#verbose_name"><a title="clients.models.Clients.Meta.verbose_name" class="py-name" href="#" onclick="return doclink('link-6', 'verbose_name', 'link-6');">verbose_name</a></tt><tt class="py-op">=</tt><tt class="py-string">"Ref"</tt><tt class="py-op">,</tt> <tt class="py-name">max_length</tt><tt class="py-op">=</tt><tt class="py-number">20</tt><tt class="py-op">,</tt> <tt class="py-name">unique</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
-<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt>
-<a name="Drone.__unicode__"></a><div id="Drone.__unicode__-def"><a name="L40"></a><tt class="py-lineno">40</tt> <a class="py-toggle" href="#" id="Drone.__unicode__-toggle" onclick="return toggle('Drone.__unicode__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="drones.models.Drone-class.html#__unicode__">__unicode__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
-</div><div id="Drone.__unicode__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="Drone.__unicode__-expanded"><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
-<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-docstring">        Unicode represents the way that the object is represented as string</tt> </tt>
-<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
-<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">"{}"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="drones.models.Drone.droneRef" class="py-name" href="#" onclick="return doclink('link-7', 'droneRef', 'link-5');">droneRef</a></tt><tt class="py-op">)</tt> </tt>
-</div></div><a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt>
+<a name="Drone"></a><div id="Drone-def"><a name="L28"></a><tt class="py-lineno">28</tt> <a class="py-toggle" href="#" id="Drone-toggle" onclick="return toggle('Drone');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="drones.models.Drone-class.html">Drone</a><tt class="py-op">(</tt><tt class="py-base-class">models</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Drone-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Drone-expanded"><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring">    Class drone represents the connection between a real instance of a drone</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring">    and the representation in the database.</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt class="py-docstring">    @ivar droneRef: String that represents the drone</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-docstring">    Example:</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt class="py-docstring">        - DRONE_ID</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring">        - DRONE QUADCOPTER</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable drones.models.Drone.droneRef=drones.models.Drone-class.html#droneRef"><a title="drones.models.Drone.droneRef" class="py-name" href="#" onclick="return doclink('link-5', 'droneRef', 'link-5');">droneRef</a></tt> <tt class="py-op">=</tt> <tt class="py-name">EncryptedCharField</tt><tt class="py-op">(</tt><tt id="link-6" class="py-name" targets="Variable clients.models.Clients.Meta.verbose_name=clients.models.Clients.Meta-class.html#verbose_name"><a title="clients.models.Clients.Meta.verbose_name" class="py-name" href="#" onclick="return doclink('link-6', 'verbose_name', 'link-6');">verbose_name</a></tt><tt class="py-op">=</tt><tt class="py-string">"Ref"</tt><tt class="py-op">,</tt> <tt class="py-name">max_length</tt><tt class="py-op">=</tt><tt class="py-number">20</tt><tt class="py-op">,</tt> <tt class="py-name">unique</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"> </tt>
+<a name="Drone.__unicode__"></a><div id="Drone.__unicode__-def"><a name="L41"></a><tt class="py-lineno">41</tt> <a class="py-toggle" href="#" id="Drone.__unicode__-toggle" onclick="return toggle('Drone.__unicode__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="drones.models.Drone-class.html#__unicode__">__unicode__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Drone.__unicode__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="Drone.__unicode__-expanded"><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"><tt class="py-docstring">        Unicode represents the way that the object is represented as string</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">"{}"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="drones.models.Drone.droneRef" class="py-name" href="#" onclick="return doclink('link-7', 'droneRef', 'link-5');">droneRef</a></tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"> </tt><script type="text/javascript">
 <!--
 expandto(location.href);
 // -->
@@ -176,7 +177,7 @@ expandto(location.href);
   <tr>
     <td align="left" class="footer">
     Generated by Epydoc 3.0.1
-    on Wed Aug 17 18:01:08 2016
+    on Wed Aug 17 18:57:26 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
