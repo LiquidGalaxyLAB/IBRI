@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>utils.tsp</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="utils-module.html">Package&nbsp;utils</a> ::
+        Module&nbsp;tsp
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module tsp</h1><p class="nomargin-top"><span class="codelink"><a href="utils.tsp-pysrc.html">source&nbsp;code</a></span></p>
+<p>This file contain the functions to solve a TSP problem using A* 
+  algorithm</p>
+
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="utils.tsp-module.html#distL2" class="summary-sig-name">distL2</a>(<span class="summary-sig-arg">(x1, y1)</span>,
+        <span class="summary-sig-arg">(x2, y2)</span>)</span><br />
+      Compute the L2-norm (Euclidean) distance between two points.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#distL2">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="utils.tsp-module.html#distL1" class="summary-sig-name">distL1</a>(<span class="summary-sig-arg">(x1, y1)</span>,
+        <span class="summary-sig-arg">(x2, y2)</span>)</span><br />
+      Compute the L1-norm (Manhattan) distance between two points.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#distL1">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="utils.tsp-module.html#mk_matrix" class="summary-sig-name">mk_matrix</a>(<span class="summary-sig-arg">coord</span>,
+        <span class="summary-sig-arg">dist</span>)</span><br />
+      Compute a distance matrix for a set of points.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#mk_matrix">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="read_tsplib"></a><span class="summary-sig-name">read_tsplib</span>(<span class="summary-sig-arg">filename</span>)</span><br />
+      basic function for reading a TSP problem on the TSPLIB format</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#read_tsplib">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="utils.tsp-module.html#mk_closest" class="summary-sig-name">mk_closest</a>(<span class="summary-sig-arg">D</span>,
+        <span class="summary-sig-arg">n</span>)</span><br />
+      Compute a sorted list of the distances for each of the nodes.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#mk_closest">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="length"></a><span class="summary-sig-name">length</span>(<span class="summary-sig-arg">tour</span>,
+        <span class="summary-sig-arg">D</span>)</span><br />
+      Calculate the length of a tour according to distance matrix 'D'.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#length">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="randtour"></a><span class="summary-sig-name">randtour</span>(<span class="summary-sig-arg">n</span>)</span><br />
+      Construct a random tour of size 'n'.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#randtour">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="nearest"></a><span class="summary-sig-name">nearest</span>(<span class="summary-sig-arg">last</span>,
+        <span class="summary-sig-arg">unvisited</span>,
+        <span class="summary-sig-arg">D</span>)</span><br />
+      Return the index of the node which is closest to 'last'.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#nearest">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="utils.tsp-module.html#nearest_neighbor" class="summary-sig-name">nearest_neighbor</a>(<span class="summary-sig-arg">n</span>,
+        <span class="summary-sig-arg">i</span>,
+        <span class="summary-sig-arg">D</span>)</span><br />
+      Return tour starting from city 'i', using the Nearest Neighbor.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#nearest_neighbor">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="utils.tsp-module.html#exchange_cost" class="summary-sig-name">exchange_cost</a>(<span class="summary-sig-arg">tour</span>,
+        <span class="summary-sig-arg">i</span>,
+        <span class="summary-sig-arg">j</span>,
+        <span class="summary-sig-arg">D</span>)</span><br />
+      Calculate the cost of exchanging two arcs in a tour.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#exchange_cost">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="utils.tsp-module.html#exchange" class="summary-sig-name">exchange</a>(<span class="summary-sig-arg">tour</span>,
+        <span class="summary-sig-arg">tinv</span>,
+        <span class="summary-sig-arg">i</span>,
+        <span class="summary-sig-arg">j</span>)</span><br />
+      Exchange arcs (i,i+1) and (j,j+1) with (i,j) and (i+1,j+1).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#exchange">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="utils.tsp-module.html#improve" class="summary-sig-name">improve</a>(<span class="summary-sig-arg">tour</span>,
+        <span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">D</span>,
+        <span class="summary-sig-arg">C</span>)</span><br />
+      Try to improve tour 't' by exchanging arcs; return improved tour 
+      length.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#improve">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="utils.tsp-module.html#localsearch" class="summary-sig-name">localsearch</a>(<span class="summary-sig-arg">tour</span>,
+        <span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">D</span>,
+        <span class="summary-sig-arg">C</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Obtain a local optimum starting from solution t; return solution length.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#localsearch">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="utils.tsp-module.html#multistart_localsearch" class="summary-sig-name">multistart_localsearch</a>(<span class="summary-sig-arg">k</span>,
+        <span class="summary-sig-arg">n</span>,
+        <span class="summary-sig-arg">D</span>,
+        <span class="summary-sig-arg">report</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Do k iterations of local search, starting from random solutions.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="utils.tsp-pysrc.html#multistart_localsearch">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<p class="indent-wrapped-lines"><b>Imports:</b>
+  <span title="math">math</span>,
+  <span title="random">random</span>
+</p><br />
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="distL2"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">distL2</span>(<span class="sig-arg">(x1, y1)</span>,
+        <span class="sig-arg">(x2, y2)</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="utils.tsp-pysrc.html#distL2">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Compute the L2-norm (Euclidean) distance between two points.</p>
+  <p>The distance is rounded to the closest integer, for compatibility with
+  the TSPLIB convention.</p>
+  <p>The two points are located on coordinates (x1,y1) and (x2,y2), sent as
+  parameters</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="distL1"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">distL1</span>(<span class="sig-arg">(x1, y1)</span>,
+        <span class="sig-arg">(x2, y2)</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="utils.tsp-pysrc.html#distL1">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Compute the L1-norm (Manhattan) distance between two points.</p>
+  <p>The distance is rounded to the closest integer, for compatibility with
+  the TSPLIB convention.</p>
+  <p>The two points are located on coordinates (x1,y1) and (x2,y2), sent as
+  parameters</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="mk_matrix"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">mk_matrix</span>(<span class="sig-arg">coord</span>,
+        <span class="sig-arg">dist</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="utils.tsp-pysrc.html#mk_matrix">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Compute a distance matrix for a set of points.</p>
+  <p>Uses function 'dist' to calculate distance between any two points.  
+  Parameters: -coord -- list of tuples with coordinates of all points, 
+  [(x1,y1),...,(xn,yn)] -dist -- distance function</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="mk_closest"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">mk_closest</span>(<span class="sig-arg">D</span>,
+        <span class="sig-arg">n</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="utils.tsp-pysrc.html#mk_closest">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Compute a sorted list of the distances for each of the nodes.</p>
+  <p>For each node, the entry is in the form [(d1,i1), (d2,i2), ...] where 
+  each tuple is a pair (distance,node).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="nearest_neighbor"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">nearest_neighbor</span>(<span class="sig-arg">n</span>,
+        <span class="sig-arg">i</span>,
+        <span class="sig-arg">D</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="utils.tsp-pysrc.html#nearest_neighbor">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return tour starting from city 'i', using the Nearest Neighbor.
+
+Uses the Nearest Neighbor heuristic to construct a solution:
+- start visiting city i
+- while there are unvisited cities, follow to the closest one
+- return to city i
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="exchange_cost"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">exchange_cost</span>(<span class="sig-arg">tour</span>,
+        <span class="sig-arg">i</span>,
+        <span class="sig-arg">j</span>,
+        <span class="sig-arg">D</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="utils.tsp-pysrc.html#exchange_cost">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Calculate the cost of exchanging two arcs in a tour.</p>
+  <p>Determine the variation in the tour length if arcs (i,i+1) and (j,j+1)
+  are removed, and replaced by (i,j) and (i+1,j+1) (note the exception for 
+  the last arc).</p>
+  <p>Parameters: -t -- a tour -i -- position of the first arc -j&gt;i -- 
+  position of the second arc</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="exchange"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">exchange</span>(<span class="sig-arg">tour</span>,
+        <span class="sig-arg">tinv</span>,
+        <span class="sig-arg">i</span>,
+        <span class="sig-arg">j</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="utils.tsp-pysrc.html#exchange">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Exchange arcs (i,i+1) and (j,j+1) with (i,j) and (i+1,j+1).</p>
+  <p>For the given tour 't', remove the arcs (i,i+1) and (j,j+1) and insert
+  (i,j) and (i+1,j+1).</p>
+  <p>This is done by inverting the sublist of cities between i and j.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="improve"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">improve</span>(<span class="sig-arg">tour</span>,
+        <span class="sig-arg">z</span>,
+        <span class="sig-arg">D</span>,
+        <span class="sig-arg">C</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="utils.tsp-pysrc.html#improve">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Try to improve tour 't' by exchanging arcs; return improved tour 
+  length.</p>
+  <p>If possible, make a series of local improvements on the solution 
+  'tour', using a breadth first strategy, until reaching a local 
+  optimum.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="localsearch"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">localsearch</span>(<span class="sig-arg">tour</span>,
+        <span class="sig-arg">z</span>,
+        <span class="sig-arg">D</span>,
+        <span class="sig-arg">C</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="utils.tsp-pysrc.html#localsearch">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Obtain a local optimum starting from solution t; return solution length.
+
+Parameters:
+  tour -- initial tour
+  z -- length of the initial tour
+  D -- distance matrix
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="multistart_localsearch"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">multistart_localsearch</span>(<span class="sig-arg">k</span>,
+        <span class="sig-arg">n</span>,
+        <span class="sig-arg">D</span>,
+        <span class="sig-arg">report</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="utils.tsp-pysrc.html#multistart_localsearch">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Do k iterations of local search, starting from random solutions.</p>
+  <p>Parameters: -k -- number of iterations -D -- distance matrix -report 
+  -- if not None, call it to print verbose output</p>
+  <p>Returns best solution and its cost.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Wed Aug 17 18:01:08 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

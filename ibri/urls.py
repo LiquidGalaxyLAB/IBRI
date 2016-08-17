@@ -1,14 +1,19 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+  This file contains the routing from main package
+"""
 
+# Django imports
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.decorators.csrf import csrf_exempt
 
-
+# Own imports
 import config.urls
 from search.views import searchMap, createRoute, getTracking, setTracking, setDroneTracking, getDroneMissionData
 import clients.urls
 from clients.views import ulogin
-
 from utils.weatherApi import getWeather
 
 urlpatterns = [

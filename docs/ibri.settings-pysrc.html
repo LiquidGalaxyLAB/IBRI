@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ibri.settings</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ibri-module.html">Package&nbsp;ibri</a> ::
+        Module&nbsp;settings
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="ibri.settings-module.html">Module ibri.settings</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">Django settings for IBRI GSoC16 project.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">For more information on this file, see</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">https://docs.djangoproject.com/en/1.9/topics/settings/</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">For the full list of settings and their values, see</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">https://docs.djangoproject.com/en/1.9/ref/settings/</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># Build paths inside the project like this: os.path.join(BASE_DIR, ...)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable ibri.settings.BASE_DIR=ibri.settings-module.html#BASE_DIR"><a title="ibri.settings.BASE_DIR" class="py-name" href="#" onclick="return doclink('link-0', 'BASE_DIR', 'link-0');">BASE_DIR</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">termcolor</tt> <tt class="py-keyword">import</tt> <tt class="py-name">colored</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-comment"># Quick-start development settings - unsuitable for production</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-comment"># See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-comment"># SECURITY WARNING: keep the secret key used in production secret!</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable ibri.settings.SECRET_KEY=ibri.settings-module.html#SECRET_KEY"><a title="ibri.settings.SECRET_KEY" class="py-name" href="#" onclick="return doclink('link-1', 'SECRET_KEY', 'link-1');">SECRET_KEY</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'qks)%)oulg&amp;!j4v4%t0*)b()naevd+zp4dc^=5u@ti^!8a_=&amp;s'</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-comment"># SECURITY WARNING: keep the secret keys under control</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable ibri.settings.ENCRYPTED_FIELDS_KEYDIR=ibri.settings-module.html#ENCRYPTED_FIELDS_KEYDIR"><a title="ibri.settings.ENCRYPTED_FIELDS_KEYDIR" class="py-name" href="#" onclick="return doclink('link-2', 'ENCRYPTED_FIELDS_KEYDIR', 'link-2');">ENCRYPTED_FIELDS_KEYDIR</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-3" class="py-name"><a title="ibri.settings.BASE_DIR" class="py-name" href="#" onclick="return doclink('link-3', 'BASE_DIR', 'link-0');">BASE_DIR</a></tt><tt class="py-op">,</tt> <tt class="py-string">'fieldkeys'</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-comment"># SECURITY WARNING: don't run with debug turned on in production!</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable ibri.settings.DEBUG=ibri.settings-module.html#DEBUG"><a title="ibri.settings.DEBUG" class="py-name" href="#" onclick="return doclink('link-4', 'DEBUG', 'link-4');">DEBUG</a></tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable ibri.settings.ALLOWED_HOSTS=ibri.settings-module.html#ALLOWED_HOSTS"><a title="ibri.settings.ALLOWED_HOSTS" class="py-name" href="#" onclick="return doclink('link-5', 'ALLOWED_HOSTS', 'link-5');">ALLOWED_HOSTS</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable ibri.settings.APPEND_SLASH=ibri.settings-module.html#APPEND_SLASH"><a title="ibri.settings.APPEND_SLASH" class="py-name" href="#" onclick="return doclink('link-6', 'APPEND_SLASH', 'link-6');">APPEND_SLASH</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable ibri.settings.SECURE_BROWSER_XSS_FILTER=ibri.settings-module.html#SECURE_BROWSER_XSS_FILTER"><a title="ibri.settings.SECURE_BROWSER_XSS_FILTER" class="py-name" href="#" onclick="return doclink('link-7', 'SECURE_BROWSER_XSS_FILTER', 'link-7');">SECURE_BROWSER_XSS_FILTER</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-comment"># Application definition</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt id="link-8" class="py-name" targets="Variable ibri.settings.INSTALLED_APPS=ibri.settings-module.html#INSTALLED_APPS"><a title="ibri.settings.INSTALLED_APPS" class="py-name" href="#" onclick="return doclink('link-8', 'INSTALLED_APPS', 'link-8');">INSTALLED_APPS</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">    <tt class="py-string">'django.contrib.admin'</tt><tt class="py-op">,</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-string">'django.contrib.auth'</tt><tt class="py-op">,</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt class="py-string">'django.contrib.contenttypes'</tt><tt class="py-op">,</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt class="py-string">'django.contrib.sessions'</tt><tt class="py-op">,</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt class="py-string">'django.contrib.messages'</tt><tt class="py-op">,</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">    <tt class="py-string">'django.contrib.staticfiles'</tt><tt class="py-op">,</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt class="py-string">'search'</tt><tt class="py-op">,</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt class="py-string">'clients'</tt><tt class="py-op">,</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt class="py-string">'drones'</tt><tt class="py-op">,</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt class="py-string">'config'</tt><tt class="py-op">,</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable ibri.settings.MIDDLEWARE_CLASSES=ibri.settings-module.html#MIDDLEWARE_CLASSES"><a title="ibri.settings.MIDDLEWARE_CLASSES" class="py-name" href="#" onclick="return doclink('link-9', 'MIDDLEWARE_CLASSES', 'link-9');">MIDDLEWARE_CLASSES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">    <tt class="py-string">'django.contrib.sessions.middleware.SessionMiddleware'</tt><tt class="py-op">,</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">    <tt class="py-string">'django.middleware.common.CommonMiddleware'</tt><tt class="py-op">,</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt class="py-string">'django.middleware.csrf.CsrfViewMiddleware'</tt><tt class="py-op">,</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt class="py-string">'django.contrib.auth.middleware.AuthenticationMiddleware'</tt><tt class="py-op">,</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">    <tt class="py-string">'django.contrib.auth.middleware.SessionAuthenticationMiddleware'</tt><tt class="py-op">,</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-string">'django.contrib.messages.middleware.MessageMiddleware'</tt><tt class="py-op">,</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-string">'django.middleware.clickjacking.XFrameOptionsMiddleware'</tt><tt class="py-op">,</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable ibri.settings.ROOT_URLCONF=ibri.settings-module.html#ROOT_URLCONF"><a title="ibri.settings.ROOT_URLCONF" class="py-name" href="#" onclick="return doclink('link-10', 'ROOT_URLCONF', 'link-10');">ROOT_URLCONF</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'ibri.urls'</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt id="link-11" class="py-name" targets="Variable ibri.settings.WSGI_APPLICATION=ibri.settings-module.html#WSGI_APPLICATION"><a title="ibri.settings.WSGI_APPLICATION" class="py-name" href="#" onclick="return doclink('link-11', 'WSGI_APPLICATION', 'link-11');">WSGI_APPLICATION</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'ibri.wsgi.application'</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-comment"># Internationalization</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-comment"># https://docs.djangoproject.com/en/1.7/topics/i18n/</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable ibri.settings.LANGUAGE_CODE=ibri.settings-module.html#LANGUAGE_CODE"><a title="ibri.settings.LANGUAGE_CODE" class="py-name" href="#" onclick="return doclink('link-12', 'LANGUAGE_CODE', 'link-12');">LANGUAGE_CODE</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'en-EN'</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt id="link-13" class="py-name" targets="Variable ibri.settings.TIME_ZONE=ibri.settings-module.html#TIME_ZONE"><a title="ibri.settings.TIME_ZONE" class="py-name" href="#" onclick="return doclink('link-13', 'TIME_ZONE', 'link-13');">TIME_ZONE</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'UTC'</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable ibri.settings.USE_I18N=ibri.settings-module.html#USE_I18N"><a title="ibri.settings.USE_I18N" class="py-name" href="#" onclick="return doclink('link-14', 'USE_I18N', 'link-14');">USE_I18N</a></tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt id="link-15" class="py-name" targets="Variable ibri.settings.USE_L10N=ibri.settings-module.html#USE_L10N"><a title="ibri.settings.USE_L10N" class="py-name" href="#" onclick="return doclink('link-15', 'USE_L10N', 'link-15');">USE_L10N</a></tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt id="link-16" class="py-name" targets="Variable ibri.settings.USE_TZ=ibri.settings-module.html#USE_TZ"><a title="ibri.settings.USE_TZ" class="py-name" href="#" onclick="return doclink('link-16', 'USE_TZ', 'link-16');">USE_TZ</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-comment"># KML Directory</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt id="link-17" class="py-name" targets="Variable ibri.settings.KML_DIR=ibri.settings-module.html#KML_DIR"><a title="ibri.settings.KML_DIR" class="py-name" href="#" onclick="return doclink('link-17', 'KML_DIR', 'link-17');">KML_DIR</a></tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> <tt class="py-comment"># No slash at the end</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt id="link-18" class="py-name" targets="Variable ibri.settings.KML_ICON=ibri.settings-module.html#KML_ICON"><a title="ibri.settings.KML_ICON" class="py-name" href="#" onclick="return doclink('link-18', 'KML_ICON', 'link-18');">KML_ICON</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'https://i.imgsafe.org/9216fc4611.png'</tt> <tt class="py-comment"># URL - If empty, appears a yellow placemark</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-comment"># Google Shortener API</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-comment"># https://console.developers.google.com</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt id="link-19" class="py-name" targets="Variable ibri.settings.GAPI=ibri.settings-module.html#GAPI"><a title="ibri.settings.GAPI" class="py-name" href="#" onclick="return doclink('link-19', 'GAPI', 'link-19');">GAPI</a></tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-comment"># Weather Map API</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt id="link-20" class="py-name" targets="Variable ibri.settings.WMAPAPI=ibri.settings-module.html#WMAPAPI"><a title="ibri.settings.WMAPAPI" class="py-name" href="#" onclick="return doclink('link-20', 'WMAPAPI', 'link-20');">WMAPAPI</a></tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-comment"># Secret Preshared Key</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt id="link-21" class="py-name" targets="Variable ibri.settings.SKEY=ibri.settings-module.html#SKEY"><a title="ibri.settings.SKEY" class="py-name" href="#" onclick="return doclink('link-21', 'SKEY', 'link-21');">SKEY</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'QHahUjmgS7KWh3'</tt> <tt class="py-comment"># Example: LHnhUqmgS1KWh4</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-comment"># Static files (CSS, JavaScript, Images)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-comment"># https://docs.djangoproject.com/en/1.9/howto/static-files/</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt id="link-22" class="py-name" targets="Variable ibri.settings.TEMPLATES=ibri.settings-module.html#TEMPLATES"><a title="ibri.settings.TEMPLATES" class="py-name" href="#" onclick="return doclink('link-22', 'TEMPLATES', 'link-22');">TEMPLATES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">    <tt class="py-op">{</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-string">'BACKEND'</tt><tt class="py-op">:</tt> <tt class="py-string">'django.template.backends.django.DjangoTemplates'</tt><tt class="py-op">,</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-string">'DIRS'</tt><tt class="py-op">:</tt> <tt class="py-op">[</tt><tt class="py-string">'static/'</tt><tt class="py-op">,</tt> <tt class="py-string">'static/dist/'</tt><tt class="py-op">,</tt> <tt class="py-string">'static/pages/'</tt><tt class="py-op">,</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-23" class="py-name"><a title="ibri.settings.BASE_DIR" class="py-name" href="#" onclick="return doclink('link-23', 'BASE_DIR', 'link-0');">BASE_DIR</a></tt><tt class="py-op">,</tt> <tt class="py-string">'static/'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-24" class="py-name"><a title="ibri.settings.BASE_DIR" class="py-name" href="#" onclick="return doclink('link-24', 'BASE_DIR', 'link-0');">BASE_DIR</a></tt><tt class="py-op">,</tt> <tt class="py-string">'static/dist/'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-25" class="py-name"><a title="ibri.settings.BASE_DIR" class="py-name" href="#" onclick="return doclink('link-25', 'BASE_DIR', 'link-0');">BASE_DIR</a></tt><tt class="py-op">,</tt> <tt class="py-string">'static/pages/'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-string">'APP_DIRS'</tt><tt class="py-op">:</tt> <tt class="py-name">True</tt><tt class="py-op">,</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-string">'OPTIONS'</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-string">'debug'</tt><tt class="py-op">:</tt> <tt id="link-26" class="py-name"><a title="ibri.settings.DEBUG" class="py-name" href="#" onclick="return doclink('link-26', 'DEBUG', 'link-4');">DEBUG</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">            <tt class="py-string">'context_processors'</tt><tt class="py-op">:</tt> <tt class="py-op">[</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                <tt class="py-string">'django.template.context_processors.debug'</tt><tt class="py-op">,</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">                <tt class="py-string">'django.template.context_processors.request'</tt><tt class="py-op">,</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                <tt class="py-string">'django.contrib.auth.context_processors.auth'</tt><tt class="py-op">,</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                <tt class="py-string">'django.contrib.messages.context_processors.messages'</tt><tt class="py-op">,</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">    <tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-op">]</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt id="link-27" class="py-name" targets="Variable ibri.settings.SESSION_EXPIRE_AT_BROWSER_CLOSE=ibri.settings-module.html#SESSION_EXPIRE_AT_BROWSER_CLOSE"><a title="ibri.settings.SESSION_EXPIRE_AT_BROWSER_CLOSE" class="py-name" href="#" onclick="return doclink('link-27', 'SESSION_EXPIRE_AT_BROWSER_CLOSE', 'link-27');">SESSION_EXPIRE_AT_BROWSER_CLOSE</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt id="link-28" class="py-name" targets="Variable ibri.settings.STATIC_URL=ibri.settings-module.html#STATIC_URL"><a title="ibri.settings.STATIC_URL" class="py-name" href="#" onclick="return doclink('link-28', 'STATIC_URL', 'link-28');">STATIC_URL</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'/static/'</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt id="link-29" class="py-name" targets="Variable ibri.settings.STATICFILES_DIRS=ibri.settings-module.html#STATICFILES_DIRS"><a title="ibri.settings.STATICFILES_DIRS" class="py-name" href="#" onclick="return doclink('link-29', 'STATICFILES_DIRS', 'link-29');">STATICFILES_DIRS</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-30" class="py-name"><a title="ibri.settings.BASE_DIR" class="py-name" href="#" onclick="return doclink('link-30', 'BASE_DIR', 'link-0');">BASE_DIR</a></tt><tt class="py-op">,</tt> <tt class="py-string">'static'</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-string">'\\'</tt><tt class="py-op">,</tt><tt class="py-string">'/'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt id="link-31" class="py-name" targets="Variable ibri.settings.IBRI_URL=ibri.settings-module.html#IBRI_URL"><a title="ibri.settings.IBRI_URL" class="py-name" href="#" onclick="return doclink('link-31', 'IBRI_URL', 'link-31');">IBRI_URL</a></tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt id="link-32" class="py-name" targets="Variable ibri.settings.DATABASE_NAME=ibri.settings-module.html#DATABASE_NAME"><a title="ibri.settings.DATABASE_NAME" class="py-name" href="#" onclick="return doclink('link-32', 'DATABASE_NAME', 'link-32');">DATABASE_NAME</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'db.sqlite3'</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt id="link-33" class="py-name" targets="Variable ibri.settings.PRESHAREDKEY=ibri.settings-module.html#PRESHAREDKEY"><a title="ibri.settings.PRESHAREDKEY" class="py-name" href="#" onclick="return doclink('link-33', 'PRESHAREDKEY', 'link-33');">PRESHAREDKEY</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'preshared_key012'</tt> <tt class="py-comment"># Used in ciphered communication with HTML</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">local_settings</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt class="py-keyword">pass</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt class="py-comment"># Database</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-comment"># https://docs.djangoproject.com/en/1.7/ref/settings/#databases</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt id="link-34" class="py-name" targets="Variable ibri.settings.DATABASES=ibri.settings-module.html#DATABASES"><a title="ibri.settings.DATABASES" class="py-name" href="#" onclick="return doclink('link-34', 'DATABASES', 'link-34');">DATABASES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">    <tt class="py-string">'default'</tt><tt class="py-op">:</tt> <tt class="py-op">{</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">        <tt class="py-string">'ENGINE'</tt><tt class="py-op">:</tt> <tt class="py-string">'django.db.backends.sqlite3'</tt><tt class="py-op">,</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        <tt class="py-string">'NAME'</tt><tt class="py-op">:</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-35" class="py-name"><a title="ibri.settings.BASE_DIR" class="py-name" href="#" onclick="return doclink('link-35', 'BASE_DIR', 'link-0');">BASE_DIR</a></tt><tt class="py-op">,</tt> <tt id="link-36" class="py-name"><a title="ibri.settings.DATABASE_NAME" class="py-name" href="#" onclick="return doclink('link-36', 'DATABASE_NAME', 'link-32');">DATABASE_NAME</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">    <tt class="py-op">}</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-op">}</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt id="link-37" class="py-name" targets="Variable ibri.settings.ibriLogo=ibri.settings-module.html#ibriLogo"><a title="ibri.settings.ibriLogo" class="py-name" href="#" onclick="return doclink('link-37', 'ibriLogo', 'link-37');">ibriLogo</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"""</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-string">       @8CoocoCO@              8CoocooO8        </tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-string">    @C::oO@@@@Ooc:o8        O::cO8@@@8Cc:c8     </tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-string">   C:o8@8oc::ccO@@C:o     O:c8@8oc:::cC@@C:c@   </tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-string">  o:O@O:cO@   8o:C@8cc@  C:C@O:cO@   8o:o@@c:8  </tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-string"> O:o@C:C        8cc@O:C 8:o O:o        @cc@8:o  </tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-string"> C:O@cc@         o:8@:o O:O o:8         C:O@cc@ </tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt class="py-string"> O:C@o:O                                o:88cc  </tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-string"> @cc8@o:C     @:::::::o 8:::::::O     8c:8@o:O  </tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-string">   o:O@8o::co @:::::::o 8c::::::O Occ:cO@8c:O   </tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-string">    Oc:o8     @:::::::o 8:::::::O     @Oc:o     </tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-string">       Occ::c @:::c::cC 8c:c::c:O O:::cC8       </tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-string">                                                </tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-string">      8o:::co @:::::::C 8:::::::C Occ::cC@      </tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-string">    C:cO@@@8@ @c::::::o 8:::::::C @8@@@@o:c8    </tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-string">  8cc8@Oc:coC @:::::::o 8:::::::C 8oo::o@@o:C   </tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"><tt class="py-string"> @cc@@cc8     @cccccccC @cccccccO     @o:O@C:C  </tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"><tt class="py-string"> O:C@oc8                                o:8@cc@ </tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-string"> C:O@cc@         oc8@:o 8:O o:8         C:O@cc@ </tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-string"> 8:o@O:o        O:o@O:C @cc 8:c@       8:o@O:o  </tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-string">  C:o@8c:o8@@8C::C@O:o   O:o@@o:oO@@@O:cC@8cc   </tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-string">   8c:O@@OoccoO@@8c:C     8c:C@@8CocoC@@8c:C    </tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt class="py-string">     8c:coCOOOCc:cO         8o::oCOOOCc:cC@     </tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-string">         8OCCO8@                8OCCC8@         </tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt class="py-string">   IBRI :: INTERACTION BEACON RESCUE INTERFACE</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt class="py-string">============================================================================</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"><tt class="py-string">============================================================================</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt class="py-keyword">print</tt> <tt id="link-38" class="py-name"><a title="ibri.settings.ibriLogo" class="py-name" href="#" onclick="return doclink('link-38', 'ibriLogo', 'link-37');">ibriLogo</a></tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt id="link-39" class="py-name"><a title="ibri.settings.KML_DIR" class="py-name" href="#" onclick="return doclink('link-39', 'KML_DIR', 'link-17');">KML_DIR</a></tt> <tt class="py-op">==</tt> <tt class="py-string">''</tt><tt class="py-op">:</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-name">colored</tt><tt class="py-op">(</tt><tt class="py-string">'ERROR: KML_DIR is empty'</tt><tt class="py-op">,</tt> <tt class="py-string">'red'</tt><tt class="py-op">)</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Please, set KML_DIR constant in ibri/settings.py or local_settings.py. The constant should have a fullpath"</tt> \ </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">          <tt class="py-string">" that includes a writable directory to save the KML files inside it"</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">    <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"><tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-name">colored</tt><tt class="py-op">(</tt><tt class="py-string">'&#10004; KML_DIR: '</tt><tt class="py-op">+</tt><tt id="link-40" class="py-name"><a title="ibri.settings.KML_DIR" class="py-name" href="#" onclick="return doclink('link-40', 'KML_DIR', 'link-17');">KML_DIR</a></tt><tt class="py-op">,</tt> <tt class="py-string">'green'</tt><tt class="py-op">)</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt id="link-41" class="py-name"><a title="ibri.settings.GAPI" class="py-name" href="#" onclick="return doclink('link-41', 'GAPI', 'link-19');">GAPI</a></tt> <tt class="py-op">==</tt> <tt class="py-string">''</tt><tt class="py-op">:</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-name">colored</tt><tt class="py-op">(</tt><tt class="py-string">'ERROR: GAPI (Google Api) is empty'</tt><tt class="py-op">,</tt> <tt class="py-string">'red'</tt><tt class="py-op">)</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Please, set GAPI constant in ibri/settings.py or local_settings.py. The constant should contain a Google "</tt> \ </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">          <tt class="py-string">"API to use with Google URL Shortener. More info at https://console.developers.google.com"</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">    <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"><tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-name">colored</tt><tt class="py-op">(</tt><tt class="py-string">'&#10004; GAPI (Google Api): '</tt><tt class="py-op">+</tt><tt id="link-42" class="py-name"><a title="ibri.settings.GAPI" class="py-name" href="#" onclick="return doclink('link-42', 'GAPI', 'link-19');">GAPI</a></tt><tt class="py-op">,</tt> <tt class="py-string">'green'</tt><tt class="py-op">)</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt id="link-43" class="py-name"><a title="ibri.settings.WMAPAPI" class="py-name" href="#" onclick="return doclink('link-43', 'WMAPAPI', 'link-20');">WMAPAPI</a></tt> <tt class="py-op">==</tt> <tt class="py-string">''</tt><tt class="py-op">:</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-name">colored</tt><tt class="py-op">(</tt><tt class="py-string">'ERROR: WMAPAPI is empty'</tt><tt class="py-op">,</tt> <tt class="py-string">'red'</tt><tt class="py-op">)</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Please, set WMAPAPI constant in ibri/settings.py or local_settings.py. The constant should contain a OpenWeatherMap "</tt> \ </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">          <tt class="py-string">"API. More info at http://openweathermap.org/api"</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">    <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line"><tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-name">colored</tt><tt class="py-op">(</tt><tt class="py-string">'&#10004; WMapAPI: '</tt><tt class="py-op">+</tt><tt id="link-44" class="py-name"><a title="ibri.settings.WMAPAPI" class="py-name" href="#" onclick="return doclink('link-44', 'WMAPAPI', 'link-20');">WMAPAPI</a></tt><tt class="py-op">,</tt> <tt class="py-string">'green'</tt><tt class="py-op">)</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt id="link-45" class="py-name"><a title="ibri.settings.SKEY" class="py-name" href="#" onclick="return doclink('link-45', 'SKEY', 'link-21');">SKEY</a></tt> <tt class="py-op">==</tt> <tt class="py-string">''</tt> <tt class="py-keyword">or</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-46" class="py-name"><a title="ibri.settings.SKEY" class="py-name" href="#" onclick="return doclink('link-46', 'SKEY', 'link-21');">SKEY</a></tt><tt class="py-op">)</tt> <tt class="py-op">!=</tt> <tt class="py-number">14</tt><tt class="py-op">:</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-name">colored</tt><tt class="py-op">(</tt><tt class="py-string">'ERROR: SKEY (Secret Preshared Key) is empty or length is not 14 chars'</tt><tt class="py-op">,</tt> <tt class="py-string">'red'</tt><tt class="py-op">)</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Please, set SKEY constant in ibri/settings.py or local_settings.py (14 chars length)"</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">    <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line"><tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-name">colored</tt><tt class="py-op">(</tt><tt class="py-string">'&#10004; SKEY: '</tt><tt class="py-op">+</tt><tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-47" class="py-name"><a title="ibri.settings.SKEY" class="py-name" href="#" onclick="return doclink('link-47', 'SKEY', 'link-21');">SKEY</a></tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt class="py-string">"*"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'green'</tt><tt class="py-op">)</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt id="link-48" class="py-name"><a title="ibri.settings.IBRI_URL" class="py-name" href="#" onclick="return doclink('link-48', 'IBRI_URL', 'link-31');">IBRI_URL</a></tt> <tt class="py-op">==</tt> <tt class="py-string">''</tt><tt class="py-op">:</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-name">colored</tt><tt class="py-op">(</tt><tt class="py-string">'ERROR: IBRI_URL is empty'</tt><tt class="py-op">,</tt> <tt class="py-string">'red'</tt><tt class="py-op">)</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Please, set IBRI_URL constant in ibri/settings.py or local_settings.py to the URL where is placed the web service (without the slash at the end)"</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">    <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line"><tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-name">colored</tt><tt class="py-op">(</tt><tt class="py-string">'&#10004; IBRI_URL: '</tt><tt class="py-op">+</tt><tt id="link-49" class="py-name"><a title="ibri.settings.IBRI_URL" class="py-name" href="#" onclick="return doclink('link-49', 'IBRI_URL', 'link-31');">IBRI_URL</a></tt><tt class="py-op">,</tt> <tt class="py-string">'green'</tt><tt class="py-op">)</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Wed Aug 17 18:01:08 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

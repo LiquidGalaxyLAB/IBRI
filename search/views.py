@@ -175,9 +175,9 @@ def getTracking(request):
 def setTracking(request):
     """
     Set Tracking allows to simulate a drone in combination with the
-    management command. 
+    management command.
 
-    @param request: Request petition that is handled by Django 
+    @param request: Request petition that is handled by Django
     @type request: Django request object
     @deprecated: This function was used when we don't have any real drone
     application.
@@ -274,15 +274,16 @@ def setDroneTracking(request):
 
         m = Mission.objects.get(pk=d['missionId'])
         r = Route.objects.filter(mission=m)
-        w = WayPoint.objects.filter(route=r[d['droneId']-1])
+        w = WayPoint.objects.filter(route=r[d['droneId'] - 1])
 
         """
         This conditional checks if the sended data from the drone contains
-        the nearpoint value. This represents that if the drone is near a waypoint
-        (<10m) the waypoint that will be taken is that one. If not, in the else
-        condition we create a new waypoint and fill the data that corresponds to it.
-        Also, in both of cases we check if the drone sends a photo and if that, we
-        store it in base64 format in the waypoint.
+        the nearpoint value. This represents that if the drone is near a
+        waypoint (<10m) the waypoint that will be taken is that one. If not,
+        in the else condition we create a new waypoint and fill the data that
+        corresponds to it.
+        Also, in both of cases we check if the drone sends a photo and if that,
+        we store it in base64 format in the waypoint.
         """
 
         if d['nearpoint'] >= 0 and d['nearpoint'] < r[d['droneId']-1].initialWp:
@@ -320,7 +321,7 @@ def setDroneTracking(request):
 
                 c = Clients.objects.get(physicalCode=d['beacon'])
 
-                wp = WayPoint(route=Route.objects.get(pk=r[d['droneId']-1].id),
+                wp = WayPoint(route=Route.objects.get(pk=r[d['droneId'] - 1].id),
                               ref=(w.last().ref+1),
                               lat=d['latitude'],
                               lng=d['longitude'],

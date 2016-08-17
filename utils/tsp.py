@@ -1,4 +1,9 @@
-#coding -*- utf-8 -*-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+This file contain the functions to solve a TSP problem using A* algorithm
+"""
+
 # http://www.dcc.fc.up.pt/~jpp/code/gurobi_book/read_tsplib.py
 
 import math

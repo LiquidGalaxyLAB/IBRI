@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>utils.aes</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="utils-module.html">Package&nbsp;utils</a> ::
+        Module&nbsp;aes
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="utils.aes-module.html">Module utils.aes</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">This file contains some algorithms to encrypt and decrypt based on AES256.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># Metadata</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'Moises Lodeiro Santiago'</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable clients.admin.__credits__=clients.admin-module.html#__credits__,Variable clients.models.__credits__=clients.models-module.html#__credits__,Variable clients.urls.__credits__=clients.urls-module.html#__credits__,Variable clients.views.__credits__=clients.views-module.html#__credits__,Variable config.urls.__credits__=config.urls-module.html#__credits__,Variable config.views.__credits__=config.views-module.html#__credits__,Variable drones.admin.__credits__=drones.admin-module.html#__credits__,Variable drones.models.__credits__=drones.models-module.html#__credits__,Variable utils.aes.__credits__=utils.aes-module.html#__credits__,Variable utils.google.__credits__=utils.google-module.html#__credits__,Variable utils.weatherApi.__credits__=utils.weatherApi-module.html#__credits__"><a title="clients.admin.__credits__
+clients.models.__credits__
+clients.urls.__credits__
+clients.views.__credits__
+config.urls.__credits__
+config.views.__credits__
+drones.admin.__credits__
+drones.models.__credits__
+utils.aes.__credits__
+utils.google.__credits__
+utils.weatherApi.__credits__" class="py-name" href="#" onclick="return doclink('link-0', '__credits__', 'link-0');">__credits__</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'Moises Lodeiro-Santiago'</tt><tt class="py-op">]</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> <tt class="py-string">"GPL"</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-name">__version__</tt> <tt class="py-op">=</tt> <tt class="py-string">"1.0"</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable clients.admin.__maintainer__=clients.admin-module.html#__maintainer__,Variable clients.models.__maintainer__=clients.models-module.html#__maintainer__,Variable clients.urls.__maintainer__=clients.urls-module.html#__maintainer__,Variable clients.views.__maintainer__=clients.views-module.html#__maintainer__,Variable config.urls.__maintainer__=config.urls-module.html#__maintainer__,Variable config.views.__maintainer__=config.views-module.html#__maintainer__,Variable drones.admin.__maintainer__=drones.admin-module.html#__maintainer__,Variable drones.models.__maintainer__=drones.models-module.html#__maintainer__,Variable utils.aes.__maintainer__=utils.aes-module.html#__maintainer__,Variable utils.google.__maintainer__=utils.google-module.html#__maintainer__,Variable utils.weatherApi.__maintainer__=utils.weatherApi-module.html#__maintainer__"><a title="clients.admin.__maintainer__
+clients.models.__maintainer__
+clients.urls.__maintainer__
+clients.views.__maintainer__
+config.urls.__maintainer__
+config.views.__maintainer__
+drones.admin.__maintainer__
+drones.models.__maintainer__
+utils.aes.__maintainer__
+utils.google.__maintainer__
+utils.weatherApi.__maintainer__" class="py-name" href="#" onclick="return doclink('link-1', '__maintainer__', 'link-1');">__maintainer__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'Moises Lodeiro-Santiago'</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable clients.admin.__email__=clients.admin-module.html#__email__,Variable clients.models.__email__=clients.models-module.html#__email__,Variable clients.urls.__email__=clients.urls-module.html#__email__,Variable clients.views.__email__=clients.views-module.html#__email__,Variable config.urls.__email__=config.urls-module.html#__email__,Variable config.views.__email__=config.views-module.html#__email__,Variable drones.admin.__email__=drones.admin-module.html#__email__,Variable drones.models.__email__=drones.models-module.html#__email__,Variable utils.aes.__email__=utils.aes-module.html#__email__,Variable utils.google.__email__=utils.google-module.html#__email__,Variable utils.weatherApi.__email__=utils.weatherApi-module.html#__email__"><a title="clients.admin.__email__
+clients.models.__email__
+clients.urls.__email__
+clients.views.__email__
+config.urls.__email__
+config.views.__email__
+drones.admin.__email__
+drones.models.__email__
+utils.aes.__email__
+utils.google.__email__
+utils.weatherApi.__email__" class="py-name" href="#" onclick="return doclink('link-2', '__email__', 'link-2');">__email__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"moises.lodeiro[at]gmail.com"</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable clients.admin.__status__=clients.admin-module.html#__status__,Variable clients.models.__status__=clients.models-module.html#__status__,Variable clients.urls.__status__=clients.urls-module.html#__status__,Variable clients.views.__status__=clients.views-module.html#__status__,Variable config.urls.__status__=config.urls-module.html#__status__,Variable config.views.__status__=config.views-module.html#__status__,Variable drones.admin.__status__=drones.admin-module.html#__status__,Variable drones.models.__status__=drones.models-module.html#__status__,Variable utils.aes.__status__=utils.aes-module.html#__status__,Variable utils.google.__status__=utils.google-module.html#__status__,Variable utils.weatherApi.__status__=utils.weatherApi-module.html#__status__"><a title="clients.admin.__status__
+clients.models.__status__
+clients.urls.__status__
+clients.views.__status__
+config.urls.__status__
+config.views.__status__
+drones.admin.__status__
+drones.models.__status__
+utils.aes.__status__
+utils.google.__status__
+utils.weatherApi.__status__" class="py-name" href="#" onclick="return doclink('link-3', '__status__', 'link-3');">__status__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Production"</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment"># Python Imports</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">base64</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">hashlib</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">Crypto</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Random</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">Crypto</tt><tt class="py-op">.</tt><tt class="py-name">Cipher</tt> <tt class="py-keyword">import</tt> <tt class="py-name">AES</tt> </tt>
+<a name="AESCipher"></a><div id="AESCipher-def"><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt> <a class="py-toggle" href="#" id="AESCipher-toggle" onclick="return toggle('AESCipher');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="utils.aes.AESCipher-class.html">AESCipher</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AESCipher-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="AESCipher-expanded"><a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">    AESCipher is a class that uses the Crypto.Cipher AES algorithm</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">    to encrypt and decrypt the string. Also when encode and decode</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">    it uses a base64 to pack the data into a string.</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="AESCipher.__init__"></a><div id="AESCipher.__init__-def"><a name="L30"></a><tt class="py-lineno"> 30</tt> <a class="py-toggle" href="#" id="AESCipher.__init__-toggle" onclick="return toggle('AESCipher.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes.AESCipher-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">key</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AESCipher.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AESCipher.__init__-expanded"><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">        __init__ is the constructor of the object</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">        @param self: Self instance of the object</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">        @param key: Key that will be used to crypt an decrypt the messages</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">key</tt> <tt class="py-op">=</tt> <tt class="py-name">key</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">BLOCK_SIZE</tt> <tt class="py-op">=</tt> <tt class="py-number">16</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="AESCipher._pad"></a><div id="AESCipher._pad-def"><a name="L40"></a><tt class="py-lineno"> 40</tt> <a class="py-toggle" href="#" id="AESCipher._pad-toggle" onclick="return toggle('AESCipher._pad');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes.AESCipher-class.html#_pad">_pad</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AESCipher._pad-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AESCipher._pad-expanded"><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt id="link-4" class="py-name" targets="Function utils.tsp.length()=utils.tsp-module.html#length"><a title="utils.tsp.length" class="py-name" href="#" onclick="return doclink('link-4', 'length', 'link-4');">length</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">BLOCK_SIZE</tt> <tt class="py-op">-</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">data</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">BLOCK_SIZE</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">data</tt> <tt class="py-op">+</tt> <tt class="py-name">chr</tt><tt class="py-op">(</tt><tt id="link-5" class="py-name"><a title="utils.tsp.length" class="py-name" href="#" onclick="return doclink('link-5', 'length', 'link-4');">length</a></tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt id="link-6" class="py-name"><a title="utils.tsp.length" class="py-name" href="#" onclick="return doclink('link-6', 'length', 'link-4');">length</a></tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
+<a name="AESCipher._unpad"></a><div id="AESCipher._unpad-def"><a name="L44"></a><tt class="py-lineno"> 44</tt> <a class="py-toggle" href="#" id="AESCipher._unpad-toggle" onclick="return toggle('AESCipher._unpad');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes.AESCipher-class.html#_unpad">_unpad</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AESCipher._unpad-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AESCipher._unpad-expanded"><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-name">ord</tt><tt class="py-op">(</tt><tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
+<a name="AESCipher.encrypt"></a><div id="AESCipher.encrypt-def"><a name="L47"></a><tt class="py-lineno"> 47</tt> <a class="py-toggle" href="#" id="AESCipher.encrypt-toggle" onclick="return toggle('AESCipher.encrypt');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes.AESCipher-class.html#encrypt">encrypt</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">message</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AESCipher.encrypt-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AESCipher.encrypt-expanded"><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">        Encrypt receives the message and returns the encoded AES256</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">        result as base64 string.</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">        @param message: Message to be encoded</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">        @return: base64 string</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">        @see base64</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-name">IV</tt> <tt class="py-op">=</tt> <tt class="py-name">Random</tt><tt class="py-op">.</tt><tt class="py-name">new</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">BLOCK_SIZE</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt id="link-7" class="py-name" targets="Module utils.aes=utils.aes-module.html"><a title="utils.aes" class="py-name" href="#" onclick="return doclink('link-7', 'aes', 'link-7');">aes</a></tt> <tt class="py-op">=</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">new</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">MODE_CBC</tt><tt class="py-op">,</tt> <tt class="py-name">IV</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">base64</tt><tt class="py-op">.</tt><tt class="py-name">b64encode</tt><tt class="py-op">(</tt><tt class="py-name">IV</tt> <tt class="py-op">+</tt> <tt id="link-8" class="py-name"><a title="utils.aes" class="py-name" href="#" onclick="return doclink('link-8', 'aes', 'link-7');">aes</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method utils.aes.AESCipher.encrypt()=utils.aes.AESCipher-class.html#encrypt,Method utils.aes.JavaAESCipher.encrypt()=utils.aes.JavaAESCipher-class.html#encrypt"><a title="utils.aes.AESCipher.encrypt
+utils.aes.JavaAESCipher.encrypt" class="py-name" href="#" onclick="return doclink('link-9', 'encrypt', 'link-9');">encrypt</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method utils.aes.AESCipher._pad()=utils.aes.AESCipher-class.html#_pad,Method utils.aes.JavaAESCipher._pad()=utils.aes.JavaAESCipher-class.html#_pad"><a title="utils.aes.AESCipher._pad
+utils.aes.JavaAESCipher._pad" class="py-name" href="#" onclick="return doclink('link-10', '_pad', 'link-10');">_pad</a></tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="AESCipher.decrypt"></a><div id="AESCipher.decrypt-def"><a name="L61"></a><tt class="py-lineno"> 61</tt> <a class="py-toggle" href="#" id="AESCipher.decrypt-toggle" onclick="return toggle('AESCipher.decrypt');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes.AESCipher-class.html#decrypt">decrypt</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">encrypted</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AESCipher.decrypt-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AESCipher.decrypt-expanded"><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">        Decrypt receives the encrypted message and returns to the original</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">        message using the inverse operation.</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">        @param encrypted: Encrypted message to be decrypted</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">        @return: Original string message</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-name">encrypted</tt> <tt class="py-op">=</tt> <tt class="py-name">base64</tt><tt class="py-op">.</tt><tt class="py-name">b64decode</tt><tt class="py-op">(</tt><tt class="py-name">encrypted</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-name">IV</tt> <tt class="py-op">=</tt> <tt class="py-name">encrypted</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">BLOCK_SIZE</tt><tt class="py-op">]</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt id="link-11" class="py-name"><a title="utils.aes" class="py-name" href="#" onclick="return doclink('link-11', 'aes', 'link-7');">aes</a></tt> <tt class="py-op">=</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">new</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">MODE_CBC</tt><tt class="py-op">,</tt> <tt class="py-name">IV</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method utils.aes.AESCipher._unpad()=utils.aes.AESCipher-class.html#_unpad,Static Method utils.aes.JavaAESCipher._unpad()=utils.aes.JavaAESCipher-class.html#_unpad"><a title="utils.aes.AESCipher._unpad
+utils.aes.JavaAESCipher._unpad" class="py-name" href="#" onclick="return doclink('link-12', '_unpad', 'link-12');">_unpad</a></tt><tt class="py-op">(</tt><tt id="link-13" class="py-name"><a title="utils.aes" class="py-name" href="#" onclick="return doclink('link-13', 'aes', 'link-7');">aes</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method utils.aes.AESCipher.decrypt()=utils.aes.AESCipher-class.html#decrypt,Method utils.aes.JavaAESCipher.decrypt()=utils.aes.JavaAESCipher-class.html#decrypt"><a title="utils.aes.AESCipher.decrypt
+utils.aes.JavaAESCipher.decrypt" class="py-name" href="#" onclick="return doclink('link-14', 'decrypt', 'link-14');">decrypt</a></tt><tt class="py-op">(</tt><tt class="py-name">encrypted</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">BLOCK_SIZE</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="JavaAESCipher"></a><div id="JavaAESCipher-def"><a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt> <a class="py-toggle" href="#" id="JavaAESCipher-toggle" onclick="return toggle('JavaAESCipher');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="utils.aes.JavaAESCipher-class.html">JavaAESCipher</a><tt class="py-op">:</tt> </tt>
+</div><div id="JavaAESCipher-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="JavaAESCipher-expanded"><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">    JavaAESCipher is a class that uses the Crypto.Cipher AES algorithm</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">    to encrypt and decrypt the string. Also when encode and decode</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">    it uses a base64 to pack the data into a string.</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="JavaAESCipher.__init__"></a><div id="JavaAESCipher.__init__-def"><a name="L83"></a><tt class="py-lineno"> 83</tt> <a class="py-toggle" href="#" id="JavaAESCipher.__init__-toggle" onclick="return toggle('JavaAESCipher.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes.JavaAESCipher-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">key</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JavaAESCipher.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="JavaAESCipher.__init__-expanded"><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">        __init__ is the constructor of the object</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">        @param self: Self instance of the object</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">        @param key: Key that will be used to crypt an decrypt the messages</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">bs</tt> <tt class="py-op">=</tt> <tt class="py-number">16</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">key</tt> <tt class="py-op">=</tt> <tt class="py-name">hashlib</tt><tt class="py-op">.</tt><tt class="py-name">sha256</tt><tt class="py-op">(</tt><tt class="py-name">key</tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">digest</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="JavaAESCipher.encrypt"></a><div id="JavaAESCipher.encrypt-def"><a name="L93"></a><tt class="py-lineno"> 93</tt> <a class="py-toggle" href="#" id="JavaAESCipher.encrypt-toggle" onclick="return toggle('JavaAESCipher.encrypt');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes.JavaAESCipher-class.html#encrypt">encrypt</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">message</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JavaAESCipher.encrypt-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="JavaAESCipher.encrypt-expanded"><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">        Encrypt receives the message and returns the encoded AES256</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">        result as base64 string.</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">        @param message: Message to be encoded</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">        @return: base64 string</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">        @see base64</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-name">message</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="utils.aes.AESCipher._pad
+utils.aes.JavaAESCipher._pad" class="py-name" href="#" onclick="return doclink('link-15', '_pad', 'link-10');">_pad</a></tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-name">iv</tt> <tt class="py-op">=</tt> <tt class="py-name">Random</tt><tt class="py-op">.</tt><tt class="py-name">new</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">block_size</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-name">cipher</tt> <tt class="py-op">=</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">new</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">MODE_CBC</tt><tt class="py-op">,</tt> <tt class="py-name">iv</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">base64</tt><tt class="py-op">.</tt><tt class="py-name">b64encode</tt><tt class="py-op">(</tt><tt class="py-name">iv</tt> <tt class="py-op">+</tt> <tt class="py-name">cipher</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="utils.aes.AESCipher.encrypt
+utils.aes.JavaAESCipher.encrypt" class="py-name" href="#" onclick="return doclink('link-16', 'encrypt', 'link-9');">encrypt</a></tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">decode</tt><tt class="py-op">(</tt><tt class="py-string">'utf-8'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"> </tt>
+<a name="JavaAESCipher.decrypt"></a><div id="JavaAESCipher.decrypt-def"><a name="L108"></a><tt class="py-lineno">108</tt> <a class="py-toggle" href="#" id="JavaAESCipher.decrypt-toggle" onclick="return toggle('JavaAESCipher.decrypt');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes.JavaAESCipher-class.html#decrypt">decrypt</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">enc</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JavaAESCipher.decrypt-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="JavaAESCipher.decrypt-expanded"><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-docstring">        Decrypt receives the encrypted message and returns to the original</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-docstring">        message using the inverse operation.</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-docstring">        @param encrypted: Encrypted message to be decrypted</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-docstring">        @return: Original string message</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-name">enc</tt> <tt class="py-op">=</tt> <tt class="py-name">base64</tt><tt class="py-op">.</tt><tt class="py-name">b64decode</tt><tt class="py-op">(</tt><tt class="py-name">enc</tt><tt class="py-op">)</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-name">iv</tt> <tt class="py-op">=</tt> <tt class="py-name">enc</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">block_size</tt><tt class="py-op">]</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">cipher</tt> <tt class="py-op">=</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">new</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">MODE_CBC</tt><tt class="py-op">,</tt> <tt class="py-name">iv</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="utils.aes.AESCipher._unpad
+utils.aes.JavaAESCipher._unpad" class="py-name" href="#" onclick="return doclink('link-17', '_unpad', 'link-12');">_unpad</a></tt><tt class="py-op">(</tt><tt class="py-name">cipher</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="utils.aes.AESCipher.decrypt
+utils.aes.JavaAESCipher.decrypt" class="py-name" href="#" onclick="return doclink('link-18', 'decrypt', 'link-14');">decrypt</a></tt><tt class="py-op">(</tt><tt class="py-name">enc</tt><tt class="py-op">[</tt><tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">block_size</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">decode</tt><tt class="py-op">(</tt><tt class="py-string">'utf-8'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
+<a name="JavaAESCipher._pad"></a><div id="JavaAESCipher._pad-def"><a name="L122"></a><tt class="py-lineno">122</tt> <a class="py-toggle" href="#" id="JavaAESCipher._pad-toggle" onclick="return toggle('JavaAESCipher._pad');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes.JavaAESCipher-class.html#_pad">_pad</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JavaAESCipher._pad-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="JavaAESCipher._pad-expanded"><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">s</tt> <tt class="py-op">+</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">bs</tt> <tt class="py-op">-</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">bs</tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt class="py-name">chr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">bs</tt> <tt class="py-op">-</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">bs</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">staticmethod</tt> </tt>
+<a name="JavaAESCipher._unpad"></a><div id="JavaAESCipher._unpad-def"><a name="L126"></a><tt class="py-lineno">126</tt> <a class="py-toggle" href="#" id="JavaAESCipher._unpad-toggle" onclick="return toggle('JavaAESCipher._unpad');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes.JavaAESCipher-class.html#_unpad">_unpad</a><tt class="py-op">(</tt><tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="JavaAESCipher._unpad-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="JavaAESCipher._unpad-expanded"><a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">s</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-name">ord</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">[</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+</div></div><a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">    <tt class="py-name">BLOCK_SIZE</tt> <tt class="py-op">=</tt> <tt class="py-number">16</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">    <tt class="py-name">key</tt> <tt class="py-op">=</tt> <tt class="py-string">b"1234567890123456"</tt> </tt>
+<a name="pad"></a><div id="pad-def"><a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt> <a class="py-toggle" href="#" id="pad-toggle" onclick="return toggle('pad');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes-module.html#pad">pad</a><tt class="py-op">(</tt><tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="pad-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="pad-expanded"><a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">        <tt id="link-19" class="py-name"><a title="utils.tsp.length" class="py-name" href="#" onclick="return doclink('link-19', 'length', 'link-4');">length</a></tt> <tt class="py-op">=</tt> <tt class="py-name">BLOCK_SIZE</tt> <tt class="py-op">-</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">data</tt><tt class="py-op">)</tt> <tt class="py-op">%</tt> <tt class="py-name">BLOCK_SIZE</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">data</tt> <tt class="py-op">+</tt> <tt class="py-name">chr</tt><tt class="py-op">(</tt><tt id="link-20" class="py-name"><a title="utils.tsp.length" class="py-name" href="#" onclick="return doclink('link-20', 'length', 'link-4');">length</a></tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt id="link-21" class="py-name"><a title="utils.tsp.length" class="py-name" href="#" onclick="return doclink('link-21', 'length', 'link-4');">length</a></tt> </tt>
+</div><a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"> </tt>
+<a name="unpad"></a><div id="unpad-def"><a name="L140"></a><tt class="py-lineno">140</tt> <a class="py-toggle" href="#" id="unpad-toggle" onclick="return toggle('unpad');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes-module.html#unpad">unpad</a><tt class="py-op">(</tt><tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="unpad-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="unpad-expanded"><a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-name">ord</tt><tt class="py-op">(</tt><tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"> </tt>
+<a name="encrypt"></a><div id="encrypt-def"><a name="L143"></a><tt class="py-lineno">143</tt> <a class="py-toggle" href="#" id="encrypt-toggle" onclick="return toggle('encrypt');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes-module.html#encrypt">encrypt</a><tt class="py-op">(</tt><tt class="py-param">message</tt><tt class="py-op">,</tt> <tt class="py-param">passphrase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="encrypt-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="encrypt-expanded"><a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-name">IV</tt> <tt class="py-op">=</tt> <tt class="py-name">Random</tt><tt class="py-op">.</tt><tt class="py-name">new</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-name">BLOCK_SIZE</tt><tt class="py-op">)</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt id="link-22" class="py-name"><a title="utils.aes" class="py-name" href="#" onclick="return doclink('link-22', 'aes', 'link-7');">aes</a></tt> <tt class="py-op">=</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">new</tt><tt class="py-op">(</tt><tt class="py-name">passphrase</tt><tt class="py-op">,</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">MODE_CBC</tt><tt class="py-op">,</tt> <tt class="py-name">IV</tt><tt class="py-op">)</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">base64</tt><tt class="py-op">.</tt><tt class="py-name">b64encode</tt><tt class="py-op">(</tt><tt class="py-name">IV</tt> <tt class="py-op">+</tt> <tt id="link-23" class="py-name"><a title="utils.aes" class="py-name" href="#" onclick="return doclink('link-23', 'aes', 'link-7');">aes</a></tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="utils.aes.AESCipher.encrypt
+utils.aes.JavaAESCipher.encrypt" class="py-name" href="#" onclick="return doclink('link-24', 'encrypt', 'link-9');">encrypt</a></tt><tt class="py-op">(</tt><tt class="py-name">pad</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="decrypt"></a><div id="decrypt-def"><a name="L148"></a><tt class="py-lineno">148</tt> <a class="py-toggle" href="#" id="decrypt-toggle" onclick="return toggle('decrypt');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="utils.aes-module.html#decrypt">decrypt</a><tt class="py-op">(</tt><tt class="py-param">encrypted</tt><tt class="py-op">,</tt> <tt class="py-param">passphrase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="decrypt-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="decrypt-expanded"><a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">        <tt class="py-name">encrypted</tt> <tt class="py-op">=</tt> <tt class="py-name">base64</tt><tt class="py-op">.</tt><tt class="py-name">b64decode</tt><tt class="py-op">(</tt><tt class="py-name">encrypted</tt><tt class="py-op">)</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-name">IV</tt> <tt class="py-op">=</tt> <tt class="py-name">encrypted</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-name">BLOCK_SIZE</tt><tt class="py-op">]</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt id="link-25" class="py-name"><a title="utils.aes" class="py-name" href="#" onclick="return doclink('link-25', 'aes', 'link-7');">aes</a></tt> <tt class="py-op">=</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">new</tt><tt class="py-op">(</tt><tt class="py-name">passphrase</tt><tt class="py-op">,</tt> <tt class="py-name">AES</tt><tt class="py-op">.</tt><tt class="py-name">MODE_CBC</tt><tt class="py-op">,</tt> <tt class="py-name">IV</tt><tt class="py-op">)</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">unpad</tt><tt class="py-op">(</tt><tt id="link-26" class="py-name"><a title="utils.aes" class="py-name" href="#" onclick="return doclink('link-26', 'aes', 'link-7');">aes</a></tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="utils.aes.AESCipher.decrypt
+utils.aes.JavaAESCipher.decrypt" class="py-name" href="#" onclick="return doclink('link-27', 'decrypt', 'link-14');">decrypt</a></tt><tt class="py-op">(</tt><tt class="py-name">encrypted</tt><tt class="py-op">[</tt><tt class="py-name">BLOCK_SIZE</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">    <tt class="py-name">texto</tt> <tt class="py-op">=</tt> <tt class="py-string">'idi9Oqer9ax05E9x/F9jH3bmeg/J1jYQoi6QwWgBd8Gj9KSs+0N/VQxgTq2CA8Zsx5t1cDT01S6vOYatRFiKrOpnnuE4c8Iv/zzFWSSZPk/8elJoYVO+vJe/OuWQh7GYlhCxRvVwCk2hpCI2BOwHCEtPhoEaXIE+lW5x6vskVOsU74QYg1aVlG63wzvquTn17hqpIJfvubGe5/M5yQWpOTMPZKMCfRlVeXT2h+diF3BbiGYbUha/7wq9I62MDmZ4I6ec4EhgPZFoDxWoyk0lMTFHvbw0dBEJJxMTp0fsUl3fLfAuFZ5QcOkqL/pwXn7mg4t2rNfL7HVrwt8GRnPuLl+SKSXtsFxXp7axsZ+MNmJ5Fx+YqN/hiLauEoD7QBXkBI6LuFMxPxu+vk0TD8t8x1T5B+I55hs6KnerDoDUyN8c76/dYomPzhnntJ20HqAiiiuABjDiq0TYsKh6k85mobIS/tTVRBffrKKpEnYDXkn2c0tB12DP+qI3Qt7dm2AKIBo0RvMYzrDHFINzukE5k3WP4PvQDZjukWekumoQrJrIRPgNXEuPNCDkmlWhGFYS6lA3bcRwaF8+7NhLZpDtlTUmH5Afry5lqCkof2RYphRjzGUc92NeMlVmDZ6ZHezYVUyYkkEKfhW/+Z1tMYfBpudHGPd/z9NFmxqN/e8RJUvkr0qT4wdBoOxRbwiZhyQHwveQL1iB8qB0kxKl9Peq5r08ubf4K+0sfkkUF+yM30lLTyNbVrEd8SpFxO2TOAZuSJkG1O7AOLv1SILXLq3yjshJDpoJKJrzFNWySMCpRjkIiEPUiwG3LMu52MMmTfxrWPFC7XYgMXhYmySo68+c3ybwQ6+4uDQemCFOtlOt/wSWuL6WzPBELcaqtSxIlJ94AZzGg4eukJfvwgTPNOyo6C7zSWx2c26AyWKw7pb/0FQrxwMnQ5bYncKjbeDYBGxbfTXojkHNlY70eYoYifhEAcOu6qKWIbCJM2IBt21NjTkBUt93JcDR48B99kXY/yJsSj2YiWThl68Ha4VTgcmdDe3rvyoSW7Q9hwufwg/dBFetgfW6Lh7liSbGu0AHP94IUxEhFjkJjvIoWsCXhmFomgKdPFp6vPrwotu0S0TbN/xt1OIfsgj0uSd6SqUzYurRkPqXhZvIL7VN9HgxCpulFqkiIZRwyfoB45tfezI4lfYwdgJ/IxNyW1l625s8cEgine/YAvm3mhG/JHECrUN5vA=='</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">    <tt class="py-name">key</tt> <tt class="py-op">=</tt> <tt class="py-string">b'abcdefghijklmnqw'</tt> <tt class="py-comment"># 16 bits!!</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt id="link-28" class="py-name"><a title="utils.aes.AESCipher.decrypt
+utils.aes.JavaAESCipher.decrypt" class="py-name" href="#" onclick="return doclink('link-28', 'decrypt', 'link-14');">decrypt</a></tt><tt class="py-op">(</tt><tt class="py-name">texto</tt><tt class="py-op">,</tt> <tt class="py-name">key</tt><tt class="py-op">)</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    on Wed Aug 17 18:01:08 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
