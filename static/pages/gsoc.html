@@ -599,6 +599,12 @@
                 },
                 success: function(data) {
 
+                    if(data == 'errorKmlPath'){
+                        alert('Error, cant write on KML folder. Does it exists?');
+                        $("#cleanButton").click();
+                        return 0;
+                    }
+
                     if(data == 'configerror'){
                         alert('Error: No drones found in database');
                         $("#cleanButton").click();

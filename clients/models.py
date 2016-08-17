@@ -1,12 +1,22 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from django.core.validators import RegexValidator
-from encrypted_fields import *
+"""
+  clients/models.py
+  :author Moises Lodeiro Santiago
+  :organization IBRI
+  :license GPL
 
-# Create your models here.
-from django.contrib.auth.models import User
+  This file contains the Client model.
+"""
 
-from django.core.urlresolvers import reverse
+# Imports
 import uuid
+
+from django.core.validators import RegexValidator
+from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
+
+from encrypted_fields import *
 
 class Clients(models.Model):
 
@@ -43,5 +53,3 @@ class Clients(models.Model):
     class Meta:
         verbose_name = "Client"
         verbose_name_plural = "Clients"
-
-

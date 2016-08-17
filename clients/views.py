@@ -8,6 +8,14 @@ from django.shortcuts import redirect
 # Create your views here.
 
 def ulogin(request):
+    '''
+    Function: ulogin
+    Summary: InsertHere
+    Examples: InsertHere
+    Attributes: 
+        @param (request):InsertHere
+    Returns: InsertHere
+    '''
 
     username = password = ''
     if request.POST:

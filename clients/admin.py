@@ -1,12 +1,20 @@
-from django.contrib import admin
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+  clients/admin.py
+  :author Moises Lodeiro Santiago
+  :organization IBRI
+  :license GPL
 
-# Register your models here.
+  This file contains a class definition to add the Clients model
+  into the django administration.
+"""
+
+# Imports
+from django.contrib import admin
 from .models import Clients
 
-
-#admin.site.register(Clients)
-
-
+# Class ClientsAdmin
 class ClientsAdmin(admin.ModelAdmin):
 
     fieldsets = (
@@ -14,7 +22,7 @@ class ClientsAdmin(admin.ModelAdmin):
             'fields': ('name',
                        'lastname',
                        'identifier',
-                       'physicalCode', # now the physical code is saved in URL mode using the id
+                       'physicalCode',
                        'mobileNumber',
                        'email',
                        'birthDate',
@@ -34,9 +42,5 @@ class ClientsAdmin(admin.ModelAdmin):
                        ),
         }),
     )
-
-    #filter_horizontal = ('contacts',)
-    #search_fields = ['id']
-
 
 admin.site.register(Clients, ClientsAdmin)

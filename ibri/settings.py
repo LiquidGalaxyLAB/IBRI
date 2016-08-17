@@ -115,14 +115,11 @@ TEMPLATES = [
 ]
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static').replace('\\','/'),)
-
 IBRI_URL = ''
-
 DATABASE_NAME = 'db.sqlite3'
-
+PRESHAREDKEY = 'preshared_key012' # Used in ciphered communication with HTML
 
 try:
     from local_settings import *
