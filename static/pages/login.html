@@ -1,111 +1,87 @@
- <!DOCTYPE html>
-  <html>
-{% load static %}
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <style>
+    
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
 
-    <head>
+      body .container {
+        flex: 1 0 auto;
+        margin-top: 20px;
+      }
       
-      <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+      .input-field {
+        text-align: left !important;
+      }
 
-      <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
-      <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
-      <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+      .errorlist {
+        color: #e53935;
+      }
 
-
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <style>
-            body {
-
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  body .container {
-    flex: 1 0 auto;
-    margin-top: 20px;
-  }
-
-  .input-field {
-    text-align: left !important;
-  }
-
-            .errorlist {
-                color: #e53935;
-            }
-
-        </style>
-    </head>
-
-    <body>
-
-
-
-
-
-          <div class="container">
-
-
-              <div class="row" style="text-align: center;">
-
-<img src="{% static 'img/IBRIlogo_mini.png' %}" />
-
-    <form method="post" action="{% url 'login' %}" class="col s12" style="margin-top: 20px;">
-    {% csrf_token %}
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" name="username" type="text" class="validate">
-          <label for="icon_prefix">Username</label>
-        </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">lock</i>
-          <input id="icon_password" name="password" type="password" class="validate">
-          <label for="icon_password">Password</label>
-        </div>
-      </div>
-      <div style="text-align: right;">
-        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    <i class="material-icons right">send</i>
-  </button>
-      </div>
-      <input type="hidden" name="next" value="{{ request.GET.next }}"/>
-    </form>
-  </div>   
-
-
-
-          </div>
-
-<div class="page-footer pink darken-4">
-
-          <div class="container">
-            <div class="row">
-              
-              <div class="col l4 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI Project</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://github.com/LiquidGalaxyLAB/IBRI_Drone">Drone Apk</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://summerofcode.withgoogle.com/">Google Summer of Code</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://summerofcode.withgoogle.com/dashboard/project/6670293313519616/overview/">Project overview</a></li>
-                </ul>
-              </div>
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" style="text-align: center;">
+        <img src="{% static 'img/IBRIlogo_mini.png' %}" />
+        <form method="post" action="{% url 'login' %}" class="col s12" style="margin-top: 20px;">
+          {% csrf_token %}
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="icon_prefix" name="username" type="text" class="validate">
+              <label for="icon_prefix">Username</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">lock</i>
+              <input id="icon_password" name="password" type="password" class="validate">
+              <label for="icon_password">Password</label>
             </div>
           </div>
+          <div style="text-align: right;">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+            </button>
+          </div>
+          <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+        </form>
+      </div>
+    </div>
+    <div class="page-footer pink darken-4">
+      <div class="container">
+        <div class="row">
           
+          <div class="col l4 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI Project</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/LiquidGalaxyLAB/IBRI_Drone">Drone Apk</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://summerofcode.withgoogle.com/">Google Summer of Code</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://summerofcode.withgoogle.com/dashboard/project/6670293313519616/overview/">Project overview</a></li>
+            </ul>
+          </div>
         </div>
-
-
-
-
-
-      <!--Import jQuery before materialize.js-->
-      <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script src="{% static 'materialize.min.js' %}"></script>
-
-
-
-    </body>
-  </html>
+      </div>
+      
+    </div>
+    
+    <!--Import jQuery before materialize.js-->
+    <script src="{% static 'jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'materialize.min.js' %}"></script>
+  
+  </body>
+</html>

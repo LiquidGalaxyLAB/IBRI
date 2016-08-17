@@ -1,179 +1,151 @@
- <!DOCTYPE html>
-  <html>
-{% load static %}
-
-    <head>
-      <!--Import Google Icon Font-->
-      <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
-        <!--Import materialize.css-->
-        <link rel="stylesheet" href="{% static 'prism.css' %}">
-        <link rel="stylesheet" href="{% static 'ghpages-materialize.css' %}">
-
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <style>
-
-/* fallback */
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url({% static '2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2' %}) format('woff2');
-}
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-
-            body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
-
-            .errorlist {
-                color: #e53935;
-            }
-
-
-
-        </style>
-    </head>
-
-    <body>
-
-<header>
-
-    <nav class="top-nav pink darken-4">
-        
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <!--Import Google Icon Font-->
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="{% static 'prism.css' %}">
+    <link rel="stylesheet" href="{% static 'ghpages-materialize.css' %}">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <style>
+      /* fallback */
+      @font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Material Icons'), local('MaterialIcons-Regular'), url({% static '2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2' %}) format('woff2');
+      }
+      .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-feature-settings: 'liga';
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+      main {
+        flex: 1 0 auto;
+      }
+      .errorlist {
+        color: #e53935;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <header>
+      
+      <nav class="top-nav pink darken-4">
         <div class="container" style="display: inline-flex; justify-content: space-around; align-items: center;">
-          
           <div class="nav-wrapper">
             <a class="page-title">{% block title %}{% endblock %}</a>
           </div>
-
           <div>Logged as {{ request.user }}</div>
-
-
         </div>
-
-
-    </nav>
-    <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
-
-    <ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0px);">
-        <li class="logo"><a id="logo-container" class="brand-logo">
-            <img src="{% static 'img/IBRIlogo_mini.png' %}" alt="Interactive Beacon Rescue Interface"/></a></li>
-
-        <li class="bold"><a href="{% url 'searchMap' %}" class="waves-effect waves-teal">Create Mission</a></li>
-
+      </nav>
+      
+      <div class="container">
+        <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+      
+      <ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0px);">
+        
+        <li class="logo">
+          <a id="logo-container" class="brand-logo">
+            <img src="{% static 'img/IBRIlogo_mini.png' %}" alt="Interactive Beacon Rescue Interface"/>
+          </a>
+        </li>
+        
+        <li class="bold">
+          <a href="{% url 'searchMap' %}" class="waves-effect waves-teal">Create Mission</a>
+        </li>
+        
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
             <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Clients</a>
-              <div class="collapsible-body" style="">
-                <ul>
-                  <li><a href="{% url 'listclients' %}">List</a></li>
-                  <li><a href="{% url 'createclient' %}">Add new</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="bold"><a href="{% url 'missionlist' %}" class="waves-effect waves-teal">Missions</a></li>
-            <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Drones</a>
-              <div class="collapsible-body" style="">
-                <ul>
-                  <li><a href="{% url 'dronelist' %}">List Drones</a></li>
-                  <li><a href="{% url 'createdrone' %}">Add new drone</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="bold">
-              <a href="{% url 'logout' %}" class="collapsible-header waves-effect waves-teal">Logout</a>
-            </li>
-
-          </ul>
+            <div class="collapsible-body" style="">
+              <ul>
+                <li><a href="{% url 'listclients' %}">List</a></li>
+                <li><a href="{% url 'createclient' %}">Add new</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="bold"><a href="{% url 'missionlist' %}" class="waves-effect waves-teal">Missions</a></li>
+          <li class="bold"><a class="collapsible-header  waves-effect waves-teal">Drones</a>
+          <div class="collapsible-body" style="">
+            <ul>
+              <li><a href="{% url 'dronelist' %}">List Drones</a></li>
+              <li><a href="{% url 'createdrone' %}">Add new drone</a></li>
+            </ul>
+          </div>
+        </li>
+        
+        <li class="bold">
+          <a href="{% url 'logout' %}" class="collapsible-header waves-effect waves-teal">Logout</a>
         </li>
 
-
       </ul>
-    </header>
-
-
+    </li>
+  </ul>
+</header>
 
 <main>
-          <div class="container">
-{% block maincontent %}{% endblock %}
-          </div>
+<div class="container">
+  {% block maincontent %}{% endblock %}
+</div>
 </main>
-
 <footer class="page-footer pink darken-4" >
-<div class="page-footer pink darken-4" >
-
-          <div class="container">
-            <div class="row">
-
-              <div class="col l4 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI Project</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://github.com/LiquidGalaxyLAB/IBRI_Drone">Drone Apk</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://summerofcode.withgoogle.com/">Google Summer of Code</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://summerofcode.withgoogle.com/dashboard/project/6670293313519616/overview/">Project overview</a></li>
-                </ul>
-              </div>
-
-              <div class="col l4 s12">
-                {% if request.is_secure %}
-
-                    <a class="waves-effect waves-light btn-large tooltip " data-position="top" data-tooltip="You are using a secure connection"><i class="material-icons left" style="line-height: inherit">lock_outline</i> HTTPS</a>
-
-                    <!--<span style="display: inline-flex; align-self: center; justify-content: center; padding-top: 3px;">
-                        <i class="material-icons" style="color: green;">lock_outline</i>
-                    </span>
-                    <span style="margin-left: 10px; color: white;">HTTPS</span>-->
-                {% else %}
-                    <a class="waves-effect waves-light btn-large tooltip red" data-position="top" data-tooltip="You are using a INSECURE connection"><i class="material-icons left" style="line-height: inherit">lock_open</i> HTTP</a>
-                {% endif %}
-              </div>
-
-            </div>
-          </div>
-
+  <div class="page-footer pink darken-4" >
+    <div class="container">
+      <div class="row">
+        <div class="col l4 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/LiquidGalaxyLAB/IBRI">IBRI Project</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/LiquidGalaxyLAB/IBRI_Drone">Drone Apk</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://summerofcode.withgoogle.com/">Google Summer of Code</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://summerofcode.withgoogle.com/dashboard/project/6670293313519616/overview/">Project overview</a></li>
+          </ul>
         </div>
-        </footer>
+        <div class="col l4 s12">
+          {% if request.is_secure %}
+            <a class="waves-effect waves-light btn-large tooltip " data-position="top" data-tooltip="You are using a secure connection"><i class="material-icons left" style="line-height: inherit">lock_outline</i> HTTPS</a>
+          {% else %}
+            <a class="waves-effect waves-light btn-large tooltip red" data-position="top" data-tooltip="You are using a INSECURE connection"><i class="material-icons left" style="line-height: inherit">lock_open</i> HTTP</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="{% static 'jquery-2.1.4.min.js' %}"></script>
+  <script src="{% static 'materialize.min.js' %}"></script>
+  <script>
+  $(document).ready(function() {
+    $(".button-collapse").sideNav();
+    $('select').material_select();
+    $('.tooltip').tooltip({delay: 50});
+  });
+  </script>
 
-
-
-
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="{% static 'jquery-2.1.4.min.js' %}"></script>
-      <script src="{% static 'materialize.min.js' %}"></script>
-
-        <script>
-            $(document).ready(function() {
-                $(".button-collapse").sideNav();
-                $('select').material_select();
-                $('.tooltip').tooltip({delay: 50});
-            });
-        </script>
-
-
-    </body>
-  </html>
+</body>
+</html>

@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 {% load static %}
-  <html>
+<html>
     <head>
         <title>IBRI</title>
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
-
         <link rel="stylesheet" href="{% static 'materialize.min.css' %}">
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
         <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
-
-        <style type="text/css">
+                <style type="text/css">
 
             /* fallback */
             @font-face {
@@ -107,61 +103,42 @@
 
 
         </style>
-
     </head>
-
     <body>
-
         <div id="topPanel" class="card-panel {% if request.is_secure %}teal{% else %}red lighten-1{% endif %}" style="margin-top: 0px; width: 100%; display: inline-flex; justify-content: space-between; align-items: center;">
-
-            <div style="display: inline-flex; align-items: center;">
-                <img src="{% static 'img/IBRIlogo_mini_icon.png' %}" style="height: 40px;" />
-                <span class="white-text" style="margin-left: 10px;">
-                    Information: MissonId: <span id="demo_mid">Unestablished</span>
-                </span>
-            </div>
-
-                
-            <div style="display: inline-flex; align-items: center;">
-                {% if request.is_secure %}
-                    <span style="background-color: #ccff90; border-radius: 15%; width: 32px; height: 32px; display: inline-flex; align-self: center; justify-content: center; padding-top: 3px;">
-                        <i class="material-icons" style="color: green;">lock_outline</i>
-                    </span>
-                    <span style="margin-left: 10px; color: white;">HTTPS</span>
-                {% else %}
-                    <span style="background-color: #dd2c00; border-radius: 15%; width: 32px; height: 32px; display: inline-flex; align-self: center; justify-content: center; padding-top: 3px;">
-                        <i class="material-icons" style="color: white;">lock_open</i>
-                    </span>
-                    <span style="margin-left: 10px; color: white;">HTTP</span>
-                {% endif %}
-            </div>
-
-            <div style="display: inline-flex; align-items: center;">
-                <div class="circle" id="detectionCircle" style="background-color: red; width: 30px; height: 30px;"></div>
-                <div style="border-left: 1px solid white; margin-left: 10px; padding-left: 10px;">
-
-                <a href="{% url 'configarea' %}" class="waves-effect waves-light blue btn"><i class="material-icons left" style="line-height: inherit">perm_identity</i> Admin Area</a>
-
-                </div>
-            </div>
-
+        <div style="display: inline-flex; align-items: center;">
+            <img src="{% static 'img/IBRIlogo_mini_icon.png' %}" style="height: 40px;" />
+            <span class="white-text" style="margin-left: 10px;">
+                Information: MissonId: <span id="demo_mid">Unestablished</span>
+            </span>
         </div>
-
-                
-
+        <div style="display: inline-flex; align-items: center;">
+            {% if request.is_secure %}
+                <span style="background-color: #ccff90; border-radius: 15%; width: 32px; height: 32px; display: inline-flex; align-self: center; justify-content: center; padding-top: 3px;">
+                    <i class="material-icons" style="color: green;">lock_outline</i>
+                </span>
+                <span style="margin-left: 10px; color: white;">HTTPS</span>
+            {% else %}
+                <span style="background-color: #dd2c00; border-radius: 15%; width: 32px; height: 32px; display: inline-flex; align-self: center; justify-content: center; padding-top: 3px;">
+                    <i class="material-icons" style="color: white;">lock_open</i>
+                </span>
+                <span style="margin-left: 10px; color: white;">HTTP</span>
+            {% endif %}
+        </div>
+        <div style="display: inline-flex; align-items: center;">
+            <div class="circle" id="detectionCircle" style="background-color: red; width: 30px; height: 30px;"></div>
+            <div style="border-left: 1px solid white; margin-left: 10px; padding-left: 10px;">
+                <a href="{% url 'configarea' %}" class="waves-effect waves-light blue btn"><i class="material-icons left" style="line-height: inherit">perm_identity</i> Admin Area</a>
+            </div>
+        </div>
+    </div>
     <div id="mainCard" class="card" style="overflow: hidden;">
-
         {% if KMLDir == '' %}
-                <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the KML_DIR in settings.py</div>
+            <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the KML_DIR in settings.py</div>
         {% endif %}
-
         {% if WEATHER_API  == '' %}
-                <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the WEATHER_API in config panel</div>
+            <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the WEATHER_API in config panel</div>
         {% endif %}
-
-
-
-
         <div id="map"></div>
         <div style="position: absolute; right: 20px; margin-top: -25px;">
             <a id="startbutton" class="right btn-floating btn-large waves-effect waves-light green"><i class="material-icons">play_arrow</i></a>
@@ -170,25 +147,17 @@
         <div class="progress" style="margin:0px; display: none;">
             <div class="indeterminate"></div>
         </div>
-
-
         <div class="card-content" id="settings">
-
             <div class="row">
-
-
                 <div class="range-field col s12 m3">
-
                     <label>Number of Drones: <span id="nodrone_val">{% if nodrones > 0 %}1{% else %}0{% endif %}</span></label>
                     <input type="range" id="nodrone" min="{% if nodrones > 0 %}1{% else %}0{% endif %}" max="{% if nodrones > 0 %}{{ nodrones }}{% else %}0{% endif %}" value="{% if nodrones > 0 %}1{% else %}0{% endif %}" />
-
                 </div>
                 
                 <div class="range-field col s12 m3">
                     <label>Flight altitude: <span id="altitude_val">20</span></label>
                     <input type="range"  id="altitude" step="10" min="20" max="70" value="20" />
                 </div>
-
                 <div class="range-field col s12 m3">
                     <label>Distance between points: <span id="distance_val">50</span>m</label>
                     <input type="range" step="10" id="distance" min="20" max="200" value="50" />
@@ -200,880 +169,767 @@
                 <div class="col s12 m3">
                     <input type="checkbox" class="filled-in" id="checkweatherbox" checked="checked" />
                     <label for="checkweatherbox">Enable Weather Check</label>
-
                 </div>
-
-
-
             </div>
-
-
         </div>
-
         <div class="card-content row" id="resultPanel" style="overflow: auto;">
-
             <div id="resultUserList" style="background-color:pink;" class=""></div>
-
         </div>
-
-
-
         <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4" style="cursor: default !important;">
-
-         <div class="input-field col s12 m12" style="width: 90vw; min-height: 60px;">
-          <!--<i class="material-icons prefix">search</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Filter</label>-->
-        </div>
-
-          <i class="material-icons right" style="cursor: default; position: absolute; top: 32px; right: 32px;">close</i></span>
-
-
+            <span class="card-title grey-text text-darken-4" style="cursor: default !important;">
+                <div class="input-field col s12 m12" style="width: 90vw; min-height: 60px;">
+                </div>
+            <i class="material-icons right" style="cursor: default; position: absolute; top: 32px; right: 32px;">close</i></span>
             <ul class="collection">
-
                 {% for c in client %}
                     <li class="collection-item avatar">
                         <img src="{% static 'img/person.png' %}" alt="" class="circle">
                         <span class="title" id="userName_{{ c.id }}">{{ c.name }} {{ c.lastname }}</span>
                         <p>{{ c.nif }}<br /> {{ c.physicalCode }}</p>
                         <div class="right secondary-content">
-
                             <p>
-      <input type="checkbox" name="searching" id="cb_{{ c.id }}" value="{{ c.id }}" />
+                                <input type="checkbox" name="searching" id="cb_{{ c.id }}" value="{{ c.id }}" />
                                 <label for="cb_{{ c.id }}">#{{ c.id }}</label>
-
-    </p>
-
-
+                            </p>
                         </div>
-
                     </li>
-
                 {% endfor %}
             </ul>
-
-    </div>
-
-
-
         </div>
     </div>
+</div>
+<script src="{% static 'jquery-2.1.4.min.js' %}"></script>
+<script src="{% static 'materialize.min.js' %}"></script>
+<script type="text/javascript" src="//maps.google.com/maps/api/js?key={{ GAPI }}"></script>
+<script type="text/javascript" src="{% static 'js/gmaps.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/distances.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/components/core.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/rollups/aes.js' %}"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
 
+            $("#gridSize").change(function() {
+                $("#gridsize_val").html(this.value);
+            });
 
+            $("#altitude").change(function() {
+                $("#altitude_val").html(this.value);
+            });
 
+            $("#nodrone").change(function() {
+                $("#nodrone_val").html(this.value);
+            });
 
+            $("#distance").change(function() {
+                $("#distance_val").html(this.value);
+            });
 
-    <script src="{% static 'jquery-2.1.4.min.js' %}"></script>
-    <script src="{% static 'materialize.min.js' %}"></script>
-    <script type="text/javascript" src="//maps.google.com/maps/api/js?key={{ GAPI }}"></script>
-    <script type="text/javascript" src="{% static 'js/gmaps.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/distances.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/components/core.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/rollups/aes.js' %}"></script>
+            var key = CryptoJS.enc.Utf8.parse('preshared_key012'); // 16 bits!
 
-    <script type="text/javascript">
+            function encrypt(msgString, key) {
+                // msgString is expected to be Utf8 encoded
+                var iv = CryptoJS.lib.WordArray.random(16);
+                var encrypted = CryptoJS.AES.encrypt(msgString, key, {
+                    iv: iv
+                });
+                return iv.concat(encrypted.ciphertext).toString(CryptoJS.enc.Base64);
+            }
 
-    $(document).ready(function(){
+            function decrypt(ciphertextStr, key) {
+                var ciphertext = CryptoJS.enc.Base64.parse(ciphertextStr);
 
+                // split IV and ciphertext
+                var iv = ciphertext.clone();
+                iv.sigBytes = 16;
+                iv.clamp();
+                ciphertext.words.splice(0, 4); // delete 4 words = 16 bytes
+                ciphertext.sigBytes -= 16;
 
+                // decryption
+                var decrypted = CryptoJS.AES.decrypt({
+                    ciphertext: ciphertext
+                }, key, {
+                    iv: iv
+                });
+                return decrypted.toString(CryptoJS.enc.Utf8);
+            }
 
+            var map;
+            var baseCoords = [28.4812865, -16.3205404];
+            var markerArray = [];
+            var selected = null;
+            var zone = 0;
+            var colorList = [
+                '#D32F2F',
+                '#303F9F',
+                '#4CAF50',
+                '#F57C00',
+                '#FF4081',
+                '#1976D2',
+                '#8BC34A',
+                '#E64A19',
+                '#E040FB',
+                '#0097A7',
+                '#FBC02D'
+            ];
 
-    $("#gridSize").change(function(){
-        $("#gridsize_val").html(this.value);
-    });
+            var c = null;
+            var posArrays = [];
+            var response = null;
+            var tmpMarker = [];
 
-    $("#altitude").change(function(){
-        $("#altitude_val").html(this.value);
-    });
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
 
-    $("#nodrone").change(function(){
-        $("#nodrone_val").html(this.value);
-    });
-
-    $("#distance").change(function(){
-        $("#distance_val").html(this.value);
-    });
-
-    var key = CryptoJS.enc.Utf8.parse('preshared_key012'); // 16 bits!
-
-    function encrypt(msgString, key) {
-        // msgString is expected to be Utf8 encoded
-        var iv = CryptoJS.lib.WordArray.random(16);
-        var encrypted = CryptoJS.AES.encrypt(msgString, key, {
-            iv: iv
-        });
-        return iv.concat(encrypted.ciphertext).toString(CryptoJS.enc.Base64);
-    }
-
-    function decrypt(ciphertextStr, key) {
-        var ciphertext = CryptoJS.enc.Base64.parse(ciphertextStr);
-
-        // split IV and ciphertext
-        var iv = ciphertext.clone();
-        iv.sigBytes = 16;
-        iv.clamp();
-        ciphertext.words.splice(0, 4); // delete 4 words = 16 bytes
-        ciphertext.sigBytes -= 16;
-
-        // decryption
-        var decrypted = CryptoJS.AES.decrypt({ciphertext: ciphertext}, key, {
-            iv: iv
-        });
-        return decrypted.toString(CryptoJS.enc.Utf8);
-    }
-
-        var map;
-        var baseCoords = [28.4812865, -16.3205404];
-        var markerArray = [];
-        var selected = null;
-        var zone = 0;
-        var colorList = [
-            '#D32F2F',
-            '#303F9F',
-            '#4CAF50',
-            '#F57C00',
-            '#FF4081',
-            '#1976D2',
-            '#8BC34A',
-            '#E64A19',
-            '#E040FB',
-            '#0097A7',
-            '#FBC02D'
-        ];
-        var demos = [ // base, center_area, area_size, noDrones, find
-            [28.519179, -16.296779, 28.522681, -16.302325, 7, 1],
-            [28.456487, -16.388333, 28.457496, -16.387464, 5, 1],
-            [28.297621, -16.567193, 28.296875, -16.574094, 5, 2],
-            [28.482389, -16.322115, 28.483314, -16.322426, 8, 3],
-            [28.061228, -16.729034, 28.059474, -16.726670, 7, 5],
-        ];
-        var c = null;
-        var posArrays = [];
-        //var drone = -1;
-        var response = null;
-        var tmpMarker = [];
-
-        $(".demobutton").click(function() {
-
-            $("#cleanButton").click();
-
-            demoNum = parseInt($(this).attr('demo')) - 1;
-
-            baseCoords[0] = demos[demoNum][0];
-            baseCoords[1] = demos[demoNum][1];
-
-            addBase();
-
-            $("#gridSize").val(demos[demoNum][4]);
-            $("#nodrone").val(demos[demoNum][5]);
-
-            var d = {
-                latLng: {
-                    lat() {
-                        return demos[demoNum][2];
-                    },
-                    lng() {
-                        return demos[demoNum][3];
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
                     }
                 }
-            };
-
-            map.setCenter(baseCoords[0], baseCoords[1]);
-            checkWeather(d);
-
-        });
-
-
-        function csrfSafeMethod(method) {
-            // these HTTP methods do not require CSRF protection
-            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-        }
-
-        $.ajaxSetup({
-            beforeSend: function(xhr, settings) {
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-                }
-            }
-        });
-
-
-        function clearData(){
-            globalData = undefined;
-            markerArray = [];
-            tmpMarker = [];
-            posArrays = [];
-            clearInterval(response);
-            //$("#startbutton").prop("disabled", false);
-            $("#userList").fadeIn();
-            $("#map").css('height', '60%');
-            $("#settings").slideToggle();
-            $("#resultPanel").slideToggle();
-            $('#cleanButton').toggle('fast', function(){
-                $("#startbutton").toggle('fast');
-                $(".progress").slideToggle('fast');
             });
-            map.removePolylines();
-            map.removePolygons();
-        }
 
-        $("#cleanButton").click(function(){
 
-            if(globalData == undefined) {
-                console.log("globalData is undefined");
+            function clearData() {
+                globalData = undefined;
+                markerArray = [];
+                tmpMarker = [];
+                posArrays = [];
+                clearInterval(response);
+                $("#userList").fadeIn();
+                $("#map").css('height', '60%');
+                $("#settings").slideToggle();
+                $("#resultPanel").slideToggle();
+                $('#cleanButton').toggle('fast', function() {
+                    $("#startbutton").toggle('fast');
+                    $(".progress").slideToggle('fast');
+                });
+                map.removePolylines();
+                map.removePolygons();
+            }
+
+            $("#cleanButton").click(function() {
+
+                if (globalData == undefined) {
+                    console.log("globalData is undefined");
+                    clearData();
+                    setGrid(globalE);
+                    return 0;
+                }
+
+
+                for (i = 0; i < (globalData.length || 0); i++) {
+
+                    if (globalData[i].length > 0) {
+
+                        if (!confirm("Abort mission? All data will dissapear")) {
+                            return 0;
+
+                        } else {
+                            clearData();
+                            map.removeMarkers();
+                            addBase();
+                            return 0;
+
+                        }
+                    }
+                }
+
                 clearData();
                 setGrid(globalE);
                 return 0;
-            }
 
-
-            for(i = 0; i < (globalData.length || 0); i++){
-
-                if(globalData[i].length > 0){
-
-                    if(!confirm("Abort mission? All data will dissapear")){
-                        return 0;
-
-                    }else{
-                        clearData();
-                        map.removeMarkers();
-                        addBase();
-                        return 0;
-
-                    }
-                }
-            }
-
-            clearData();
-            setGrid(globalE);
-            return 0;
-
-        });
-
-        //calculates distance between two points in km's
-        function calcDistance(p1, p2) {
-            return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
-        }
-
-
-
-        $("#startbutton").click(function() {
-
-
-            if (parseInt($("#gridSize").val()) > 25) {
-                alert("The grid size can't be greater than 25");
-                return 0;
-            }
-
-            if (parseInt($("#nodrone").val()) <= 0) {
-                alert("Number of drones should be at least one");
-                return 0;
-            }
-
-            if (markerArray.length == 0) {
-                alert("Click on the map to set the searching area");
-                return false;
-            }
-
-            if ($("#nodrone").val() > markerArray.length) {
-                alert("The number of drones should be less or equal than grid size");
-                return false;
-            }
-
-
-            selected = $("input[type='checkbox'][name='searching']:checked").map(function() {
-                return this.value;
-            }).get();
-
-            if (selected.length <= 0) {
-                alert("No searching user(s) selected");
-                return false;
-            }
-
-            $("#map").css('height', '30%');
-            $("#settings").slideToggle();
-            $("#resultPanel").slideToggle();
-
-
-
-            //$(this).attr('disabled', 'true');
-
-            $("#userList").fadeOut();
-            $("#resultPanel").fadeIn();
-
-            for (i = 0; i < selected.length; i++) {
-                $("#resultUserList").append('<div id="photo_' + selected[i] + '"></div>');
-            }
-
-
-            distNear = [];
-            nearToBase = [];
-
-            nodesPerDrone = Math.floor((markerArray.length * markerArray.length) / $("#nodrone").val());
-            dispersion = [];
-
-
-            console.log("--------------> "+$("#nodrone").val());
-
-            for (i = 0; i < $("#nodrone").val(); i++) {
-                distNear.push(9999);
-                nearToBase.push(0);
-                posArrays.push([]);
-                dispersion.push(nodesPerDrone);
-            }
-
-            map.removePolylines();
-
-            resto = (markerArray.length * markerArray.length) - (nodesPerDrone *  $("#nodrone").val());
-            console.log(resto);
-            for(i = 0; i < resto; i++){
-                dispersion[i]++;
-            }
-
-            console.log(dispersion);
-
-            //----------------------------------------------------------------------------
-
-            drone = 0;
-            x = 0;
-            c = 0;
-            n = 0;
-
-            console.log(markerArray);
-
-            for (var mX = 0; mX < markerArray.length; mX++) {
-                for (var mY = 0; mY < markerArray[mX].length; mY++) {
-
-                    if(drone < c){
-                        n = x-1;
-                    }else if(drone == c){
-                        if(c == 0)
-                            c = c + dispersion[x]-1
-                        else
-                            c = c + dispersion[x]
-                        x++
-                    }
-
-                    if (zone == 1 || zone == 2) {
-                        lat = markerArray[mY][mX].internalPosition.lat();
-                        lng = markerArray[mY][mX].internalPosition.lng();
-                    } else {
-                        lat = markerArray[mX][mY].internalPosition.lat();
-                        lng = markerArray[mX][mY].internalPosition.lng();
-                    }
-
-                    posArrays[n].push([lat, lng]);
-                    drone++;
-
-                    p1 = new google.maps.LatLng(lat, lng);
-                    p2 = new google.maps.LatLng(baseCoords[0], baseCoords[1]);
-
-                    distancePoint = calcDistance(p1, p2) * 1000;
-                    if (distancePoint < distNear[n]) {
-                        distNear[n] = distancePoint;
-                        nearToBase[n] = [mX, mY];
-                    }
-
-                }
-            }
-
-            console.log();
-
-            $.ajax({
-                type: "POST",
-                url: "{% url 'createRoute' %}",
-                data: {
-
-                    msg: encrypt(JSON.stringify({
-                        ndrones: $("#nodrone").val(),
-                        insearch: JSON.stringify(selected),
-                        nearPoint: JSON.stringify(nearToBase),
-                        distance: $("#distance").val(),
-                        wayPoints: JSON.stringify(posArrays),
-                        base: JSON.stringify(baseCoords),
-                        altitude: $("#altitude").val(),
-                    }), key)
-
-
-                },
-                success: function(data) {
-
-                    if(data == 'errorKmlPath'){
-                        alert('Error, cant write on KML folder. Does it exists?');
-                        $("#cleanButton").click();
-                        return 0;
-                    }
-
-                    if(data == 'configerror'){
-                        alert('Error: No drones found in database');
-                        $("#cleanButton").click();
-                        return 0;
-                    }
-
-
-                    data = JSON.parse(decrypt(data, key));
-                    mission = data[0];
-                    data = data[1];
-                    datal = data.length;
-
-                    $("#demo_mid").html(mission);
-
-
-                    for (i = 0; i < datal; i++) {
-                        map.drawPolyline({
-                            path: data[i],
-                            strokeColor: colorList[i % colorList.length],
-                            strokeOpacity: 0.6,
-                            strokeWeight: 4
-                        });
-
-                        map.drawPolyline({
-                            path: [
-                                [baseCoords[0], baseCoords[1]], data[i][0]
-                            ],
-                            strokeColor: colorList[i % colorList.length],
-                            strokeOpacity: 0.4,
-                            strokeWeight: 4
-                        });
-
-                    }
-
-                    waitForResponse(mission);
-
-                }
             });
 
-            $(this).toggle('fast', function(){
-                $("#cleanButton").toggle('fast');
-                $(".progress").slideToggle('fast');
-            });
-
-
-
-        });
-
-        var globalE;
-        var globalData;
-
-        function generete_weatherUrl(lat, lng){
-            return "{% url 'getWeather' lat=1.1 lng=2.2  %}".replace("1.1", lat).replace("2.2", lng);
-        }
-
-        function checkWeather(e) {
-
-            if ($("#startbutton").is(':hidden')) {
-                return 0;
+            //calculates distance between two points in km's
+            function calcDistance(p1, p2) {
+                return (google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000).toFixed(2);
             }
-            globalE = e;
-
-            weatherMapApi = '{{ WEATHER_API|default:"INSERT_WEATHER_API_HERE" }}';
 
 
-            url = generete_weatherUrl(e.latLng.lat(), e.latLng.lng());
-            $.ajax({
-                async: false,
-                type: "POST",
-                url: url,
-                success: function(response) {
+            $("#startbutton").click(function() {
 
-                    response = JSON.parse(response);
+                if (parseInt($("#gridSize").val()) > 25) {
+                    alert("The grid size can't be greater than 25");
+                    return 0;
+                }
 
-                    if(response.cod == '404'){
-                        alert("Cannot connect to the openweather map api");
-                        console.log(response.message);
-                        return 0;
-                    }
+                if (parseInt($("#nodrone").val()) <= 0) {
+                    alert("Number of drones should be at least one");
+                    return 0;
+                }
 
-                    if(response.cod == '401'){
-                        alert("API Key error");
-                        console.log(response.message);
-                        return 0;
-                    }
-
-
-
-                    console.log("Raw Response: "+JSON.stringify(response));
-                    console.log("Wind: " + response.wind.speed);
-                    console.log("LAT: " + e.latLng.lat() + ', ' + 'LNG: ' + e.latLng.lng());
-                    if (response.wind.speed >= 10 && $("#checkweatherbox").is(":checked") ){
-                        alert("The climatology in that area is not favorable to flight (Wind over 10kmph)");
-                        return false;
-                    }
-
-                    if (response.main.humidity >= 95 && $("#checkweatherbox").is(":checked") ){
-                        alert("The climatology in that area is not favorable to flight (Humidity over 95%)");
-                        return false;
-                    }
-
-                    setGrid(e);
-
-                    $("#climatologyWind").html("Wind: "+response.wind.speed+" km/h");
-                    $("#climatologyDesc").html(" - "+response.weather[0].main+" - "+response.main.humidity+"% humidity");
-
-
-
-
-                },
-                error: function(response) {
-                    console.log("Weather Error: "+response);
-                    alert("Error on getting weather");
+                if (markerArray.length == 0) {
+                    alert("Click on the map to set the searching area");
                     return false;
                 }
 
-            });
-
-        }
-
-        function listToMatrix(list, elementsPerSubArray) {
-            // http://stackoverflow.com/questions/4492385/
-            var matrix = [],
-                i, k;
-            for (i = 0, k = -1; i < list.length; i++) {
-                if (i % elementsPerSubArray === 0) {
-                    k++;
-                    matrix[k] = [];
+                if ($("#nodrone").val() > markerArray.length) {
+                    alert("The number of drones should be less or equal than grid size");
+                    return false;
                 }
-                matrix[k].push(list[i]);
-            }
-            return matrix;
-        }
 
-        function addBase() {
-            map.addMarker({
-                lat: baseCoords[0],
-                lng: baseCoords[1],
-                icon: "{% static 'img/red.png' %}",
-                infoWindow: {
-                    content: '<p>Base</p>'
+
+                selected = $("input[type='checkbox'][name='searching']:checked").map(function() {
+                    return this.value;
+                }).get();
+
+                if (selected.length <= 0) {
+                    alert("No searching user(s) selected");
+                    return false;
                 }
-            });
-            map.removePolygons();
 
-           c = map.drawCircle({
-                lat: baseCoords[0],
-                lng: baseCoords[1]
-            });
+                $("#map").css('height', '30%');
+                $("#settings").slideToggle();
+                $("#resultPanel").slideToggle();
+                $("#userList").fadeOut();
+                $("#resultPanel").fadeIn();
 
+                for (i = 0; i < selected.length; i++) {
+                    $("#resultUserList").append('<div id="photo_' + selected[i] + '"></div>');
+                }
 
-        }
+                distNear = [];
+                nearToBase = [];
 
-        function isInArray(value, array) {
-            return array.indexOf(value) > -1;
-        }
+                nodesPerDrone = Math.floor((markerArray.length * markerArray.length) / $("#nodrone").val());
+                dispersion = [];
 
+                for (i = 0; i < $("#nodrone").val(); i++) {
+                    distNear.push(9999);
+                    nearToBase.push(0);
+                    posArrays.push([]);
+                    dispersion.push(nodesPerDrone);
+                }
 
-        //var lastDetection = 0;
-        var lastLength = 0;
-        var tmpDetection = 0;
+                map.removePolylines();
 
-        function waitForResponse(missionId) {
+                resto = (markerArray.length * markerArray.length) - (nodesPerDrone * $("#nodrone").val());
+                console.log(resto);
+                for (i = 0; i < resto; i++) {
+                    dispersion[i]++;
+                }
 
-            response = setInterval(function() {
+                console.log(dispersion);
+
+                //------------------------------------------------------------
+
+                drone = 0;
+                x = 0;
+                c = 0;
+                n = 0;
+
+                console.log(markerArray);
+
+                for (var mX = 0; mX < markerArray.length; mX++) {
+                    for (var mY = 0; mY < markerArray[mX].length; mY++) {
+
+                        if (drone < c) {
+                            n = x - 1;
+                        } else if (drone == c) {
+                            if (c == 0)
+                                c = c + dispersion[x] - 1
+                            else
+                                c = c + dispersion[x]
+                            x++
+                        }
+
+                        if (zone == 1 || zone == 2) {
+                            lat = markerArray[mY][mX].internalPosition.lat();
+                            lng = markerArray[mY][mX].internalPosition.lng();
+                        } else {
+                            lat = markerArray[mX][mY].internalPosition.lat();
+                            lng = markerArray[mX][mY].internalPosition.lng();
+                        }
+
+                        posArrays[n].push([lat, lng]);
+                        drone++;
+
+                        p1 = new google.maps.LatLng(lat, lng);
+                        p2 = new google.maps.LatLng(baseCoords[0], baseCoords[1]);
+
+                        distancePoint = calcDistance(p1, p2) * 1000;
+                        if (distancePoint < distNear[n]) {
+                            distNear[n] = distancePoint;
+                            nearToBase[n] = [mX, mY];
+                        }
+
+                    }
+                }
+
+                console.log();
 
                 $.ajax({
                     type: "POST",
-                    url: "{% url 'getTracking' %}",
+                    url: "{% url 'createRoute' %}",
                     data: {
-                        mId: missionId
+
+                        msg: encrypt(JSON.stringify({
+                            ndrones: $("#nodrone").val(),
+                            insearch: JSON.stringify(selected),
+                            nearPoint: JSON.stringify(nearToBase),
+                            distance: $("#distance").val(),
+                            wayPoints: JSON.stringify(posArrays),
+                            base: JSON.stringify(baseCoords),
+                            altitude: $("#altitude").val(),
+                        }), key)
+
+
                     },
                     success: function(data) {
 
+                        if (data == 'errorKmlPath') {
+                            alert('Error, cant write on KML folder. Does it exists?');
+                            $("#cleanButton").click();
+                            return 0;
+                        }
+
+                        if (data == 'configerror') {
+                            alert('Error: No drones found in database');
+                            $("#cleanButton").click();
+                            return 0;
+                        }
+
+
                         data = JSON.parse(decrypt(data, key));
-                        globalData = data;
+                        mission = data[0];
+                        data = data[1];
+                        datal = data.length;
 
-                        console.log("Length: "+data.length);
-                        console.log("Mission ID: "+ missionId);
-                        console.log("Data");
-                        console.log("--------------------------------------------------");
+                        $("#demo_mid").html(mission);
 
-                        for (i = 0; i < data.length; i++) {
 
-                            for (j = 0; j < data[i].length; j++) {
+                        for (i = 0; i < datal; i++) {
+                            map.drawPolyline({
+                                path: data[i],
+                                strokeColor: colorList[i % colorList.length],
+                                strokeOpacity: 0.6,
+                                strokeWeight: 4
+                            });
 
-                                if (data[i][j][4] != null) { //signalFound
+                            map.drawPolyline({
+                                path: [
+                                    [baseCoords[0], baseCoords[1]], data[i][0]
+                                ],
+                                strokeColor: colorList[i % colorList.length],
+                                strokeOpacity: 0.4,
+                                strokeWeight: 4
+                            });
 
-                                    icon = "{% static 'img/physical_demo_signal.png' %}"
+                        }
 
-                                    if (isInArray((data[i][j][4]).toString(), selected)) {
-                                        icon = "{% static 'img/beacon.png' %}"
+                        waitForResponse(mission);
+
+                    }
+                });
+
+                $(this).toggle('fast', function() {
+                    $("#cleanButton").toggle('fast');
+                    $(".progress").slideToggle('fast');
+                });
+
+
+
+            });
+
+            var globalE;
+            var globalData;
+
+            function generete_weatherUrl(lat, lng) {
+                return "{% url 'getWeather' lat=1.1 lng=2.2  %}".replace("1.1", lat).replace("2.2", lng);
+            }
+
+            function checkWeather(e) {
+
+                if ($("#startbutton").is(':hidden')) {
+                    return 0;
+                }
+                globalE = e;
+
+                weatherMapApi = '{{ WEATHER_API|default:"INSERT_WEATHER_API_HERE" }}';
+
+                url = generete_weatherUrl(e.latLng.lat(), e.latLng.lng());
+                $.ajax({
+                    async: false,
+                    type: "POST",
+                    url: url,
+                    success: function(response) {
+
+                        response = JSON.parse(response);
+
+                        if (response.cod == '404') {
+                            alert("Cannot connect to the openweather map api");
+                            console.log(response.message);
+                            return 0;
+                        }
+
+                        if (response.cod == '401') {
+                            alert("API Key error");
+                            console.log(response.message);
+                            return 0;
+                        }
+
+                        console.log("Raw Response: " + JSON.stringify(response));
+                        console.log("Wind: " + response.wind.speed);
+                        console.log("LAT: " + e.latLng.lat() + ', ' + 'LNG: ' + e.latLng.lng());
+                        if (response.wind.speed >= 10 && $("#checkweatherbox").is(":checked")) {
+                            alert("The climatology in that area is not favorable to flight (Wind over 10kmph)");
+                            return false;
+                        }
+
+                        if (response.main.humidity >= 95 && $("#checkweatherbox").is(":checked")) {
+                            alert("The climatology in that area is not favorable to flight (Humidity over 95%)");
+                            return false;
+                        }
+
+                        setGrid(e);
+
+                        $("#climatologyWind").html("Wind: " + response.wind.speed + " km/h");
+                        $("#climatologyDesc").html(" - " + response.weather[0].main + " - " + response.main.humidity + "% humidity");
+
+                    },
+                    error: function(response) {
+                        console.log("Weather Error: " + response);
+                        alert("Error on getting weather");
+                        return false;
+                    }
+
+                });
+
+            }
+
+            function listToMatrix(list, elementsPerSubArray) {
+                // http://stackoverflow.com/questions/4492385/
+                var matrix = [],
+                    i, k;
+                for (i = 0, k = -1; i < list.length; i++) {
+                    if (i % elementsPerSubArray === 0) {
+                        k++;
+                        matrix[k] = [];
+                    }
+                    matrix[k].push(list[i]);
+                }
+                return matrix;
+            }
+
+            function addBase() {
+                map.addMarker({
+                    lat: baseCoords[0],
+                    lng: baseCoords[1],
+                    icon: "{% static 'img/red.png' %}",
+                    infoWindow: {
+                        content: '<p>Base</p>'
+                    }
+                });
+                map.removePolygons();
+
+                c = map.drawCircle({
+                    lat: baseCoords[0],
+                    lng: baseCoords[1]
+                });
+
+
+            }
+
+            function isInArray(value, array) {
+                return array.indexOf(value) > -1;
+            }
+
+
+            //var lastDetection = 0;
+            var lastLength = 0;
+            var tmpDetection = 0;
+
+            function waitForResponse(missionId) {
+
+                response = setInterval(function() {
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url 'getTracking' %}",
+                        data: {
+                            mId: missionId
+                        },
+                        success: function(data) {
+
+                            data = JSON.parse(decrypt(data, key));
+                            globalData = data;
+
+                            console.log("Length: " + data.length);
+                            console.log("Mission ID: " + missionId);
+                            console.log("Data");
+                            console.log("--------------------------------------------------");
+
+                            for (i = 0; i < data.length; i++) {
+
+                                for (j = 0; j < data[i].length; j++) {
+
+                                    if (data[i][j][4] != null) { //signalFound
+
+                                        icon = "{% static 'img/physical_demo_signal.png' %}"
+
+                                        if (isInArray((data[i][j][4]).toString(), selected)) {
+                                            icon = "{% static 'img/beacon.png' %}"
+                                        }
+
+                                        map.addMarker({
+                                            lat: data[i][j][1],
+                                            lng: data[i][j][2],
+                                            icon: icon,
+                                            infoWindow: {
+                                                content: '<p>BEACON: ' + data[i][j][4] + '</p>'
+                                            }
+                                        });
                                     }
 
-                                    map.addMarker({
-                                        lat: data[i][j][1],
-                                        //lat: data[i][j][6],
-                                        lng: data[i][j][2],
-                                        //lng: data[i][j][7],
-                                        icon: icon,
-                                        infoWindow: {
-                                            content: '<p>BEACON: ' + data[i][j][4] + '</p>'
-                                        }
+                                    if (data[i][j][5] != "") {
+                                        userName = $("#userName_" + data[i][j][4]).html();
+                                        userElement = '<div class="col s12 m3">' +
+                                            '<div class="card small">' +
+                                            '<div class="card-image"> ' +
+                                            '<img src="data:image/png;base64,' + data[i][j][5] + '" /><span class="card-title">' + userName + '</span> ' +
+                                            '</div> <div class="card-content"> ' +
+                                            '<p>P.Latitude: ' + data[i][j][1] + '</p> ' +
+                                            '<p>D.Latitude: ' + data[i][j][6] + '</p> ' +
+                                            '<p>P.Longitude: ' + data[i][j][2] + '</p> ' +
+                                            '<p>D.Longitude: ' + data[i][j][7] + '</p> ' +
+                                            '</div> </div></div>';
+
+                                        $("#photo_" + data[i][j][4]).html(userElement);
+
+                                    }
+
+                                    if (data[i][data[i].length - 1][4] != null && data[i].length > lastLength) {
+                                        lastLength = data[i].length;
+                                        tmpDetection = 6;
+                                        $("#detectionCircle").css('background-color', 'lightgreen');
+                                    } else {
+                                        if (tmpDetection == 0)
+                                            $("#detectionCircle").css('background-color', 'red');
+                                        else
+                                            tmpDetection--;
+                                    }
+
+                                    map.removeMarker(tmpMarker[i]);
+                                    tmpMarker[i] = map.addMarker({
+                                        lat: data[i][data[i].length - 1][6],
+                                        lng: data[i][data[i].length - 1][7],
+                                        icon: "{% static 'img/drone32x32.png' %}"
                                     });
-                                }
-
-                                if (data[i][j][5] != "") {
-                                    userName = $("#userName_"+data[i][j][4]).html();
-                                    userElement = '<div class="col s12 m3">' +
-                                    '<div class="card small">' +
-                                    '<div class="card-image"> ' +
-                                    '<img src="data:image/png;base64,' + data[i][j][5] + '" /><span class="card-title">' + userName + '</span> ' +
-                                    '</div> <div class="card-content"> ' +
-                                    '<p>P.Latitude: '+data[i][j][1]+'</p> ' +
-                                    '<p>D.Latitude: '+data[i][j][6]+'</p> ' +
-                                    '<p>P.Longitude: '+data[i][j][2]+'</p> ' +
-                                    '<p>D.Longitude: '+data[i][j][7]+'</p> ' +
-                                    '</div> </div></div>';
-
-                                    $("#photo_" + data[i][j][4]).html(userElement);
+                                    map.zoomIn(1);
+                                    map.zoomOut(1);
 
                                 }
-
-                            if(data[i][data[i].length-1][4] != null && data[i].length > lastLength){
-                                lastLength = data[i].length;
-                                tmpDetection = 6;
-                                $("#detectionCircle").css('background-color', 'lightgreen');
-                            }else{
-                                if(tmpDetection == 0)
-                                    $("#detectionCircle").css('background-color', 'red');
-                                else
-                                    tmpDetection--;
-                            }
-
-                                map.removeMarker(tmpMarker[i]);
-                                tmpMarker[i] = map.addMarker({
-                                    lat: data[i][data[i].length - 1][6],
-                                    lng: data[i][data[i].length - 1][7],
-                                    icon: "{% static 'img/drone32x32.png' %}"
-                                });
-                                map.zoomIn(1);
-                                map.zoomOut(1);
 
                             }
 
                         }
+                    });
+                }, 4000);
 
-                    }
-                });
-            }, 4000);
-
-        }
-
-        function setGrid(e){
-
-            if(parseInt($("#gridSize").val()) > 25){
-                alert("Grid size can not be more than 25");
-                return 0;
             }
 
-            map.removeMarkers();
-            addBase();
-            markerArray = [];
+            function setGrid(e) {
 
-            clickLat = e.latLng.lat()
-            clickLng = e.latLng.lng()
-            distance = parseInt($("#distance").val());
-            sideSize = parseInt($("#gridSize").val());
-
-            tmp = distanceTo(clickLat, clickLng, (distance * ((sideSize-1) / 2)) , 180);
-            tmp = distanceTo(tmp[0], tmp[1], (distance * ((sideSize-1) / 2)) , 90);
-
-            clickLat = tmp[0];
-            clickLng = tmp[1];
-
-            for(i = 0; i < sideSize; i++){
-                for(j = 0; j < sideSize; j++){
-
-                    distanceI = distance * i;
-                    distanceJ = distance * j;
-
-                    p = distanceTo(clickLat, clickLng, distanceI, 0);
-                    p = distanceTo(p[0], p[1], distanceJ, 270);
-
-                    markerArray.push(map.createMarker({
-                      lat: p[0],
-                      lng: p[1],
-                      icon: "{% static 'img/grey.png' %}"
-                    }));
-
+                if (parseInt($("#gridSize").val()) > 25) {
+                    alert("Grid size can not be more than 25");
+                    return 0;
                 }
+
+                map.removeMarkers();
+                addBase();
+                markerArray = [];
+
+                clickLat = e.latLng.lat()
+                clickLng = e.latLng.lng()
+                distance = parseInt($("#distance").val());
+                sideSize = parseInt($("#gridSize").val());
+
+                tmp = distanceTo(clickLat, clickLng, (distance * ((sideSize - 1) / 2)), 180);
+                tmp = distanceTo(tmp[0], tmp[1], (distance * ((sideSize - 1) / 2)), 90);
+
+                clickLat = tmp[0];
+                clickLng = tmp[1];
+
+                for (i = 0; i < sideSize; i++) {
+                    for (j = 0; j < sideSize; j++) {
+
+                        distanceI = distance * i;
+                        distanceJ = distance * j;
+
+                        p = distanceTo(clickLat, clickLng, distanceI, 0);
+                        p = distanceTo(p[0], p[1], distanceJ, 270);
+
+                        markerArray.push(map.createMarker({
+                            lat: p[0],
+                            lng: p[1],
+                            icon: "{% static 'img/grey.png' %}"
+                        }));
+
+                    }
+                }
+
+                map.addMarkers(markerArray);
+                markerArray = listToMatrix(markerArray, sideSize);
+
+                halfSide = parseInt(Math.floor(sideSize / 2));
+
+                pBase = new google.maps.LatLng(baseCoords[0], baseCoords[1]);
+
+                zone = 0;
+                tmpDist = calcDistance(pBase, markerArray[halfSide][0].position);
+
+
+                if (calcDistance(pBase, markerArray[0][halfSide].position) < tmpDist) {
+                    zone = 1;
+                    tmpDist = calcDistance(pBase, markerArray[0][halfSide].position);
+                }
+
+                if (calcDistance(pBase, markerArray[sideSize - 1][0].position) < tmpDist) {
+                    zone = 2;
+                    tmpDist = calcDistance(pBase, markerArray[sideSize - 1][0].position);
+                }
+
+                if (calcDistance(pBase, markerArray[0][sideSize - 1].position) < tmpDist) {
+                    zone = 3;
+                    tmpDist = calcDistance(pBase, markerArray[0][sideSize - 1].position);
+                }
+
+                console.log(zone);
+
+
             }
 
 
-            map.addMarkers(markerArray);
-            markerArray = listToMatrix(markerArray, sideSize);
+            $("#gridSize").change(function() {
+                if (globalE != null) {
+                    setGrid(globalE);
+                }
+            });
 
-            halfSide = parseInt(Math.floor(sideSize/2));
+            $("#distance").change(function() {
+                if (globalE != null) {
+                    setGrid(globalE);
+                }
+            });
 
-            pBase = new google.maps.LatLng(baseCoords[0], baseCoords[1]);
+            map = new GMaps({
+                el: '#map',
+                lat: 28.4812865,
+                lng: -16.3205404,
+                zoomControl: true,
+                zoomControlOpt: {
+                    style: 'SMALL',
+                    position: 'TOP_LEFT'
+                },
+                click: function(e) {
+                    checkWeather(e);
+                },
+                dblclick: function(e) {
+                    map.removeMarkers();
+                    markerArray = [];
+                    baseCoords[0] = e.latLng.lat();
+                    baseCoords[1] = e.latLng.lng();
+                    addBase();
+                    map.zoomOut();
+                },
+                disableDefaultUI: true,
+                disableDefaultStyles: false,
+                panControl: false,
+                streetViewControl: false,
+                mapTypeControl: false,
+                zoomControl: false,
+                overviewMapControl: false
+            });
 
-            zone = 0;
-            tmpDist = calcDistance(pBase, markerArray[halfSide][0].position);
+            map.addControl({
+                position: 'top_right',
+                content: '<a class="btn-floating grey btn-flat activator"><i class="material-icons">account_circle</i></a>',
+                style: {
+                    margin: '5px',
+                    shadow: 'none'
+                },
+                events: {
+                    click: function() {
+                        console.log(this);
+                    }
+                }
+            });
 
+            map.addControl({
+                position: 'top_left',
+                content: '<img class="responsive-img hide-on-small-only" src="{% static 'img/IBRIlogo_mini.png' %}" />',
+                style: {
+                    margin: '5px',
+                    shadow: 'none'
+                },
+                events: {
+                    click: function() {
+                        console.log(this);
+                    }
+                }
+            });
 
-            if(calcDistance(pBase, markerArray[0][halfSide].position) < tmpDist){
-                zone = 1;
-                tmpDist = calcDistance(pBase, markerArray[0][halfSide].position);
+            map.addControl({
+                position: 'top_right',
+                content: '<div class="chip blue" style="text-align: center; color: white;"><i class="material-icons">cloud</i> <span id="climatologyWind">Weather</span> <span id="climatologyDesc"></span></div>',
+                style: {
+                    margin: '5px',
+                    padding: '0px',
+                    shadow: 'none'
+                },
+                events: {
+                    click: function() {
+                        console.log(this);
+                    }
+                }
+            });
+
+            map.setContextMenu({
+                control: 'map',
+                options: [{
+                    title: 'Set drone base position',
+                    name: 'add_marker',
+                    action: function(e) {
+                        map.removeMarkers();
+                        markerArray = [];
+                        baseCoords[0] = e.latLng.lat();
+                        baseCoords[1] = e.latLng.lng();
+                        addBase();
+                    }
+                }, {
+                    title: 'Center here',
+                    name: 'center_here',
+                    action: function(e) {
+                        this.setCenter(e.latLng.lat(), e.latLng.lng());
+                    }
+                }]
+            });
+
+            // using jQuery
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
             }
 
-            if(calcDistance(pBase, markerArray[sideSize-1][0].position) < tmpDist){
-                zone = 2;
-                tmpDist = calcDistance(pBase, markerArray[sideSize-1][0].position);
-            }
-
-            if(calcDistance(pBase, markerArray[0][sideSize-1].position) < tmpDist){
-                zone = 3;
-                tmpDist = calcDistance(pBase, markerArray[0][sideSize-1].position);
-            }
-
-            console.log(zone);
+            addBase();
+            $('select').material_select();
 
 
-        }
-
-
-        $("#gridSize").change(function(){
-            if(globalE != null){
-                setGrid(globalE);
-            }
         });
-
-        $("#distance").change(function(){
-            if(globalE != null){
-                setGrid(globalE);
-            }
-        });
-
-        map = new GMaps({
-                  el: '#map',
-                  lat: 28.4812865,
-                  lng: -16.3205404,
-                  zoomControl: true,
-                  zoomControlOpt: {
-                      style: 'SMALL',
-                      position: 'TOP_LEFT'
-                  },
-                  click: function(e) {
-                      checkWeather(e);
-                      //setGrid(e);
-                  },
-                  dblclick: function(e){
-                      map.removeMarkers();
-                      markerArray = [];
-                      baseCoords[0] = e.latLng.lat();
-                      baseCoords[1] = e.latLng.lng();
-                      addBase();
-                      map.zoomOut();
-                  },
-                  disableDefaultUI: true,
-                  disableDefaultStyles: false,
-                  panControl: false,
-                  streetViewControl: false,
-                  mapTypeControl: false,
-                    zoomControl: false,
-                  overviewMapControl: false
-              });
-
-                map.addControl({
-                  position: 'top_right',
-                  content: '<a class="btn-floating grey btn-flat activator"><i class="material-icons">account_circle</i></a>',
-                  style: {
-                    margin: '5px',
-                    shadow: 'none'
-                  },
-                  events: {
-                    click: function(){
-                      console.log(this);
-                       // $('#modal1').openModal();
-                    }
-                  }
-                });
-
-                map.addControl({
-                  position: 'top_left',
-                  content: '<img class="responsive-img hide-on-small-only" src="{% static 'img/IBRIlogo_mini.png' %}" />',
-                  style: {
-                    margin: '5px',
-                    shadow: 'none'
-                  },
-                  events: {
-                    click: function(){
-                      console.log(this);
-                       // $('#modal1').openModal();
-                    }
-                  }
-                });
-
-                 map.addControl({
-                  position: 'top_right',
-                  content: '<div class="chip blue" style="text-align: center; color: white;"><i class="material-icons">cloud</i> <span id="climatologyWind">Weather</span> <span id="climatologyDesc"></span></div>',
-                  style: {
-                    margin: '5px',
-                      padding: '0px',
-                    shadow: 'none'
-                  },
-                  events: {
-                    click: function(){
-                      console.log(this);
-                    }
-                  }
-                });
-
-
-
-      map.setContextMenu({
-          control: 'map',
-          options: [{
-              title: 'Set drone base position',
-              name: 'add_marker',
-              action: function(e) {
-                  map.removeMarkers();
-                  markerArray = [];
-                  baseCoords[0] = e.latLng.lat();
-                  baseCoords[1] = e.latLng.lng();
-                  addBase();
-              }
-          }, {
-              title: 'Center here',
-              name: 'center_here',
-              action: function(e) {
-                  this.setCenter(e.latLng.lat(), e.latLng.lng());
-              }
-          }]
-      });
-
-
-      addBase();
-
-
-     /* $('#userList').DataTable({
-
-      });
-*/
-
-      // using jQuery
-      function getCookie(name) {
-          var cookieValue = null;
-          if (document.cookie && document.cookie != '') {
-              var cookies = document.cookie.split(';');
-              for (var i = 0; i < cookies.length; i++) {
-                  var cookie = jQuery.trim(cookies[i]);
-                  // Does this cookie string begin with the name we want?
-                  if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                      break;
-                  }
-              }
-          }
-          return cookieValue;
-      }
-
-
-    $('select').material_select();
-
-
-    });
-
-  </script>
-
-    </body>
-  </html>
+</script>
+</body>
+</html>
