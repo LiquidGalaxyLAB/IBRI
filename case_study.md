@@ -1,18 +1,23 @@
-1. INTRODUCTION (brief explanation about the project and the focusing of this study)
-2. NEEDS ( develop all the points that show why this project is needed)
-3. STRATEGIC ANALYSIS
+# Index
+1. Introduction 
+2. Needs
+3. IBRI Platform
+4. Strategic Analysis
   1. Legal factors
-  2. Economic factors ( comparison between helicopter/people rescues and drone rescues)
-  3. Technological factor (specifications of the: communications, flights, budgets…)
-4. ANALYSIS OF THE COMPETITION
-5. SWOT ANALYSIS
-6. TEST PERIOD ( present the results of the test, explaining what can be improved)
-7. CONTINGENCY PLAN (give solution to eventually problems that may occur)
-8. SUMMARY AND CONCLUSIONS
+  2. Economic factors
+  3. Technological factors 
+5. Analysis of the competition
+6. SWOT Analysis
+7. Test Analysis 
+8. Contingency plan
+9. Summary and conclusions
+
 
 ***
 
-## 1. INTRODUCTION
+
+## 1. Introduction
+
 Nowadays, people are getting more interested in outdoors activities, and sometimes, these activities can involve dangerous landscapes or they can lead to unsafe situations.
 Mountains are, by far, the place chosen for the majority of people, and for this reason a big part of the rescues that are done are carried out there.
 These situations may occur by bad weather conditions, by ignorance of the land or by lapse of concentration. When someone gets lost, a big emergency display is sent to the area where the person is thought to be. Since then, the rescue teams would begin a search that nobody knows how much time will take, coordinating the policemen, the firefighters, the medical services…
@@ -21,7 +26,9 @@ Sometimes, helicopters are needed because they ease the localization work, but r
 IBRI is a project dedicated to offer a solution to all the difficulties that a rescue could involve, from the easiest cases to the most dangerous ones. It consists in a platform that would use drones to do the helicopter work and part of the human work, without the costs that they entail, by localizing the missing people by detecting the BLE radio signals that a Beacon using Google’s Physical Web protocol sends out, a gadget carried by the missing people.
 IBRI’s application would have lots of benefits, so less staff would be needed, thing that derivate in less risky circumstances. Also, it will reduce the amount of resources employed in the rescue. More benefits will be described throughout this study, so the interested would realize the importance of this project.
 
-## 2. NEEDS
+
+## 2. Needs
+
 As it was said in the introduction, the main problem in rescues is the amount of time that the missing people wait until they are rescued. This waiting time can cause situations that may difficult the rescue tasks, for example: faints, anxiety attacks, sunstrokes…
 It is then when having a service that is able to localize a lost person in the middle of the mountain with a BLE radio signal would be really useful.
 Sometimes, people get lost in the evening, when they don’t remember exactly the road they have followed. That means that they are lost at night, and the rescue display may not be deployed until the dawn. 
@@ -29,13 +36,13 @@ With the current rescue services, helicopters couldn’t be deployed at night be
 We should mention that risk is directly related to the number of people that are working in the rescue. So, in fact, there are not only a few lives in danger, there are lots of them, because those people who is looking for the missing people are in danger too. This is another reason to use drones instead of people. Although a drone costs money, losing a drone has no impact on society, so that makes the drone a better option.
 That is to say, deploying a drone would generate less dangerous situations, as waiting time would be reduced greatly and the operating services would send fewer staff to the area.
 Another aspect that has a vital importance is effectiveness. Imagine a situation where the area that is thought that the missing people are is very big. Helicopters are the best option, because they can travel long distances in a short period of time, but they have a big problem, the costs that they imply. The fuel of a helicopter is so expensive that deploy more than one is not easy. However, drones do not have that kind of limitations, because the cost of the electricity needed to charge their batteries is nothing compared to the money that fuel cost.
-
 Then, we could imagine a situation where both methods were working at the same time, so the rescue staff in the field could be unnecessary until the missing people are localized.
 In summary, this platform would ease rescue tasks as we have seen, facilitating the localization part of the whole mission and reducing risks, as well as costs.
 
-## 3. IBRI PLATFORM
 
-IBRI is a service focused on Search and Rescue (SAR) tasks, and its aim is to speed up those operations. To do that, there is a web platform where the operator can control the whole mission. The web has this look: 
+## 3. IBRI Platform
+
+IBRI is a service focused on Search and Rescue (SAR) tasks, and its aim is to speed up those operations. To do that, there is a web platform where the operator can control the whole mission. The web has this look:  
 
 ![](http://i.imgsafe.org/4c98fd81fe.png)
 
@@ -45,16 +52,16 @@ This smartphone has an application that detects BLE radio signals, which are sen
 The job of the drone is to go through the different points in order to able the smartphone detection of the beacon. The smartphone has two jobs, the first one is being scanning to detect the BLE signal as it has been already said, and the other one is taking pictures of the field the drone is flying through.
 Once the drone has finished the flight, the operator would analyse all the information the smartphone has gathered. Then, the rescue tasks would begin in case that the person had been found or more drones would be sent to look for the client if his/her localization had failed. 
 
-## 4. STRATEGIC ANALYSIS
+
+## 4. Strategic Analysis
+
 1. Legal factors
 As drones are relatively new, legislation in this field is a bit ambiguous, because only a few situations have been regulated. In our case, for emergency situations the drone law allows the trial and deployment of services.
 Current law does not permit the use of drones without pilot control, but in our case, as we are dealing with emergency situations, law takes into account field tests with them, provided that these tests had been agreed with the corresponding authorities.
 
-
 2. Economic factors
 During the last years, a big economic crisis has hit the European economy. This economic instability has had a “good” impact on society, in terms of health, because they have got interested in outdoors activities, such as running, trekking, cycling…
 Mountain is the perfect landscape to enjoy nature, and that is the reason why lots of people chose it for going on excursions. As people interest is increasing, the possibilities of having an accident are growing too, because some of them do not have the knowledge that is required. This is reflected in the following graphic, which shows the evolution of the number of rescues in Catalonia from 2010 to 2015.
-
 
 ![](http://i.imgsafe.org/39da2a28d8.png)
 
@@ -64,13 +71,14 @@ Imagine how much money is set aside for this kind of situations. The most expens
 As a rescue can cost so much, the government makes those people who got lost because of their carelessness pay for the rescue services.
 Now, imagine the next situation: a hiker has gone with the obligatory equipment and he falls down a cliff by accident. He/she has a broken leg and his/her mobile phone has broken in the fall. After several hours disappeared his/her family calls the authorities and they begin to establish a rescue plan. They have three options:
 
-  1.  Send all the usual services, including one helicopter, to the area where the person is thought to be.
+  1. Send all the usual services, including one helicopter, to the area where the person is thought to be.
   2. Use IBRI in order to find the missing person quickly with the deployment of the minimum emergency services and the deployment of drones.
   3. Use both of them combined to make the rescue as easy as possible.
 For the government, the first option entail the most expensive rescue, and the most dangerous one as there are more people in the field. The second one could be the best option, not only because the money saving but the promptness of the job.
 Rescue tasks are considered high-risk jobs, so all the people related to them are well payed. As the drone would do part of those jobs, some salaries would be saved.
 We should mention that drones are not cheap, so governments would have to make an investment in these devices, but this investment would never be as high as the one needed to purchase helicopters.
 To sum up, IBRI offers an alternative method to the current rescues without the amount of costs that they involve.
+
 
 3. Technological factors
 The fundamental element of the project is technology. In general terms, it consists in a smartphone that can detect a wireless signal sent out by a beacon called Physical Web.
@@ -85,7 +93,8 @@ This signal is detected with a smartphone, the one who sends the information rec
 The drone used in SAR tasks must be autonomous, that means that no pilot is required. 
 
  
-## 5. ANALYSIS OF THE COMPETITION
+## 5. Analysis of the competition
+
 The use of unmanned aerial systems for civilian SAR operations or disaster management is not new. Projects similar to IBRI have been done before, but there are no news about any of them to have come out.
 There are many projects similar to IBRI, but there are no real deployments, even though their crowdfunding efforts. This similarity is the fact that drones are controlled by somebody, instead of being autonomous. This kind of drones have the safety that the pilots know exactly where the drone is and what it has in its surroundings, whereas IBRI drone would conduct the mission by itself.
 An example of a company that uses drones to speed up SAR tasks is “S.W.A.R.M”. This company is made up of volunteers, who are people that have a drone and want to help other people to find their missing folks with their drone knowledge. As all the involved are volunteers, this company neither pay them nor earns money for their services. The volunteers have to incur with all the costs of the mission, so people who is affected do not have to worry about anything else.
@@ -97,37 +106,46 @@ The competition in this area is serious, because there are lots of similar proje
 
 
 ## 6. SWOT ANALYSIS
-### STRENGTHS
+
+### Strengths
   * Reduces the duration of the rescue
   * Less emergency services are needed when the deployment of the drone
   * No need of drone pilots
   * Money saving, as drones are cheaper than a helicopter
   * Qualified and motivated personnel working in the project
   * Google collaboration in the project
-### WEAKNESSES
+### Weaknesses
   * Technology: drone’s failure system
   * Impossibility of deployment because of bad weather
   * People’s insecurity about a drone looking for people
-### OPPORTUNITIES
+### Opportunities
   * Number of missing people is increasing
   * It would be the first project of this kind to set in motion
   * People’s wish of a more efficient service
-### THREATS
+### Threats
   * Other projects similar to IBRI
   * Law difficulties
   * People’s attitude towards respecting the drone’s job
 
-## 7. TEST ANALYSIS
+
+## 7. Test Analysis
+
 The beacon that the missing person is supposed to carry must be detectable from a large distance, because the drone can be flying at a high altitude for any reasons, as for example, that the missing person is in a forest. A basic test has been done in order to ensure that the beacon would be useful in any situation, and what the test determined was that the beacon is detectable at least at 250 meters in horizontal, and without vegetation between the beacon and the smartphone. then, as in many cases there would be something between both gadgets, the test was made with lots of plants between them, and the result was that at least the smartphone could localize the beacon at 80 meters. 
 It has to be said that those distances can be larger and the beacon is supposed to be detectable at 400 meters, but with all the trees that a forest have this distance might be reduced.
-Is pending a realistic test with a drone flying through a determined area where a beacon would be hided, to know with more accuracy the maximum altitude that it can fly at and the distance at which would detect the BLE signals emitted.
+Is pending a realistic test with a drone,controlled by a pilot, flying through a determined area where a beacon would be hided. The pilot would be supposed to follow the same route that the drone would do in an IBRI demo. 
+This demo could be done following the Demo section of this wiki. 
 
 
-## 8. CONTINGENCY PLAN
+## 8. Contingency Plan
+
 When working with drones we cannot ensure that the drone will return to the base, so for these cases an emergency plan has to be done. The reasons why these might happen are very different: weather conditions, human’s action, failure system...
 In all the cases, the rescue drone would not come back, so we would have two “things” to look for, the missing people and the drone. Missing people would be easier to find because of the physical web, but what about the drone? It would be like looking for a needle in a haystack. For this reason, rescue drones would have a physical web integrated. By this way, if ever a drone gets lost, the app could declare it missing and another drone would look for the missing people and the drone.
 To speed up SAR tasks, more than one drone would be deployed, in order to make up the lost time.
 
-## 9. SUMMARY AND CONCLUSIONS
+
+## 9. Summary and Conclusions
+
 Even though this platform is still in process of building, it has a great future forecast, as it is an innovating project. The advantages of its application have already been commented: it would ease SAR tasks at the same time that is speeding up these operations and saves money.
+As results we have seen the functionality and the potential of the application in real life, testing different detection distances, being all of them satisfactory.    
 This project is an important advance in terms of security, as people can go on excursions with the certainty that if something bad occurs to them, they will be rescued in a short period of time. 
+So we hope that this project would be deployed by some organization.
