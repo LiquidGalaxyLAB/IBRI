@@ -1,4 +1,4 @@
-# IBRI - GSoC16
+# IBRI - Moisés Lodeiro Santiago - GSoC16
 
 This GSOC 2016 project contains the following subprojects for each one of them a commits link is provided:
 
