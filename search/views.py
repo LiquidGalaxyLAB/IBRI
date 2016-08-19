@@ -54,6 +54,7 @@ def searchMap(request):
         'client': clients,
         'WEATHER_API': settings.WMAPAPI,
         'KMLDir': settings.KML_DIR,
+        'GAPI': settings.GAPI,
         'DRONES': drones,
         'nodrones': len(drones)
     })
