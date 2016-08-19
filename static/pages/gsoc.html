@@ -137,7 +137,10 @@
             <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the KML_DIR in settings.py</div>
         {% endif %}
         {% if WEATHER_API  == '' %}
-            <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the WEATHER_API in config panel</div>
+            <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the WEATHER_API in settings.py</div>
+        {% endif %}
+        {% if GAPI == '' %}
+        <div class="card-panel red darken-4 vertical-align" style="color: white;"><i class="material-icons">warning</i> Set the GAPI (Google maps API) in settings.py</div>
         {% endif %}
         <div id="map"></div>
         <div style="position: absolute; right: 20px; margin-top: -25px;">
