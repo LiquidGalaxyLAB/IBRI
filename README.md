@@ -86,6 +86,7 @@ python manage.py runserver <ibri_ip> <ibri_port> # optional arguments
 - [GSOC16 IBRI Projects](https://github.com/LiquidGalaxyLAB/IBRI/blob/master/GSOC16.md)
 - [GSOC16 WorkLog](https://goo.gl/8D6IJD)
 - [Code Documentation](https://github.com/LiquidGalaxyLAB/IBRI/tree/master/docs)
+- [Wiki](https://github.com/LiquidGalaxyLAB/IBRI/wiki)
 
 ###+ Linked projects
 - [IBRI Drone](https://github.com/LiquidGalaxyLAB/IBRI_Drone/)
